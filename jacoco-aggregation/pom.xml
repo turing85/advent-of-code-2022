@@ -44,6 +44,11 @@
             <artifactId>advent-of-code-2022-day1</artifactId>
             <version>999-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>de.turing85</groupId>
+            <artifactId>advent-of-code-2022-day2</artifactId>
+            <version>999-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <reporting>

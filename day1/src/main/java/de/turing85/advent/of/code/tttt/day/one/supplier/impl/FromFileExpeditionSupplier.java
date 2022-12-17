@@ -3,7 +3,6 @@ package de.turing85.advent.of.code.tttt.day.one.supplier.impl;
 import de.turing85.advent.of.code.tttt.day.one.supplier.ExpeditionSupplier;
 import java.io.IOException;
 import java.net.URI;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import lombok.experimental.Delegate;
@@ -30,7 +29,7 @@ public class FromFileExpeditionSupplier implements ExpeditionSupplier {
    * @throws IOException if some I/O exception occurs when the file is read.
    */
   public FromFileExpeditionSupplier(URI inputFile) throws IOException {
-    String fileContent = new String(Files.readAllBytes(Path.of(inputFile)), StandardCharsets.UTF_8);
+    String fileContent = Files.readString(Path.of(inputFile));
     fromStringExpeditionSupplier = new FromStringExpeditionSupplier(fileContent);
   }
 }

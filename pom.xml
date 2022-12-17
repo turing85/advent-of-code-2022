@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>day1</module>
+        <module>day2</module>
         <module>implementation-parent</module>
         <module>jacoco-aggregation</module>
     </modules>
@@ -357,7 +358,7 @@
                 <version>${maven-javadoc-plugin.version}</version>
                 <configuration>
                     <additionalOptions>-package</additionalOptions>
-                    <goal>aggragate</goal>
+                    <goal>aggregate</goal>
                     <show>public</show>
                     <source>${maven.compiler.release}</source>
                 </configuration>

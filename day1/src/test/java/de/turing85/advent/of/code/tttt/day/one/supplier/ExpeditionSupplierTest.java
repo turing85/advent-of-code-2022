@@ -39,7 +39,7 @@ public abstract class ExpeditionSupplierTest {
   protected abstract ExpeditionSupplier expeditionSupplierForPersonalInput() throws Exception;
 
   @Test
-  @DisplayName("throws execption on invalid input")
+  @DisplayName("throws exception on invalid input")
   void throwsOnNegativeBackpackValue() {
     // GIVEN: defaults
 
