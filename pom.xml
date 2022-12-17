@@ -12,6 +12,7 @@
 
     <packaging>pom</packaging>
     <modules>
+        <module>day1</module>
         <module>implementation-parent</module>
     </modules>
 
