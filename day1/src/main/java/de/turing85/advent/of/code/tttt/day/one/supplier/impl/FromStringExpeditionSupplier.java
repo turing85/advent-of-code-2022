@@ -1,7 +1,8 @@
-package de.turing85.advent.of.code.tttt.day.one.reader;
+package de.turing85.advent.of.code.tttt.day.one.supplier.impl;
 
 import de.turing85.advent.of.code.tttt.day.one.model.Backpack;
 import de.turing85.advent.of.code.tttt.day.one.model.Expedition;
+import de.turing85.advent.of.code.tttt.day.one.supplier.ExpeditionSupplier;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
  * within a backpack are separated by only one {@link System#lineSeparator()}.
  *
  */
-public class FromStringExpeditionReader {
+public class FromStringExpeditionSupplier implements ExpeditionSupplier {
   private final Expedition expedition;
 
   /**
@@ -24,7 +25,7 @@ public class FromStringExpeditionReader {
    *
    * @param expeditionAsString a {@link String}-representation of an expedition.
    */
-  public FromStringExpeditionReader(String expeditionAsString) {
+  public FromStringExpeditionSupplier(String expeditionAsString) {
     List<Backpack> backpacks = parseAndValidateBackpacks(expeditionAsString);
     this.expedition = new Expedition(backpacks);
   }
@@ -52,6 +53,7 @@ public class FromStringExpeditionReader {
    * @return the {@link Expedition} that was obtained by parsing the {@link String}-representation
    *         given to the constructor.
    */
+  @Override
   public Expedition getExpedition() {
     return expedition;
   }
