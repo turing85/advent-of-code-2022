@@ -13,16 +13,15 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 public abstract class ExpeditionSupplierTest {
-  public static final Path ILLEGAL_INPUT_PATH = Path.of("src/test/resources/illegalExpedition.txt");
+  public static final Path ILLEGAL_INPUT_PATH = Path.of("src/test/resources/illegalInput.txt");
   public static final URI ILLEGAL_INPUT_URI = ILLEGAL_INPUT_PATH.toUri();
   protected static String ILLEGAL_INPUT;
 
-  public static final Path COMMON_INPUT_PATH = Path.of("src/test/resources/commonExpedition.txt");
+  public static final Path COMMON_INPUT_PATH = Path.of("src/test/resources/commonInput.txt");
   public static final URI COMMON_INPUT_URI = COMMON_INPUT_PATH.toUri();
   public static String COMMON_INPUT;
 
-  public static final Path PERSONAL_INPUT_PATH =
-      Path.of("src/test/resources/personalExpedition.txt");
+  public static final Path PERSONAL_INPUT_PATH = Path.of("src/test/resources/personalInput.txt");
   protected static final URI PERSONAL_INPUT_URI = PERSONAL_INPUT_PATH.toUri();
   protected static String PERSONAL_INPUT;
 
