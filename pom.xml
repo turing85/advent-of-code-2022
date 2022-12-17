@@ -5,11 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>de.turing85</groupId>
-    <artifactId>advent-of-code-2022</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>advent-of-code-2022-parent</artifactId>
+    <version>999-SNAPSHOT</version>
+    <name>advent-of-code :: parent</name>
+    <description>The parent for the advent-of-code project.</description>
 
     <packaging>pom</packaging>
     <modules>
+        <module>implementation-parent</module>
     </modules>
 
     <licenses>
