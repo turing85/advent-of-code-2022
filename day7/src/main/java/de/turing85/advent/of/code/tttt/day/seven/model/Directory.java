@@ -81,7 +81,7 @@ public final class Directory {
   }
 
   /**
-   * Gets the size of the directory (= sum of size in this and all sub-directories)
+   * Gets the size of the directory (= sum of size in this and all subdirectories)
    *
    * @return the size of the directory.
    */
@@ -127,7 +127,7 @@ public final class Directory {
    * Go to the child-directory of the given name.
    *
    * @param name the name of the directory to go to
-   * @return the directory (may be {@code null} if the directory cannot be found)
+   * @return the directory (might be {@code null} if the directory cannot be found)
    */
   public Directory goToChild(String name) {
     return directories.stream().filter(directory -> Objects.equals(directory.name(), name))
