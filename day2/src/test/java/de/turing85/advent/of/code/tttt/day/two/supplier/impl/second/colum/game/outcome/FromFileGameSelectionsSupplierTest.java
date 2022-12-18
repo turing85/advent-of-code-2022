@@ -13,12 +13,12 @@ class FromFileGameSelectionsSupplierTest extends GameSelectionsSupplierTest {
 
   @Override
   protected void gameSelectionsSupplierForIllegalInput() throws IOException {
-    new FromFileGameSelectionsSupplier(ILLEGAL_INPUT_URI);
+    new FromFileGameSelectionsSupplier(ILLEGAL_INPUT);
   }
 
   @Override
   protected GameSelectionsSupplier gameSelectionsSupplierForCommonInput() throws IOException {
-    return new FromFileGameSelectionsSupplier(COMMON_INPUT_URI);
+    return new FromFileGameSelectionsSupplier(COMMON_INPUT);
   }
 
   @Override
@@ -35,7 +35,7 @@ class FromFileGameSelectionsSupplierTest extends GameSelectionsSupplierTest {
 
   @Override
   protected GameSelectionsSupplier gameSelectionsSupplierForPersonalInput() throws IOException {
-    return new FromFileGameSelectionsSupplier(PERSONAL_INPUT_URI);
+    return new FromFileGameSelectionsSupplier(PERSONAL_INPUT);
   }
 
   @Override

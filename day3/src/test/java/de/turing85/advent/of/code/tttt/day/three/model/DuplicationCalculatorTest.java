@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import de.turing85.advent.of.code.tttt.day.three.supplier.RucksacksSupplier;
 import de.turing85.advent.of.code.tttt.day.three.supplier.impl.FromFileRucksackSupplier;
 import java.io.IOException;
-import java.net.URI;
 import java.nio.file.Path;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
@@ -15,29 +14,25 @@ import org.junit.jupiter.api.Test;
 @DisplayName("DuplicationCalculator tests")
 public abstract class DuplicationCalculatorTest {
 
-  private static final Path ILLEGAL_INPUT_THREE_PATH =
+  private static final Path ILLEGAL_INPUT_THREE =
       Path.of("src/test/resources/illegalInputThree.txt");
-  private static final URI ILLEGAL_INPUT_THREE_URI = ILLEGAL_INPUT_THREE_PATH.toUri();
-
-  private static final URI COMMON_INPUT_URI = Path.of("src/test/resources/commonInput.txt").toUri();
+  public static final Path COMMON_INPUT = Path.of("src/test/resources/commonInput.txt");
   private static final int COMMON_INPUT_DUPLICATION = 157;
-
-  protected static final URI PERSONAL_INPUT_URI =
-      Path.of("src/test/resources/personalInput.txt").toUri();
+  public static final Path PERSONAL_INPUT = Path.of("src/test/resources/personalInput.txt");
   private static final int PERSONAL_INPUT_DUPLICATION = 7727;
 
   private static final DuplicationCalculator UNDER_TEST = DuplicationCalculator.instance();
 
   protected RucksacksSupplier rucksacksSupplierForIllegalInputThree() throws IOException {
-    return new FromFileRucksackSupplier(ILLEGAL_INPUT_THREE_URI);
+    return new FromFileRucksackSupplier(ILLEGAL_INPUT_THREE);
   }
 
   protected RucksacksSupplier rucksacksSupplierForCommonInput() throws IOException {
-    return new FromFileRucksackSupplier(COMMON_INPUT_URI);
+    return new FromFileRucksackSupplier(COMMON_INPUT);
   }
 
   protected RucksacksSupplier rucksacksSupplierForPersonalInput() throws IOException {
-    return new FromFileRucksackSupplier(PERSONAL_INPUT_URI);
+    return new FromFileRucksackSupplier(PERSONAL_INPUT);
   }
 
   @Test

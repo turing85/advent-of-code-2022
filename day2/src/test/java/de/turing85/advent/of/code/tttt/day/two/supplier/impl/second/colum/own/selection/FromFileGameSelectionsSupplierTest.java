@@ -13,12 +13,12 @@ class FromFileGameSelectionsSupplierTest extends GameSelectionsSupplierTest {
 
   @Override
   protected void gameSelectionsSupplierForIllegalInput() throws Exception {
-    new FromFileGameSelectionsSupplier(GameScorerTest.ILLEGAL_INPUT_URI);
+    new FromFileGameSelectionsSupplier(GameScorerTest.ILLEGAL_INPUT);
   }
 
   @Override
   protected GameSelectionsSupplier gameSelectionsSupplierForCommonInput() throws Exception {
-    return new FromFileGameSelectionsSupplier(GameScorerTest.COMMON_INPUT_URI);
+    return new FromFileGameSelectionsSupplier(GameScorerTest.COMMON_INPUT);
   }
 
   @Override
@@ -35,7 +35,7 @@ class FromFileGameSelectionsSupplierTest extends GameSelectionsSupplierTest {
 
   @Override
   protected GameSelectionsSupplier gameSelectionsSupplierForPersonalInput() throws Exception {
-    return new FromFileGameSelectionsSupplier(GameScorerTest.PERSONAL_INPUT_URI);
+    return new FromFileGameSelectionsSupplier(GameScorerTest.PERSONAL_INPUT);
   }
 
   @Override

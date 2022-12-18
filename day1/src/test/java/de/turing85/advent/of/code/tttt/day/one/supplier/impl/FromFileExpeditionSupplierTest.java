@@ -4,7 +4,6 @@ import com.google.common.truth.Truth;
 import de.turing85.advent.of.code.tttt.day.one.model.Expedition;
 import de.turing85.advent.of.code.tttt.day.one.supplier.ExpeditionSupplier;
 import java.io.IOException;
-import java.net.URI;
 import java.nio.file.Path;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -13,20 +12,16 @@ import org.junit.jupiter.api.Test;
 
 @DisplayName("FromFileExpeditionSupplier tests")
 class FromFileExpeditionSupplierTest {
-  public static final URI ILLEGAL_INPUT_URI =
-      Path.of("src/test/resources/illegalInput.txt").toUri();
-
-  public static final URI COMMON_INPUT_URI = Path.of("src/test/resources/commonInput.txt").toUri();
-
-  protected static final URI PERSONAL_INPUT_URI =
-      Path.of("src/test/resources/personalInput.txt").toUri();
+  public static final Path ILLEGAL_INPUT = Path.of("src/test/resources/illegalInput.txt");
+  public static final Path COMMON_INPUT = Path.of("src/test/resources/commonInput.txt");
+  public static final Path PERSONAL_INPUT = Path.of("src/test/resources/personalInput.txt");
 
   private ExpeditionSupplier expeditionSupplierForCommonInput() throws IOException {
-    return new FromFileExpeditionSupplier(COMMON_INPUT_URI);
+    return new FromFileExpeditionSupplier(COMMON_INPUT);
   }
 
   private ExpeditionSupplier expeditionSupplierForPersonalInput() throws IOException {
-    return new FromFileExpeditionSupplier(PERSONAL_INPUT_URI);
+    return new FromFileExpeditionSupplier(PERSONAL_INPUT);
   }
 
   @Test
@@ -36,7 +31,7 @@ class FromFileExpeditionSupplierTest {
 
     // WHEN & THEN
     Assertions.assertThrows(IllegalArgumentException.class,
-        () -> new FromFileExpeditionSupplier(ILLEGAL_INPUT_URI));
+        () -> new FromFileExpeditionSupplier(ILLEGAL_INPUT));
   }
 
   @Nested

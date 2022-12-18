@@ -3,15 +3,14 @@ package de.turing85.advent.of.code.tttt.day.two.supplier.impl.second.colum.game.
 import de.turing85.advent.of.code.tttt.day.two.model.GameSelection;
 import de.turing85.advent.of.code.tttt.day.two.supplier.GameSelectionsSupplier;
 import java.io.IOException;
-import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Collection;
 import lombok.experimental.Delegate;
 
 /**
- * Reads a {@link String}-representation of {@link GameSelection}s from the file represented by an
- * {@link URI} and constructs the corresponding {@link Collection} of {@link GameSelection}s from
+ * Reads a {@link String}-representation of {@link GameSelection}s from the file represented by a
+ * {@link Path} and constructs the corresponding {@link Collection} of {@link GameSelection}s from
  * it.
  *
  * <p>
@@ -25,17 +24,17 @@ public class FromFileGameSelectionsSupplier extends GameSelectionsSupplier {
   private FromStringGameSelectionsSupplier fromStringGameSelectionsSupplier;
 
   /**
-   * Given a {@link URI} to a file holding a {@link String}-representation of
+   * Given a {@link Path} to a file holding a {@link String}-representation of
    * {@link GameSelection}s, constructs the corresponding {@link Collection} of
    * {@link GameSelection}s from it.
    *
-   * @param inputFile a {@link URI} to a file holding a{@link String}-representation of the
+   * @param inputFile a {@link Path} to a file holding a{@link String}-representation of the
    *        {@link GameSelection}s.
    *
    * @throws IOException if some I/O exception occurs when the file is read.
    */
-  public FromFileGameSelectionsSupplier(URI inputFile) throws IOException {
-    super(Files.readString(Path.of(inputFile)));
+  public FromFileGameSelectionsSupplier(Path inputFile) throws IOException {
+    super(Files.readString(inputFile));
   }
 
   @Override
