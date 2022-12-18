@@ -1,4 +1,4 @@
-[Source][day5source]
+[Source][day5Source]
 
 ### --- Day 5: Supply Stacks ---
 The expedition can depart as soon as the final supplies have been unloaded from the ships. Supplies are stored in stacks of marked **crates**, but because the needed supplies are buried under many other crates, the crates need to be rearranged.
@@ -95,4 +95,4 @@ In this example, the CrateMover 9001 has put the crates in a totally different o
 
 Before the rearrangement process finishes, update your simulation so that the Elves know where they should stand to be ready to unload the final supplies. **After the rearrangement procedure completes, what crate ends up on top of each stack?**
 
-[day5source]: https://adventofcode.com/2022/day/5
+[day5Source]: https://adventofcode.com/2022/day/5

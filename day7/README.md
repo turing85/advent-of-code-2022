@@ -1,4 +1,4 @@
-[Source][day7source]
+[Source][day7Source]
 
 #### --- Day 7: No Space Left On Device ---
 You can hear birds chirping and raindrops hitting leaves as the expedition proceeds. Occasionally, you can even hear much louder sounds in the distance; how big do the animals get out here, anyway?
@@ -95,4 +95,4 @@ Directories `e` and `a` are both too small; deleting them would not free up enou
 
 Find the smallest directory that, if deleted, would free up enough space on the filesystem to run the update. **What is the total size of that directory?**
 
-[day7source]: https://adventofcode.com/2022/day/7
+[day7Source]: https://adventofcode.com/2022/day/7

@@ -1,4 +1,4 @@
-[Source][day6source]
+[Source][day6Source]
 
 ### — Day 6: Tuning Trouble —
 
@@ -48,4 +48,4 @@ Here are the first positions of start-of-message markers for all of the above ex
 
 **How many characters need to be processed before the first start-of-message marker is detected?**
 
-[day6source]: https://adventofcode.com/2022/day/6
+[day6Source]: https://adventofcode.com/2022/day/6
