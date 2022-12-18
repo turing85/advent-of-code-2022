@@ -1,35 +1,39 @@
 package de.turing85.advent.of.code.tttt.day.three.supplier.impl;
 
-import de.turing85.advent.of.code.tttt.day.three.supplier.RucksacksSupplier;
-import de.turing85.advent.of.code.tttt.day.three.supplier.RucksacksSupplierTest;
-import java.io.IOException;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.net.URI;
+import java.nio.file.Path;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 @DisplayName("FromFileRucksackSupplier tests")
-class FromFileRucksackSupplierTest extends RucksacksSupplierTest {
+class FromFileRucksackSupplierTest {
+  public static final Path ILLEGAL_INPUT_ONE_PATH =
+      Path.of("src/test/resources/illegalInputOne.txt");
+  public static final URI ILLEGAL_INPUT_ONE_URI = ILLEGAL_INPUT_ONE_PATH.toUri();
 
-  @Override
-  protected RucksacksSupplier rucksacksSupplierForIllegalInputOne() throws IOException {
-    return new FromFileRucksackSupplier(ILLEGAL_INPUT_ONE_URI);
+  public static final Path ILLEGAL_INPUT_TWO_PATH =
+      Path.of("src/test/resources/illegalInputTwo.txt");
+  public static final URI ILLEGAL_INPUT_TWO_URI = ILLEGAL_INPUT_TWO_PATH.toUri();
+
+  @Test
+  @DisplayName("throws exception on odd input length")
+  void throwsOnOddInputLength() {
+    // GIVEN: defaults
+
+    // WHEN & THEN
+    assertThrows(IllegalArgumentException.class,
+        () -> new FromFileRucksackSupplier(ILLEGAL_INPUT_ONE_URI));
   }
 
-  @Override
-  protected RucksacksSupplier rucksacksSupplierForIllegalInputTwo() throws IOException {
-    return new FromFileRucksackSupplier(ILLEGAL_INPUT_TWO_URI);
-  }
+  @Test
+  @DisplayName("throws exception on odd input length")
+  void throwsOnIllegalCharacters() {
+    // GIVEN: defaults
 
-  @Override
-  protected RucksacksSupplier rucksacksSupplierForIllegalInputThree() throws IOException {
-    return new FromFileRucksackSupplier(ILLEGAL_INPUT_THREE_URI);
-  }
-
-  @Override
-  protected RucksacksSupplier rucksacksSupplierForCommonInput() throws IOException {
-    return new FromFileRucksackSupplier(COMMON_INPUT_URI);
-  }
-
-  @Override
-  protected RucksacksSupplier rucksacksSupplierForPersonalInput() throws IOException {
-    return new FromFileRucksackSupplier(PERSONAL_INPUT_URI);
+    // WHEN & THEN
+    assertThrows(IllegalArgumentException.class,
+        () -> new FromFileRucksackSupplier(ILLEGAL_INPUT_TWO_URI));
   }
 }

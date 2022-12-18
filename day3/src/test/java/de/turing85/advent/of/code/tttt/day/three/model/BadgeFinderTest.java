@@ -8,10 +8,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 @DisplayName("BadgeFinder tests")
-public abstract class BadgeFinderTest extends DuplicationCalculatorTest {
-  public static final int COMMON_BADGE_SCORE = 70;
-  public static final int PERSONAL_BADGE_SCORE = 2609;
-  public static final BadgeFinder UNDER_TEST = BadgeFinder.instance();
+class BadgeFinderTest extends DuplicationCalculatorTest {
+  private static final int COMMON_BADGE_SCORE = 70;
+  private static final int PERSONAL_BADGE_SCORE = 2609;
+  private static final BadgeFinder UNDER_TEST = BadgeFinder.instance();
 
   @Test
   @DisplayName("throws on non-unique badge item")

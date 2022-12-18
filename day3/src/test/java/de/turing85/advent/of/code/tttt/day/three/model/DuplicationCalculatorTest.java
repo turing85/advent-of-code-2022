@@ -4,47 +4,41 @@ import static com.google.common.truth.Truth.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 import de.turing85.advent.of.code.tttt.day.three.supplier.RucksacksSupplier;
+import de.turing85.advent.of.code.tttt.day.three.supplier.impl.FromFileRucksackSupplier;
 import java.io.IOException;
 import java.net.URI;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 @DisplayName("DuplicationCalculator tests")
 public abstract class DuplicationCalculatorTest {
 
-  public static final Path ILLEGAL_INPUT_THREE_PATH =
+  private static final Path ILLEGAL_INPUT_THREE_PATH =
       Path.of("src/test/resources/illegalInputThree.txt");
-  public static final URI ILLEGAL_INPUT_THREE_URI = ILLEGAL_INPUT_THREE_PATH.toUri();
-  protected static String ILLEGAL_INPUT_THREE;
+  private static final URI ILLEGAL_INPUT_THREE_URI = ILLEGAL_INPUT_THREE_PATH.toUri();
 
-  public static final Path COMMON_INPUT_PATH = Path.of("src/test/resources/commonInput.txt");
-  public static final URI COMMON_INPUT_URI = COMMON_INPUT_PATH.toUri();
-  public static String COMMON_INPUT;
-  public static final int COMMON_INPUT_DUPLICATION = 157;
+  private static final URI COMMON_INPUT_URI = Path.of("src/test/resources/commonInput.txt").toUri();
+  private static final int COMMON_INPUT_DUPLICATION = 157;
 
-  public static final Path PERSONAL_INPUT_PATH = Path.of("src/test/resources/personalInput.txt");
-  protected static final URI PERSONAL_INPUT_URI = PERSONAL_INPUT_PATH.toUri();
-  protected static String PERSONAL_INPUT;
-  public static final int PERSONAL_INPUT_DUPLICATION = 7727;
+  protected static final URI PERSONAL_INPUT_URI =
+      Path.of("src/test/resources/personalInput.txt").toUri();
+  private static final int PERSONAL_INPUT_DUPLICATION = 7727;
 
-  public static final DuplicationCalculator UNDER_TEST = DuplicationCalculator.instance();
+  private static final DuplicationCalculator UNDER_TEST = DuplicationCalculator.instance();
 
-  @BeforeAll
-  public static void calculatorSetup() throws IOException {
-    ILLEGAL_INPUT_THREE = Files.readString(ILLEGAL_INPUT_THREE_PATH);
-    COMMON_INPUT = Files.readString(COMMON_INPUT_PATH);
-    PERSONAL_INPUT = Files.readString(PERSONAL_INPUT_PATH);
+  protected RucksacksSupplier rucksacksSupplierForIllegalInputThree() throws IOException {
+    return new FromFileRucksackSupplier(ILLEGAL_INPUT_THREE_URI);
   }
 
-  protected abstract RucksacksSupplier rucksacksSupplierForIllegalInputThree() throws Exception;
+  protected RucksacksSupplier rucksacksSupplierForCommonInput() throws IOException {
+    return new FromFileRucksackSupplier(COMMON_INPUT_URI);
+  }
 
-  protected abstract RucksacksSupplier rucksacksSupplierForCommonInput() throws Exception;
-
-  protected abstract RucksacksSupplier rucksacksSupplierForPersonalInput() throws Exception;
+  protected RucksacksSupplier rucksacksSupplierForPersonalInput() throws IOException {
+    return new FromFileRucksackSupplier(PERSONAL_INPUT_URI);
+  }
 
   @Test
   @DisplayName("throws exception on more than one duplicate")

@@ -40,6 +40,6 @@ class FromFileGameSelectionsSupplierTest extends GameSelectionsSupplierTest {
 
   @Override
   protected int personalInputResult() {
-    return 10398;
+    return 10_398;
   }
 }

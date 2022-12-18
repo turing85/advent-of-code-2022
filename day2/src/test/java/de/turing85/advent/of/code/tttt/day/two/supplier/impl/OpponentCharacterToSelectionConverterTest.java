@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 
 @DisplayName("OpponentCharacterToSelectionConverter tests")
 class OpponentCharacterToSelectionConverterTest {
-
   public static final OpponentCharacterToSelectionConverter UNDER_TEST =
       OpponentCharacterToSelectionConverter.instance();
 

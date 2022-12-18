@@ -7,6 +7,7 @@ import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Collection;
+import lombok.experimental.Delegate;
 
 /**
  * Reads a {@link String}-representation of {@link GameSelection}s from the file represented by an
@@ -20,6 +21,7 @@ import java.util.Collection;
  * the game ({@code 'X'} = lose, {@code 'Y'} = draw, {@code 'Z'} = win).
  */
 public class FromFileGameSelectionsSupplier extends GameSelectionsSupplier {
+  @Delegate
   private FromStringGameSelectionsSupplier fromStringGameSelectionsSupplier;
 
   /**
@@ -39,10 +41,5 @@ public class FromFileGameSelectionsSupplier extends GameSelectionsSupplier {
   @Override
   protected void initializeFromString(String gameSelectionsAsString) {
     fromStringGameSelectionsSupplier = new FromStringGameSelectionsSupplier(gameSelectionsAsString);
-  }
-
-  @Override
-  public Collection<GameSelection> gameSelections() {
-    return fromStringGameSelectionsSupplier.gameSelections();
   }
 }

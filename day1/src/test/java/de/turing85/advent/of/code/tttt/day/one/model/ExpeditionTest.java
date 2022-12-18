@@ -11,8 +11,8 @@ import org.junit.jupiter.api.Test;
 @DisplayName("Backpack tests")
 class ExpeditionTest {
 
-  public static final Random RANDOM = new Random();
-  public static final Supplier<List<Integer>> RANDOM_VALUE_SUPPLIER =
+  private static final Random RANDOM = new Random();
+  private static final Supplier<List<Integer>> RANDOM_VALUE_SUPPLIER =
       () -> RANDOM.ints(10, 0, Integer.MAX_VALUE).boxed().toList();
 
   @Test

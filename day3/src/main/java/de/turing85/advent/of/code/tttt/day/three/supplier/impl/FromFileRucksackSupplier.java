@@ -6,14 +6,15 @@ import java.io.IOException;
 import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.List;
+import lombok.experimental.Delegate;
 
 /**
  * Reads a {@link String}-representation of {@link Rucksack}s from a file, represented as
- * {@link URI} and constructs the corresponding {@link java.util.Collection} of {@link Rucksack}s
+ * {@link URI}, and constructs the corresponding {@link java.util.Collection} of {@link Rucksack}s
  * from it.
  */
 public class FromFileRucksackSupplier implements RucksacksSupplier {
+  @Delegate
   private final FromStringRucksackSupplier fromStringRucksackSupplier;
 
   /**
@@ -28,10 +29,5 @@ public class FromFileRucksackSupplier implements RucksacksSupplier {
   public FromFileRucksackSupplier(URI inputFile) throws IOException {
     this.fromStringRucksackSupplier =
         new FromStringRucksackSupplier(Files.readString(Path.of(inputFile)));
-  }
-
-  @Override
-  public List<Rucksack> rucksacks() {
-    return fromStringRucksackSupplier.rucksacks();
   }
 }

@@ -18,7 +18,7 @@ public class FromStringRucksackSupplier implements RucksacksSupplier {
    * * Reads a {@link String}-representation of {@link Rucksack}s and constructs the corresponding *
    * {@link java.util.Collection} of {@link Rucksack}s from it.
    *
-   * @param rucksacksAsString the {@link String}-representation fo {@link Rucksack}s
+   * @param rucksacksAsString the {@link String}-representation of {@link Rucksack}s
    */
   public FromStringRucksackSupplier(String rucksacksAsString) {
     rucksacks = Arrays.stream(rucksacksAsString.split(System.lineSeparator())).map(String::chars)
