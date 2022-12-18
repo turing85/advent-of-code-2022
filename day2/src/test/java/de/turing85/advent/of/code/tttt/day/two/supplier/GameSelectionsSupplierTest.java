@@ -10,6 +10,7 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("GameSelectionsSupplier tests")
 public abstract class GameSelectionsSupplierTest extends GameScorerTest {
 
   @Test

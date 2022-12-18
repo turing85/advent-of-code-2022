@@ -13,7 +13,7 @@
     <packaging>pom</packaging>
 
     <artifactId>advent-of-code-2022--jacoco-aggregation</artifactId>
-    <name>advent-of-code-2022- :: jacoco-aggregation</name>
+    <name>advent-of-code-2022 :: jacoco-aggregation</name>
     <description>Module to aggregate all JaCoCo-reports into a global report.</description>
 
     <build>
@@ -47,6 +47,11 @@
         <dependency>
             <groupId>de.turing85</groupId>
             <artifactId>advent-of-code-2022-day2</artifactId>
+            <version>999-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>de.turing85</groupId>
+            <artifactId>advent-of-code-2022-day3</artifactId>
             <version>999-SNAPSHOT</version>
         </dependency>
     </dependencies>

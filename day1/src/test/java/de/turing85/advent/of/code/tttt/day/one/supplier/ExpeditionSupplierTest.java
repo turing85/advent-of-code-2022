@@ -12,6 +12,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("ExpeditionSupplier tests")
 public abstract class ExpeditionSupplierTest {
   public static final Path ILLEGAL_INPUT_PATH = Path.of("src/test/resources/illegalInput.txt");
   public static final URI ILLEGAL_INPUT_URI = ILLEGAL_INPUT_PATH.toUri();

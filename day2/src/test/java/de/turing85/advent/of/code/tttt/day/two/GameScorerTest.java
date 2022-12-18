@@ -11,6 +11,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("GameScorer tests")
 public abstract class GameScorerTest {
   public static final Path ILLEGAL_INPUT_PATH = Path.of("src/test/resources/illegalInput.txt");
   public static final URI ILLEGAL_INPUT_URI = ILLEGAL_INPUT_PATH.toUri();
