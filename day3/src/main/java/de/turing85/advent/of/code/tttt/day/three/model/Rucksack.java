@@ -24,7 +24,7 @@ public class Rucksack {
    * {@code [1, 52]}. The first half of the list is packed into the first compartment; the second
    * half of the list is packed into the second compartment.
    *
-   * @param itemPriorities the items, represented by their priority, in this back pack.
+   * @param itemPriorities the items, represented by their priority, in this backpack.
    */
   public Rucksack(List<Integer> itemPriorities) {
     int halfSize = verifyInput(itemPriorities).size() / 2;
