@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
  *
  * <p>
  * Each compartment holds the same number of items. Each item is identified by an {@code int}-value
- * - its prority - in the closed interval {@code [1, 52]}.
+ * - its priority - in the closed interval {@code [1, 52]}.
  */
 public class Rucksack {
   private final Set<Integer> firstCompartment;

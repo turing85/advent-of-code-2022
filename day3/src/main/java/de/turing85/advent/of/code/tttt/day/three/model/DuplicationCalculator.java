@@ -30,7 +30,7 @@ public class DuplicationCalculator {
   }
 
   /**
-   * Calculates the duplication faoctor.
+   * Calculates the duplication factor.
    *
    * @param rucksacks the {@link Rucksack}s to analyze.
    *
