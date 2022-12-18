@@ -13,7 +13,6 @@
     <artifactId>advent-of-code-2022-implementation-parent</artifactId>
     <name>advent-of-code-2022 :: implementation parent</name>
     <description>Parent-module for all modules providing implementations.</description>
-
     <packaging>pom</packaging>
 
     <build>
