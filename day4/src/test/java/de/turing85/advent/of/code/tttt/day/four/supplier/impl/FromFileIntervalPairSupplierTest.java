@@ -1,0 +1,32 @@
+package de.turing85.advent.of.code.tttt.day.four.supplier.impl;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.net.URI;
+import java.nio.file.Path;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+@DisplayName("FromFileIntervalPairSupplier tests")
+class FromFileIntervalPairSupplierTest {
+  @Test
+  @DisplayName("show throw if upper bound of interval is smaller than lower bound")
+  void shouldThrowIfUpperBoundIsSmallerThanLowerBound() {
+    // GIVEN
+    URI inputFileUri = Path.of("src/test/resources/illegalInputOne.txt").toUri();
+
+    // WHEN & THEN
+    assertThrows(IllegalArgumentException.class,
+        () -> new FromFileIntervalPairSupplier(inputFileUri));
+  }
+
+  @Test
+  @DisplayName("show throw if format of file is wrong")
+  void shouldThrowIfFormatOfFileIsWrong() {
+    // GIVEN
+    URI inputFileUri = Path.of("src/test/resources/illegalInputTwo.txt").toUri();
+
+    // WHEN & THEN
+    assertThrows(IllegalStateException.class, () -> new FromFileIntervalPairSupplier(inputFileUri));
+  }
+}

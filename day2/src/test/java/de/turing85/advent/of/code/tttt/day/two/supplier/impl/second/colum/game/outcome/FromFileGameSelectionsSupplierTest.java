@@ -12,8 +12,8 @@ import org.junit.jupiter.api.DisplayName;
 class FromFileGameSelectionsSupplierTest extends GameSelectionsSupplierTest {
 
   @Override
-  protected GameSelectionsSupplier gameSelectionsSupplierForIllegalInput() throws IOException {
-    return new FromFileGameSelectionsSupplier(ILLEGAL_INPUT_URI);
+  protected void gameSelectionsSupplierForIllegalInput() throws IOException {
+    new FromFileGameSelectionsSupplier(ILLEGAL_INPUT_URI);
   }
 
   @Override

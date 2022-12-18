@@ -18,8 +18,7 @@ public abstract class GameScorerTest {
   protected static final URI PERSONAL_INPUT_URI =
       Path.of("src/test/resources/personalInput.txt").toUri();
 
-  protected abstract GameSelectionsSupplier gameSelectionsSupplierForIllegalInput()
-      throws Exception;
+  protected abstract void gameSelectionsSupplierForIllegalInput() throws Exception;
 
   protected abstract GameSelectionsSupplier gameSelectionsSupplierForCommonInput() throws Exception;
 

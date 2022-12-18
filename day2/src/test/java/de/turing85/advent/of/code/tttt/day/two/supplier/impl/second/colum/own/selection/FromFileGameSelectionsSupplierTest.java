@@ -12,8 +12,8 @@ import org.junit.jupiter.api.DisplayName;
 class FromFileGameSelectionsSupplierTest extends GameSelectionsSupplierTest {
 
   @Override
-  protected GameSelectionsSupplier gameSelectionsSupplierForIllegalInput() throws Exception {
-    return new FromFileGameSelectionsSupplier(GameScorerTest.ILLEGAL_INPUT_URI);
+  protected void gameSelectionsSupplierForIllegalInput() throws Exception {
+    new FromFileGameSelectionsSupplier(GameScorerTest.ILLEGAL_INPUT_URI);
   }
 
   @Override

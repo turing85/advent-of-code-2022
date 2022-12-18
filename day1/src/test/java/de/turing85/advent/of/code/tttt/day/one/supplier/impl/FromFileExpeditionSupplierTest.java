@@ -21,10 +21,6 @@ class FromFileExpeditionSupplierTest {
   protected static final URI PERSONAL_INPUT_URI =
       Path.of("src/test/resources/personalInput.txt").toUri();
 
-  private ExpeditionSupplier expeditionSupplierForIllegalInput() throws IOException {
-    return new FromFileExpeditionSupplier(ILLEGAL_INPUT_URI);
-  }
-
   private ExpeditionSupplier expeditionSupplierForCommonInput() throws IOException {
     return new FromFileExpeditionSupplier(COMMON_INPUT_URI);
   }
@@ -40,7 +36,7 @@ class FromFileExpeditionSupplierTest {
 
     // WHEN & THEN
     Assertions.assertThrows(IllegalArgumentException.class,
-        this::expeditionSupplierForIllegalInput);
+        () -> new FromFileExpeditionSupplier(ILLEGAL_INPUT_URI));
   }
 
   @Nested
