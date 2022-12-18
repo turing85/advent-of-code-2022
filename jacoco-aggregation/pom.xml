@@ -12,7 +12,7 @@
 
     <packaging>pom</packaging>
 
-    <artifactId>advent-of-code-2022--jacoco-aggregation</artifactId>
+    <artifactId>advent-of-code-2022-jacoco-aggregation</artifactId>
     <name>advent-of-code-2022 :: jacoco-aggregation</name>
     <description>Module to aggregate all JaCoCo-reports into a global report.</description>
 
