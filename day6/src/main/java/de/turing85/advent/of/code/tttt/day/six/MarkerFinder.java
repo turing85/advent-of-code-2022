@@ -47,7 +47,7 @@ public class MarkerFinder {
   }
 
   /**
-   * Given a data stream (as {@link String}), findes the earliest start-of-message marker
+   * Given a data stream (as {@link String}), finds the earliest start-of-message marker
    *
    * @param dataStream the data stream, as {@link String}
    *

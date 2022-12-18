@@ -31,7 +31,7 @@ class DirectoryTest {
 
     @Test
     @DisplayName("Constructor creates empty directory with parent")
-    void constructorCreatesEmptyDirectorywithParent() {
+    void constructorCreatesEmptyDirectoryWithParent() {
       // GIVEN
       Directory expectedParent = new Directory();
       String expectedName = "expectedName";
@@ -47,7 +47,7 @@ class DirectoryTest {
     }
 
     @Test
-    @DisplayName("Constructs expected dorectory")
+    @DisplayName("Constructs expected directory")
     void constructsExpectedDirectory() {
       // GIVEN
       Directory expectedParent = new Directory();

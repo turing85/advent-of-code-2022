@@ -72,7 +72,7 @@ public final class Directory {
    * Add file in {@code this} directory.
    *
    * @param name name of the new file
-   * @param size size of the noew file
+   * @param size size of the new file
    * @return {@code this}. for method chaining
    */
   public Directory addFile(String name, int size) {

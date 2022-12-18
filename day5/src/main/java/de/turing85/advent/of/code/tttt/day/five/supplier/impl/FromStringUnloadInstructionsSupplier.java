@@ -25,11 +25,11 @@ public class FromStringUnloadInstructionsSupplier implements UnloadInstructionsS
   public FromStringUnloadInstructionsSupplier(String inputAsString) {
     unloadInstructions = new ArrayList<>();
     for (String inputLine : inputAsString.split(System.lineSeparator())) {
-      extractInstuctionFromLine(inputLine).ifPresent(unloadInstructions::add);
+      extractInstructionFromLine(inputLine).ifPresent(unloadInstructions::add);
     }
   }
 
-  private Optional<UnloadInstruction> extractInstuctionFromLine(String inputLine) {
+  private Optional<UnloadInstruction> extractInstructionFromLine(String inputLine) {
     Matcher matcher = UNLOAD_INSTRUCTION_EXTRACTOR.matcher(inputLine);
     if (matcher.matches()) {
       int times = Integer.parseInt(matcher.group("times"));
