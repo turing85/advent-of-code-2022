@@ -21,6 +21,7 @@
         <module>day7</module>
         <module>day8</module>
         <module>day9</module>
+        <module>day10</module>
         <module>implementation-parent</module>
         <module>jacoco-aggregation</module>
     </modules>
