@@ -118,8 +118,10 @@ public final class Directory {
     if (predicate.test(this)) {
       filtered.add(this);
     }
-    filtered.addAll(directories().stream().map(dir -> dir.filter(predicate))
-        .flatMap(Collection::stream).collect(Collectors.toSet()));
+    filtered.addAll(directories().stream()
+        .map(dir -> dir.filter(predicate))
+        .flatMap(Collection::stream)
+        .collect(Collectors.toSet()));
     return filtered;
   }
 
