@@ -11,9 +11,9 @@ class PointTest {
   @ParameterizedTest(name = "move {0} works correctly")
   @DisplayName("move works correctly")
   @CsvSource({"UP,0,1", "DOWN,0,-1", "RIGHT,1,0", "LEFT,-1,0"})
-  void moveWorksCorrectly(Direction direction, int expectedX, int expectecY) {
+  void moveWorksCorrectly(Direction direction, int expectedX, int expectedY) {
     // GIVEN
-    Point expected = new Point(expectedX, expectecY);
+    Point expected = new Point(expectedX, expectedY);
 
     // WHEN
     Point actual = new Point().move(direction);
