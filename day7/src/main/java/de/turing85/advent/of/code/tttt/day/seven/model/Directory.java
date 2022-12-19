@@ -8,6 +8,7 @@ import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
@@ -114,15 +115,10 @@ public final class Directory {
    * @return all directories (downward from here) that fulfill the predicate.
    */
   public Set<Directory> filter(Predicate<Directory> predicate) {
-    Set<Directory> filtered = new HashSet<>();
-    if (predicate.test(this)) {
-      filtered.add(this);
-    }
-    filtered.addAll(directories().stream()
-        .map(dir -> dir.filter(predicate))
-        .flatMap(Collection::stream)
-        .collect(Collectors.toSet()));
-    return filtered;
+    return Stream
+        .concat(Stream.of(this).filter(predicate), directories().stream()
+            .map(directory -> directory.filter(predicate)).flatMap(Collection::stream))
+        .collect(Collectors.toSet());
   }
 
   /**
