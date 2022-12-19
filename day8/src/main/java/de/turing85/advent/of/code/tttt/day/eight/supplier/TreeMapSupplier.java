@@ -6,6 +6,7 @@ import java.util.function.Supplier;
  * A supplier, supplying a tree map as {@code int[][]}.
  */
 public interface TreeMapSupplier extends Supplier<int[][]> {
+  @Override
   default int[][] get() {
     return treeMap();
   }

@@ -7,7 +7,7 @@ import java.nio.file.Path;
 import lombok.experimental.Delegate;
 
 /**
- * Reads a {@link String}-representation a tree map from a file, represented by a {@link Path}.
+ * Reads a {@link String}-representation of a tree map from a file, represented by a {@link Path}.
  */
 public class FromFileTreeMapSupplier implements TreeMapSupplier {
   @Delegate
@@ -16,7 +16,7 @@ public class FromFileTreeMapSupplier implements TreeMapSupplier {
   /**
    * Reads a {@link String}-representation of a tree map form a file, represented by a {@link Path}.
    *
-   * @param inputFile the file holding the {@link String}-representation of commands and responses
+   * @param inputFile the file holding the {@link String}-representation a tree map
    *
    * @throws IOException if some I/O exception occurs when the file is read.
    */
