@@ -17,7 +17,7 @@ public class FromStringCommandsAndResponsesSupplier implements CommandsAndRespon
   /**
    * Reads a {@link String}-representation of commands and responses.
    *
-   * @param inputAsString the {@link String}-representation commands and responses
+   * @param inputAsString the {@link String}-representation of commands and responses
    */
   public FromStringCommandsAndResponsesSupplier(String inputAsString) {
     commandsAndResponses = new ArrayList<>();

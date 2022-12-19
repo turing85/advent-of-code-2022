@@ -15,10 +15,11 @@ public class FromFileCommandsAndResponsesSupplier implements CommandsAndResponse
   private final FromStringCommandsAndResponsesSupplier fromStringCommandsAndResponsesSupplier;
 
   /**
-   * Reads a {@link String}-representation of commands and responses form a file, represented by a
+   * Reads a {@link String}-representation of commands and responses from a file, represented by a
    * {@link Path}.
    *
    * @param inputFile the file holding the {@link String}-representation of commands and responses
+   *
    * @throws IOException if some I/O exception occurs when the file is read.
    */
   public FromFileCommandsAndResponsesSupplier(Path inputFile) throws IOException {
