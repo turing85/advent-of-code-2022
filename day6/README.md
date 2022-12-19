@@ -1,6 +1,6 @@
 [Source][day6Source]
 
-### — Day 6: Tuning Trouble —
+### --- Day 6: Tuning Trouble ---
 
 The preparations are finally complete; you and the Elves leave camp on foot and begin to make your way toward the star fruit grove.
 
