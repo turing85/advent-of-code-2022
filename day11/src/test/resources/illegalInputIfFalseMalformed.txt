@@ -1,0 +1,6 @@
+Monkey 0:
+  Starting items: 85, 79, 63, 72
+  Operation: new = old * 17
+  Test: divisible by 2
+    If true: throw to monkey 2
+    If false: throw to monkey ouch
