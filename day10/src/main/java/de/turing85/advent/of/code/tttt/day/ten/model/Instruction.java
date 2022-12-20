@@ -12,6 +12,7 @@ public enum Instruction {
    * ADD_X instruction adds some value (parameter) to register X.
    */
   ADD_X(2, Register::addToX),
+
   /**
    * NO_OP instruction
    */
