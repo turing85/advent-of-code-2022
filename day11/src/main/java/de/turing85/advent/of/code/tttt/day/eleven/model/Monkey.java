@@ -63,13 +63,17 @@ public class Monkey {
       ++itemsInspected;
       long item = items.pollFirst();
       long newItem = (stressModifier.applyAsLong(operation.applyAsLong(item))) % itemModulo;
-      if ((newItem % testDivider) == 0) {
-        throwToIfPositiveTest.catchItem(newItem);
-      } else {
-        throwToIfNegativeTest.catchItem(newItem);
-      }
+      throwItem(newItem);
     }
     return itemsInspected;
+  }
+
+  private void throwItem(long newItem) {
+    if ((newItem % testDivider) == 0) {
+      throwToIfPositiveTest.catchItem(newItem);
+    } else {
+      throwToIfNegativeTest.catchItem(newItem);
+    }
   }
 
   private void catchItem(long item) {

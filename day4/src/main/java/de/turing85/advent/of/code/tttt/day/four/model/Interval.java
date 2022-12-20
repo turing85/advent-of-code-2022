@@ -32,7 +32,7 @@ public record Interval(int lower, int upper) {
    * @return {@code true}, if and only if
    *     {@code this.lower() <= that.lower() && that.upper() <= this.upper()}.
    */
-  public boolean fullyContainer(Interval that) {
+  public boolean fullyContains(Interval that) {
     return this.lower() <= that.lower && that.upper() <= this.upper();
   }
 
@@ -63,7 +63,7 @@ public record Interval(int lower, int upper) {
    * @return {@code true} if and only of {@code lhs.fullyContains(rhs) || rhs.fullyContains(lhs)}
    */
   public static boolean oneContainsTheOther(Interval lhs, Interval rhs) {
-    return lhs.fullyContainer(rhs) || rhs.fullyContainer(lhs);
+    return lhs.fullyContains(rhs) || rhs.fullyContains(lhs);
   }
 
   /**
