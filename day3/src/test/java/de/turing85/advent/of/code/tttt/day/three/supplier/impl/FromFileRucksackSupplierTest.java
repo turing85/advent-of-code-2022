@@ -14,7 +14,7 @@ class FromFileRucksackSupplierTest {
   @Test
   @DisplayName("throws exception on odd input length")
   void throwsOnOddInputLength() {
-    // GIVEN: defaults
+    // GIVEN
 
     // WHEN & THEN
     assertThrows(IllegalArgumentException.class,
@@ -24,7 +24,7 @@ class FromFileRucksackSupplierTest {
   @Test
   @DisplayName("throws exception on odd input length")
   void throwsOnIllegalCharacters() {
-    // GIVEN: defaults
+    // GIVEN
 
     // WHEN & THEN
     assertThrows(IllegalArgumentException.class,

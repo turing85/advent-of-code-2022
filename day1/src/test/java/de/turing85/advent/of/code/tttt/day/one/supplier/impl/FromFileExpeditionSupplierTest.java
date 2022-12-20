@@ -27,7 +27,7 @@ class FromFileExpeditionSupplierTest {
   @Test
   @DisplayName("throws exception on invalid input")
   void throwsOnNegativeBackpackValue() {
-    // GIVEN: defaults
+    // GIVEN
 
     // WHEN & THEN
     Assertions.assertThrows(IllegalArgumentException.class,
@@ -42,7 +42,7 @@ class FromFileExpeditionSupplierTest {
 
     @Test
     void testOnCommonInput() throws Exception {
-      // GIVEN: defaults
+      // GIVEN
 
       // WHEN
       Expedition expedition = expeditionSupplierForCommonInput().get();
@@ -54,7 +54,7 @@ class FromFileExpeditionSupplierTest {
 
     @Test
     void testOnPersonalInput() throws Exception {
-      // GIVEN: defaults
+      // GIVEN
 
       // WHEN
       Expedition expedition = expeditionSupplierForPersonalInput().get();
@@ -73,7 +73,7 @@ class FromFileExpeditionSupplierTest {
 
     @Test
     void testOnCommonInput() throws Exception {
-      // GIVEN: defaults
+      // GIVEN
 
       // WHEN
       Expedition expedition = expeditionSupplierForCommonInput().get();
@@ -85,7 +85,7 @@ class FromFileExpeditionSupplierTest {
 
     @Test
     void testOnPersonalInput() throws Exception {
-      // GIVEN: defaults
+      // GIVEN
 
       // WHEN
       Expedition expedition = expeditionSupplierForPersonalInput().get();

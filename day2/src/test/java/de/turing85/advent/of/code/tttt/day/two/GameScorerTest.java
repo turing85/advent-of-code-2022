@@ -27,7 +27,7 @@ public abstract class GameScorerTest {
   @Test
   @DisplayName("correct score on common input")
   void commonInput() throws Exception {
-    // GIVEN: defaults
+    // GIVEN
 
     // WHEN
     int actual = GameScorer.instance().score(gameSelectionsSupplierForCommonInput().get());
@@ -39,7 +39,7 @@ public abstract class GameScorerTest {
   @Test
   @DisplayName("correct score on personal input")
   void personalInput() throws Exception {
-    // GIVEN: defaults
+    // GIVEN
 
     // WHEN
     int actual = GameScorer.instance().score(gameSelectionsSupplierForPersonalInput().get());

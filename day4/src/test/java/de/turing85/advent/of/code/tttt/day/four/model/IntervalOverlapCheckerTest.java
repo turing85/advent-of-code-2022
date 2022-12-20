@@ -17,7 +17,7 @@ class IntervalOverlapCheckerTest {
   @Test
   @DisplayName("correct overlap on common input")
   void correctOnCommonInput() throws Exception {
-    // GIVEN: defaults
+    // GIVEN
 
     // WHEN
     int actual =
@@ -30,7 +30,7 @@ class IntervalOverlapCheckerTest {
   @Test
   @DisplayName("correct overlap on personal input")
   void correctOnPersonalInput() throws Exception {
-    // GIVEN: defaults
+    // GIVEN
 
     // WHEN
     int actual =

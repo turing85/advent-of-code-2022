@@ -15,7 +15,7 @@ class OpponentCharacterToSelectionConverterTest {
   @Test
   @DisplayName("Converts 'A' to Rock (\uD83E\uDEA8)")
   void aToRock() {
-    // GIVEN: nothing
+    // GIVEN
 
     // WHEN
     Selection actual = UNDER_TEST.apply('A');
@@ -27,7 +27,7 @@ class OpponentCharacterToSelectionConverterTest {
   @Test
   @DisplayName("Converts 'B' to Paper (\uD83E\uDEA8)")
   void bToPaper() {
-    // GIVEN: nothing
+    // GIVEN
 
     // WHEN
     Selection actual = UNDER_TEST.apply('B');
@@ -39,7 +39,7 @@ class OpponentCharacterToSelectionConverterTest {
   @Test
   @DisplayName("Converts 'C' to Scissors (✂️)")
   void cToScissors() {
-    // GIVEN: nothing
+    // GIVEN
 
     // WHEN
     Selection actual = UNDER_TEST.apply('C');
@@ -51,7 +51,7 @@ class OpponentCharacterToSelectionConverterTest {
   @Test
   @DisplayName("Illegal input throws exception")
   void illegalInputThrows() {
-    // GIVEN: nothing
+    // GIVEN
 
     // WHEN & THEN
     assertThrows(IllegalStateException.class, () -> UNDER_TEST.apply('N'));

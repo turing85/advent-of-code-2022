@@ -16,7 +16,7 @@ class FileTest {
     @Test
     @DisplayName("negative file size leads to IllegalArgumentException")
     void illegalFileSize() {
-      // GIVEN: nothing
+      // GIVEN
 
       // WHEN & THEN
       assertThrows(IllegalArgumentException.class, () -> new File(null, -1));

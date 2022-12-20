@@ -14,7 +14,7 @@ class UnloadInstructionTest {
   @Test
   @DisplayName("throws on times smaller 1")
   void throwsOnTimesSmallerOne() {
-    // GIVEN: nothing
+    // GIVEN
 
     // WHEN & THEN
     assertThrows(IllegalArgumentException.class, () -> new UnloadInstruction(0, 2, 3));
@@ -23,7 +23,7 @@ class UnloadInstructionTest {
   @Test
   @DisplayName("throws on from smaller 1")
   void throwsOnFromSmallerOne() {
-    // GIVEN: nothing
+    // GIVEN
 
     // WHEN & THEN
     assertThrows(IllegalArgumentException.class, () -> new UnloadInstruction(1, 0, 3));
@@ -32,7 +32,7 @@ class UnloadInstructionTest {
   @Test
   @DisplayName("throws on from larger 9")
   void throwsOnFromLargerNine() {
-    // GIVEN: nothing
+    // GIVEN
 
     // WHEN & THEN
     assertThrows(IllegalArgumentException.class, () -> new UnloadInstruction(1, 10, 3));
@@ -41,7 +41,7 @@ class UnloadInstructionTest {
   @Test
   @DisplayName("throws on to smaller 1")
   void throwsOnToSmallerOne() {
-    // GIVEN: nothing
+    // GIVEN
 
     // WHEN & THEN
     assertThrows(IllegalArgumentException.class, () -> new UnloadInstruction(1, 2, 0));
@@ -50,7 +50,7 @@ class UnloadInstructionTest {
   @Test
   @DisplayName("throws on to larger 9")
   void throwsOnToLargerNine() {
-    // GIVEN: nothing
+    // GIVEN
 
     // WHEN & THEN
     assertThrows(IllegalArgumentException.class, () -> new UnloadInstruction(1, 2, 10));

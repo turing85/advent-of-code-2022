@@ -21,7 +21,7 @@ class FromFileNumberedStackSupplierTest {
   @Test
   @DisplayName("throws on floating box")
   void throwsOnFloatingBox() {
-    // GIVEN: defaults
+    // GIVEN
 
     // WHEN & THEN
     assertThrows(IllegalStateException.class,
@@ -31,7 +31,7 @@ class FromFileNumberedStackSupplierTest {
   @Test
   @DisplayName("correct cargo on simple input")
   void correctCargoOnSimpleInput() throws IOException {
-    // GIVEN:
+    // GIVEN
     final Map<Integer, Deque<Character>> expected =
         Map.of(1, new LinkedList<>(List.of('C', 'B', 'A')));
 
@@ -46,7 +46,7 @@ class FromFileNumberedStackSupplierTest {
   @Test
   @DisplayName("correct cargo on common input")
   void correctCargoOnCommonInput() throws IOException {
-    // GIVEN:
+    // GIVEN
     final Map<Integer, Deque<Character>> expected = Map.of(1, new LinkedList<>(List.of('Z', 'N')),
         2, new LinkedList<>(List.of('M', 'C', 'D')), 3, new LinkedList<>(List.of('P')));
 

@@ -48,7 +48,7 @@ public abstract class DuplicationCalculatorTest {
   @Test
   @DisplayName("correct duplication on common input")
   void correctOnCommonInput() throws Exception {
-    // GIVEN: defaults
+    // GIVEN
 
     // WHEN
     int actual = UNDER_TEST.calculateDuplication(rucksacksSupplierForCommonInput().get());
@@ -60,7 +60,7 @@ public abstract class DuplicationCalculatorTest {
   @Test
   @DisplayName("correct duplication on personal input")
   void correctOnPersonalInput() throws Exception {
-    // GIVEN: defaults
+    // GIVEN
 
     // WHEN
     int actual = UNDER_TEST.calculateDuplication(rucksacksSupplierForPersonalInput().get());

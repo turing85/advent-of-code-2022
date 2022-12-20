@@ -23,7 +23,7 @@ class MarkerFinderTest {
         "bvwbjplbgvbhsrlpgdmjqwftvncz,5", "nppdvjthqldpwncqszvftbrmjlhg,6",
         "nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg,10", "zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw,11"})
     void test(String input, int expected) {
-      // GIVEN: nothing
+      // GIVEN
 
       // WHEN
       int actual = MarkerFinder.findStartOfPacket(input);
@@ -36,7 +36,7 @@ class MarkerFinderTest {
     @Test
     @DisplayName("correct result on personal input")
     void commonInput() throws IOException {
-      // GIVEN: nothing
+      // GIVEN
 
       // WHEN
       int actual = MarkerFinder.findStartOfPacket(PERSONAL_INPUT);
@@ -55,7 +55,7 @@ class MarkerFinderTest {
         "bvwbjplbgvbhsrlpgdmjqwftvncz,23", "nppdvjthqldpwncqszvftbrmjlhg,23",
         "nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg,29", "zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw,26"})
     void test(String input, int expected) {
-      // GIVEN: nothing
+      // GIVEN
 
       // WHEN
       int actual = MarkerFinder.findStartOfMessage(input);
@@ -68,7 +68,7 @@ class MarkerFinderTest {
     @Test
     @DisplayName("correct result on personal input")
     void commonInput() throws IOException {
-      // GIVEN: nothing
+      // GIVEN
 
       // WHEN
       int actual = MarkerFinder.findStartOfMessage(PERSONAL_INPUT);

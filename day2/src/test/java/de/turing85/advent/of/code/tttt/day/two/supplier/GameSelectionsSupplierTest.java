@@ -16,7 +16,7 @@ public abstract class GameSelectionsSupplierTest extends GameScorerTest {
   @Test
   @DisplayName("throws on illegal input")
   void throwsOnIllegalInput() {
-    // GIVEN: defaults
+    // GIVEN
 
     // WHEN & THEN
     assertThrows(IllegalArgumentException.class, this::gameSelectionsSupplierForIllegalInput);
@@ -25,7 +25,7 @@ public abstract class GameSelectionsSupplierTest extends GameScorerTest {
   @Test
   @DisplayName("creates expected result on common input")
   void validateCommonInput() throws Exception {
-    // GIVEN: defaults
+    // GIVEN
 
     // WHEN
     Collection<GameSelection> actual = gameSelectionsSupplierForCommonInput().get();

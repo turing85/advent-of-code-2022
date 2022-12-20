@@ -18,7 +18,7 @@ class DirectoryTest {
     @Test
     @DisplayName("NoArgsConstructor creates root directory")
     void noArgsConstructorCreatesRootDirectory() {
-      // GIVEN: nothing
+      // GIVEN
 
       // WHEN
       Directory actual = new Directory();

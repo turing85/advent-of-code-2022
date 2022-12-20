@@ -19,7 +19,7 @@ class IntervalContainCheckerTest {
   @Test
   @DisplayName("correct contain on common input")
   void correctOnCommonInput() throws Exception {
-    // GIVEN: defaults
+    // GIVEN
 
     // WHEN
     int actual =
@@ -32,7 +32,7 @@ class IntervalContainCheckerTest {
   @Test
   @DisplayName("correct contain on personal input")
   void correctOnPersonalInput() throws Exception {
-    // GIVEN: defaults
+    // GIVEN
 
     // WHEN
     int actual =

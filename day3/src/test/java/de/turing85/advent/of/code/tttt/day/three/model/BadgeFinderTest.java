@@ -36,7 +36,7 @@ class BadgeFinderTest extends DuplicationCalculatorTest {
   @Test
   @DisplayName("correct badge on common input")
   void correctBadgeOnCommonInput() throws Exception {
-    // GIVEN: defaults
+    // GIVEN
 
     // WHEN
     int actual = UNDER_TEST.findBade(rucksacksSupplierForCommonInput().get(), 3);
@@ -48,7 +48,7 @@ class BadgeFinderTest extends DuplicationCalculatorTest {
   @Test
   @DisplayName("correct badge on personal input")
   void correctBadgeOnPersonalInput() throws Exception {
-    // GIVEN: defaults
+    // GIVEN
 
     // WHEN
     int actual = UNDER_TEST.findBade(rucksacksSupplierForPersonalInput().get(), 3);

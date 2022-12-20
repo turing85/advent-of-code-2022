@@ -55,7 +55,7 @@ class SecondColumGameOutcomeConverterTest {
   @Test
   @DisplayName("Illegal input throws exception")
   void illegalInputThrows() {
-    // GIVEN: nothing
+    // GIVEN
 
     // WHEN & THEN
     assertThrows(IllegalStateException.class, () -> UNDER_TEST.apply(null, 'N'));

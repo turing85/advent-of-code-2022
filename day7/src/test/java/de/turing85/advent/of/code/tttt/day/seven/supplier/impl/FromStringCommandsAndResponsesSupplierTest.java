@@ -11,7 +11,7 @@ class FromStringCommandsAndResponsesSupplierTest {
   @Test
   @DisplayName("throws illegal state when commands do not start with a command")
   void throwsWhenFirstCommandIsNoCommand() {
-    // GIVEN: nothing
+    // GIVEN
     Path input = Path.of("src/test/resources/illegalInput.txt");
 
     // WHEN & THEN

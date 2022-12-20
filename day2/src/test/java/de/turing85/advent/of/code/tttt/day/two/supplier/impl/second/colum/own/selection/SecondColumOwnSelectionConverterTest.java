@@ -16,7 +16,7 @@ class SecondColumOwnSelectionConverterTest {
   @Test
   @DisplayName("Converts 'X' to Rock (\uD83E\uDEA8)")
   void xToRock() {
-    // GIVEN: nothing
+    // GIVEN
 
     // WHEN
     Selection actual = UNDER_TEST.apply(null, 'X');
@@ -28,7 +28,7 @@ class SecondColumOwnSelectionConverterTest {
   @Test
   @DisplayName("Converts 'Y' to Paper (\uD83E\uDEA8)")
   void yToPaper() {
-    // GIVEN: nothing
+    // GIVEN
 
     // WHEN
     Selection actual = UNDER_TEST.apply(null, 'Y');
@@ -40,7 +40,7 @@ class SecondColumOwnSelectionConverterTest {
   @Test
   @DisplayName("Converts 'Z' to Scissors (✂️)")
   void zToScissors() {
-    // GIVEN: nothing
+    // GIVEN
 
     // WHEN
     Selection actual = UNDER_TEST.apply(null, 'Z');
@@ -52,7 +52,7 @@ class SecondColumOwnSelectionConverterTest {
   @Test
   @DisplayName("Illegal input throws exception")
   void illegalInputThrows() {
-    // GIVEN: nothing
+    // GIVEN
 
     // WHEN & THEN
     assertThrows(IllegalStateException.class, () -> UNDER_TEST.convert(Selection.ROCK, 'N'));
