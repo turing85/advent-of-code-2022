@@ -56,7 +56,6 @@
         <formatter-maven-plugin.goal>format</formatter-maven-plugin.goal>
         <formatter-maven-plugin.skip>false</formatter-maven-plugin.skip>
         <git-ssh-url>git:ssh://github.com/turing85/advent-of-code-2022.git</git-ssh-url>
-        <jacoco-maven-plugin.sample-exclude>**/*Sample*</jacoco-maven-plugin.sample-exclude>
         <jacoco-maven-plugin.skip>false</jacoco-maven-plugin.skip>
         <maven.compiler.release>17</maven.compiler.release>
         <maven.compiler.source>${maven.compiler.release}</maven.compiler.source>
@@ -73,7 +72,7 @@
         <truth.version>1.1.3</truth.version>
     </properties>
 
-    <url>https://github.com/turing85/advent-of-code-2022s</url>
+    <url>https://github.com/turing85/advent-of-code-2022</url>
     <distributionManagement>
         <snapshotRepository>
             <id>ossrh</id>
@@ -92,7 +91,7 @@
         <connection>scm:${git-ssh-url}</connection>
         <developerConnection>scm:${git-ssh-url}</developerConnection>
         <url>${project.url}</url>
-        <tag>@{project.version}</tag>
+        <tag>main</tag>
     </scm>
 
     <build>
