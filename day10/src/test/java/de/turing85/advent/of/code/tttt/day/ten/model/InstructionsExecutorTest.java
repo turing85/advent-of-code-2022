@@ -95,7 +95,6 @@ class InstructionsExecutorTest {
           IS_PIXEL_LIT, "", String::concat);
 
       // THEN
-      System.out.println(actual);
       assertThat(actual).isEqualTo("""
           ####.#..#.###..#..#.####.###..#..#.####.
           #....#.#..#..#.#..#.#....#..#.#..#....#.
