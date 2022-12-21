@@ -10,7 +10,7 @@
         <relativePath>../implementation-parent/pom.xml</relativePath>
     </parent>
 
-    <artifactId>advent-of-code-2022-day10</artifactId>
-    <name>advent-of-code-2022 :: day 10</name>
-    <description>Solutions for the day 10 challenge</description>
+    <artifactId>advent-of-code-2022-day-5</artifactId>
+    <name>advent-of-code-2022 :: day 5</name>
+    <description>Solutions for the day 5 challenge</description>
 </project>

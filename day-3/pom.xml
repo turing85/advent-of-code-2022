@@ -7,10 +7,10 @@
         <groupId>de.turing85</groupId>
         <artifactId>advent-of-code-2022-implementation-parent</artifactId>
         <version>999-SNAPSHOT</version>
-        <relativePath>../implementation-parent</relativePath>
+        <relativePath>../implementation-parent/pom.xml</relativePath>
     </parent>
 
-    <artifactId>advent-of-code-2022-day12</artifactId>
-    <name>advent-of-code-2022 :: day 12</name>
-    <description>Solutions for the day 12 challenge</description>
+    <artifactId>advent-of-code-2022-day-3</artifactId>
+    <name>advent-of-code-2022 :: day 3</name>
+    <description>Solutions for the day 3 challenge</description>
 </project>
