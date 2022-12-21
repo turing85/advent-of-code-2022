@@ -104,6 +104,11 @@
             <artifactId>advent-of-code-2022-day-13</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>de.turing85</groupId>
+            <artifactId>advent-of-code-2022-day-14</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 
     <reporting>
