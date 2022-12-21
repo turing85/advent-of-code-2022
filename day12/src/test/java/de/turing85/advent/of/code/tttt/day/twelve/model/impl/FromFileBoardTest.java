@@ -13,7 +13,7 @@ class FromFileBoardTest {
   @DisplayName("throws on illegal input")
   @CsvSource({"illegalInputTwoEnds.txt", "illegalInputIllegalCharacter.txt",
       "illegalInputUnequalLineLengths.txt"})
-  void throwsOnTwoEndpoints(String pathAsString) {
+  void throwsOnIllegalInput(String pathAsString) {
     // GIVEN
     Path path = Path.of("src/test/resources/", pathAsString);
 

@@ -9,7 +9,7 @@ import java.util.Set;
 import java.util.function.Predicate;
 
 /**
- * Finds length of (one of the) shortest paths on a board.
+ * Finds length of (one of) the shortest paths on a board.
  */
 public class BoardSolver {
   private BoardSolver() {}
