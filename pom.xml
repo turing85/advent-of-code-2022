@@ -27,6 +27,7 @@
         <module>day-13</module>
         <module>day-14</module>
         <module>day-15</module>
+        <module>day-16</module>
         <module>implementation-parent</module>
         <module>jacoco-aggregation</module>
     </modules>
@@ -66,6 +67,7 @@
         <maven.compiler.target>${maven.compiler.release}</maven.compiler.target>
         <maven-javadoc-plugin.skip>false</maven-javadoc-plugin.skip>
         <maven-site-plugin.stage.skip>false</maven-site-plugin.stage.skip>
+        <maven-surefire-plugin.excludedGroups>slow</maven-surefire-plugin.excludedGroups>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <sonar.coverage.jacoco.xmlReportPaths>${maven.multiModuleProjectDirectory}/jacoco-aggregation/target/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
 
@@ -111,6 +113,7 @@
                             <encoding>UTF-8</encoding>
                             <usePhrasedFileName>false</usePhrasedFileName>
                         </consoleOutputReporter>
+                        <excludedGroups>${maven-surefire-plugin.excludedGroups}</excludedGroups>
                         <statelessTestsetReporter implementation="org.apache.maven.plugin.surefire.extensions.junit5.JUnit5Xml30StatelessReporter">
                             <disable>false</disable>
                             <version>${maven-surefire-plugin.version}</version>
@@ -262,6 +265,7 @@
             </activation>
             <properties>
                 <formatter-maven-plugin.goal>validate</formatter-maven-plugin.goal>
+                <maven-surefire-plugin.excludedGroups/>
             </properties>
         </profile>
         <profile>
