@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 
 @DisplayName("SecondColumOwnSelectionConverter tests")
 class SecondColumOwnSelectionConverterTest {
-
   private static final SecondColumOwnSelectionConverter UNDER_TEST =
       SecondColumOwnSelectionConverter.instance();
 

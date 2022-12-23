@@ -8,9 +8,8 @@ import java.util.function.Supplier;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-@DisplayName("Backpack tests")
+@DisplayName("Expedition tests")
 class ExpeditionTest {
-
   private static final Random RANDOM = new Random();
   private static final Supplier<List<Integer>> RANDOM_VALUE_SUPPLIER =
       () -> RANDOM.ints(10, 0, Integer.MAX_VALUE).boxed().toList();

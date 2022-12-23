@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test;
 
 @DisplayName("TreeCounter tests")
 class TreeCounterTest {
-
   public static final Path COMMON_INPUT = Path.of("src/test/resources/commonInput.txt");
   public static final Path PERSONAL_INPUT = Path.of("src/test/resources/personalInput.txt");
 

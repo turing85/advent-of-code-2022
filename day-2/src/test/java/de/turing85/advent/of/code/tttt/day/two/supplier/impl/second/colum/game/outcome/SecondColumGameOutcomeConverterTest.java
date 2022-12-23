@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 
 @DisplayName("SecondColumGameOutcomeConverter tests")
 class SecondColumGameOutcomeConverterTest {
-
   public static final SecondColumGameOutcomeConverter UNDER_TEST =
       SecondColumGameOutcomeConverter.instance();
 

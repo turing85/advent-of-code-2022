@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test;
 
 @DisplayName("Directory tests")
 class DirectoryTest {
-
   @Nested
   @DisplayName("Constructor tests")
   class ConstructorTest {

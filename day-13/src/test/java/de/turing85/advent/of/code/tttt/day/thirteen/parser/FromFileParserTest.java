@@ -7,6 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+@DisplayName("FromFileParser tests")
 class FromFileParserTest {
   @ParameterizedTest
   @DisplayName("throws on illegal input")

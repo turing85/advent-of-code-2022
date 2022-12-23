@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test;
 
 @DisplayName("RopeMovementSimulator tests")
 class RopeMovementSimulatorTest {
-
   public static final Path PERSONAL_INPUT = Path.of("src/test/resources/personalInput.txt");
 
   @Nested

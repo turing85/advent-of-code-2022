@@ -119,8 +119,8 @@ public final class ValveNetwork {
     while (!queue.isEmpty()) {
       maxPressureReleased = processNextElement(maxPressureReleased, queue);
       if (iteration % logRegularity == 0 || queue.isEmpty()) {
-        Logger.getGlobal().info("iteration: %d, queue size: %d, current best: %d".formatted(iteration,
-            queue.size(), maxPressureReleased));
+        Logger.getGlobal().info("iteration: %d, queue size: %d, current best: %d"
+            .formatted(iteration, queue.size(), maxPressureReleased));
       }
       ++iteration;
     }

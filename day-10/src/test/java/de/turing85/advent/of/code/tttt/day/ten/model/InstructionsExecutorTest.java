@@ -19,7 +19,6 @@ class InstructionsExecutorTest {
   @Nested
   @DisplayName("Signal strength tests")
   class SignalStrengthTest {
-
     public static final IntPredicate CYCLE_FILTER = cycle -> cycle % 40 == 20;
 
     public static final BiFunction<Integer, Integer, Integer> CYCLES_TIMES_X_REGISTER =
@@ -57,7 +56,6 @@ class InstructionsExecutorTest {
   @Nested
   @DisplayName("CRT tests")
   class CrtTest {
-
     public static final IntPredicate CYCLE_FILTER = cycle -> true;
     public static final BiFunction<Integer, Integer, String> IS_PIXEL_LIT =
         (cycle, x) -> (Math.abs(((cycle - 1) % 40) - x) <= 1 ? "#" : ".")

@@ -8,6 +8,7 @@ import de.turing85.advent.of.code.tttt.day.four.supplier.impl.FromFileIntervalPa
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("IntervalOverlapChecker tests")
 class IntervalOverlapCheckerTest {
   private static final int COMMON_INPUT_OVERLAP_COUNT = 4;
   private static final int PERSONAL_INPUT_OVERLAP_COUNT = 876;

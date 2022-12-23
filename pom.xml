@@ -257,6 +257,12 @@
 
     <profiles>
         <profile>
+            <id>activate-slow-tests</id>
+            <properties>
+                <maven-surefire-plugin.excludedGroups/>
+            </properties>
+        </profile>
+        <profile>
             <id>ci</id>
             <activation>
                 <property>

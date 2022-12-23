@@ -12,4 +12,5 @@
 
     <artifactId>advent-of-code-2022-day-16</artifactId>
     <name>advent-of-code-2022 :: day 16</name>
+    <description>Solutions for the day 16 challenge</description>
 </project>

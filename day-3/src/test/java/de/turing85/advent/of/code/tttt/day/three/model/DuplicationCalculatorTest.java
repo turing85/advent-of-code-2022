@@ -13,7 +13,6 @@ import org.junit.jupiter.api.Test;
 
 @DisplayName("DuplicationCalculator tests")
 public abstract class DuplicationCalculatorTest {
-
   private static final Path ILLEGAL_INPUT_THREE =
       Path.of("src/test/resources/illegalInputThree.txt");
   public static final Path COMMON_INPUT = Path.of("src/test/resources/commonInput.txt");
