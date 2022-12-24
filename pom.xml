@@ -12,15 +12,15 @@
 
     <packaging>pom</packaging>
     <modules>
-        <module>day-1</module>
-        <module>day-2</module>
-        <module>day-3</module>
-        <module>day-4</module>
-        <module>day-5</module>
-        <module>day-6</module>
-        <module>day-7</module>
-        <module>day-8</module>
-        <module>day-9</module>
+        <module>day-01</module>
+        <module>day-02</module>
+        <module>day-03</module>
+        <module>day-04</module>
+        <module>day-05</module>
+        <module>day-06</module>
+        <module>day-07</module>
+        <module>day-08</module>
+        <module>day-09</module>
         <module>day-10</module>
         <module>day-11</module>
         <module>day-12</module>

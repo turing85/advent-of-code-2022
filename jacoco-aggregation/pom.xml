@@ -41,47 +41,47 @@
     <dependencies>
         <dependency>
             <groupId>de.turing85</groupId>
-            <artifactId>advent-of-code-2022-day-1</artifactId>
+            <artifactId>advent-of-code-2022-day-01</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>de.turing85</groupId>
-            <artifactId>advent-of-code-2022-day-2</artifactId>
+            <artifactId>advent-of-code-2022-day-02</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>de.turing85</groupId>
-            <artifactId>advent-of-code-2022-day-3</artifactId>
+            <artifactId>advent-of-code-2022-day-03</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>de.turing85</groupId>
-            <artifactId>advent-of-code-2022-day-4</artifactId>
+            <artifactId>advent-of-code-2022-day-04</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>de.turing85</groupId>
-            <artifactId>advent-of-code-2022-day-5</artifactId>
+            <artifactId>advent-of-code-2022-day-05</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>de.turing85</groupId>
-            <artifactId>advent-of-code-2022-day-6</artifactId>
+            <artifactId>advent-of-code-2022-day-06</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>de.turing85</groupId>
-            <artifactId>advent-of-code-2022-day-7</artifactId>
+            <artifactId>advent-of-code-2022-day-07</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>de.turing85</groupId>
-            <artifactId>advent-of-code-2022-day-8</artifactId>
+            <artifactId>advent-of-code-2022-day-08</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>de.turing85</groupId>
-            <artifactId>advent-of-code-2022-day-9</artifactId>
+            <artifactId>advent-of-code-2022-day-09</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
