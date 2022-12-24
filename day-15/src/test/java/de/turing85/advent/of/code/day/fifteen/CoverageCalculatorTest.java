@@ -17,8 +17,8 @@ class CoverageCalculatorTest {
   @Nested
   @DisplayName("getCoverageOnYCoordinate tests")
   class GetCoverageOnYCoordinateTest {
-    @Test
     @DisplayName("correct result on common input")
+    @Test
     void correctResultOnCommonInput() throws IOException {
       // GIVEN
 
@@ -30,8 +30,8 @@ class CoverageCalculatorTest {
       assertThat(actual).isEqualTo(26L);
     }
 
-    @Test
     @DisplayName("correct result on personal input")
+    @Test
     void correctResultOnPersonalInput() throws IOException {
       // GIVEN
 
@@ -47,8 +47,8 @@ class CoverageCalculatorTest {
   @Nested
   @DisplayName("findTuningFrequency tests")
   class FindTuningFrequency {
-    @Test
     @DisplayName("correct result on common input")
+    @Test
     void correctResultOnCommonInput() throws IOException {
       // GIVEN
 
@@ -60,8 +60,8 @@ class CoverageCalculatorTest {
       assertThat(actual).isEqualTo(56_000_011L);
     }
 
-    @Test
     @DisplayName("correct result on personal input")
+    @Test
     void correctResultOnPersonalInput() throws IOException {
       // GIVEN
 

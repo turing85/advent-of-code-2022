@@ -18,8 +18,8 @@ class FallingSandSimulatorTest {
   @Nested
   @DisplayName("letSandFallUntilEverythingWillFallIntoTheAbyss tests")
   class LetSandFallUntilEverythingWillFallIntoTheAbyssTest {
-    @Test
     @DisplayName("correct result on common input")
+    @Test
     void correctResultOnCommonInput() throws IOException {
       // GIVEN
       LinesSupplier supplier = new FromFileLinesSupplier(COMMON_INPUT);
@@ -32,8 +32,8 @@ class FallingSandSimulatorTest {
       assertThat(actual).isEqualTo(24);
     }
 
-    @Test
     @DisplayName("correct result on personal input")
+    @Test
     void correctResultOnPersonalInput() throws IOException {
       // GIVEN
       LinesSupplier supplier = new FromFileLinesSupplier(PERSONAL_INPUT);
@@ -50,8 +50,8 @@ class FallingSandSimulatorTest {
   @Nested
   @DisplayName("letSandFallUntilOriginIsBlocked tests")
   class LetSandFallUntilOriginIsBlockedTest {
-    @Test
     @DisplayName("correct result on common input")
+    @Test
     void correctResultOnCommonInput() throws IOException {
       // GIVEN
       LinesSupplier supplier = new FromFileLinesSupplier(COMMON_INPUT);
@@ -63,8 +63,8 @@ class FallingSandSimulatorTest {
       assertThat(actual).isEqualTo(93);
     }
 
-    @Test
     @DisplayName("correct result on personal input")
+    @Test
     void correctResultOnPersonalInput() throws IOException {
       // GIVEN
       LinesSupplier supplier = new FromFileLinesSupplier(PERSONAL_INPUT);

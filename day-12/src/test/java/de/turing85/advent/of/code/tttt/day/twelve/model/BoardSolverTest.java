@@ -20,8 +20,8 @@ class BoardSolverTest {
   class FromStartToFinish {
     public static final Predicate<Field> START_FIELD_CONDITION = field -> field.symbol() == 'S';
 
-    @Test
     @DisplayName("correct result on common input")
+    @Test
     void correctResultOnCommonInput() throws IOException {
       // GIVEN
       Board board = new FromFileBoard(COMMON_INPUT);
@@ -33,8 +33,8 @@ class BoardSolverTest {
       assertThat(actual).isEqualTo(31);
     }
 
-    @Test
     @DisplayName("correct result on personal input")
+    @Test
     void correctResultOnPersonalInput() throws IOException {
       // GIVEN
       Board board = new FromFileBoard(PERSONAL_INPUT);
@@ -52,8 +52,8 @@ class BoardSolverTest {
   class FromAnyZeroHeightFieldToFinish {
     public static final Predicate<Field> START_FIELD_CONDITION = field -> field.height() == 0;
 
-    @Test
     @DisplayName("correct result on common input")
+    @Test
     void correctResultOnCommonInput() throws IOException {
       // GIVEN
       Board board = new FromFileBoard(COMMON_INPUT);
@@ -65,8 +65,8 @@ class BoardSolverTest {
       assertThat(actual).isEqualTo(29);
     }
 
-    @Test
     @DisplayName("correct result on personal input")
+    @Test
     void correctResultOnPersonalInput() throws IOException {
       // GIVEN
       Board board = new FromFileBoard(PERSONAL_INPUT);

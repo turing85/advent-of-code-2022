@@ -18,8 +18,8 @@ class ValveNetworkTest {
   private static final Path COMMON_INPUT = Path.of("src/test/resources/commonInput.txt");
   private static final Path PERSONAL_INPUT = Path.of("src/test/resources/personalInput.txt");
 
-  @Test
   @DisplayName("throws on missing valve description")
+  @Test
   void throwsOnMissingValveDescription() {
     // GIVEN
     Set<ValveDescription> descriptions = Set.of(new ValveDescription("AA", 1, Set.of("BB")));
@@ -28,8 +28,8 @@ class ValveNetworkTest {
     assertThrows(IllegalStateException.class, () -> new ValveNetwork(descriptions));
   }
 
-  @Test
   @DisplayName("throws on negative flow rate")
+  @Test
   void throwsOnNegativeFlowRate() {
     // GIVEN
     Set<ValveDescription> descriptions = Set.of(new ValveDescription("AA", -1, Set.of("BB")),
@@ -42,8 +42,8 @@ class ValveNetworkTest {
   @Nested
   @DisplayName("releaseMaximumPressure with one actor tests")
   class ReleaseMaximumPressureWithOneActorTest {
-    @Test
     @DisplayName("correct result on common input")
+    @Test
     void correctResultOnCommonInput() throws IOException {
       // GIVEN
       ValveDescriptionsSupplier valveDescriptionsSupplier =
@@ -57,8 +57,8 @@ class ValveNetworkTest {
       assertThat(actual).isEqualTo(1_651);
     }
 
-    @Test
     @DisplayName("correct result on personal input")
+    @Test
     void correctResultOnPersonalInput() throws IOException {
       // GIVEN
       ValveDescriptionsSupplier valveDescriptionsSupplier =
@@ -76,8 +76,8 @@ class ValveNetworkTest {
   @Nested
   @DisplayName("releaseMaximumPressure with two actors tests")
   class ReleaseMaximumPressureWithTwoActorsTest {
-    @Test
     @DisplayName("correct result on common input")
+    @Test
     void correctResultOnCommonInput() throws IOException {
       // GIVEN
       ValveDescriptionsSupplier valveDescriptionsSupplier =

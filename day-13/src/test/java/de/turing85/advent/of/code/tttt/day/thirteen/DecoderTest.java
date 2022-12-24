@@ -18,8 +18,8 @@ class DecoderTest {
   private static final Path COMMON_INPUT = Path.of("src/test/resources/commonInput.txt");
   private static final Path PERSONAL_INPUT = Path.of("src/test/resources/personalInput.txt");
 
-  @Test
   @DisplayName("throws on non-int and non-list input on left list")
+  @Test
   void throwsOnNonIntAndNonListInputOnLeftList() {
     // GIVEN
     List<Pair<Object, Object>> input = List.of(new Pair<>(List.of("Oh", "no"), 1));
@@ -28,8 +28,8 @@ class DecoderTest {
     assertThrows(IllegalArgumentException.class, () -> Decoder.pairsInRightOrder(input));
   }
 
-  @Test
   @DisplayName("throws on non-int and non-list input on right list")
+  @Test
   void throwsOnNonIntAndNonListInputOnRightList() {
     // GIVEN
     List<Pair<Object, Object>> input = List.of(new Pair<>(List.of(1), "Oh no"));
@@ -38,8 +38,8 @@ class DecoderTest {
     assertThrows(IllegalArgumentException.class, () -> Decoder.pairsInRightOrder(input));
   }
 
-  @Test
   @DisplayName("in right order")
+  @Test
   void inRightOrder() {
     // GIVEN
     List<Pair<Object, Object>> input =
@@ -64,8 +64,8 @@ class DecoderTest {
   @Nested
   @DisplayName("pairsInRightOrder tests")
   class PairsInRightOrderTest {
-    @Test
     @DisplayName("correct result on common input")
+    @Test
     void correctResultOnCommonInput() throws IOException {
       // GIVEN
       List<Pair<Object, Object>> input = FromFileParser.parse(COMMON_INPUT);
@@ -77,8 +77,8 @@ class DecoderTest {
       assertThat(actual).isEqualTo(13);
     }
 
-    @Test
     @DisplayName("correct result on personal input")
+    @Test
     void correctResultOnPersonalInput() throws IOException {
       // GIVEN
       List<Pair<Object, Object>> input = FromFileParser.parse(PERSONAL_INPUT);
@@ -94,8 +94,8 @@ class DecoderTest {
   @Nested
   @DisplayName("calculateDecoderKey tests")
   class CalculateDecoderKeyTest {
-    @Test
     @DisplayName("correct result on common input")
+    @Test
     void correctResultOnCommonInput() throws IOException {
       // GIVEN
       List<Pair<Object, Object>> input = FromFileParser.parse(COMMON_INPUT);
@@ -107,8 +107,8 @@ class DecoderTest {
       assertThat(actual).isEqualTo(140);
     }
 
-    @Test
     @DisplayName("correct result on personal input")
+    @Test
     void correctResultOnPersonalInput() throws IOException {
       // GIVEN
       List<Pair<Object, Object>> input = FromFileParser.parse(PERSONAL_INPUT);

@@ -24,8 +24,8 @@ class InstructionsExecutorTest {
     public static final BiFunction<Integer, Integer, Integer> CYCLES_TIMES_X_REGISTER =
         (cycle, x) -> cycle * x;
 
-    @Test
     @DisplayName("correct result on common input")
+    @Test
     void correctResultOnCommonInput() throws IOException {
       // GIVEN
 
@@ -38,8 +38,8 @@ class InstructionsExecutorTest {
       assertThat(actual).isEqualTo(13_140);
     }
 
-    @Test
     @DisplayName("correct result on personal input")
+    @Test
     void correctResultOnPersonalInput() throws IOException {
       // GIVEN
 
@@ -61,8 +61,8 @@ class InstructionsExecutorTest {
         (cycle, x) -> (Math.abs(((cycle - 1) % 40) - x) <= 1 ? "#" : ".")
             + (cycle % 40 == 0 ? System.lineSeparator() : "");
 
-    @Test
     @DisplayName("correct result on common input")
+    @Test
     void correctResultOnCommonInput() throws IOException {
       // GIVEN
 
@@ -82,8 +82,8 @@ class InstructionsExecutorTest {
           """);
     }
 
-    @Test
     @DisplayName("correct result on personal input")
+    @Test
     void correctResultOnPersonalInput() throws IOException {
       // GIVEN
 

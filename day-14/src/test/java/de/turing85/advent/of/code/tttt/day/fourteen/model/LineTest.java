@@ -8,8 +8,8 @@ import org.junit.jupiter.api.Test;
 
 @DisplayName("Line test")
 class LineTest {
-  @Test
   @DisplayName("throws if x and y of points differ")
+  @Test
   void throwsIfXAndYOfPointsDiffer() {
     // GIVEN
     Point first = Point.of(0, 0);
@@ -19,8 +19,8 @@ class LineTest {
     assertThrows(IllegalArgumentException.class, () -> Line.of(first, second));
   }
 
-  @Test
   @DisplayName("cache works correctly")
+  @Test
   void cacheWorksCorrectly() {
     // GIVEN
     Point first = Point.of(0, 0);

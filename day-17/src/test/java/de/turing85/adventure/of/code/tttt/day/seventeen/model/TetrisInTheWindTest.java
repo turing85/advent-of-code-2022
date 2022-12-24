@@ -18,8 +18,8 @@ class TetrisInTheWindTest {
   @Nested
   @DisplayName("Let 2022 rocks fall")
   class Let2022RocksFallTest {
-    @Test
     @DisplayName("correct result on common input")
+    @Test
     void correctResultOnCommonInput() throws IOException {
       // GIVEN
       WindDirectionsSupplier windDirectionsSupplier =
@@ -34,8 +34,8 @@ class TetrisInTheWindTest {
       assertThat(actual).isEqualTo(3_068);
     }
 
-    @Test
     @DisplayName("correct result on personal input")
+    @Test
     void correctResultOnPersonalInput() throws IOException {
       // GIVEN
       WindDirectionsSupplier windDirectionsSupplier =
@@ -54,8 +54,8 @@ class TetrisInTheWindTest {
   @Nested
   @DisplayName("Let 1 000 000 000 000 rocks fall")
   class Let1000000000000RocksFallTest {
-    @Test
     @DisplayName("correct result on common input")
+    @Test
     void correctResultOnCommonInput() throws IOException {
       // GIVEN
       WindDirectionsSupplier windDirectionsSupplier =
@@ -70,8 +70,8 @@ class TetrisInTheWindTest {
       assertThat(actual).isEqualTo(1514285714288L);
     }
 
-    @Test
     @DisplayName("correct result on personal input")
+    @Test
     void correctResultOnPersonalInput() throws IOException {
       // GIVEN
       WindDirectionsSupplier windDirectionsSupplier =

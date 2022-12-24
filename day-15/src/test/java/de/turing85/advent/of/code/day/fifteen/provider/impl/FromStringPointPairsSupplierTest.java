@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Test;
 
 @DisplayName("FromStringPointPairsSupplier tests")
 class FromStringPointPairsSupplierTest {
-  @Test
   @DisplayName("throws on illegal input")
+  @Test
   void throwsOnIllegalInput() {
     // GIVEN
     String illegalInput = "ouch";

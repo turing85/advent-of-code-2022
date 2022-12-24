@@ -10,8 +10,8 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 @DisplayName("GrainOfSalt test")
 class GrainOfSandTest {
-  @Test
   @DisplayName("does not move if it cannot fall")
+  @Test
   void doesNotMoveIfItCannotFall() {
     // GIVEN
     int x = 1;
@@ -27,8 +27,8 @@ class GrainOfSandTest {
     assertThat(underTest.point()).isEqualTo(Point.of(x, y));
   }
 
-  @ParameterizedTest(name = "({0}, {1}) -> falls into the abyss")
   @DisplayName("will fall into the abyss")
+  @ParameterizedTest(name = "({0}, {1}) -> falls into the abyss")
   @CsvSource({"-1,0", "0,1", "1,0"})
   void willFallIntoTheAbyss(int x, int y) {
     // GIVEN

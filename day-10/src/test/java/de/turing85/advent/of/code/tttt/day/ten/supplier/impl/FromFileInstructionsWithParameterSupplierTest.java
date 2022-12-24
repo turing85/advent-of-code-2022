@@ -8,8 +8,8 @@ import org.junit.jupiter.api.Test;
 
 @DisplayName("FromFileInstructionsWithParameterSupplier tests")
 class FromFileInstructionsWithParameterSupplierTest {
-  @Test
   @DisplayName("should throw if command cannot be parsed")
+  @Test
   void shouldThrowIfCommandCannotBeParsed() {
     // GIVEN
     Path path = Path.of("src/test/resources/illegalInputOne.txt");
@@ -19,8 +19,8 @@ class FromFileInstructionsWithParameterSupplierTest {
         () -> new FromFileInstructionsWithParameterSupplier(path));
   }
 
-  @Test
   @DisplayName("should throw if addx is missing parameter")
+  @Test
   void shouldThrowIfAddxIsMissingParameter() {
     // GIVEN
     Path path = Path.of("src/test/resources/illegalInputTwo.txt");

@@ -9,8 +9,8 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 @DisplayName("FromFileLinesSupplier tests")
 class FromFileLinesSupplierTest {
-  @ParameterizedTest(name = "{0} -> IllegalStateException")
   @DisplayName("throws on illegal input")
+  @ParameterizedTest(name = "{0} -> IllegalStateException")
   @CsvSource({"illegalInputNoFirstPoint.txt", "illegalInputNoSecondPoint.txt"})
   void throwsOnIllegalInput(String pathAsString) {
     // GIVEN

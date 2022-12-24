@@ -18,8 +18,8 @@ class SurfaceCalculatorTest {
   @Nested
   @DisplayName("surfaceAreaIgnoreTrappedAirBubbles tests")
   class SurfaceAreaIgnoreTrappedAirBubblesTest {
-    @Test
     @DisplayName("correct result on common input")
+    @Test
     void correctResultOnCommonInput() throws IOException {
       // GIVEN
       PointsSupplier pointsSupplier = new FromFilePointsSupplier(COMMON_INPUT);
@@ -32,8 +32,8 @@ class SurfaceCalculatorTest {
       assertThat(actual).isEqualTo(64);
     }
 
-    @Test
     @DisplayName("correct result on personal input")
+    @Test
     void correctResultOnPersonalInput() throws IOException {
       // GIVEN
       PointsSupplier pointsSupplier = new FromFilePointsSupplier(PERSONAL_INPUT);
@@ -50,8 +50,8 @@ class SurfaceCalculatorTest {
   @Nested
   @DisplayName("surfaceAreaConsiderTrappedAirBubbles tests")
   class SurfaceAreaConsiderTrappedAirBubblesTest {
-    @Test
     @DisplayName("correct result on common input")
+    @Test
     void correctResultOnCommonInput() throws IOException {
       // GIVEN
       PointsSupplier pointsSupplier = new FromFilePointsSupplier(COMMON_INPUT);
@@ -64,8 +64,8 @@ class SurfaceCalculatorTest {
       assertThat(actual).isEqualTo(58);
     }
 
-    @Test
     @DisplayName("correct result on personal input")
+    @Test
     void correctResultOnPersonalInput() throws IOException {
       // GIVEN
       PointsSupplier pointsSupplier = new FromFilePointsSupplier(PERSONAL_INPUT);

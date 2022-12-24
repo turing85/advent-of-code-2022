@@ -8,8 +8,8 @@ import org.junit.jupiter.api.Test;
 
 @DisplayName("FromFilePointPairsSupplier tests")
 class FromFilePointPairsSupplierTest {
-  @Test
   @DisplayName("illegal input throws")
+  @Test
   void illegalInputThrows() {
     // GIVEN
     Path path = Path.of("src/test/resources/illegalInput.txt");

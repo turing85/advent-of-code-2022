@@ -21,8 +21,8 @@ class MonkeyBusinessTest {
     public static final int ROUNDS = 20;
     public static final LongUnaryOperator STRESS_MODIFIER = value -> value / 3;
 
-    @Test
     @DisplayName("correct result on common input")
+    @Test
     void correctResultOnCommonInput() throws IOException {
       // GIVEN
 
@@ -34,8 +34,8 @@ class MonkeyBusinessTest {
       assertThat(actual).isEqualTo(10_605L);
     }
 
-    @Test
     @DisplayName("correct result on personal input")
+    @Test
     void correctResultOnPersonalInput() throws IOException {
       // GIVEN
 
@@ -54,8 +54,8 @@ class MonkeyBusinessTest {
     public static final int ROUNDS = 10_000;
     public static final LongUnaryOperator NO_STRESS_MODIFIER = value -> value;
 
-    @Test
     @DisplayName("correct result on common input")
+    @Test
     void correctResultOnCommonInput() throws IOException {
       // GIVEN
 
@@ -67,8 +67,8 @@ class MonkeyBusinessTest {
       assertThat(actual).isEqualTo(2_713_310_158L);
     }
 
-    @Test
     @DisplayName("correct result on personal input")
+    @Test
     void correctResultOnPersonalInput() throws IOException {
       // GIVEN
 

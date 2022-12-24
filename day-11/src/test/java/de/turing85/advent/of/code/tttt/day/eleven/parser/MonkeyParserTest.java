@@ -9,8 +9,8 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 @DisplayName("MonkeyParser test")
 class MonkeyParserTest {
-  @ParameterizedTest(name = "{0} -> throws")
   @DisplayName("throws on parse error")
+  @ParameterizedTest(name = "{0} -> throws")
   @CsvSource({"illegalInputHeaderMalformed.txt", "illegalInputItemsMalformed.txt",
       "illegalInputOperationMalformed.txt", "illegalInputTestMalformed.txt",
       "illegalInputIfTrueMalformed.txt", "illegalInputIfFalseMalformed.txt"})
