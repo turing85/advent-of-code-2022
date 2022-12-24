@@ -29,6 +29,7 @@
         <module>day-15</module>
         <module>day-16</module>
         <module>day-17</module>
+        <module>day-18</module>
         <module>implementation-parent</module>
         <module>jacoco-aggregation</module>
     </modules>
@@ -259,6 +260,11 @@
     <profiles>
         <profile>
             <id>activate-slow-tests</id>
+            <activation>
+                <property>
+                    <name>activate.slow.tests</name>
+                </property>
+            </activation>
             <properties>
                 <maven-surefire-plugin.excludedGroups/>
             </properties>
