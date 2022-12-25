@@ -19,8 +19,6 @@ class FromFileParserTest {
     Path path = Path.of("src/test/resources", pathAsString);
 
     // WHEN & THEN
-    IllegalStateException e =
-        assertThrows(IllegalStateException.class, () -> FromFileParser.parse(path));
-    System.out.println(e.getMessage());
+    assertThrows(IllegalStateException.class, () -> FromFileParser.parse(path));
   }
 }

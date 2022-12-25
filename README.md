@@ -5,15 +5,15 @@ I will try to solve all challenges. For each challenge, there will most probably
 
 Each challenge will be in its own module, and the flavours in different submodules. When possible, I will have one `common` module, holding the driver-class for the solution, and the flavours are implemented as pluggable elements to this driver class.
 
-[Day 1](./day-1/README.md)<br>
-[Day 2](./day-2/README.md)<br>
-[Day 3](./day-3/README.md)<br>
-[Day 4](./day-4/README.md)<br>
-[Day 5](./day-5/README.md)<br>
-[Day 6](./day-6/README.md)<br>
-[Day 7](./day-7/README.md)<br>
-[Day 8](./day-8/README.md)<br>
-[Day 9](./day-9/README.md)<br>
+[Day 1](./day-01/README.md)<br>
+[Day 2](./day-02/README.md)<br>
+[Day 3](./day-03/README.md)<br>
+[Day 4](./day-04/README.md)<br>
+[Day 5](./day-05/README.md)<br>
+[Day 6](./day-06/README.md)<br>
+[Day 7](./day-07/README.md)<br>
+[Day 8](./day-08/README.md)<br>
+[Day 9](./day-09/README.md)<br>
 [Day 10](./day-10/README.md)<br>
 [Day 11](./day-11/README.md)<br>
 [Day 12](./day-12/README.md)<br>
