@@ -1,0 +1,1 @@
+Blueprint 0: Each ore robot costs 1 OUCH. Each clay robot costs 2 ore. Each obsidian robot costs 3 ore and 4 clay. Each geode robot costs 5 ore and 20 obsidian.
