@@ -12,16 +12,16 @@ public class Unscrambler {
   private Unscrambler() {}
 
   /**
-   * Decodes a coordinate from a scrabmed {@link List} of {@link Long}s.
+   * Decodes a coordinate from a scrambled {@link List} of {@link Long}s.
    *
    * @param scrambled the scrambled list
-   * @param multiplicator the multiplicator to multiply each value in {@code scrabled} by
+   * @param multiplier the multiplier to multiply each value in {@code scrambled} by
    * @param iterations the number of unscrambles to perform
    *
    * @return the coordinate encoded in this scrambled list.
    */
-  public static long decodeLocation(List<Long> scrambled, long multiplicator, int iterations) {
-    List<Long> decoded = unscramble(scrambled, multiplicator, iterations);
+  public static long decodeLocation(List<Long> scrambled, long multiplier, int iterations) {
+    List<Long> decoded = unscramble(scrambled, multiplier, iterations);
     int size = decoded.size();
     int zeroPosition = decoded.indexOf(0L);
     long firstValue = decoded.get((zeroPosition + 1000) % size);
@@ -30,8 +30,8 @@ public class Unscrambler {
     return (firstValue + secondValue + thirdValue);
   }
 
-  private static List<Long> unscramble(List<Long> scrambled, long multiplicator, int iterations) {
-    List<ScrambledLong> result = constructScramblelist(scrambled, multiplicator);
+  private static List<Long> unscramble(List<Long> scrambled, long multiplier, int iterations) {
+    List<ScrambledLong> result = constructScramblelist(scrambled, multiplier);
     Map<Integer, ScrambledLong> initialOrder = calculateInitialOrder(result);
     for (int iteration = 0; iteration < iterations; ++iteration) {
       result = unscrambleOnce(result, initialOrder);
@@ -61,11 +61,10 @@ public class Unscrambler {
     return initialOrder;
   }
 
-  private static List<ScrambledLong> constructScramblelist(List<Long> scrambled,
-      long multiplicator) {
+  private static List<ScrambledLong> constructScramblelist(List<Long> scrambled, long multiplier) {
     List<ScrambledLong> result = new ArrayList<>();
     for (int index = 0; index < scrambled.size(); ++index) {
-      result.add(new ScrambledLong(scrambled.get(index) * multiplicator, index));
+      result.add(new ScrambledLong(scrambled.get(index) * multiplier, index));
     }
     return result;
   }
