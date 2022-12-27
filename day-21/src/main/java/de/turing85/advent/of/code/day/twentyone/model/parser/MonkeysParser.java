@@ -7,10 +7,12 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.ServiceLoader;
+import java.util.Set;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import lombok.Getter;
@@ -50,7 +52,7 @@ public class MonkeysParser implements Supplier<Map<String, Monkey>> {
   }
 
   private List<String> tryParse(List<String> lines) {
-    List<String> unparsed = new ArrayList<>();
+    Set<String> unparsed = new HashSet<>();
     for (String line : lines) {
       if (!tryParseLineWithAllAvailableParsers(line)) {
         unparsed.add(line);
@@ -60,7 +62,7 @@ public class MonkeysParser implements Supplier<Map<String, Monkey>> {
       throw new IllegalStateException(
           "Parsing got struck on the following lines: %s".formatted(lines));
     }
-    return unparsed;
+    return new ArrayList<>(unparsed);
   }
 
   private boolean tryParseLineWithAllAvailableParsers(String line) {
