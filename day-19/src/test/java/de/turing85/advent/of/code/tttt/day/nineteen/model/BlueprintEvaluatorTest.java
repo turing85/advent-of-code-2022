@@ -58,7 +58,7 @@ class BlueprintEvaluatorTest {
   }
 
   @Nested
-  @DisplayName("Mine for 32 minutes")
+  @DisplayName("mine for 32 minutes")
   class MineFor32Minutes {
     @Test
     @Tag("slow")

@@ -6,6 +6,7 @@ import java.util.Random;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("ScrambledLong tests")
 class ScrambledLongTest {
   @DisplayName("constructs expected value")
   @Test

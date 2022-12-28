@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("FromStringLongListSupplier tests")
 class FromStringLongListSupplierTest {
   @DisplayName("throws on illegal input")
   @Test

@@ -10,6 +10,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("Unscrambler tests")
 class UnscramblerTest {
   private static final Path COMMON_INPUT = Path.of("src/test/resources/commonInput.txt");
   private static final Path PERSONAL_INPUT = Path.of("src/test/resources/personalInput.txt");

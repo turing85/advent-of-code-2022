@@ -20,7 +20,7 @@ public class FromFileLongListSupplier implements LongListSupplier {
    * represented by a {@link Path}.
    *
    * @param inputFile the file holding the {@link String}-representation of a {@link List} of
-   *     {@link Long}s
+   *        {@link Long}s
    *
    * @throws IOException if some I/O exception occurs when the file is read.
    */
