@@ -23,6 +23,9 @@ Each challenge will be in its own module, and the flavours in different submodul
 [Day 16](./day-16/README.md)<br>
 [Day 17](./day-17/README.md)<br>
 [Day 18](./day-18/README.md)<br>
-[Day 19](./day-19/README.md)
+[Day 19](./day-19/README.md)<br>
+[Day 20](./day-20/README.md)<br>
+[Day 21](./day-21/README.md)<br>
+[Day 22](./day-22/README.md)
 
 [adventOfCode2022]: https://adventofcode.com/2022
