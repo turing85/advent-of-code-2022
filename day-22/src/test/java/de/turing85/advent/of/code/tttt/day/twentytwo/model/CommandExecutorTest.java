@@ -18,6 +18,7 @@ import org.junit.jupiter.api.Test;
 class CommandExecutorTest {
   private static final Path COMMON_INPUT = Path.of("src/test/resources/commonInput.txt");
   private static final Path PERSONAL_INPUT = Path.of("src/test/resources/personalInput.txt");
+  public static final PlanarNeighbourLinker NEIGHBOUR_LINKER = new PlanarNeighbourLinker();
 
   @DisplayName("throws on empty map")
   @Test
@@ -26,14 +27,14 @@ class CommandExecutorTest {
 
     // WHEN
     assertThrows(IllegalStateException.class,
-        () -> new CommandExecutor(Collections.emptySet(), new PlanarNeighbourLinker())
+        () -> new CommandExecutor(Collections.emptySet(), NEIGHBOUR_LINKER)
             .runCommands(Collections.emptyList()));
   }
 
   @DisplayName("planar neighbours tests")
   @Nested
   class PlanarNeighbourTest {
-    private final PlanarNeighbourLinker neighbourLinker = new PlanarNeighbourLinker();
+    private final PlanarNeighbourLinker neighbourLinker = NEIGHBOUR_LINKER;
 
     @DisplayName("correct result on common input")
     @Test
@@ -43,7 +44,7 @@ class CommandExecutorTest {
           new FromFileFieldsAndCommandsSupplier(COMMON_INPUT).get();
 
       // WHEN
-      Position actual = new CommandExecutor(fieldsAndCommands.fields(), neighbourLinker)
+      Position actual = new CommandExecutor(fieldsAndCommands.fields(), NEIGHBOUR_LINKER)
           .runCommands(fieldsAndCommands.commands());
 
       // THEN
@@ -73,6 +74,7 @@ class CommandExecutorTest {
   @DisplayName("cube neighbours tests")
   @Nested
   class CubeNeighbourTest {
+    private static final NeighbourLinker NEIGHBOUR_LINKER = new CubeNeighbourLinker();
 
     @DisplayName("correct result on common input")
     @Test
@@ -80,10 +82,9 @@ class CommandExecutorTest {
       // GIVEN
       FieldsAndCommands fieldsAndCommands =
           new FromFileFieldsAndCommandsSupplier(COMMON_INPUT).get();
-      NeighbourLinker neighbourLinker = new CubeNeighbourLinker(4);
 
       // WHEN
-      Position actual = new CommandExecutor(fieldsAndCommands.fields(), neighbourLinker)
+      Position actual = new CommandExecutor(fieldsAndCommands.fields(), NEIGHBOUR_LINKER)
           .runCommands(fieldsAndCommands.commands());
 
       // THEN
@@ -98,10 +99,9 @@ class CommandExecutorTest {
       // GIVEN
       FieldsAndCommands fieldsAndCommands =
           new FromFileFieldsAndCommandsSupplier(PERSONAL_INPUT).get();
-      NeighbourLinker neighbourLinker = new CubeNeighbourLinker(50);
 
       // WHEN
-      Position actual = new CommandExecutor(fieldsAndCommands.fields(), neighbourLinker)
+      Position actual = new CommandExecutor(fieldsAndCommands.fields(), NEIGHBOUR_LINKER)
           .runCommands(fieldsAndCommands.commands());
 
       // THEN

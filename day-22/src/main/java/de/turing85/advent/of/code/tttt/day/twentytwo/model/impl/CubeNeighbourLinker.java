@@ -17,20 +17,10 @@ import java.util.stream.Collectors;
  * Linker that links the map as cube.
  */
 public class CubeNeighbourLinker implements NeighbourLinker {
-  private final int cubeEdgeLength;
-
-  /**
-   * Constructor.
-   *
-   * @param cubeEdgeLength the length of the cube's edges
-   */
-  public CubeNeighbourLinker(int cubeEdgeLength) {
-    this.cubeEdgeLength = cubeEdgeLength;
-  }
-
   @Override
   public Set<Field> linkNeighbours(Set<Field> fields) {
     Set<Point> points = fields.stream().map(Field::point).collect(Collectors.toSet());
+    int cubeEdgeLength = calculateCubeEdgeLength(fields);
     Map<Point, Field> fieldsByPoint = calculateFieldsByPoints(fields);
     Set<Point> quadrants = calculateQuadrants(fields, cubeEdgeLength);
     Map<Point, Set<Direction>> sewedSides = new HashMap<>();
@@ -49,9 +39,22 @@ public class CubeNeighbourLinker implements NeighbourLinker {
     return fields;
   }
 
+  private static int calculateCubeEdgeLength(Set<Field> fields) {
+    int maxX = fields.stream().mapToInt(Field::x).max().orElse(Integer.MIN_VALUE);
+    int minX = fields.stream().mapToInt(Field::x).min().orElse(Integer.MAX_VALUE);
+    int deltaX = maxX - minX + 1;
+    int maxY = fields.stream().mapToInt(Field::y).max().orElse(Integer.MIN_VALUE);
+    int minY = fields.stream().mapToInt(Field::y).min().orElse(Integer.MAX_VALUE);
+    int deltaY = maxY - minY + 1;
+    return Math.max(deltaX, deltaY) / 4;
+  }
+
+
   private static Map<Point, Field> calculateFieldsByPoints(Set<Field> fields) {
     return fields.stream().collect(Collectors.toMap(Field::point, Function.identity()));
   }
+
+
 
   private static Set<Point> calculateQuadrants(Set<Field> fields, int cubeEdgeLength) {
     Set<Point> existingQuadrants = new HashSet<>();
