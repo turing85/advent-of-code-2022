@@ -1,9 +1,6 @@
 package de.turing85.advent.of.code.tttt.day.twentythree.model;
 
-import java.util.Arrays;
 import java.util.Set;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /** Direction. */
 public sealed interface Direction permits Direction.Cardinal, Direction.Diagonal {
@@ -14,8 +11,15 @@ public sealed interface Direction permits Direction.Cardinal, Direction.Diagonal
    * @return all direction values.
    */
   static Set<Direction> values() {
-    return Stream.concat(Arrays.stream(Cardinal.values()), Arrays.stream(Diagonal.values()))
-        .collect(Collectors.toSet());
+    return Set.of(
+        Cardinal.UP,
+        Diagonal.UP_RIGHT,
+        Cardinal.RIGHT,
+        Diagonal.DOWN_RIGHT,
+        Cardinal.DOWN,
+        Diagonal.DOWN_LEFT,
+        Cardinal.LEFT,
+        Diagonal.UP_LEFT);
   }
 
   /** Cardinal direction */

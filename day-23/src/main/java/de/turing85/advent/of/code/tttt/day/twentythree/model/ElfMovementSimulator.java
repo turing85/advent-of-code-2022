@@ -1,7 +1,6 @@
 package de.turing85.advent.of.code.tttt.day.twentythree.model;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -61,10 +60,7 @@ public class ElfMovementSimulator {
     while (true) {
       ++iteration;
       Set<Elf> newState = simulateOneStep(currentState, directionsToConsider);
-      if (currentState.stream()
-          .map(Elf::position)
-          .collect(Collectors.toSet())
-          .equals(newState.stream().map(Elf::position).collect(Collectors.toSet()))) {
+      if (currentState.equals(newState)) {
         return iteration;
       }
       currentState = newState;
@@ -81,13 +77,13 @@ public class ElfMovementSimulator {
 
   private static Map<Elf, Point> simulateFirstPhase(
       Set<Elf> currentState, List<Direction.Cardinal> directionsToConsiderInOrder) {
-    Map<Elf, Point> nextFieldsOfElves = new HashMap<>();
     Set<Point> pointsOccupied =
         currentState.stream().map(Elf::position).collect(Collectors.toSet());
-    for (Elf elf : currentState) {
-      nextFieldsOfElves.put(elf, elf.proposeNextPoint(pointsOccupied, directionsToConsiderInOrder));
-    }
-    return nextFieldsOfElves;
+    return currentState.stream()
+        .collect(
+            Collectors.toMap(
+                Function.identity(),
+                elf -> elf.proposeNextPoint(pointsOccupied, directionsToConsiderInOrder)));
   }
 
   private static Set<Elf> simulateSecondPhase(
@@ -99,15 +95,15 @@ public class ElfMovementSimulator {
         currentState.stream()
             .map(
                 elf ->
-                    getFollowupElf(nextFieldsOfElves, numberOfElvesThatWantToMoveToThisPoint, elf))
+                    getFollowupElf(elf, nextFieldsOfElves, numberOfElvesThatWantToMoveToThisPoint))
             .collect(Collectors.toSet());
     return currentState;
   }
 
   private static Elf getFollowupElf(
+      Elf elf,
       Map<Elf, Point> nextFieldsOfElves,
-      Map<Point, Integer> numberOfElvesThatWantToMoveToThisPoint,
-      Elf elf) {
+      Map<Point, Integer> numberOfElvesThatWantToMoveToThisPoint) {
     if (numberOfElvesThatWantToMoveToThisPoint.get(nextFieldsOfElves.get(elf)) == 1) {
       return new Elf(nextFieldsOfElves.get(elf));
     }

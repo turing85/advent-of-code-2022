@@ -41,9 +41,6 @@ public record Elf(Point position) {
         cardinalDirection.composes().stream()
             .map(this.position()::neighbour)
             .collect(Collectors.toSet());
-    return mustBeFree.stream()
-        .map(positionOfElves::contains)
-        .map(contained -> !contained)
-        .reduce(true, Boolean::logicalAnd);
+    return !mustBeFree.stream().map(positionOfElves::contains).reduce(false, Boolean::logicalOr);
   }
 }
