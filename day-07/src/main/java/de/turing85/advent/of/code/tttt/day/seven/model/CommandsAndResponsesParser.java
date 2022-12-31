@@ -2,9 +2,7 @@ package de.turing85.advent.of.code.tttt.day.seven.model;
 
 import java.util.List;
 
-/**
- * Reconstructs a directory tree from a list of commands and responses.
- */
+/** Reconstructs a directory tree from a list of commands and responses. */
 public class CommandsAndResponsesParser {
   private CommandsAndResponsesParser() {}
 
@@ -12,7 +10,6 @@ public class CommandsAndResponsesParser {
    * Reconstructs a file tree from a list of commands and responses.
    *
    * @param commandsAndResponses the commands and responses to construct the directory tree from
-   *
    * @return the reconstructed directory tree.
    */
   public static Directory parseCommandsAndResponses(
@@ -32,8 +29,8 @@ public class CommandsAndResponsesParser {
     return rootDirectory;
   }
 
-  private static Directory handleCdCommand(Directory rootDirectory, Directory currentDirectory,
-      String command) {
+  private static Directory handleCdCommand(
+      Directory rootDirectory, Directory currentDirectory, String command) {
     String argument = command.split("\\s+")[1];
     return switch (argument) {
       case ".." -> currentDirectory.parent();

@@ -3,19 +3,13 @@ package de.turing85.advent.of.code.tttt.day.ten.model;
 import java.util.function.BiFunction;
 import lombok.Getter;
 
-/**
- * A (prototype) instruction.
- */
+/** A (prototype) instruction. */
 @Getter
 public enum Instruction {
-  /**
-   * ADD_X instruction adds some value (parameter) to register X.
-   */
+  /** ADD_X instruction adds some value (parameter) to register X. */
   ADD_X(2, Register::addToX),
 
-  /**
-   * NO_OP instruction
-   */
+  /** NO_OP instruction */
   NO_OP(1, ((register, unused) -> register));
 
   private final int cycles;

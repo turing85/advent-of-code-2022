@@ -6,8 +6,7 @@ import de.turing85.advent.of.code.tttt.day.two.supplier.impl.second.colum.Second
 /**
  * Interprets the second colum as own selection.
  *
- * <p>
- * Character {@code 'X'} denotes Lose, {@code 'Y'} denotes Draw, {@code 'Z'} denotes Win.
+ * <p>Character {@code 'X'} denotes Lose, {@code 'Y'} denotes Draw, {@code 'Z'} denotes Win.
  */
 public class SecondColumGameOutcomeConverter implements SecondColumnConverter {
   private static final SecondColumGameOutcomeConverter INSTANCE =

@@ -2,25 +2,15 @@ package de.turing85.advent.of.code.tttt.day.nineteen.model;
 
 import java.util.Locale;
 
-/**
- * A resource type.
- */
+/** A resource type. */
 public enum ResourceType {
-  /**
-   * Ore
-   */
+  /** Ore */
   ORE,
-  /**
-   * Clay
-   */
+  /** Clay */
   CLAY,
-  /**
-   * Obsidian
-   */
+  /** Obsidian */
   OBSIDIAN,
-  /**
-   * Geode
-   */
+  /** Geode */
   GEODE;
 
   /**

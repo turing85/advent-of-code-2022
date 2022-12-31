@@ -8,8 +8,7 @@ import java.util.List;
  * A parser that can parse signal-pairs in {@code String}-representation into a {@link List} of
  * {@link Pair}s of {@link Object}s.
  *
- * <p>
- * The fields {@link Pair#first()} and {@link Pair#second()} will be of type {@link Integer} or
+ * <p>The fields {@link Pair#first()} and {@link Pair#second()} will be of type {@link Integer} or
  * {@link List} that contains only {@link Integer}s (possibly indirect, allowing nested lists).
  */
 public class FromStringParser {
@@ -21,7 +20,6 @@ public class FromStringParser {
    * Parses the {@code inputAsString}.
    *
    * @param inputAsString to parse
-   *
    * @return the resulting {@link List} of {@link Pair}s of {@link Object}s.
    */
   public static List<Pair<Object, Object>> parse(String inputAsString) {
@@ -69,15 +67,16 @@ public class FromStringParser {
     throw constructIllegalStateException(line, index, "\"[\" or a digit", currentChar);
   }
 
-  private static IllegalStateException constructIllegalStateException(String line, int index,
-      String expected, char currentChar) {
+  private static IllegalStateException constructIllegalStateException(
+      String line, int index, String expected, char currentChar) {
     return constructIllegalStateException(line, index, expected, "\"" + currentChar + "\"");
   }
 
-  private static IllegalStateException constructIllegalStateException(String line, int index,
-      String expected, String current) {
-    return new IllegalStateException("Line: \"%s\", colum %d: expected \"%s\", found %s"
-        .formatted(line, index, expected, current));
+  private static IllegalStateException constructIllegalStateException(
+      String line, int index, String expected, String current) {
+    return new IllegalStateException(
+        "Line: \"%s\", colum %d: expected \"%s\", found %s"
+            .formatted(line, index, expected, current));
   }
 
   private static ParseResult parseListContent(String line, int index) {

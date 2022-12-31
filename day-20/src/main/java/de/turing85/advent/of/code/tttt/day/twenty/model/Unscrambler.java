@@ -5,9 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Unscrambles a scrambled {@link List} of {@link Long}s.
- */
+/** Unscrambles a scrambled {@link List} of {@link Long}s. */
 public class Unscrambler {
   private Unscrambler() {}
 
@@ -17,7 +15,6 @@ public class Unscrambler {
    * @param scrambled the scrambled list
    * @param multiplier the multiplier to multiply each value in {@code scrambled} by
    * @param iterations the number of unscrambles to perform
-   *
    * @return the coordinate encoded in this scrambled list.
    */
   public static long decodeLocation(List<Long> scrambled, long multiplier, int iterations) {
@@ -39,8 +36,8 @@ public class Unscrambler {
     return result.stream().map(ScrambledLong::value).toList();
   }
 
-  private static List<ScrambledLong> unscrambleOnce(List<ScrambledLong> scrambled,
-      Map<Integer, ScrambledLong> initialOrder) {
+  private static List<ScrambledLong> unscrambleOnce(
+      List<ScrambledLong> scrambled, Map<Integer, ScrambledLong> initialOrder) {
     List<ScrambledLong> unscrambled = new ArrayList<>(scrambled);
     int size = scrambled.size();
     for (int index = 0; index < size; ++index) {

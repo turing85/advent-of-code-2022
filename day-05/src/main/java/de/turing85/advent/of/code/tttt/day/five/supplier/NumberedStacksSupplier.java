@@ -5,8 +5,8 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 /**
- * A supplier, supplying some numbered {@link Deque}s in the form of {@link Map}s with
- * {@link Integer}-keys.
+ * A supplier, supplying some numbered {@link Deque}s in the form of {@link Map}s with {@link
+ * Integer}-keys.
  */
 public interface NumberedStacksSupplier extends Supplier<Map<Integer, Deque<Character>>> {
   @Override

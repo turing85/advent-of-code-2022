@@ -23,8 +23,9 @@ class CoverageCalculatorTest {
       // GIVEN
 
       // WHEN
-      long actual = CoverageCalculator
-          .getCoverageOnYCoordinate(new FromFilePointPairsSupplier(COMMON_INPUT).get(), 10);
+      long actual =
+          CoverageCalculator.getCoverageOnYCoordinate(
+              new FromFilePointPairsSupplier(COMMON_INPUT).get(), 10);
 
       // THEN
       assertThat(actual).isEqualTo(26L);
@@ -36,8 +37,9 @@ class CoverageCalculatorTest {
       // GIVEN
 
       // WHEN
-      long actual = CoverageCalculator.getCoverageOnYCoordinate(
-          new FromFilePointPairsSupplier(PERSONAL_INPUT).get(), 2_000_000);
+      long actual =
+          CoverageCalculator.getCoverageOnYCoordinate(
+              new FromFilePointPairsSupplier(PERSONAL_INPUT).get(), 2_000_000);
 
       // THEN
       assertThat(actual).isEqualTo(5_508_234L);
@@ -53,8 +55,9 @@ class CoverageCalculatorTest {
       // GIVEN
 
       // WHEN
-      long actual = CoverageCalculator
-          .findTuningFrequency(new FromFilePointPairsSupplier(COMMON_INPUT).get(), 20);
+      long actual =
+          CoverageCalculator.findTuningFrequency(
+              new FromFilePointPairsSupplier(COMMON_INPUT).get(), 20);
 
       // THEN
       assertThat(actual).isEqualTo(56_000_011L);
@@ -66,8 +69,9 @@ class CoverageCalculatorTest {
       // GIVEN
 
       // WHEN
-      long actual = CoverageCalculator
-          .findTuningFrequency(new FromFilePointPairsSupplier(PERSONAL_INPUT).get(), 4_000_000);
+      long actual =
+          CoverageCalculator.findTuningFrequency(
+              new FromFilePointPairsSupplier(PERSONAL_INPUT).get(), 4_000_000);
 
       // THEN
       assertThat(actual).isEqualTo(10_457_634_860_779L);

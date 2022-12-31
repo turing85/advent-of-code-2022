@@ -49,7 +49,7 @@
     <properties>
         <!-- Plugin setup -->
         <dependency-check-maven.version>7.4.1</dependency-check-maven.version>
-        <formatter-maven-plugin.version>2.21.0</formatter-maven-plugin.version>
+        <fmt-maven-plugin.version>2.19</fmt-maven-plugin.version>
         <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
         <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
         <maven-deploy-plugin.version>3.0.0</maven-deploy-plugin.version>
@@ -65,8 +65,8 @@
 
         <!-- Project setup -->
         <dependency-check-maven.skip>false</dependency-check-maven.skip>
-        <formatter-maven-plugin.goal>format</formatter-maven-plugin.goal>
-        <formatter-maven-plugin.skip>false</formatter-maven-plugin.skip>
+        <fmt-maven-plugin.goal>format</fmt-maven-plugin.goal>
+        <fmt-maven-plugin.skip>false</fmt-maven-plugin.skip>
         <git-ssh-url>git:ssh://github.com/turing85/advent-of-code-2022.git</git-ssh-url>
         <jacoco-maven-plugin.skip>false</jacoco-maven-plugin.skip>
         <maven.compiler.release>17</maven.compiler.release>
@@ -282,7 +282,7 @@
                 </property>
             </activation>
             <properties>
-                <formatter-maven-plugin.goal>validate</formatter-maven-plugin.goal>
+                <fmt-maven-plugin.goal>check</fmt-maven-plugin.goal>
                 <maven-surefire-plugin.excludedGroups/>
             </properties>
         </profile>
@@ -305,7 +305,7 @@
                 </property>
             </activation>
             <properties>
-                <formatter-maven-plugin.skip>true</formatter-maven-plugin.skip>
+                <fmt-maven-plugin.skip>true</fmt-maven-plugin.skip>
             </properties>
         </profile>
         <profile>

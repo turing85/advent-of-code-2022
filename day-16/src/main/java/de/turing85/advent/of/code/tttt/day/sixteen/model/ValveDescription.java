@@ -9,5 +9,4 @@ import java.util.Set;
  * @param flowRate its flow rate
  * @param neighbours the names of its neighbours
  */
-public record ValveDescription(String name, int flowRate, Set<String> neighbours) {
-}
+public record ValveDescription(String name, int flowRate, Set<String> neighbours) {}

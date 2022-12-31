@@ -18,9 +18,7 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import lombok.Getter;
 
-/**
- * A network of valves
- */
+/** A network of valves */
 public final class ValveNetwork {
   private final Map<String, Valve> valvesByName;
   private final ArrayList<Valve> valves;
@@ -41,8 +39,11 @@ public final class ValveNetwork {
       Set<ValveDescription> valveDescriptions) {
     Set<String> valveNames =
         valveDescriptions.stream().map(ValveDescription::name).collect(Collectors.toSet());
-    Set<String> valveNeighbours = valveDescriptions.stream().map(ValveDescription::neighbours)
-        .flatMap(Collection::stream).collect(Collectors.toSet());
+    Set<String> valveNeighbours =
+        valveDescriptions.stream()
+            .map(ValveDescription::neighbours)
+            .flatMap(Collection::stream)
+            .collect(Collectors.toSet());
     if (!valveNames.containsAll(valveNeighbours)) {
       Set<String> missingValveDefinitions = new HashSet<>(valveNeighbours);
       missingValveDefinitions.retainAll(valveNames);
@@ -53,8 +54,10 @@ public final class ValveNetwork {
 
   private static void validateAllFlowRatesArePositive(Set<ValveDescription> valveDescriptions) {
     Set<String> valvesWithNegativeFlowRate =
-        valveDescriptions.stream().filter(valveDescription -> valveDescription.flowRate() < 0)
-            .map(ValveDescription::name).collect(Collectors.toSet());
+        valveDescriptions.stream()
+            .filter(valveDescription -> valveDescription.flowRate() < 0)
+            .map(ValveDescription::name)
+            .collect(Collectors.toSet());
     if (!valvesWithNegativeFlowRate.isEmpty()) {
       throw new IllegalStateException(
           "valves %s have negative flow rate".formatted(valvesWithNegativeFlowRate));
@@ -67,12 +70,14 @@ public final class ValveNetwork {
         .collect(Collectors.toMap(Valve::name, Function.identity()));
   }
 
-  private static Map<String, Valve> initializeNeighbours(Set<ValveDescription> valveDescriptions,
-      Map<String, Valve> valvesByName) {
+  private static Map<String, Valve> initializeNeighbours(
+      Set<ValveDescription> valveDescriptions, Map<String, Valve> valvesByName) {
     for (ValveDescription description : valveDescriptions) {
       Valve valve = valvesByName.get(description.name());
       Set<Valve> neighbours =
-          valveDescriptions.stream().map(ValveDescription::name).map(valvesByName::get)
+          valveDescriptions.stream()
+              .map(ValveDescription::name)
+              .map(valvesByName::get)
               .filter(
                   possibleNeighbour -> description.neighbours().contains(possibleNeighbour.name()))
               .collect(Collectors.toSet());
@@ -88,7 +93,6 @@ public final class ValveNetwork {
    * @param startValve the name of the start valve
    * @param timeLimit time limit
    * @param n number of acteurs acting at the same time
-   *
    * @return the pressure released
    */
   public int releaseMaximumPressure(String startValve, int timeLimit, int n) {
@@ -103,24 +107,28 @@ public final class ValveNetwork {
    * @param timeLimit time limit
    * @param n number of acteurs acting at the same time
    * @param logRegularity how often a log should be written
-   *
    * @return the pressure released
    */
   public int releaseMaximumPressure(String startValve, int timeLimit, int n, int logRegularity) {
     int maxPressureReleased = Integer.MIN_VALUE;
     Queue<State> queue =
         new PriorityQueue<>(Comparator.comparing(State::pressureReleased).reversed());
-    State initialState = new State(
-        Collections.nCopies(n,
-            new ActorState(valvesByName.get(startValve), Collections.emptyList())),
-        0, Collections.emptySet(), timeLimit);
+    State initialState =
+        new State(
+            Collections.nCopies(
+                n, new ActorState(valvesByName.get(startValve), Collections.emptyList())),
+            0,
+            Collections.emptySet(),
+            timeLimit);
     queue.add(initialState);
     int iteration = 1;
     while (!queue.isEmpty()) {
       maxPressureReleased = processNextElement(maxPressureReleased, queue);
       if (iteration % logRegularity == 0 || queue.isEmpty()) {
-        Logger.getGlobal().info("iteration: %d, queue size: %d, current best: %d"
-            .formatted(iteration, queue.size(), maxPressureReleased));
+        Logger.getGlobal()
+            .info(
+                "iteration: %d, queue size: %d, current best: %d"
+                    .formatted(iteration, queue.size(), maxPressureReleased));
       }
       ++iteration;
     }
@@ -140,13 +148,17 @@ public final class ValveNetwork {
   private boolean canBeCut(State state, int maxPressureReleased) {
     Set<Valve> notYetOpened = new HashSet<>(valves);
     notYetOpened.removeAll(state.valvesOpened());
-    LinkedList<Integer> notYetOpenedFlowRates = notYetOpened.stream().map(Valve::flowRate).sorted()
-        .collect(Collectors.toCollection(LinkedList::new));
+    LinkedList<Integer> notYetOpenedFlowRates =
+        notYetOpened.stream()
+            .map(Valve::flowRate)
+            .sorted()
+            .collect(Collectors.toCollection(LinkedList::new));
     int maxPossibleRelease = state.pressureReleased();
     int timeLeft = state.timeLeft() - 1;
     while (timeLeft > 0) {
-      for (int index = 0; index < state.actorStates().size()
-          && !notYetOpenedFlowRates.isEmpty(); ++index) {
+      for (int index = 0;
+          index < state.actorStates().size() && !notYetOpenedFlowRates.isEmpty();
+          ++index) {
         maxPossibleRelease += notYetOpenedFlowRates.removeLast() * timeLeft;
         if (maxPossibleRelease > maxPressureReleased) {
           return false;
@@ -157,15 +169,11 @@ public final class ValveNetwork {
     return maxPossibleRelease < maxPressureReleased;
   }
 
-  /**
-   * A valve
-   */
+  /** A valve */
   public static class Valve {
-    @Getter
-    private final String name;
+    @Getter private final String name;
 
-    @Getter
-    private final int flowRate;
+    @Getter private final int flowRate;
 
     private final Set<Valve> directNeighbours;
 
@@ -189,7 +197,8 @@ public final class ValveNetwork {
     }
   }
 
-  private record State(List<ActorState> actorStates, int pressureReleased, Set<Valve> valvesOpened, int timeLeft) {
+  private record State(
+      List<ActorState> actorStates, int pressureReleased, Set<Valve> valvesOpened, int timeLeft) {
     private Set<State> followupStates() {
       if (timeLeft() == 0) {
         return Collections.emptySet();
@@ -203,7 +212,8 @@ public final class ValveNetwork {
       return constructFollowupStates(crossProduct(followupsPerValve));
     }
 
-    private Set<ActorStateConfig> constructFollowupConfigs(ActorState actorState, Valve currentValve) {
+    private Set<ActorStateConfig> constructFollowupConfigs(
+        ActorState actorState, Valve currentValve) {
       Set<ActorStateConfig> followups = new HashSet<>();
       if (currentValve.flowRate() > 0 && !valvesOpened().contains(currentValve)) {
         followups.add(new ActorStateConfig(Action.OPEN, currentValve, List.of(currentValve)));
@@ -212,17 +222,19 @@ public final class ValveNetwork {
       return followups;
     }
 
-    private Set<ActorStateConfig> constructMoveFollowupConfigs(ActorState state, Valve currentValve) {
+    private Set<ActorStateConfig> constructMoveFollowupConfigs(
+        ActorState state, Valve currentValve) {
       Set<ActorStateConfig> moveFollowups = new HashSet<>();
       List<Valve> visitedSinceLastValveOpening = state.visitedSinceLastValveOpening();
-      List<Valve> unvisitedNeighbours = currentValve.directNeighbours().stream()
-          .filter(Predicate.not(visitedSinceLastValveOpening::contains))
-          .toList();
+      List<Valve> unvisitedNeighbours =
+          currentValve.directNeighbours().stream()
+              .filter(Predicate.not(visitedSinceLastValveOpening::contains))
+              .toList();
       for (Valve neighbour : unvisitedNeighbours) {
         List<Valve> newVisitedSinceLastValveOpening = new ArrayList<>(visitedSinceLastValveOpening);
         newVisitedSinceLastValveOpening.add(neighbour);
-        moveFollowups.add(new ActorStateConfig(
-            Action.MOVE, neighbour, newVisitedSinceLastValveOpening));
+        moveFollowups.add(
+            new ActorStateConfig(Action.MOVE, neighbour, newVisitedSinceLastValveOpening));
       }
       return moveFollowups;
     }
@@ -232,7 +244,8 @@ public final class ValveNetwork {
       List<List<ActorStateConfig>> nextActions = List.of();
       for (ActorState currentState : actorStates()) {
         if (nextActions.isEmpty()) {
-          nextActions = followupsPerValve.get(currentState.currentValve()).stream().map(List::of).toList();
+          nextActions =
+              followupsPerValve.get(currentState.currentValve()).stream().map(List::of).toList();
         } else {
           nextActions = crossProduct(followupsPerValve, nextActions, currentState.currentValve());
         }
@@ -242,7 +255,8 @@ public final class ValveNetwork {
 
     private static List<List<ActorStateConfig>> crossProduct(
         Map<Valve, Set<ActorStateConfig>> followupsPerValve,
-        List<List<ActorStateConfig>> nextActions, Valve currentValue) {
+        List<List<ActorStateConfig>> nextActions,
+        Valve currentValue) {
       List<List<ActorStateConfig>> nextActionsNew = new ArrayList<>();
       for (List<ActorStateConfig> nextAction : nextActions) {
         for (ActorStateConfig followup : followupsPerValve.get(currentValue)) {
@@ -275,28 +289,33 @@ public final class ValveNetwork {
     }
 
     private State constructFollowupState(List<ActorStateConfig> actorStateConfig) {
-      Set<Valve> toBeOpened = actorStateConfig.stream()
-          .filter(config -> config.action.equals(Action.OPEN))
-          .map(ActorStateConfig::currentValve)
-          .collect(Collectors.toSet());
+      Set<Valve> toBeOpened =
+          actorStateConfig.stream()
+              .filter(config -> config.action.equals(Action.OPEN))
+              .map(ActorStateConfig::currentValve)
+              .collect(Collectors.toSet());
       int newTimeLeft = timeLeft() - 1;
       int newPressureReleased =
           pressureReleased() + toBeOpened.stream().mapToInt(Valve::flowRate).sum() * newTimeLeft;
       Set<Valve> newValvesOpened = new HashSet<>(valvesOpened());
       newValvesOpened.addAll(toBeOpened);
-      List<ActorState> newActorStates = actorStateConfig.stream()
-          .map(config -> new ActorState(config.currentValve(), config.visitedSinceLastValveOpening()))
-          .toList();
+      List<ActorState> newActorStates =
+          actorStateConfig.stream()
+              .map(
+                  config ->
+                      new ActorState(config.currentValve(), config.visitedSinceLastValveOpening()))
+              .toList();
       return new State(newActorStates, newPressureReleased, newValvesOpened, newTimeLeft);
     }
   }
 
   private record ActorState(Valve currentValve, List<Valve> visitedSinceLastValveOpening) {}
 
-  private record ActorStateConfig(Action action, Valve currentValve,
-      List<Valve> visitedSinceLastValveOpening) {}
+  private record ActorStateConfig(
+      Action action, Valve currentValve, List<Valve> visitedSinceLastValveOpening) {}
 
   private enum Action {
-    MOVE, OPEN
+    MOVE,
+    OPEN
   }
 }

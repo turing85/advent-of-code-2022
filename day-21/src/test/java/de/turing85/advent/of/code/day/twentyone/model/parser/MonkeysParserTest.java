@@ -40,12 +40,21 @@ class MonkeysParserTest {
     Operator expectedRootOperator = Operator.of(operatorAsChar);
     long expectedRootValue =
         expectedRootOperator.applyAsLong(expectedLeftValue, expectedRightValue);
-    String input = """
+    String input =
+        """
           %s: %s %c %s
           %s: %d
           %s: %d
-        """.formatted(expectedRootName, expectedLeftName, operatorAsChar, expectedRightName,
-        expectedLeftName, expectedLeftValue, expectedRightName, expectedRightValue);
+        """
+            .formatted(
+                expectedRootName,
+                expectedLeftName,
+                operatorAsChar,
+                expectedRightName,
+                expectedLeftName,
+                expectedLeftValue,
+                expectedRightName,
+                expectedRightValue);
 
     // WHEN
     Map<String, Monkey> actual = new MonkeysParser(input).get();

@@ -8,9 +8,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * Simulates rope movement.
- */
+/** Simulates rope movement. */
 public class RopeMovementSimulator {
   private RopeMovementSimulator() {}
 
@@ -19,7 +17,6 @@ public class RopeMovementSimulator {
    * visited by the tail.
    *
    * @param movementCommands the movement commands to simulate on head
-   *
    * @return the number of points visited by tail
    */
   public static int simulateMovementAndCountCoordinatesVisitedByTail(
@@ -31,12 +28,10 @@ public class RopeMovementSimulator {
    * Simulates the movement of n knots, given by the {@code movementCommands}, and counts the points
    * visited by the last knot.
    *
-   * <p>
-   * The movement is executed on the 1st know (the head). The tail is the last knot.
+   * <p>The movement is executed on the 1st know (the head). The tail is the last knot.
    *
    * @param movementCommands the movement commands to simulate on head
    * @param n the number of knots to simulate
-   *
    * @return the number of points visited by tail
    */
   public static int simulateMovementOfNKnotsAndCountCoordinatesVisitedByTail(
@@ -58,8 +53,12 @@ public class RopeMovementSimulator {
     return visitedByTail.size();
   }
 
-  private static List<Point> processMovementForAllKnots(List<Point> knots, int headIndex,
-      int tailIndex, Set<Point> visitedByTail, Direction direction) {
+  private static List<Point> processMovementForAllKnots(
+      List<Point> knots,
+      int headIndex,
+      int tailIndex,
+      Set<Point> visitedByTail,
+      Direction direction) {
     List<Point> newKnots = new ArrayList<>();
     for (int index = 0; index < knots.size(); ++index) {
       if (index == headIndex) {

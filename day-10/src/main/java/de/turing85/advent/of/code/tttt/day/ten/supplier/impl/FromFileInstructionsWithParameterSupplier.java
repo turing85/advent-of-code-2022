@@ -14,14 +14,14 @@ import lombok.experimental.Delegate;
 public class FromFileInstructionsWithParameterSupplier
     implements InstructionsWithParameterSupplier {
   @Delegate
-  private final FromStringInstructionsWithParameterSupplier fromStringInstructionsWithParameterSupplier;
+  private final FromStringInstructionsWithParameterSupplier
+      fromStringInstructionsWithParameterSupplier;
 
   /**
    * Reads a {@link String}-representation of {@link InstructionsWithParameterSupplier}s from a
    * file, represented by a {@link Path}.
    *
    * @param inputFile the file holding the {@link String}-representation of Instructions
-   *
    * @throws IOException if some I/O exception occurs when the file is read.
    */
   public FromFileInstructionsWithParameterSupplier(Path inputFile) throws IOException {

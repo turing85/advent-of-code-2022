@@ -8,9 +8,7 @@ import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Reads a {@link String}-representation of {@link UnloadInstruction}s.
- */
+/** Reads a {@link String}-representation of {@link UnloadInstruction}s. */
 public class FromStringUnloadInstructionsSupplier implements UnloadInstructionsSupplier {
   private static final Pattern UNLOAD_INSTRUCTION_EXTRACTOR =
       Pattern.compile("move (?<times>\\d+) from (?<from>\\d) to (?<to>\\d)");

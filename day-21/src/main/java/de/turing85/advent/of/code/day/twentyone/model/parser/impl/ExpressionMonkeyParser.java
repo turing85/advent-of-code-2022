@@ -9,12 +9,11 @@ import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Parses an {@link ExpressionMonkey}.
- */
+/** Parses an {@link ExpressionMonkey}. */
 public class ExpressionMonkeyParser implements MonkeyParser {
-  private static final Pattern EXPRESSION_MONKEY_EXTRACTOR = Pattern.compile(
-      "^(?<name>[a-zA-Z]+):\\s*(?<left>[a-zA-Z]+)\\s*(?<operator>[+\\-*/])\\s*(?<right>[a-zA-Z]+)$");
+  private static final Pattern EXPRESSION_MONKEY_EXTRACTOR =
+      Pattern.compile(
+          "^(?<name>[a-zA-Z]+):\\s*(?<left>[a-zA-Z]+)\\s*(?<operator>[+\\-*/])\\s*(?<right>[a-zA-Z]+)$");
 
   @Override
   public Monkey parse(String monkeyAsString, Map<String, Monkey> alreadyExistingMonkeys) {
@@ -30,14 +29,14 @@ public class ExpressionMonkeyParser implements MonkeyParser {
     return new ExpressionMonkey(name, operator, left, right);
   }
 
-  private static Monkey checkAndGetLeft(Map<String, Monkey> alreadyExistingMonkeys,
-      Matcher matcher) {
+  private static Monkey checkAndGetLeft(
+      Map<String, Monkey> alreadyExistingMonkeys, Matcher matcher) {
     String leftName = matcher.group("left");
     return checkExistsAndGet(alreadyExistingMonkeys, leftName);
   }
 
-  private static Monkey checkExistsAndGet(Map<String, Monkey> alreadyExistingMonkeys,
-      String rightName) {
+  private static Monkey checkExistsAndGet(
+      Map<String, Monkey> alreadyExistingMonkeys, String rightName) {
     Monkey monkey = alreadyExistingMonkeys.get(rightName);
     if (Objects.isNull(monkey)) {
       throw new IllegalStateException(
@@ -46,8 +45,8 @@ public class ExpressionMonkeyParser implements MonkeyParser {
     return monkey;
   }
 
-  private static Monkey checkAndGetRight(Map<String, Monkey> alreadyExistingMonkeys,
-      Matcher matcher) {
+  private static Monkey checkAndGetRight(
+      Map<String, Monkey> alreadyExistingMonkeys, Matcher matcher) {
     String rightName = matcher.group("right");
     return checkExistsAndGet(alreadyExistingMonkeys, rightName);
   }

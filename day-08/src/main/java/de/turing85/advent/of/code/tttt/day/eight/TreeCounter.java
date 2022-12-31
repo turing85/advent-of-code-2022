@@ -1,8 +1,6 @@
 package de.turing85.advent.of.code.tttt.day.eight;
 
-/**
- * Counts trees.
- */
+/** Counts trees. */
 public class TreeCounter {
   private TreeCounter() {}
 
@@ -10,7 +8,6 @@ public class TreeCounter {
    * Given a tree map, counts the trees visible from the outside of the map.
    *
    * @param treeMap the tree map
-   *
    * @return the number of trees visible.
    */
   public static int countVisibleTreesFromOutside(int[][] treeMap) {
@@ -19,8 +16,10 @@ public class TreeCounter {
     int width = treeMap[0].length;
     for (int i = 0; i < height; ++i) {
       for (int j = 0; j < width; ++j) {
-        if (isVisibleFromLeft(treeMap, i, j) || isVisibleFromRight(treeMap, i, j)
-            || isVisibleFromTop(treeMap, i, j) || isVisibleFromBottom(treeMap, i, j)) {
+        if (isVisibleFromLeft(treeMap, i, j)
+            || isVisibleFromRight(treeMap, i, j)
+            || isVisibleFromTop(treeMap, i, j)
+            || isVisibleFromBottom(treeMap, i, j)) {
           ++visibleTreeCount;
         }
       }
@@ -72,7 +71,6 @@ public class TreeCounter {
    * Calculates the highest scenic score of all trees in the map.
    *
    * @param treeMap the tree map
-   *
    * @return the highest scenic score
    */
   public static int calculateHighestScenicScore(int[][] treeMap) {
@@ -81,9 +79,13 @@ public class TreeCounter {
     int width = treeMap[0].length;
     for (int i = 0; i < height; ++i) {
       for (int j = 0; j < width; ++j) {
-        highestScenicScore = Math.max(highestScenicScore,
-            calculateScenicScoreLeft(treeMap, i, j) * calculateScenicScoreRight(treeMap, i, j)
-                * calculateScenicScoreUp(treeMap, i, j) * calculateScenicScoreDown(treeMap, i, j));
+        highestScenicScore =
+            Math.max(
+                highestScenicScore,
+                calculateScenicScoreLeft(treeMap, i, j)
+                    * calculateScenicScoreRight(treeMap, i, j)
+                    * calculateScenicScoreUp(treeMap, i, j)
+                    * calculateScenicScoreDown(treeMap, i, j));
       }
     }
     return highestScenicScore;

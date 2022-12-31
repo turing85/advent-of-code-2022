@@ -14,8 +14,9 @@ import java.util.regex.Pattern;
  */
 public class FromStringIntervalPairsSupplier implements IntervalPairsSupplier {
   private static final Pattern INTERVAL_PAIR_EXTRACTOR =
-      Pattern.compile("^\\s*(?<firstPairLower>\\d+)\\s*-\\s*(?<firstPairUpper>\\d+)\\s*,"
-          + "\\s*(?<secondPairLower>\\d+)\\s*-\\s*(?<secondPairUpper>\\d+)\\s*$");
+      Pattern.compile(
+          "^\\s*(?<firstPairLower>\\d+)\\s*-\\s*(?<firstPairUpper>\\d+)\\s*,"
+              + "\\s*(?<secondPairLower>\\d+)\\s*-\\s*(?<secondPairUpper>\\d+)\\s*$");
 
   private final Collection<Pair<Interval, Interval>> intervalPairs;
 
@@ -39,8 +40,8 @@ public class FromStringIntervalPairsSupplier implements IntervalPairsSupplier {
       int firstUpper = Integer.parseInt(matcher.group("firstPairUpper"));
       int secondLower = Integer.parseInt(matcher.group("secondPairLower"));
       int secondUpper = Integer.parseInt(matcher.group("secondPairUpper"));
-      return new Pair<>(new Interval(firstLower, firstUpper),
-          new Interval(secondLower, secondUpper));
+      return new Pair<>(
+          new Interval(firstLower, firstUpper), new Interval(secondLower, secondUpper));
     }
     throw new IllegalStateException("Line %s does not match expected format.".formatted(line));
   }

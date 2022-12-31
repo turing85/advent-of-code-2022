@@ -30,8 +30,13 @@ class FromStringLongListSupplierTest {
   void producesExpectedOutput() {
     // GIVEN
     Random random = new Random();
-    List<Long> expected = List.of(random.nextLong(), random.nextLong(), random.nextLong(),
-        random.nextLong(), random.nextLong());
+    List<Long> expected =
+        List.of(
+            random.nextLong(),
+            random.nextLong(),
+            random.nextLong(),
+            random.nextLong(),
+            random.nextLong());
     String input =
         expected.stream().map(Object::toString).collect(Collectors.joining(System.lineSeparator()));
 

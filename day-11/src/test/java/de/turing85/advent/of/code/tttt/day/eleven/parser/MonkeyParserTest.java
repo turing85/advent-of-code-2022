@@ -11,9 +11,14 @@ import org.junit.jupiter.params.provider.CsvSource;
 class MonkeyParserTest {
   @DisplayName("throws on parse error")
   @ParameterizedTest(name = "{0} -> throws")
-  @CsvSource({"illegalInputHeaderMalformed.txt", "illegalInputItemsMalformed.txt",
-      "illegalInputOperationMalformed.txt", "illegalInputTestMalformed.txt",
-      "illegalInputIfTrueMalformed.txt", "illegalInputIfFalseMalformed.txt"})
+  @CsvSource({
+    "illegalInputHeaderMalformed.txt",
+    "illegalInputItemsMalformed.txt",
+    "illegalInputOperationMalformed.txt",
+    "illegalInputTestMalformed.txt",
+    "illegalInputIfTrueMalformed.txt",
+    "illegalInputIfFalseMalformed.txt"
+  })
   void throwsIfMalformed(String fileName) {
     // GIVEN
     Path path = Path.of("src/test/resources", fileName);

@@ -1,19 +1,17 @@
 package de.turing85.advent.of.code.tttt.day.twentytwo.model;
 
 /**
- * Represents a position, defined by a {@link Field} and an orientation ({@link  Direction#RIGHT} or
+ * Represents a position, defined by a {@link Field} and an orientation ({@link Direction#RIGHT} or
  * {@link Direction#LEFT}).
  *
  * @param field the {@link Field}
- * @param orientation the orientation (either {@link  Direction#RIGHT} or
- *     {@link Direction#LEFT})
+ * @param orientation the orientation (either {@link Direction#RIGHT} or {@link Direction#LEFT})
  */
 public record Position(Field field, Direction orientation) {
   /**
    * Executes a single command, and returns the new {@link Position}.
    *
    * @param command to execute
-   *
    * @return the new {@link Position}
    */
   public Position execute(Command command) {
@@ -27,7 +25,8 @@ public record Position(Field field, Direction orientation) {
       --steps;
     }
     Direction commandRotation = command.rotation();
-    Direction newOrientation = commandRotation != null ? orientation.rotate(commandRotation) : orientation;
+    Direction newOrientation =
+        commandRotation != null ? orientation.rotate(commandRotation) : orientation;
     return new Position(newField, newOrientation);
   }
 }

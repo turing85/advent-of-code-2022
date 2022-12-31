@@ -68,10 +68,14 @@ class BlueprintEvaluatorTest {
       Set<Blueprint> blueprints = BlueprintParser.parseBlueprints(COMMON_INPUT);
 
       // WHEN
-      long actual = blueprints.stream().sorted(Comparator.comparing(Blueprint::id)).limit(3)
-          .map(BlueprintEvaluator::new).parallel()
-          .mapToLong(evaluator -> evaluator.findMaximumAmountOfGeodes(32))
-          .reduce(1, (lhs, rhs) -> lhs * rhs);
+      long actual =
+          blueprints.stream()
+              .sorted(Comparator.comparing(Blueprint::id))
+              .limit(3)
+              .map(BlueprintEvaluator::new)
+              .parallel()
+              .mapToLong(evaluator -> evaluator.findMaximumAmountOfGeodes(32))
+              .reduce(1, (lhs, rhs) -> lhs * rhs);
 
       // THEN
       assertThat(actual).isEqualTo(56 * 62);
@@ -84,10 +88,14 @@ class BlueprintEvaluatorTest {
       Set<Blueprint> blueprints = BlueprintParser.parseBlueprints(PERSONAL_INPUT);
 
       // WHEN
-      long actual = blueprints.stream().sorted(Comparator.comparing(Blueprint::id)).limit(3)
-          .map(BlueprintEvaluator::new).parallel()
-          .mapToLong(evaluator -> evaluator.findMaximumAmountOfGeodes(32))
-          .reduce(1, (lhs, rhs) -> lhs * rhs);
+      long actual =
+          blueprints.stream()
+              .sorted(Comparator.comparing(Blueprint::id))
+              .limit(3)
+              .map(BlueprintEvaluator::new)
+              .parallel()
+              .mapToLong(evaluator -> evaluator.findMaximumAmountOfGeodes(32))
+              .reduce(1, (lhs, rhs) -> lhs * rhs);
 
       // THEN
       assertThat(actual).isEqualTo(15_510);

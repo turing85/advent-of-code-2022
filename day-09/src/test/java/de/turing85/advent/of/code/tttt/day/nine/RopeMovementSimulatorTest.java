@@ -23,8 +23,9 @@ class RopeMovementSimulatorTest {
       Path input = Path.of("src/test/resources/commonInputOne.txt");
 
       // WHEN
-      int actual = RopeMovementSimulator.simulateMovementAndCountCoordinatesVisitedByTail(
-          new FromFileMovementCommandsSupplier(input).get());
+      int actual =
+          RopeMovementSimulator.simulateMovementAndCountCoordinatesVisitedByTail(
+              new FromFileMovementCommandsSupplier(input).get());
 
       // THEN
       assertThat(actual).isEqualTo(13);
@@ -36,8 +37,9 @@ class RopeMovementSimulatorTest {
       // GIVEN
 
       // WHEN
-      int actual = RopeMovementSimulator.simulateMovementAndCountCoordinatesVisitedByTail(
-          new FromFileMovementCommandsSupplier(PERSONAL_INPUT).get());
+      int actual =
+          RopeMovementSimulator.simulateMovementAndCountCoordinatesVisitedByTail(
+              new FromFileMovementCommandsSupplier(PERSONAL_INPUT).get());
 
       // THEN
       assertThat(actual).isEqualTo(6_197);
@@ -54,8 +56,9 @@ class RopeMovementSimulatorTest {
       Path input = Path.of("src/test/resources/commonInputTwo.txt");
 
       // WHEN
-      int actual = RopeMovementSimulator.simulateMovementOfNKnotsAndCountCoordinatesVisitedByTail(
-          new FromFileMovementCommandsSupplier(input).get(), 10);
+      int actual =
+          RopeMovementSimulator.simulateMovementOfNKnotsAndCountCoordinatesVisitedByTail(
+              new FromFileMovementCommandsSupplier(input).get(), 10);
 
       // THEN
       assertThat(actual).isEqualTo(36);
@@ -67,8 +70,9 @@ class RopeMovementSimulatorTest {
       // GIVEN
 
       // WHEN
-      int actual = RopeMovementSimulator.simulateMovementOfNKnotsAndCountCoordinatesVisitedByTail(
-          new FromFileMovementCommandsSupplier(PERSONAL_INPUT).get(), 10);
+      int actual =
+          RopeMovementSimulator.simulateMovementOfNKnotsAndCountCoordinatesVisitedByTail(
+              new FromFileMovementCommandsSupplier(PERSONAL_INPUT).get(), 10);
 
       // THEN
       assertThat(actual).isEqualTo(2_562);

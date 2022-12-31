@@ -8,9 +8,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Reads a {@link String}-representation {@link MovementCommand}s.
- */
+/** Reads a {@link String}-representation {@link MovementCommand}s. */
 public class FromStringMovementCommandSupplier implements MovementCommandsSupplier {
   private static final Pattern MOVEMENT_AND_STEP_EXTRACTOR =
       Pattern.compile("^(?<direction>[UDRL])\\s(?<steps>\\d+)$");

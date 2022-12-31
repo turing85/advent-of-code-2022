@@ -16,10 +16,10 @@ public record Elf(Point position) {
    *
    * @param positionOfElves the position of all elves, represented by {@link Point}s
    * @param directionsToConsiderInOrder the {@link Direction.Cardinal}s to consider
-   *
    * @return the next position this elf wants to move to
    */
-  Point proposeNextPoint(Set<Point> positionOfElves, List<Direction.Cardinal> directionsToConsiderInOrder) {
+  Point proposeNextPoint(
+      Set<Point> positionOfElves, List<Direction.Cardinal> directionsToConsiderInOrder) {
     if (willNotMove(positionOfElves)) {
       return position();
     }
@@ -35,12 +35,15 @@ public record Elf(Point position) {
     return !new HashSet<>(this.position().neighbours()).removeAll(positionOfElves);
   }
 
-  private boolean canMoveInDirection(Direction.Cardinal cardinalDirection,
-                                     Set<Point> positionOfElves) {
+  private boolean canMoveInDirection(
+      Direction.Cardinal cardinalDirection, Set<Point> positionOfElves) {
     Set<Point> mustBeFree =
         cardinalDirection.composes().stream()
-            .map(this.position()::neighbour).collect(Collectors.toSet());
-    return mustBeFree.stream().map(positionOfElves::contains).map(contained -> !contained)
+            .map(this.position()::neighbour)
+            .collect(Collectors.toSet());
+    return mustBeFree.stream()
+        .map(positionOfElves::contains)
+        .map(contained -> !contained)
         .reduce(true, Boolean::logicalAnd);
   }
 }

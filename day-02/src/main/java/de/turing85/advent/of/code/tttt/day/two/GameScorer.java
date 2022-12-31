@@ -3,9 +3,7 @@ package de.turing85.advent.of.code.tttt.day.two;
 import de.turing85.advent.of.code.tttt.day.two.model.GameSelection;
 import java.util.Collection;
 
-/**
- * Scores a game, i.e. a {@link Collection} of {@link GameSelection}s.
- */
+/** Scores a game, i.e. a {@link Collection} of {@link GameSelection}s. */
 public class GameScorer {
   private static final GameScorer INSTANCE = new GameScorer();
 

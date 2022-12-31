@@ -18,8 +18,9 @@ class ExpeditionTest {
   @Test
   void cloneWorks() {
     // GIVEN
-    List<Backpack> backpacks = List.of(new Backpack(RANDOM_VALUE_SUPPLIER.get()),
-        new Backpack(RANDOM_VALUE_SUPPLIER.get()));
+    List<Backpack> backpacks =
+        List.of(
+            new Backpack(RANDOM_VALUE_SUPPLIER.get()), new Backpack(RANDOM_VALUE_SUPPLIER.get()));
     Expedition expected = new Expedition(backpacks);
 
     // WHEN

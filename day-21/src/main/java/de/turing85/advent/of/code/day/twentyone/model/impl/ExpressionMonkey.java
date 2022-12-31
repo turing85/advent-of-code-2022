@@ -7,8 +7,7 @@ import java.util.Objects;
  * An expression {@link Monkey}, waiting for some the {@link Monkey}s {@code left} and {@code right}
  * to {@link Monkey#shout()}, feeding the shouted values into {@code operator}.
  *
- * <p>
- * In terms of an <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">AST</a>, this is
+ * <p>In terms of an <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">AST</a>, this is
  * an inner node, representing an operation.
  *
  * @param name the {@link Monkey#name()}

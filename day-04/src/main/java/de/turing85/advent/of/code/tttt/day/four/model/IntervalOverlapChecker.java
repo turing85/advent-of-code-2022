@@ -2,9 +2,7 @@ package de.turing85.advent.of.code.tttt.day.four.model;
 
 import java.util.Collection;
 
-/**
- * Counts the overlapping interval pairs.
- */
+/** Counts the overlapping interval pairs. */
 public class IntervalOverlapChecker {
   private static final IntervalOverlapChecker INSTANCE = new IntervalOverlapChecker();
 
@@ -26,7 +24,10 @@ public class IntervalOverlapChecker {
    * @return count of intervals overlapping.
    */
   public int countIntervalOverlaps(Collection<Pair<Interval, Interval>> intervalPairs) {
-    return (int) intervalPairs.stream()
-        .filter(pair -> Interval.overlap(pair.first(), pair.second())).count();
+    return Long.valueOf(
+            intervalPairs.stream()
+                .filter(pair -> Interval.overlap(pair.first(), pair.second()))
+                .count())
+        .intValue();
   }
 }

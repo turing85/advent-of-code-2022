@@ -8,9 +8,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
-/**
- * A 2D-point.
- */
+/** A 2D-point. */
 @EqualsAndHashCode
 @Getter
 @ToString
@@ -27,7 +25,6 @@ public final class Point implements Comparable<Point> {
    *
    * @param x x-coordinate for the {@link Point}
    * @param y y-coordinate for the {@link Point}
-   *
    * @return a {@link Point} at {@code (x, y)}
    */
   public static Point of(int x, int y) {
@@ -54,12 +51,10 @@ public final class Point implements Comparable<Point> {
   /**
    * Create a new point that is one step closer to {@code that} point.
    *
-   * <p>
-   * Diagonal steps are allowed. If the points are equal, the returned point will be the same as
+   * <p>Diagonal steps are allowed. If the points are equal, the returned point will be the same as
    * {@code this} and {@code that}.
    *
    * @param that {@code Point} to move towards
-   *
    * @return a {@code Point}, one step closer to {@code that}.
    */
   Point moveOneStepTowards(Point that) {

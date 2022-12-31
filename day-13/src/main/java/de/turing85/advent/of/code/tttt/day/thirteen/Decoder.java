@@ -8,9 +8,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-/**
- * A signal decoder.
- */
+/** A signal decoder. */
 public class Decoder {
   private static final List<Object> dividerPackages =
       List.of(List.of(List.of(2)), List.of(List.of(6)));
@@ -21,7 +19,6 @@ public class Decoder {
    * Determines what packages of a given {@code signal} are in the right order.
    *
    * @param signal the signal
-   *
    * @return set of indices of package-pairs that are in the right order.
    */
   public static Set<Integer> pairsInRightOrder(List<Pair<Object, Object>> signal) {
@@ -69,8 +66,11 @@ public class Decoder {
    * @return the corresponding decoder key
    */
   public static int calculateDecoderKey(List<Pair<Object, Object>> signal) {
-    List<Object> flattenedSignal = signal.stream().map(pair -> List.of(pair.first(), pair.second()))
-        .flatMap(Collection::stream).collect(Collectors.toCollection(ArrayList::new));
+    List<Object> flattenedSignal =
+        signal.stream()
+            .map(pair -> List.of(pair.first(), pair.second()))
+            .flatMap(Collection::stream)
+            .collect(Collectors.toCollection(ArrayList::new));
     flattenedSignal.addAll(dividerPackages);
     flattenedSignal.sort(Decoder::compare);
     return (flattenedSignal.indexOf(dividerPackages.get(0)) + 1)

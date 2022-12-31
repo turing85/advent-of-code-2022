@@ -26,9 +26,11 @@ class CommandExecutorTest {
     // GIVEN
 
     // WHEN
-    assertThrows(IllegalStateException.class,
-        () -> new CommandExecutor(Collections.emptySet(), NEIGHBOUR_LINKER)
-            .runCommands(Collections.emptyList()));
+    assertThrows(
+        IllegalStateException.class,
+        () ->
+            new CommandExecutor(Collections.emptySet(), NEIGHBOUR_LINKER)
+                .runCommands(Collections.emptyList()));
   }
 
   @DisplayName("planar neighbours tests")
@@ -44,8 +46,9 @@ class CommandExecutorTest {
           new FromFileFieldsAndCommandsSupplier(COMMON_INPUT).get();
 
       // WHEN
-      Position actual = new CommandExecutor(fieldsAndCommands.fields(), NEIGHBOUR_LINKER)
-          .runCommands(fieldsAndCommands.commands());
+      Position actual =
+          new CommandExecutor(fieldsAndCommands.fields(), NEIGHBOUR_LINKER)
+              .runCommands(fieldsAndCommands.commands());
 
       // THEN
       int actualValue =
@@ -61,8 +64,9 @@ class CommandExecutorTest {
           new FromFileFieldsAndCommandsSupplier(PERSONAL_INPUT).get();
 
       // WHEN
-      Position actual = new CommandExecutor(fieldsAndCommands.fields(), neighbourLinker)
-          .runCommands(fieldsAndCommands.commands());
+      Position actual =
+          new CommandExecutor(fieldsAndCommands.fields(), neighbourLinker)
+              .runCommands(fieldsAndCommands.commands());
 
       // THEN
       int actualValue =
@@ -84,8 +88,9 @@ class CommandExecutorTest {
           new FromFileFieldsAndCommandsSupplier(COMMON_INPUT).get();
 
       // WHEN
-      Position actual = new CommandExecutor(fieldsAndCommands.fields(), NEIGHBOUR_LINKER)
-          .runCommands(fieldsAndCommands.commands());
+      Position actual =
+          new CommandExecutor(fieldsAndCommands.fields(), NEIGHBOUR_LINKER)
+              .runCommands(fieldsAndCommands.commands());
 
       // THEN
       int actualValue =
@@ -101,8 +106,9 @@ class CommandExecutorTest {
           new FromFileFieldsAndCommandsSupplier(PERSONAL_INPUT).get();
 
       // WHEN
-      Position actual = new CommandExecutor(fieldsAndCommands.fields(), NEIGHBOUR_LINKER)
-          .runCommands(fieldsAndCommands.commands());
+      Position actual =
+          new CommandExecutor(fieldsAndCommands.fields(), NEIGHBOUR_LINKER)
+              .runCommands(fieldsAndCommands.commands());
 
       // THEN
       int actualValue =
@@ -119,5 +125,4 @@ class CommandExecutorTest {
       case UP -> 3;
     };
   }
-
 }

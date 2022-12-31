@@ -7,9 +7,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Reads a {@link String}-representation of commands and responses.
- */
+/** Reads a {@link String}-representation of commands and responses. */
 public class FromStringCommandsAndResponsesSupplier implements CommandsAndResponsesSupplier {
   private static final Pattern COMMAND_EXTRACTOR = Pattern.compile("^\\$\\s*(?<command>.*)$");
   private final List<Pair<String, List<String>>> commandsAndResponses;

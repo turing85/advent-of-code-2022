@@ -1,26 +1,16 @@
 package de.turing85.adventure.of.code.tttt.day.seventeen.model;
 
-/**
- * A cardinal direction.
- */
+/** A cardinal direction. */
 public enum Direction {
-  /**
-   * Up direction
-   */
+  /** Up direction */
   UP,
 
-  /**
-   * Down direction
-   */
+  /** Down direction */
   DOWN,
 
-  /**
-   * Left direction
-   */
+  /** Left direction */
   LEFT,
 
-  /**
-   * Right direction
-   */
+  /** Right direction */
   RIGHT
 }

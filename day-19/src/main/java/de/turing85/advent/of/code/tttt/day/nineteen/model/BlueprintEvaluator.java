@@ -9,10 +9,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.logging.Logger;
 
-
-/**
- * Evaluate a blueprint.
- */
+/** Evaluate a blueprint. */
 public class BlueprintEvaluator {
   private final Blueprint blueprint;
   private long maxAmountOfGeodes;
@@ -71,10 +68,18 @@ public class BlueprintEvaluator {
     return queue;
   }
 
-  private record State(Blueprint blueprint, Map<ResourceType, Long> productionPerMinute,
-      Map<ResourceType, Long> inventory, int timeLeft, RobotRecipe nextRecipeToExecute) {
-    private State(Blueprint blueprint, Map<ResourceType, Long> productionPerMinute,
-        Map<ResourceType, Long> inventory, int timeLeft, RobotRecipe nextRecipeToExecute) {
+  private record State(
+      Blueprint blueprint,
+      Map<ResourceType, Long> productionPerMinute,
+      Map<ResourceType, Long> inventory,
+      int timeLeft,
+      RobotRecipe nextRecipeToExecute) {
+    private State(
+        Blueprint blueprint,
+        Map<ResourceType, Long> productionPerMinute,
+        Map<ResourceType, Long> inventory,
+        int timeLeft,
+        RobotRecipe nextRecipeToExecute) {
       this.blueprint = blueprint;
       this.productionPerMinute = Collections.unmodifiableMap(productionPerMinute);
       this.inventory = Collections.unmodifiableMap(inventory);
@@ -107,8 +112,8 @@ public class BlueprintEvaluator {
       return newInventory;
     }
 
-    private static Set<State> handleSingleFollowupState(long maxAmountOfGeodes,
-        Set<State> followupStates) {
+    private static Set<State> handleSingleFollowupState(
+        long maxAmountOfGeodes, Set<State> followupStates) {
       State followupState = followupStates.iterator().next();
       if (followupState.timeLeft() == 0) {
         return Set.of(followupState);
@@ -137,27 +142,32 @@ public class BlueprintEvaluator {
         newInventory = addProductionPerMinute(newInventory);
         --newTimeLeft;
       }
-      State state = new State(blueprint, productionPerMinute(), newInventory, newTimeLeft,
-          nextRecipeToExecute());
+      State state =
+          new State(
+              blueprint, productionPerMinute(), newInventory, newTimeLeft, nextRecipeToExecute());
       if (newTimeLeft == 0) {
         return Set.of(state);
       }
       return state.generateFollowupStates(maxAmountOfGeodes);
     }
 
-    private boolean canSkipThisRecipe(RobotRecipe recipe, Map<ResourceType, Long> newProduction,
-        Map<ResourceType, Long> newInventory, long maxAmountOfGeodes) {
+    private boolean canSkipThisRecipe(
+        RobotRecipe recipe,
+        Map<ResourceType, Long> newProduction,
+        Map<ResourceType, Long> newInventory,
+        long maxAmountOfGeodes) {
       ResourceType resourceTypeOfProducedRobot = recipe.collectTypeOfProducedRobot();
-      long maximumConsumptionOfThisResourceByBlueprint = blueprint()
-          .maximumConsumptionPerMinutePerResource()
-          .getOrDefault(resourceTypeOfProducedRobot, 0L);
+      long maximumConsumptionOfThisResourceByBlueprint =
+          blueprint()
+              .maximumConsumptionPerMinutePerResource()
+              .getOrDefault(resourceTypeOfProducedRobot, 0L);
       if (recipe.isNotEnoughProductionToEventuallyStartConstruction(newProduction)) {
         return true;
       }
       boolean producedRobotIsNotGeodeRobot = resourceTypeOfProducedRobot != ResourceType.GEODE;
       boolean enoughProductionOfThisType =
-          maximumConsumptionOfThisResourceByBlueprint <=
-              productionPerMinute().getOrDefault(resourceTypeOfProducedRobot, 0L);
+          maximumConsumptionOfThisResourceByBlueprint
+              <= productionPerMinute().getOrDefault(resourceTypeOfProducedRobot, 0L);
       if (producedRobotIsNotGeodeRobot && enoughProductionOfThisType) {
         return true;
       }
@@ -168,12 +178,15 @@ public class BlueprintEvaluator {
       return forecastCanBeatCurrentBest(recipe, newInventory, maxAmountOfGeodes, geodesPerTimeUnit);
     }
 
-    private boolean forecastCanBeatCurrentBest(RobotRecipe recipe,
-        Map<ResourceType, Long> newInventory, long maxAmountOfGeodes, long geodesPerTimeUnit) {
+    private boolean forecastCanBeatCurrentBest(
+        RobotRecipe recipe,
+        Map<ResourceType, Long> newInventory,
+        long maxAmountOfGeodes,
+        long geodesPerTimeUnit) {
       int timeToNextRobot = 1;
       Map<ResourceType, Long> inventoryForecast = new EnumMap<>(newInventory);
-      while (timeToNextRobot < timeLeft() - 1 &&
-          !recipe.isEnoughOfResourceToBuild(inventoryForecast)) {
+      while (timeToNextRobot < timeLeft() - 1
+          && !recipe.isEnoughOfResourceToBuild(inventoryForecast)) {
         inventoryForecast = addProductionPerMinute(inventoryForecast);
         ++timeToNextRobot;
       }
@@ -184,8 +197,8 @@ public class BlueprintEvaluator {
       long geodesDeltaToNextRobot = geodesPerTimeUnit * timeToNextRobot;
       long timeLeftWhenRobotCompletes = ((long) timeLeft) - timeToNextRobot;
       long optimalGeodesDelta =
-          littleGauss(geodesPerTimeUnit + timeLeftWhenRobotCompletes) -
-              littleGauss(geodesPerTimeUnit);
+          littleGauss(geodesPerTimeUnit + timeLeftWhenRobotCompletes)
+              - littleGauss(geodesPerTimeUnit);
       return geodesNow + optimalGeodesDelta + geodesDeltaToNextRobot <= maxAmountOfGeodes;
     }
 
@@ -215,7 +228,8 @@ public class BlueprintEvaluator {
 
     private Map<ResourceType, Long> subtractCosts() {
       Map<ResourceType, Long> inventoryAfterSubtraction = new EnumMap<>(inventory());
-      for (Map.Entry<ResourceType, Long> entry : this.nextRecipeToExecute().resourcesNeeded().entrySet()) {
+      for (Map.Entry<ResourceType, Long> entry :
+          this.nextRecipeToExecute().resourcesNeeded().entrySet()) {
         ResourceType resourceType = entry.getKey();
         long afterSubtraction = inventoryAfterSubtraction.get(resourceType) - entry.getValue();
         inventoryAfterSubtraction.put(resourceType, afterSubtraction);

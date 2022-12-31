@@ -8,15 +8,12 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Delegate;
 
-/**
- * Represents a field on the map, with its neighbours in the four cardinal {@link Direction}s.
- */
+/** Represents a field on the map, with its neighbours in the four cardinal {@link Direction}s. */
 @Getter
 @Setter
 @EqualsAndHashCode
 public class Field {
-  @Delegate
-  private final Point point;
+  @Delegate private final Point point;
   private final boolean hasRock;
 
   @Getter(AccessLevel.PRIVATE)

@@ -2,9 +2,7 @@ package de.turing85.advent.of.code.tttt.day.eight.supplier.impl;
 
 import de.turing85.advent.of.code.tttt.day.eight.supplier.TreeMapSupplier;
 
-/**
- * Reads a {@link String}-representation of a tree map.
- */
+/** Reads a {@link String}-representation of a tree map. */
 public class FromStringTreeMapSupplier implements TreeMapSupplier {
   private final int[][] treeMap;
 

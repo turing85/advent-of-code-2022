@@ -6,8 +6,7 @@ import de.turing85.advent.of.code.tttt.day.two.supplier.impl.second.colum.Second
 /**
  * Interprets the second colum as own selection.
  *
- * <p>
- * Character {@code 'X'} denotes Rock, {@code 'Y'} denotes Paper, {@code 'Z'} denotes Scissors.
+ * <p>Character {@code 'X'} denotes Rock, {@code 'Y'} denotes Paper, {@code 'Z'} denotes Scissors.
  */
 public class SecondColumOwnSelectionConverter implements SecondColumnConverter {
   private static final SecondColumOwnSelectionConverter INSTANCE =

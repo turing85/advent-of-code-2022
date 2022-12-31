@@ -1,6 +1,4 @@
-/**
- * the module to Advent of Codes's 2022 day 17 challenge
- */
+/** the module to Advent of Codes's 2022 day 17 challenge */
 module de.turing85.advent.of.code.day.seventeen {
   requires static lombok;
 }

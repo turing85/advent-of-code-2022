@@ -5,9 +5,7 @@ import de.turing85.advent.of.code.tttt.day.four.model.Pair;
 import java.util.Collection;
 import java.util.function.Supplier;
 
-/**
- * A supplier, supplying some {@link Pair}s of {@link Interval}s.
- */
+/** A supplier, supplying some {@link Pair}s of {@link Interval}s. */
 public interface IntervalPairsSupplier extends Supplier<Collection<Pair<Interval, Interval>>> {
   @Override
   default Collection<Pair<Interval, Interval>> get() {

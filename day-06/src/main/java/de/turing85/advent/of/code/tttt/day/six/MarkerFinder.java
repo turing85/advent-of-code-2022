@@ -5,9 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.stream.Collectors;
 
-/**
- * Signal marker finder.
- */
+/** Signal marker finder. */
 public class MarkerFinder {
   private MarkerFinder() {}
 
@@ -15,7 +13,6 @@ public class MarkerFinder {
    * Given a data stream (as {@link Path}), finds the earliest start-of-packet marker
    *
    * @param inputFile the data stream, as file
-   *
    * @return the start-of-packet marker
    * @throws IOException if some I/O exception occurs when the file is read.
    */
@@ -27,7 +24,6 @@ public class MarkerFinder {
    * Given a data stream (as {@link String}), finds the earliest start-of-packet marker
    *
    * @param dataStream the data stream, as {@link String}
-   *
    * @return the start-of-packet marker
    */
   public static int findStartOfPacket(String dataStream) {
@@ -38,7 +34,6 @@ public class MarkerFinder {
    * Given a data stream (as {@link Path}), finds the earliest start-of-message marker
    *
    * @param inputFile the data stream, as file
-   *
    * @return the start-of-message marker
    * @throws IOException if some I/O exception occurs when the file is read.
    */
@@ -50,7 +45,6 @@ public class MarkerFinder {
    * Given a data stream (as {@link String}), finds the earliest start-of-message marker
    *
    * @param dataStream the data stream, as {@link String}
-   *
    * @return the start-of-message marker
    */
   public static int findStartOfMessage(String dataStream) {
@@ -59,8 +53,13 @@ public class MarkerFinder {
 
   private static int findMarker(String dataStreamString, int n) {
     for (int i = n; i < dataStreamString.length(); ++i) {
-      if (n == dataStreamString.substring(i - n, i).chars().boxed().collect(Collectors.toSet())
-          .size()) {
+      if (n
+          == dataStreamString
+              .substring(i - n, i)
+              .chars()
+              .boxed()
+              .collect(Collectors.toSet())
+              .size()) {
         return i;
       }
     }

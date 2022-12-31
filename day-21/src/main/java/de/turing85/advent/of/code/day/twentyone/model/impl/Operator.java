@@ -6,24 +6,16 @@ import java.util.function.LongBinaryOperator;
  * Mathematical operators ({@code +), {@code -), {@code *), {@code /)).
  */
 public enum Operator implements LongBinaryOperator {
-  /**
-   * Plus ({@code +}) operator.
-   */
+  /** Plus ({@code +}) operator. */
   PLUS(Long::sum),
 
-  /**
-   * Minus ({@code -}) operator.
-   */
+  /** Minus ({@code -}) operator. */
   MINUS((left, right) -> left - right),
 
-  /**
-   * Times ({@code *}) operator.
-   */
+  /** Times ({@code *}) operator. */
   TIMES((left, right) -> left * right),
 
-  /**
-   * Divide ({@code /}) operator.
-   */
+  /** Divide ({@code /}) operator. */
   DIVIDE((left, right) -> left / right);
 
   private final LongBinaryOperator function;

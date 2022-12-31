@@ -30,8 +30,8 @@ class FromFileExpeditionSupplierTest {
     // GIVEN
 
     // WHEN & THEN
-    Assertions.assertThrows(IllegalArgumentException.class,
-        () -> new FromFileExpeditionSupplier(ILLEGAL_INPUT));
+    Assertions.assertThrows(
+        IllegalArgumentException.class, () -> new FromFileExpeditionSupplier(ILLEGAL_INPUT));
   }
 
   @Nested

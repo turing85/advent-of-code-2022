@@ -27,8 +27,9 @@ class MonkeyBusinessTest {
       // GIVEN
 
       // WHEN
-      long actual = new MonkeyBusiness(MonkeysParser.parse(COMMON_INPUT))
-          .playNRoundsAndCalculateTopMMonkeyBusiness(ROUNDS, 2, STRESS_MODIFIER);
+      long actual =
+          new MonkeyBusiness(MonkeysParser.parse(COMMON_INPUT))
+              .playNRoundsAndCalculateTopMMonkeyBusiness(ROUNDS, 2, STRESS_MODIFIER);
 
       // THEN
       assertThat(actual).isEqualTo(10_605L);
@@ -40,8 +41,9 @@ class MonkeyBusinessTest {
       // GIVEN
 
       // WHEN
-      long actual = new MonkeyBusiness(MonkeysParser.parse(PERSONAL_INPUT))
-          .playNRoundsAndCalculateTopMMonkeyBusiness(ROUNDS, 2, STRESS_MODIFIER);
+      long actual =
+          new MonkeyBusiness(MonkeysParser.parse(PERSONAL_INPUT))
+              .playNRoundsAndCalculateTopMMonkeyBusiness(ROUNDS, 2, STRESS_MODIFIER);
 
       // THEN
       assertThat(actual).isEqualTo(118_674L);
@@ -60,8 +62,9 @@ class MonkeyBusinessTest {
       // GIVEN
 
       // WHEN
-      long actual = new MonkeyBusiness(MonkeysParser.parse(COMMON_INPUT))
-          .playNRoundsAndCalculateTopMMonkeyBusiness(ROUNDS, 2, NO_STRESS_MODIFIER);
+      long actual =
+          new MonkeyBusiness(MonkeysParser.parse(COMMON_INPUT))
+              .playNRoundsAndCalculateTopMMonkeyBusiness(ROUNDS, 2, NO_STRESS_MODIFIER);
 
       // THEN
       assertThat(actual).isEqualTo(2_713_310_158L);
@@ -73,8 +76,9 @@ class MonkeyBusinessTest {
       // GIVEN
 
       // WHEN
-      long actual = new MonkeyBusiness(MonkeysParser.parse(PERSONAL_INPUT))
-          .playNRoundsAndCalculateTopMMonkeyBusiness(ROUNDS, 2, NO_STRESS_MODIFIER);
+      long actual =
+          new MonkeyBusiness(MonkeysParser.parse(PERSONAL_INPUT))
+              .playNRoundsAndCalculateTopMMonkeyBusiness(ROUNDS, 2, NO_STRESS_MODIFIER);
 
       // THEN
       assertThat(actual).isEqualTo(32_333_418_600L);

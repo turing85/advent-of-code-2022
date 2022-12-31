@@ -17,8 +17,9 @@ class GrainOfSandTest {
     int x = 1;
     int y = 0;
     Set<Point> blocked = Set.of(Point.of(0, 1), Point.of(1, 1), Point.of(2, 1));
-    GrainOfSand underTest = new GrainOfSand(Point.of(x, y), blocked, Integer.MAX_VALUE,
-        Integer.MIN_VALUE, Integer.MAX_VALUE);
+    GrainOfSand underTest =
+        new GrainOfSand(
+            Point.of(x, y), blocked, Integer.MAX_VALUE, Integer.MIN_VALUE, Integer.MAX_VALUE);
 
     // WHEN
     underTest.fall();

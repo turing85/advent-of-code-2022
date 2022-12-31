@@ -36,8 +36,9 @@ class TreeCounterTest {
       // GIVEN
 
       // WHEN
-      int actual = TreeCounter
-          .countVisibleTreesFromOutside(new FromFileTreeMapSupplier(PERSONAL_INPUT).get());
+      int actual =
+          TreeCounter.countVisibleTreesFromOutside(
+              new FromFileTreeMapSupplier(PERSONAL_INPUT).get());
 
       // THEN
       assertThat(actual).isEqualTo(1_870);
@@ -66,8 +67,9 @@ class TreeCounterTest {
       // GIVEN
 
       // WHEN
-      int actual = TreeCounter
-          .calculateHighestScenicScore(new FromFileTreeMapSupplier(PERSONAL_INPUT).get());
+      int actual =
+          TreeCounter.calculateHighestScenicScore(
+              new FromFileTreeMapSupplier(PERSONAL_INPUT).get());
 
       // THEN
       assertThat(actual).isEqualTo(517_440);

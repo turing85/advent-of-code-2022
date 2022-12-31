@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Given a {@link java.util.List} of {@link Rucksack}s, calculates the sum of all badges per
- * {@code n}-Group.
+ * Given a {@link java.util.List} of {@link Rucksack}s, calculates the sum of all badges per {@code
+ * n}-Group.
  */
 public class BadgeFinder {
   private static final BadgeFinder INSTANCE = new BadgeFinder();
@@ -47,8 +47,10 @@ public class BadgeFinder {
   }
 
   private int findBadgeScoreOfGroup(List<Rucksack> groupList) {
-    Set<Integer> result = groupList.stream().map(Rucksack::getAllItemPriorities)
-        .reduce(groupList.get(0).getAllItemPriorities(), BadgeFinder::intersection);
+    Set<Integer> result =
+        groupList.stream()
+            .map(Rucksack::getAllItemPriorities)
+            .reduce(groupList.get(0).getAllItemPriorities(), BadgeFinder::intersection);
     if (result.size() != 1) {
       throw new IllegalStateException("Exactly one item must be in common in a group!");
     }

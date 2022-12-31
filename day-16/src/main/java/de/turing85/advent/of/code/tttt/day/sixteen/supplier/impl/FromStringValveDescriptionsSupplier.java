@@ -9,13 +9,12 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import lombok.Getter;
 
-/**
- * Reads a {@link String}-representation {@link ValveDescription}s.
- */
+/** Reads a {@link String}-representation {@link ValveDescription}s. */
 @Getter
 public class FromStringValveDescriptionsSupplier implements ValveDescriptionsSupplier {
-  private static final Pattern DESCRIPTION_EXTRACTOR_PATTERN = Pattern.compile(
-      "^Valve (?<name>[a-zA-Z0-9]+) has flow rate=(?<flowRate>\\d+); tunnels? leads? to valves? (?<neighbours>.*)$");
+  private static final Pattern DESCRIPTION_EXTRACTOR_PATTERN =
+      Pattern.compile(
+          "^Valve (?<name>[a-zA-Z0-9]+) has flow rate=(?<flowRate>\\d+); tunnels? leads? to valves? (?<neighbours>.*)$");
 
   private final Set<ValveDescription> valveDescriptions;
 
@@ -25,8 +24,10 @@ public class FromStringValveDescriptionsSupplier implements ValveDescriptionsSup
    * @param inputAsString the {@link String}-representation of {@link ValveDescription}s
    */
   public FromStringValveDescriptionsSupplier(String inputAsString) {
-    valveDescriptions = Arrays.stream(inputAsString.split(System.lineSeparator()))
-        .map(FromStringValveDescriptionsSupplier::validateAndParse).collect(Collectors.toSet());
+    valveDescriptions =
+        Arrays.stream(inputAsString.split(System.lineSeparator()))
+            .map(FromStringValveDescriptionsSupplier::validateAndParse)
+            .collect(Collectors.toSet());
   }
 
   private static ValveDescription validateAndParse(String line) {

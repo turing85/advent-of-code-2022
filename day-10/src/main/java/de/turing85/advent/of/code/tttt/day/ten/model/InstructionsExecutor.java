@@ -7,9 +7,7 @@ import java.util.function.BiFunction;
 import java.util.function.BinaryOperator;
 import java.util.function.IntPredicate;
 
-/**
- * Executes a {@link List} of {@link InstructionWithParameter}s on a freshly initialized CPU.
- */
+/** Executes a {@link List} of {@link InstructionWithParameter}s on a freshly initialized CPU. */
 public class InstructionsExecutor {
   private InstructionsExecutor() {}
 
@@ -17,7 +15,6 @@ public class InstructionsExecutor {
    * Executes the {@link InstructionWithParameter}s.
    *
    * @param instructionsWithParameter to execute
-   *
    * @return The {@code cycle} and the corresponding {@code X}-register at this cycle.
    */
   public static Map<Integer, Integer> executeInstructions(
@@ -35,13 +32,11 @@ public class InstructionsExecutor {
   /**
    * Executes instructions, and filters, maps and reduces the history of {@code X}-register values.
    *
-   * <p>
-   * In detail, this method calls {@link #executeInstructions(List)} with
-   * {@code instructionsWithParameter}. Then, the return-value of this call is filtered by
-   * {@code cycleFilter}. As the name suggest, the filter is based on the {@code cycle}s. The
-   * remaining {@code cycle}-{@code X}-register pairs are then mapped by the
-   * {@code cycleAndXRegisterMapper}. Finally, all resulting values are reduced through
-   * {@code identity} and {@code operation}.
+   * <p>In detail, this method calls {@link #executeInstructions(List)} with {@code
+   * instructionsWithParameter}. Then, the return-value of this call is filtered by {@code
+   * cycleFilter}. As the name suggest, the filter is based on the {@code cycle}s. The remaining
+   * {@code cycle}-{@code X}-register pairs are then mapped by the {@code cycleAndXRegisterMapper}.
+   * Finally, all resulting values are reduced through {@code identity} and {@code operation}.
    *
    * @param instructionsWithParameter to execute
    * @param cycleFilter {@code cycle}-based filter
@@ -49,15 +44,17 @@ public class InstructionsExecutor {
    * @param identity identity for reduction
    * @param operation reduction operation
    * @param <T> the type mapped to and returned by this method.
-   *
    * @return the reduction result
    */
   public static <T> T executeFilterMapReduce(
-      List<InstructionWithParameter> instructionsWithParameter, IntPredicate cycleFilter,
-      BiFunction<Integer, Integer, T> cycleAndXRegisterMapper, T identity,
+      List<InstructionWithParameter> instructionsWithParameter,
+      IntPredicate cycleFilter,
+      BiFunction<Integer, Integer, T> cycleAndXRegisterMapper,
+      T identity,
       BinaryOperator<T> operation) {
     return executeInstructions(instructionsWithParameter).entrySet().stream()
-        .sorted(Map.Entry.comparingByKey()).filter(entry -> cycleFilter.test(entry.getKey()))
+        .sorted(Map.Entry.comparingByKey())
+        .filter(entry -> cycleFilter.test(entry.getKey()))
         .map(entry -> cycleAndXRegisterMapper.apply(entry.getKey(), entry.getValue()))
         .reduce(identity, operation);
   }

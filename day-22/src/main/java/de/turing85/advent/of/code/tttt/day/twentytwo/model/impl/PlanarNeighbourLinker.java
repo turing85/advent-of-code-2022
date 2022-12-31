@@ -11,9 +11,7 @@ import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-/**
- * Links neighbouring {@link Field}s in a 2D-fashion.
- */
+/** Links neighbouring {@link Field}s in a 2D-fashion. */
 public class PlanarNeighbourLinker implements NeighbourLinker {
   @Override
   public Set<Field> linkNeighbours(Set<Field> fields) {
@@ -24,8 +22,11 @@ public class PlanarNeighbourLinker implements NeighbourLinker {
       Field down = findDown(field, fieldsByPoint);
       Field right = findRight(field, fieldsByPoint);
       Field left = findLeft(field, fieldsByPoint);
-      field.neighbour(Direction.UP, up).neighbour(Direction.DOWN, down)
-          .neighbour(Direction.RIGHT, right).neighbour(Direction.LEFT, left);
+      field
+          .neighbour(Direction.UP, up)
+          .neighbour(Direction.DOWN, down)
+          .neighbour(Direction.RIGHT, right)
+          .neighbour(Direction.LEFT, left);
     }
     return new HashSet<>(fieldsByPoint.values());
   }
@@ -37,8 +38,12 @@ public class PlanarNeighbourLinker implements NeighbourLinker {
     if (Objects.nonNull(maybeUp)) {
       return maybeUp;
     }
-    int upY = fieldsByPoint.values().stream().filter(field -> field.x() == currentX)
-        .mapToInt(Field::y).max().orElse(Integer.MIN_VALUE);
+    int upY =
+        fieldsByPoint.values().stream()
+            .filter(field -> field.x() == currentX)
+            .mapToInt(Field::y)
+            .max()
+            .orElse(Integer.MIN_VALUE);
     return fieldsByPoint.get(new Point(currentX, upY));
   }
 
@@ -49,8 +54,12 @@ public class PlanarNeighbourLinker implements NeighbourLinker {
     if (Objects.nonNull(maybeDown)) {
       return maybeDown;
     }
-    int downY = fieldsByPoint.values().stream().filter(field -> field.x() == currentX)
-        .mapToInt(Field::y).min().orElse(Integer.MAX_VALUE);
+    int downY =
+        fieldsByPoint.values().stream()
+            .filter(field -> field.x() == currentX)
+            .mapToInt(Field::y)
+            .min()
+            .orElse(Integer.MAX_VALUE);
     return fieldsByPoint.get(new Point(currentX, downY));
   }
 
@@ -61,8 +70,12 @@ public class PlanarNeighbourLinker implements NeighbourLinker {
     if (Objects.nonNull(maybeRight)) {
       return maybeRight;
     }
-    int rightX = fieldsByPoint.values().stream().filter(field -> field.y() == currentY)
-        .mapToInt(Field::x).min().orElse(Integer.MAX_VALUE);
+    int rightX =
+        fieldsByPoint.values().stream()
+            .filter(field -> field.y() == currentY)
+            .mapToInt(Field::x)
+            .min()
+            .orElse(Integer.MAX_VALUE);
     return fieldsByPoint.get(new Point(rightX, currentY));
   }
 
@@ -73,8 +86,12 @@ public class PlanarNeighbourLinker implements NeighbourLinker {
     if (Objects.nonNull(maybeLeft)) {
       return maybeLeft;
     }
-    int leftX = fieldsByPoint.values().stream().filter(field -> field.y() == currentY)
-        .mapToInt(Field::x).max().orElse(Integer.MIN_VALUE);
+    int leftX =
+        fieldsByPoint.values().stream()
+            .filter(field -> field.y() == currentY)
+            .mapToInt(Field::x)
+            .max()
+            .orElse(Integer.MIN_VALUE);
     return fieldsByPoint.get(new Point(leftX, currentY));
   }
 }

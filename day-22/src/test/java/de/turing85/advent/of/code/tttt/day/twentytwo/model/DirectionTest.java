@@ -42,8 +42,16 @@ class DirectionTest {
   class RotationTest {
     @DisplayName("works as expected")
     @ParameterizedTest(name = "{0} {1} -> {2}")
-    @CsvSource({"UP,LEFT,LEFT", "DOWN,LEFT,RIGHT", "RIGHT,LEFT,UP", "LEFT,LEFT,DOWN",
-        "UP,RIGHT,RIGHT", "DOWN,RIGHT,LEFT", "RIGHT,RIGHT,DOWN", "LEFT,RIGHT,UP"})
+    @CsvSource({
+      "UP,LEFT,LEFT",
+      "DOWN,LEFT,RIGHT",
+      "RIGHT,LEFT,UP",
+      "LEFT,LEFT,DOWN",
+      "UP,RIGHT,RIGHT",
+      "DOWN,RIGHT,LEFT",
+      "RIGHT,RIGHT,DOWN",
+      "LEFT,RIGHT,UP"
+    })
     void worksAsExpected(Direction initial, Direction rotation, Direction expected) {
       // GIVEN
 
@@ -62,6 +70,5 @@ class DirectionTest {
       // WHEN & THEN
       assertThrows(IllegalArgumentException.class, () -> Direction.RIGHT.rotate(Direction.UP));
     }
-
   }
 }

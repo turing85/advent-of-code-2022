@@ -17,8 +17,8 @@ class FromFileRucksackSupplierTest {
     // GIVEN
 
     // WHEN & THEN
-    assertThrows(IllegalArgumentException.class,
-        () -> new FromFileRucksackSupplier(ILLEGAL_INPUT_ONE));
+    assertThrows(
+        IllegalArgumentException.class, () -> new FromFileRucksackSupplier(ILLEGAL_INPUT_ONE));
   }
 
   @DisplayName("throws exception on odd input length")
@@ -27,7 +27,7 @@ class FromFileRucksackSupplierTest {
     // GIVEN
 
     // WHEN & THEN
-    assertThrows(IllegalArgumentException.class,
-        () -> new FromFileRucksackSupplier(ILLEGAL_INPUT_TWO));
+    assertThrows(
+        IllegalArgumentException.class, () -> new FromFileRucksackSupplier(ILLEGAL_INPUT_TWO));
   }
 }

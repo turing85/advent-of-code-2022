@@ -15,8 +15,8 @@ class FromFileInstructionsWithParameterSupplierTest {
     Path path = Path.of("src/test/resources/illegalInputOne.txt");
 
     // WHEN & THEN
-    assertThrows(IllegalStateException.class,
-        () -> new FromFileInstructionsWithParameterSupplier(path));
+    assertThrows(
+        IllegalStateException.class, () -> new FromFileInstructionsWithParameterSupplier(path));
   }
 
   @DisplayName("should throw if addx is missing parameter")
@@ -26,7 +26,7 @@ class FromFileInstructionsWithParameterSupplierTest {
     Path path = Path.of("src/test/resources/illegalInputTwo.txt");
 
     // WHEN & THEN
-    assertThrows(IllegalStateException.class,
-        () -> new FromFileInstructionsWithParameterSupplier(path));
+    assertThrows(
+        IllegalStateException.class, () -> new FromFileInstructionsWithParameterSupplier(path));
   }
 }

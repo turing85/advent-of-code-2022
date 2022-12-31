@@ -43,13 +43,16 @@ class DecoderTest {
   void inRightOrder() {
     // GIVEN
     List<Pair<Object, Object>> input =
-        List.of(new Pair<>(List.of(1, 1, 3, 1, 1), List.of(1, 1, 5, 1, 1)),
+        List.of(
+            new Pair<>(List.of(1, 1, 3, 1, 1), List.of(1, 1, 5, 1, 1)),
             new Pair<>(List.of(List.of(1), List.of(2, 3, 4)), List.of(List.of(1), 4)),
             new Pair<>(List.of(9), List.of(List.of(8, 7, 6))),
             new Pair<>(List.of(List.of(4, 4), 4, 4), List.of(List.of(4, 4), 4, 4, 4)),
-            new Pair<>(List.of(7, 7, 7, 7), List.of(7, 7, 7)), new Pair<>(List.of(), List.of(3)),
+            new Pair<>(List.of(7, 7, 7, 7), List.of(7, 7, 7)),
+            new Pair<>(List.of(), List.of(3)),
             new Pair<>(List.of(List.of(List.of())), List.of(List.of())),
-            new Pair<>(List.of(1, List.of(2, List.of(3, List.of(4, List.of(5, 6, 7)))), 8, 9),
+            new Pair<>(
+                List.of(1, List.of(2, List.of(3, List.of(4, List.of(5, 6, 7)))), 8, 9),
                 List.of(1, List.of(2, List.of(3, List.of(4, List.of(5, 6, 0)))), 8, 9)),
             new Pair<>(List.of(2, 3, 4), 1));
 
@@ -59,7 +62,6 @@ class DecoderTest {
     // THEN
     assertThat(actual).isEqualTo(Set.of(1, 2, 4, 6));
   }
-
 
   @Nested
   @DisplayName("pairsInRightOrder tests")

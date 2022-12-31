@@ -16,7 +16,8 @@ class BaseMonkeyTest {
     BaseMonkey underTest = new BaseMonkey("name", 1);
 
     // WHEN & THEN
-    assertThrows(UnsupportedOperationException.class,
+    assertThrows(
+        UnsupportedOperationException.class,
         () -> underTest.inverseEvaluateOnMonkeyNotContaining("name", 0L));
   }
 

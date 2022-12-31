@@ -12,16 +12,14 @@ import lombok.experimental.Delegate;
  * {@link Path}.
  */
 public class FromFileValveDescriptionsSupplier implements ValveDescriptionsSupplier {
-  @Delegate
-  private final FromStringValveDescriptionsSupplier fromStringValveDescriptionsSupplier;
+  @Delegate private final FromStringValveDescriptionsSupplier fromStringValveDescriptionsSupplier;
 
   /**
    * Reads a {@link String}-representation of {@link ValveDescription}s from a file, represented by
    * a {@link Path}.
    *
-   * @param inputFile the file holding the {@link String}-representation of
-   *        {@link ValveDescription}s
-   *
+   * @param inputFile the file holding the {@link String}-representation of {@link
+   *     ValveDescription}s
    * @throws IOException if some I/O exception occurs when the file is read.
    */
   public FromFileValveDescriptionsSupplier(Path inputFile) throws IOException {

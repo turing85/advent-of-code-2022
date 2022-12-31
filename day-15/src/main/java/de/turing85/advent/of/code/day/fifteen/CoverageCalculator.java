@@ -7,38 +7,47 @@ import java.util.Collection;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-/**
- * Calculates coverage statistics.
- */
+/** Calculates coverage statistics. */
 public class CoverageCalculator {
   private CoverageCalculator() {}
 
   /**
-   * Given a {@link Set} of sensors and beacons, represented as {@link Pair} (where
-   * {@link Pair#first()} is the sensor, and {@link Pair#second()} is the beacon), calculate how
-   * many tiles are covered at {@code y}-coordinate {@code yCoordinate}.
+   * Given a {@link Set} of sensors and beacons, represented as {@link Pair} (where {@link
+   * Pair#first()} is the sensor, and {@link Pair#second()} is the beacon), calculate how many tiles
+   * are covered at {@code y}-coordinate {@code yCoordinate}.
    *
    * @param sensorsWithBeacons {@link Pair}s of sensors and beacons
    * @param yCoordinate the {@code y}-coordinate to look for
-   *
    * @return points covered
    */
-  public static long getCoverageOnYCoordinate(Set<Pair<Point, Point>> sensorsWithBeacons,
-      long yCoordinate) {
-    long sensorsAndBeaconsOnYCoordinate = sensorsWithBeacons.stream()
-        .map(pair -> Set.of(pair.first(), pair.second())).flatMap(Collection::stream).distinct()
-        .filter(point -> point.y() == yCoordinate).count();
-    return getCoveredIntervalsForYCoordinate(calculateSensorsWithRange(sensorsWithBeacons),
-        yCoordinate).stream().mapToLong(Interval::length).sum() - sensorsAndBeaconsOnYCoordinate;
+  public static long getCoverageOnYCoordinate(
+      Set<Pair<Point, Point>> sensorsWithBeacons, long yCoordinate) {
+    long sensorsAndBeaconsOnYCoordinate =
+        sensorsWithBeacons.stream()
+            .map(pair -> Set.of(pair.first(), pair.second()))
+            .flatMap(Collection::stream)
+            .distinct()
+            .filter(point -> point.y() == yCoordinate)
+            .count();
+    return getCoveredIntervalsForYCoordinate(
+                calculateSensorsWithRange(sensorsWithBeacons), yCoordinate)
+            .stream()
+            .mapToLong(Interval::length)
+            .sum()
+        - sensorsAndBeaconsOnYCoordinate;
   }
 
   private static Set<Interval> getCoveredIntervalsForYCoordinate(
       Set<Pair<Point, Long>> sensorsWithRange, long yCoordinate) {
-    Set<Interval> intervals = sensorsWithRange.stream()
-        .filter(pair -> pair.first().manhattanDistanceToYCoordinate(yCoordinate) <= pair.second())
-        .map(pair -> pair.first().allPointsInManhattanDistanceAndYCoordinate(pair.second(),
-            yCoordinate))
-        .collect(Collectors.toSet());
+    Set<Interval> intervals =
+        sensorsWithRange.stream()
+            .filter(
+                pair -> pair.first().manhattanDistanceToYCoordinate(yCoordinate) <= pair.second())
+            .map(
+                pair ->
+                    pair.first()
+                        .allPointsInManhattanDistanceAndYCoordinate(pair.second(), yCoordinate))
+            .collect(Collectors.toSet());
     return Interval.merge(intervals);
   }
 
@@ -55,12 +64,11 @@ public class CoverageCalculator {
    *
    * @param sensorsWithBeacons sensors with beacons
    * @param maxCoordinate the max search range (from {@code 0} to {@code maxCoordinate}, both
-   *        inclusive)
-   *
+   *     inclusive)
    * @return the tuning frequency
    */
-  public static long findTuningFrequency(Set<Pair<Point, Point>> sensorsWithBeacons,
-      long maxCoordinate) {
+  public static long findTuningFrequency(
+      Set<Pair<Point, Point>> sensorsWithBeacons, long maxCoordinate) {
     Set<Pair<Point, Long>> sensorsWithRange = calculateSensorsWithRange(sensorsWithBeacons);
     long tuningFrequency = -1;
     long yCoordinate = 0;
@@ -70,8 +78,11 @@ public class CoverageCalculator {
           .anyMatch(interval -> interval.fullyContains(new Interval(0, maxCoordinate)))) {
         ++yCoordinate;
       } else {
-        Interval lower = intervals.stream()
-            .filter(interval -> interval.fullyContains(new Interval(0, 0))).findAny().orElseThrow();
+        Interval lower =
+            intervals.stream()
+                .filter(interval -> interval.fullyContains(new Interval(0, 0)))
+                .findAny()
+                .orElseThrow();
         tuningFrequency = (lower.upper() + 1L) * 4_000_000 + yCoordinate;
       }
     }

@@ -11,9 +11,13 @@ import org.junit.jupiter.params.provider.CsvSource;
 class FromFileParserTest {
   @DisplayName("throws on illegal input")
   @ParameterizedTest(name = "{0} -> IllegalStateException")
-  @CsvSource({"illegalInputMissingBracket.txt", "illegalInputMissingComma.txt",
-      "illegalInputNeitherListNorInt.txt", "illegalInputOneCommaTooMuch.txt",
-      "illegalInputIllegalCharacterInList.txt"})
+  @CsvSource({
+    "illegalInputMissingBracket.txt",
+    "illegalInputMissingComma.txt",
+    "illegalInputNeitherListNorInt.txt",
+    "illegalInputOneCommaTooMuch.txt",
+    "illegalInputIllegalCharacterInList.txt"
+  })
   void throwsOnIllegalInput(String pathAsString) {
     // GIVEN
     Path path = Path.of("src/test/resources", pathAsString);

@@ -5,14 +5,8 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-/**
- * Direction.
- */
-public sealed
-
-interface Direction
-permits Direction.Cardinal,Direction.Diagonal
-{
+/** Direction. */
+public sealed interface Direction permits Direction.Cardinal, Direction.Diagonal {
 
   /**
    * All direction values as Set.
@@ -24,25 +18,15 @@ permits Direction.Cardinal,Direction.Diagonal
         .collect(Collectors.toSet());
   }
 
-  /**
-   * Cardinal direction
-   */
+  /** Cardinal direction */
   enum Cardinal implements Direction {
-    /**
-     * Up cardinal direction.
-     */
+    /** Up cardinal direction. */
     UP,
-    /**
-     * Right cardinal direction.
-     */
+    /** Right cardinal direction. */
     RIGHT,
-    /**
-     * Down cardinal direction.
-     */
+    /** Down cardinal direction. */
     DOWN,
-    /**
-     * Left cardinal direction.
-     */
+    /** Left cardinal direction. */
     LEFT;
 
     /**
@@ -60,25 +44,15 @@ permits Direction.Cardinal,Direction.Diagonal
     }
   }
 
-  /**
-   * Diagonal direction.
-   */
+  /** Diagonal direction. */
   enum Diagonal implements Direction {
-    /**
-     * Up right diagonal direction.
-     */
+    /** Up right diagonal direction. */
     UP_RIGHT,
-    /**
-     * Down right diagonal direction.
-     */
+    /** Down right diagonal direction. */
     DOWN_RIGHT,
-    /**
-     * Down left diagonal direction.
-     */
+    /** Down left diagonal direction. */
     DOWN_LEFT,
-    /**
-     * Up left diagonal direction.
-     */
+    /** Up left diagonal direction. */
     UP_LEFT
   }
 }

@@ -53,8 +53,9 @@ class ScoreFunctionTest {
         int expected = 7;
 
         // WHEN
-        int actual = ScoreFunction.instance()
-            .applyAsInt(new GameSelection(OWN_SELECTION, Selection.SCISSORS));
+        int actual =
+            ScoreFunction.instance()
+                .applyAsInt(new GameSelection(OWN_SELECTION, Selection.SCISSORS));
 
         // THEN
         assertThat(actual).isEqualTo(expected);
@@ -101,8 +102,9 @@ class ScoreFunctionTest {
         int expected = 2;
 
         // WHEN
-        int actual = ScoreFunction.instance()
-            .applyAsInt(new GameSelection(OWN_SELECTION, Selection.SCISSORS));
+        int actual =
+            ScoreFunction.instance()
+                .applyAsInt(new GameSelection(OWN_SELECTION, Selection.SCISSORS));
 
         // THEN
         assertThat(actual).isEqualTo(expected);
@@ -149,8 +151,9 @@ class ScoreFunctionTest {
         int expected = 6;
 
         // WHEN
-        int actual = ScoreFunction.instance()
-            .applyAsInt(new GameSelection(OWN_SELECTION, Selection.SCISSORS));
+        int actual =
+            ScoreFunction.instance()
+                .applyAsInt(new GameSelection(OWN_SELECTION, Selection.SCISSORS));
 
         // THEN
         assertThat(actual).isEqualTo(expected);

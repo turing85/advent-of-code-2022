@@ -12,8 +12,7 @@ import java.util.regex.Pattern;
  * Reads a {@link String}-representation of {@link GameSelection}s and constructs the corresponding
  * {@link Collection} of {@link GameSelection}s from it.
  *
- * <p>
- * Each line in the {@link String} represents a {@link GameSelection}, with the first character
+ * <p>Each line in the {@link String} represents a {@link GameSelection}, with the first character
  * {@code != \s+} is interpreted as the opponents choice {@code 'A'} = Rock, {@code 'B'} = Paper,
  * {@code 'C'} = Scissors) and the second character {@code != \s+} is interpreted as the outcome of
  * the game ({@code 'X'} = lose, {@code 'Y'} = draw, {@code 'Z'} = win).
@@ -40,10 +39,12 @@ public class FromStringGameSelectionsSupplier extends GameSelectionsSupplier {
         throw new IllegalArgumentException(
             "line [%s]: does not match expected format".formatted(gameSelectionLine));
       }
-      Selection opponentSelection = OpponentCharacterToSelectionConverter.instance()
-          .apply(matcher.group("opponent").charAt(0));
-      Selection ownSelection = SecondColumGameOutcomeConverter.instance().apply(opponentSelection,
-          matcher.group("own").charAt(0));
+      Selection opponentSelection =
+          OpponentCharacterToSelectionConverter.instance()
+              .apply(matcher.group("opponent").charAt(0));
+      Selection ownSelection =
+          SecondColumGameOutcomeConverter.instance()
+              .apply(opponentSelection, matcher.group("own").charAt(0));
       gameSelections.add(new GameSelection(ownSelection, opponentSelection));
     }
   }

@@ -24,8 +24,8 @@ class FromFileNumberedStackSupplierTest {
     // GIVEN
 
     // WHEN & THEN
-    assertThrows(IllegalStateException.class,
-        () -> new FromFileNumberedStackSupplier(ILLEGAL_INPUT));
+    assertThrows(
+        IllegalStateException.class, () -> new FromFileNumberedStackSupplier(ILLEGAL_INPUT));
   }
 
   @DisplayName("correct cargo on simple input")
@@ -47,8 +47,11 @@ class FromFileNumberedStackSupplierTest {
   @Test
   void correctCargoOnCommonInput() throws IOException {
     // GIVEN
-    final Map<Integer, Deque<Character>> expected = Map.of(1, new LinkedList<>(List.of('Z', 'N')),
-        2, new LinkedList<>(List.of('M', 'C', 'D')), 3, new LinkedList<>(List.of('P')));
+    final Map<Integer, Deque<Character>> expected =
+        Map.of(
+            1, new LinkedList<>(List.of('Z', 'N')),
+            2, new LinkedList<>(List.of('M', 'C', 'D')),
+            3, new LinkedList<>(List.of('P')));
 
     // WHEN
     final Map<Integer, Deque<Character>> actual =

@@ -17,9 +17,7 @@ import java.util.function.LongUnaryOperator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Parser to parse a {@link String}-representation of a monkey to a {@link Monkey}-object.
- */
+/** Parser to parse a {@link String}-representation of a monkey to a {@link Monkey}-object. */
 public class MonkeysParser {
   private static final String LINE_SEPARATOR = System.lineSeparator();
   private static final Pattern ID_PATTERN = Pattern.compile("^Monkey (?<id>\\d+):$");
@@ -37,11 +35,10 @@ public class MonkeysParser {
   private MonkeysParser() {}
 
   /**
-   * * Parses {@link Monkey}s, represented as {@link String} from a file, represented as
-   * {@link Path}.
+   * * Parses {@link Monkey}s, represented as {@link String} from a file, represented as {@link
+   * Path}.
    *
    * @param inputFile file holding the monkeys to parse.
-   *
    * @return all monkeys parsed
    * @throws IOException if some I/O exception occurs when the file is read.
    */
@@ -52,12 +49,10 @@ public class MonkeysParser {
   /**
    * Parses {@link Monkey}s, represented as {@link String}.
    *
-   * <p>
-   * The {@link String} may (must) contain multiple monkeys. Each monkey is separated by the next
+   * <p>The {@link String} may (must) contain multiple monkeys. Each monkey is separated by the next
    * monkey by a blank line.
    *
-   * <p>
-   * A single monkey is composed of six lines, in the following form and order:
+   * <p>A single monkey is composed of six lines, in the following form and order:
    *
    * <pre>
    *   Monkey 0:
@@ -69,12 +64,12 @@ public class MonkeysParser {
    * </pre>
    *
    * @param inputAsString monkeys to parse
-   *
    * @return all monkeys parsed
    */
   public static List<Monkey> parse(String inputAsString) {
     MonkeyMaps monkeyMaps = validateAndConstructMonkey(inputAsString);
-    return monkeyMaps.monkeyMap().values().stream().sorted(Comparator.comparing(Monkey::id))
+    return monkeyMaps.monkeyMap().values().stream()
+        .sorted(Comparator.comparing(Monkey::id))
         .toList();
   }
 
@@ -145,8 +140,8 @@ public class MonkeysParser {
     }
   }
 
-  private static LongUnaryOperator constructOperationWithConstantOperand(String operatorAsString,
-      String operandAsString) {
+  private static LongUnaryOperator constructOperationWithConstantOperand(
+      String operatorAsString, String operandAsString) {
     long operand = Long.parseLong(operandAsString);
     if (Objects.equals("+", operatorAsString)) {
       return value -> value + operand;
@@ -183,21 +178,27 @@ public class MonkeysParser {
 
   private static void doTheMonkeyConnect(MonkeyMaps monkeyMaps) {
     Map<Integer, Monkey> monkeyMap = monkeyMaps.monkeyMap();
-    long itemModulo = monkeyMap.values().stream().mapToLong(Monkey::testDivider).reduce(1,
-        (lhs, rhs) -> lhs * rhs);
+    long itemModulo =
+        monkeyMap.values().stream()
+            .mapToLong(Monkey::testDivider)
+            .reduce(1, (lhs, rhs) -> lhs * rhs);
     for (Monkey monkey : monkeyMap.values()) {
       int id = monkey.id();
       int trueId = monkeyMaps.trueFromToMap().get(id);
       int falseId = monkeyMaps.falseFromToMap().get(id);
       Monkey trueMonkey = monkeyMap.get(trueId);
       Monkey falseMonkey = monkeyMap.get(falseId);
-      monkey.throwToIfPositiveTest(trueMonkey).throwToIfNegativeTest(falseMonkey)
+      monkey
+          .throwToIfPositiveTest(trueMonkey)
+          .throwToIfNegativeTest(falseMonkey)
           .itemModulo(itemModulo);
     }
   }
 
   private record MonkeyWithTrueAndFalseId(Monkey monkey, int trueId, int falseId) {}
 
-  private record MonkeyMaps(Map<Integer, Monkey> monkeyMap, Map<Integer, Integer> trueFromToMap,
+  private record MonkeyMaps(
+      Map<Integer, Monkey> monkeyMap,
+      Map<Integer, Integer> trueFromToMap,
       Map<Integer, Integer> falseFromToMap) {}
 }

@@ -19,9 +19,14 @@ class MarkerFinderTest {
   class StartOfPacketTest {
     @DisplayName("Simple test")
     @ParameterizedTest(name = "datastream {0}, start-of-packet sequence at {1}")
-    @CsvSource({"aaaaaaaaaaaaaaaaaaaaaaaaaaaa,-1", "mjqjpqmgbljsphdztnvjfqwrcgsmlb,7",
-        "bvwbjplbgvbhsrlpgdmjqwftvncz,5", "nppdvjthqldpwncqszvftbrmjlhg,6",
-        "nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg,10", "zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw,11"})
+    @CsvSource({
+      "aaaaaaaaaaaaaaaaaaaaaaaaaaaa,-1",
+      "mjqjpqmgbljsphdztnvjfqwrcgsmlb,7",
+      "bvwbjplbgvbhsrlpgdmjqwftvncz,5",
+      "nppdvjthqldpwncqszvftbrmjlhg,6",
+      "nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg,10",
+      "zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw,11"
+    })
     void test(String input, int expected) {
       // GIVEN
 
@@ -31,7 +36,6 @@ class MarkerFinderTest {
       // THEN
       assertThat(actual).isEqualTo(expected);
     }
-
 
     @DisplayName("correct result on personal input")
     @Test
@@ -51,9 +55,14 @@ class MarkerFinderTest {
   class StartOfMessageTest {
     @DisplayName("Simple test")
     @ParameterizedTest(name = "datastream {0}, start-of-packet sequence at {1}")
-    @CsvSource({"aaaaaaaaaaaaaaaaaaaaaaaaaaaa,-1", "mjqjpqmgbljsphdztnvjfqwrcgsmlb,19",
-        "bvwbjplbgvbhsrlpgdmjqwftvncz,23", "nppdvjthqldpwncqszvftbrmjlhg,23",
-        "nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg,29", "zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw,26"})
+    @CsvSource({
+      "aaaaaaaaaaaaaaaaaaaaaaaaaaaa,-1",
+      "mjqjpqmgbljsphdztnvjfqwrcgsmlb,19",
+      "bvwbjplbgvbhsrlpgdmjqwftvncz,23",
+      "nppdvjthqldpwncqszvftbrmjlhg,23",
+      "nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg,29",
+      "zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw,26"
+    })
     void test(String input, int expected) {
       // GIVEN
 
@@ -63,7 +72,6 @@ class MarkerFinderTest {
       // THEN
       assertThat(actual).isEqualTo(expected);
     }
-
 
     @DisplayName("correct result on personal input")
     @Test

@@ -13,8 +13,8 @@ class IntervalTest {
   @DisplayName("fullyContains test")
   @ParameterizedTest(name = "({0},{1}) fully contains ({2},{3}) -> {4}")
   @CsvSource({"0,2,1,1,true", "0,1,2,3,false", "1,1,0,2,false"})
-  void fullyContainsTest(long firstLower, long firstUpper, long secondLower, long secondUpper,
-      boolean expected) {
+  void fullyContainsTest(
+      long firstLower, long firstUpper, long secondLower, long secondUpper, boolean expected) {
     // GIVEN
     Interval first = new Interval(firstLower, firstUpper);
     Interval second = new Interval(secondLower, secondUpper);
@@ -29,8 +29,8 @@ class IntervalTest {
   @DisplayName("canMergeTest")
   @ParameterizedTest(name = "({0},{1}) and ({2},{3}) can merge -> {4}")
   @CsvSource({"0,2,1,3,true", "0,1,2,3,true", "0,1,3,4,false", "1,3,0,2,true", "2,3,0,1,true"})
-  void canMergeTest(long firstLower, long firstUpper, long secondLower, long secondUpper,
-      boolean expected) {
+  void canMergeTest(
+      long firstLower, long firstUpper, long secondLower, long secondUpper, boolean expected) {
     // GIVEN
     Interval first = new Interval(firstLower, firstUpper);
     Interval second = new Interval(secondLower, secondUpper);

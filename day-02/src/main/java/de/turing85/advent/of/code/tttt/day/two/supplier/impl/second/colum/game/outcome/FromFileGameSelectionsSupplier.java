@@ -13,24 +13,21 @@ import lombok.experimental.Delegate;
  * {@link Path} and constructs the corresponding {@link Collection} of {@link GameSelection}s from
  * it.
  *
- * <p>
- * Each line in the {@link String} represents a {@link GameSelection}, with the first character
+ * <p>Each line in the {@link String} represents a {@link GameSelection}, with the first character
  * {@code != \s+} is interpreted as the opponents choice {@code 'A'} = Rock, {@code 'B'} = Paper,
  * {@code 'C'} = Scissors) and the second character {@code != \s+} is interpreted as the outcome of
  * the game ({@code 'X'} = lose, {@code 'Y'} = draw, {@code 'Z'} = win).
  */
 public class FromFileGameSelectionsSupplier extends GameSelectionsSupplier {
-  @Delegate
-  private FromStringGameSelectionsSupplier fromStringGameSelectionsSupplier;
+  @Delegate private FromStringGameSelectionsSupplier fromStringGameSelectionsSupplier;
 
   /**
-   * Given a {@link Path} to a file holding a {@link String}-representation of
-   * {@link GameSelection}s, constructs the corresponding {@link Collection} of
-   * {@link GameSelection}s from it.
+   * Given a {@link Path} to a file holding a {@link String}-representation of {@link
+   * GameSelection}s, constructs the corresponding {@link Collection} of {@link GameSelection}s from
+   * it.
    *
-   * @param inputFile a {@link Path} to a file holding a{@link String}-representation of the
-   *        {@link GameSelection}s.
-   *
+   * @param inputFile a {@link Path} to a file holding a{@link String}-representation of the {@link
+   *     GameSelection}s.
    * @throws IOException if some I/O exception occurs when the file is read.
    */
   public FromFileGameSelectionsSupplier(Path inputFile) throws IOException {

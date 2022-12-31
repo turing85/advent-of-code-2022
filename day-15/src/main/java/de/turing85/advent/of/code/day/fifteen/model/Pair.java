@@ -8,5 +8,4 @@ package de.turing85.advent.of.code.day.fifteen.model;
  * @param <T> The type fo the first thing.
  * @param <U> The typ eof the second thing.
  */
-public record Pair<T, U>(T first, U second) {
-}
+public record Pair<T, U>(T first, U second) {}

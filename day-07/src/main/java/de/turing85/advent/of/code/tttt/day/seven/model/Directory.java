@@ -12,19 +12,15 @@ import java.util.stream.Stream;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
-/**
- * A Directory.
- */
+/** A Directory. */
 @EqualsAndHashCode
 @Getter
 public final class Directory {
   private final String name;
 
-  @EqualsAndHashCode.Exclude
-  private final Set<Directory> directories;
+  @EqualsAndHashCode.Exclude private final Set<Directory> directories;
 
-  @EqualsAndHashCode.Exclude
-  private final Set<File> files;
+  @EqualsAndHashCode.Exclude private final Set<File> files;
 
   private final Directory parent;
 
@@ -51,9 +47,7 @@ public final class Directory {
     this(name, new HashSet<>(), new HashSet<>(), parent);
   }
 
-  /**
-   * Constructor for root directory
-   */
+  /** Constructor for root directory */
   public Directory() {
     this("/", new HashSet<>(), new HashSet<>(), null);
   }
@@ -99,11 +93,13 @@ public final class Directory {
    * @param identity the identity, for reduction
    * @param operator the reduction operator
    * @param <T> the type of the operator, identity and result.
-   *
    * @return the result
    */
-  public <T> T filterMapReduce(Predicate<Directory> predicate, Function<Directory, T> mapper,
-      T identity, BinaryOperator<T> operator) {
+  public <T> T filterMapReduce(
+      Predicate<Directory> predicate,
+      Function<Directory, T> mapper,
+      T identity,
+      BinaryOperator<T> operator) {
     return filter(predicate).stream().map(mapper).reduce(identity, operator);
   }
 
@@ -111,13 +107,14 @@ public final class Directory {
    * Given a {@link Predicate}, return all directories (down from here) that fulfill the predicate.
    *
    * @param predicate the predicate
-   *
    * @return all directories (downward from here) that fulfill the predicate.
    */
   public Set<Directory> filter(Predicate<Directory> predicate) {
-    return Stream
-        .concat(Stream.of(this).filter(predicate), directories().stream()
-            .map(directory -> directory.filter(predicate)).flatMap(Collection::stream))
+    return Stream.concat(
+            Stream.of(this).filter(predicate),
+            directories().stream()
+                .map(directory -> directory.filter(predicate))
+                .flatMap(Collection::stream))
         .collect(Collectors.toSet());
   }
 
@@ -128,7 +125,9 @@ public final class Directory {
    * @return the directory (might be {@code null} if the directory cannot be found)
    */
   public Directory goToChild(String name) {
-    return directories.stream().filter(directory -> Objects.equals(directory.name(), name))
-        .findFirst().orElse(null);
+    return directories.stream()
+        .filter(directory -> Objects.equals(directory.name(), name))
+        .findFirst()
+        .orElse(null);
   }
 }

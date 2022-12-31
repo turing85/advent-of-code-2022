@@ -10,14 +10,11 @@ import java.util.Map;
 import java.util.function.Supplier;
 import lombok.Getter;
 
-/**
- * A board constructed from a {@link String}.
- */
+/** A board constructed from a {@link String}. */
 public class FromStringBoard implements Board {
   private final Map<Point, Field> fieldsByPoints = new HashMap<>();
 
-  @Getter
-  private Field end;
+  @Getter private Field end;
 
   private int width = -1;
   private int height = -1;
@@ -59,8 +56,8 @@ public class FromStringBoard implements Board {
   }
 
   private void addFieldToBoard(int x, int y, char c) {
-    validateCharacterIsInRange(c,
-        () -> "char %c at line %d, colum %d: must be a lowercase letter".formatted(c, y, x));
+    validateCharacterIsInRange(
+        c, () -> "char %c at line %d, colum %d: must be a lowercase letter".formatted(c, y, x));
     Field field = new Field(c, new Point(x, y), convertToValue(c));
     if (c == 'E') {
       end(field);

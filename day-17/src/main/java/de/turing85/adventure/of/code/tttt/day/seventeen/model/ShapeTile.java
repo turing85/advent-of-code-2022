@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 public record ShapeTile(Point lowerLeftCorner, Shape shape) implements MovableTile<ShapeTile> {
   /**
    * Constructor
+   *
    * @param x {@code x}-coordinate of lower left corner
    * @param y {@code y}-coordinate of lower left corner
    * @param shape the {@link Shape}

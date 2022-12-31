@@ -1,12 +1,12 @@
 package de.turing85.advent.of.code.tttt.day.five.model;
 
 /**
- * A single unload instruction. How many cargo elements ({@code times}) from which stack
- * ({@code source}) to which stack ({@code to}) should be moved.
+ * A single unload instruction. How many cargo elements ({@code times}) from which stack ({@code
+ * source}) to which stack ({@code to}) should be moved.
  *
  * @param times how many items should be moved ({@code > 0})
  * @param from the source stack (in {@code [1, 9]})
- * @param to the target stack (in {@code  [1, 9]})
+ * @param to the target stack (in {@code [1, 9]})
  */
 public record UnloadInstruction(int times, int from, int to) {
   /**
@@ -14,7 +14,7 @@ public record UnloadInstruction(int times, int from, int to) {
    *
    * @param times how many items should be moved ({@code > 0})
    * @param from the source stack (in {@code [1, 9]})
-   * @param to the target stack (in {@code  [1, 9]})
+   * @param to the target stack (in {@code [1, 9]})
    */
   public UnloadInstruction {
     if (times <= 0) {

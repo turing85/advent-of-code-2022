@@ -7,8 +7,7 @@ import java.util.function.Supplier;
 /**
  * A supplier, supplying a {@link List} of {@link Direction}s.
  *
- * <p>
- * The {@link List} will only include {@link Direction#RIGHT} and {@link Direction#LEFT}.
+ * <p>The {@link List} will only include {@link Direction#RIGHT} and {@link Direction#LEFT}.
  */
 public interface WindDirectionsSupplier extends Supplier<List<Direction>> {
   @Override

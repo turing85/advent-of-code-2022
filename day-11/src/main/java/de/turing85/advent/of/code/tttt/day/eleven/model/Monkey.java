@@ -6,35 +6,22 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-/**
- * A monkey
- */
+/** A monkey */
 @EqualsAndHashCode
 public class Monkey {
-  @Getter
-  private final int id;
+  @Getter private final int id;
 
-  @EqualsAndHashCode.Exclude
-  private final Deque<Long> items;
+  @EqualsAndHashCode.Exclude private final Deque<Long> items;
 
-  @EqualsAndHashCode.Exclude
-  private final LongUnaryOperator operation;
+  @EqualsAndHashCode.Exclude private final LongUnaryOperator operation;
 
-  @EqualsAndHashCode.Exclude
-  @Getter
-  private final long testDivider;
+  @EqualsAndHashCode.Exclude @Getter private final long testDivider;
 
-  @EqualsAndHashCode.Exclude
-  @Setter
-  private Monkey throwToIfPositiveTest;
+  @EqualsAndHashCode.Exclude @Setter private Monkey throwToIfPositiveTest;
 
-  @EqualsAndHashCode.Exclude
-  @Setter
-  private Monkey throwToIfNegativeTest;
+  @EqualsAndHashCode.Exclude @Setter private Monkey throwToIfNegativeTest;
 
-  @EqualsAndHashCode.Exclude
-  @Setter
-  private long itemModulo;
+  @EqualsAndHashCode.Exclude @Setter private long itemModulo;
 
   /**
    * Constructs a monkey.

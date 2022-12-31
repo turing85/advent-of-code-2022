@@ -8,8 +8,7 @@ import lombok.Getter;
 /**
  * An instance of an {@link Instruction}, with a corresponding parameter.
  *
- * <p>
- * For {@link Instruction}s that do not have a parameter (e.g. {@link Instruction#NO_OP}), the
+ * <p>For {@link Instruction}s that do not have a parameter (e.g. {@link Instruction#NO_OP}), the
  * parameter should be set to {@code null}.
  */
 @Getter
@@ -31,7 +30,6 @@ public final class InstructionWithParameter implements UnaryOperator<Register> {
    * Factory method for a {@link Instruction#ADD_X} instruction with {@code deltaX} parameter
    *
    * @param deltaX value
-   *
    * @return a {@link Instruction#ADD_X} with {@code deltaX} parameter
    */
   public static InstructionWithParameter addX(int deltaX) {

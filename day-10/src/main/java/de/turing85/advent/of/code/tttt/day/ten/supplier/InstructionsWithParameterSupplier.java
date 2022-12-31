@@ -4,9 +4,7 @@ import de.turing85.advent.of.code.tttt.day.ten.model.InstructionWithParameter;
 import java.util.List;
 import java.util.function.Supplier;
 
-/**
- * A supplier, supplying a {@link List} of {@link InstructionWithParameter}s.
- */
+/** A supplier, supplying a {@link List} of {@link InstructionWithParameter}s. */
 public interface InstructionsWithParameterSupplier
     extends Supplier<List<InstructionWithParameter>> {
   @Override

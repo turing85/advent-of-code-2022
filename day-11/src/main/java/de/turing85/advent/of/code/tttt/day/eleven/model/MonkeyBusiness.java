@@ -6,9 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.function.LongUnaryOperator;
 
-/**
- * Simulating monkey business of monkeys, playing Keep Away with you and your items.
- */
+/** Simulating monkey business of monkeys, playing Keep Away with you and your items. */
 public class MonkeyBusiness {
   private final List<Monkey> monkeys;
 
@@ -29,11 +27,13 @@ public class MonkeyBusiness {
    * @param stressModifier stress modifier
    * @return monkey business
    */
-  public long playNRoundsAndCalculateTopMMonkeyBusiness(int n, int m,
-      LongUnaryOperator stressModifier) {
+  public long playNRoundsAndCalculateTopMMonkeyBusiness(
+      int n, int m, LongUnaryOperator stressModifier) {
     return playNRoundsAndRecordPerMonkeyBusiness(n, stressModifier).values().stream()
-        .sorted(Comparator.comparing(Number::intValue).reversed()).mapToLong(value -> value)
-        .limit(m).reduce(1, (lhs, rhs) -> lhs * rhs);
+        .sorted(Comparator.comparing(Number::intValue).reversed())
+        .mapToLong(value -> value)
+        .limit(m)
+        .reduce(1, (lhs, rhs) -> lhs * rhs);
   }
 
   /**
@@ -43,8 +43,8 @@ public class MonkeyBusiness {
    * @param stressModifier stress modifier
    * @return per-monkey monkey business
    */
-  public Map<Integer, Long> playNRoundsAndRecordPerMonkeyBusiness(int n,
-      LongUnaryOperator stressModifier) {
+  public Map<Integer, Long> playNRoundsAndRecordPerMonkeyBusiness(
+      int n, LongUnaryOperator stressModifier) {
     Map<Integer, Long> monkeyBusiness = new HashMap<>();
     for (int round = 0; round < n; ++round) {
       for (Monkey monkey : monkeys) {

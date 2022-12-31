@@ -3,9 +3,7 @@ package de.turing85.advent.of.code.tttt.day.twentytwo.supplier;
 import java.util.List;
 import java.util.function.Supplier;
 
-/**
- * A supplier, supplying a {@link List} of {@link FieldsAndCommands}s.
- */
+/** A supplier, supplying a {@link List} of {@link FieldsAndCommands}s. */
 public interface FieldsAndCommandsSupplier extends Supplier<FieldsAndCommands> {
   default FieldsAndCommands get() {
     return fieldsAndCommands();

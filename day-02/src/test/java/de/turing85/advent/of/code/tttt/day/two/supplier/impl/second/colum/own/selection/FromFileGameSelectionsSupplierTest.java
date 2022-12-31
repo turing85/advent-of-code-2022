@@ -22,7 +22,8 @@ class FromFileGameSelectionsSupplierTest extends GameSelectionsSupplierTest {
 
   @Override
   protected List<GameSelection> expectedGameSelectionForCommonInput() {
-    return List.of(new GameSelection(Selection.PAPER, Selection.ROCK),
+    return List.of(
+        new GameSelection(Selection.PAPER, Selection.ROCK),
         new GameSelection(Selection.ROCK, Selection.PAPER),
         new GameSelection(Selection.SCISSORS, Selection.SCISSORS));
   }

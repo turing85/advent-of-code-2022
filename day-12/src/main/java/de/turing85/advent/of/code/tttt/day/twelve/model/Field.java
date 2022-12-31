@@ -7,5 +7,4 @@ package de.turing85.advent.of.code.tttt.day.twelve.model;
  * @param point the x/y-coordinate of the field
  * @param height the field's height
  */
-public record Field (char symbol, Point point, int height){
-}
+public record Field(char symbol, Point point, int height) {}

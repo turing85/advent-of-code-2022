@@ -12,8 +12,10 @@ import java.util.stream.Collectors;
  * @param recipes the {@link RobotRecipe}s contained in this {@link Blueprint}
  * @param maximumConsumptionPerMinutePerResource maximum consumption per minute and resource
  */
-public record Blueprint(long id, Set<RobotRecipe> recipes,
-                        Map<ResourceType, Long> maximumConsumptionPerMinutePerResource) {
+public record Blueprint(
+    long id,
+    Set<RobotRecipe> recipes,
+    Map<ResourceType, Long> maximumConsumptionPerMinutePerResource) {
   /**
    * Constructor.
    *
@@ -35,9 +37,6 @@ public record Blueprint(long id, Set<RobotRecipe> recipes,
         .map(RobotRecipe::resourcesNeeded)
         .map(Map::entrySet)
         .flatMap(Collection::stream)
-        .collect(Collectors.toMap(
-            Map.Entry::getKey,
-            Map.Entry::getValue,
-            Long::max));
+        .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, Long::max));
   }
 }

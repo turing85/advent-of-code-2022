@@ -4,9 +4,7 @@ import de.turing85.advent.of.code.tttt.day.twentythree.model.Elf;
 import java.util.Set;
 import java.util.function.Supplier;
 
-/**
- * A supplier, supplying a {@link Set} of {@link Elf}s.
- */
+/** A supplier, supplying a {@link Set} of {@link Elf}s. */
 public interface ElvesSupplier extends Supplier<Set<Elf>> {
   @Override
   default Set<Elf> get() {

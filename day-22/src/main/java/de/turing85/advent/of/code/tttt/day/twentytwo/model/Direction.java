@@ -1,43 +1,32 @@
 package de.turing85.advent.of.code.tttt.day.twentytwo.model;
 
-/**
- * A cardinal direction.
- */
+/** A cardinal direction. */
 public enum Direction {
-  /**
-   * Up direction
-   */
+  /** Up direction */
   UP,
 
-  /**
-   * Down direction
-   */
+  /** Down direction */
   DOWN,
 
-  /**
-   * Left direction
-   */
+  /** Left direction */
   LEFT,
 
-  /**
-   * Right direction
-   */
+  /** Right direction */
   RIGHT;
 
   /**
    * Gets a direction by a {@code char}-representation.
    *
-   * <p>
-   * The output is defined as follows:
+   * <p>The output is defined as follows:
+   *
    * <ul>
-   * <li>For {@code 'U'}, {@link #UP} is returned.</li>
-   * <li>For {@code 'D'}, {@link #DOWN} is returned.</li>
-   * <li>For {@code 'R'}, {@link #RIGHT} is returned.</li>
-   * <li>For {@code 'L'}, {@link #LEFT} is returned.</li>
+   *   <li>For {@code 'U'}, {@link #UP} is returned.
+   *   <li>For {@code 'D'}, {@link #DOWN} is returned.
+   *   <li>For {@code 'R'}, {@link #RIGHT} is returned.
+   *   <li>For {@code 'L'}, {@link #LEFT} is returned.
    * </ul>
    *
    * @param c input
-   *
    * @return corresponding {@link Direction}
    */
   public static Direction of(char c) {
@@ -53,9 +42,8 @@ public enum Direction {
   /**
    * Rotate in the specified {@link Direction}.
    *
-   * @param direction the {@link Direction} (either {@link Direction#RIGHT} or
-   *        {@link Direction#LEFT}) to rotate in.
-   *
+   * @param direction the {@link Direction} (either {@link Direction#RIGHT} or {@link
+   *     Direction#LEFT}) to rotate in.
    * @return the {@link Direction} rotated to
    */
   public Direction rotate(Direction direction) {

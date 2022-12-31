@@ -7,13 +7,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import lombok.Getter;
 
-/**
- * Reads a {@link String}-representation of a {@link List} of {@link Long}s.
- */
+/** Reads a {@link String}-representation of a {@link List} of {@link Long}s. */
 public class FromStringLongListSupplier implements LongListSupplier {
   private static final Pattern NUMBER_EXTRACTOR = Pattern.compile("^-?\\d+$");
-  @Getter
-  private final List<Long> longList;
+  @Getter private final List<Long> longList;
 
   /**
    * Reads a {@link String}-representation of a {@link List} of {@link Long}s.

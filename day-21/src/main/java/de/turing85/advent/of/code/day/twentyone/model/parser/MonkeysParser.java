@@ -17,9 +17,7 @@ import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import lombok.Getter;
 
-/**
- * A class to parse monkeys.
- */
+/** A class to parse monkeys. */
 @Getter
 public class MonkeysParser implements Supplier<Map<String, Monkey>> {
   private final Map<String, Monkey> monkeysByName;
@@ -29,7 +27,6 @@ public class MonkeysParser implements Supplier<Map<String, Monkey>> {
    * Constructor.
    *
    * @param inputFile a file, holding the {@link String}-representations of {@link Monkey}s.
-   *
    * @throws IOException if some I/O exception occurs when the file is read.
    */
   public MonkeysParser(Path inputFile) throws IOException {
@@ -44,8 +41,10 @@ public class MonkeysParser implements Supplier<Map<String, Monkey>> {
   public MonkeysParser(String inputAsString) {
     monkeysByName = new HashMap<>();
     parserLoader = ServiceLoader.load(MonkeyParser.class);
-    List<String> lines = Arrays.stream(inputAsString.split(System.lineSeparator()))
-        .map(String::trim).collect(Collectors.toCollection(LinkedList::new));
+    List<String> lines =
+        Arrays.stream(inputAsString.split(System.lineSeparator()))
+            .map(String::trim)
+            .collect(Collectors.toCollection(LinkedList::new));
     while (!lines.isEmpty()) {
       lines = tryParse(lines);
     }

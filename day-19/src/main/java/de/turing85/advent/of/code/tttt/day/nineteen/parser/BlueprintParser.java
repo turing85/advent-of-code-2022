@@ -16,14 +16,13 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-/**
- * A parser that parses a {@link String}-representation of {@link Blueprint}s.
- */
+/** A parser that parses a {@link String}-representation of {@link Blueprint}s. */
 public class BlueprintParser {
   private static final Pattern ID_EXTRACTOR = Pattern.compile("^Blueprint (?<id>\\d+)$");
 
-  private static final Pattern BASE_RECIPE_EXTRACTOR = Pattern.compile(
-      "^\\s*Each (?<collectType>ore|clay|obsidian|geode) robot costs (?<amount>\\d+) (?<resourceType>ore|clay|obsidian)(?<more>.*)$");
+  private static final Pattern BASE_RECIPE_EXTRACTOR =
+      Pattern.compile(
+          "^\\s*Each (?<collectType>ore|clay|obsidian|geode) robot costs (?<amount>\\d+) (?<resourceType>ore|clay|obsidian)(?<more>.*)$");
 
   private static final Pattern MORE_RECIPE_INGREDIENTS_EXTRACTOR =
       Pattern.compile("and (?<amount>\\d+) (?<resourceType>ore|clay|obsidian)");
@@ -35,7 +34,6 @@ public class BlueprintParser {
    * {@link Path}.
    *
    * @param inputFile the file holding the {@link String}-representation of {@link Blueprint}s.
-   *
    * @return the parsed {@link Blueprint}s.
    * @throws IOException if some I/O exception occurs when the file is read.
    */
@@ -47,12 +45,12 @@ public class BlueprintParser {
    * Parses a {@link String}-representation of {@link Blueprint}s.
    *
    * @param inputAsString the {@link String}-representation of {@link Blueprint}s.
-   *
    * @return the parsed {@link Blueprint}s.
    */
   public static Set<Blueprint> parseBlueprints(String inputAsString) {
     return Arrays.stream(inputAsString.split(System.lineSeparator()))
-        .filter(Predicate.not(String::isBlank)).map(BlueprintParser::parseLineToBlueprint)
+        .filter(Predicate.not(String::isBlank))
+        .map(BlueprintParser::parseLineToBlueprint)
         .collect(Collectors.toSet());
   }
 
@@ -60,8 +58,11 @@ public class BlueprintParser {
     List<String> parts = Arrays.stream(line.split("\\s*[:.]\\s*")).toList();
     try {
       long id = extractId(parts.get(0));
-      Set<RobotRecipe> robotRecipes = parts.stream().skip(1).map(BlueprintParser::parseRobotRecipes)
-          .collect(Collectors.toSet());
+      Set<RobotRecipe> robotRecipes =
+          parts.stream()
+              .skip(1)
+              .map(BlueprintParser::parseRobotRecipes)
+              .collect(Collectors.toSet());
       if (robotRecipes.isEmpty()) {
         throw new IllegalStateException("no recipe found");
       }
@@ -86,11 +87,13 @@ public class BlueprintParser {
     }
     ResourceType collectType = ResourceType.of(baseMatcher.group("collectType"));
     Map<ResourceType, Long> resourcesNeeded = new EnumMap<>(ResourceType.class);
-    resourcesNeeded.put(ResourceType.of(baseMatcher.group("resourceType")),
+    resourcesNeeded.put(
+        ResourceType.of(baseMatcher.group("resourceType")),
         Long.parseLong(baseMatcher.group("amount")));
     Matcher moreMatcher = MORE_RECIPE_INGREDIENTS_EXTRACTOR.matcher(baseMatcher.group("more"));
     while (moreMatcher.find()) {
-      resourcesNeeded.put(ResourceType.of(moreMatcher.group("resourceType")),
+      resourcesNeeded.put(
+          ResourceType.of(moreMatcher.group("resourceType")),
           Long.parseLong(moreMatcher.group("amount")));
     }
     return new RobotRecipe(resourcesNeeded, collectType);

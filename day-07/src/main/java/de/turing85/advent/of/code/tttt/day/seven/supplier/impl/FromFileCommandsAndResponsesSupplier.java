@@ -19,7 +19,6 @@ public class FromFileCommandsAndResponsesSupplier implements CommandsAndResponse
    * {@link Path}.
    *
    * @param inputFile the file holding the {@link String}-representation of commands and responses
-   *
    * @throws IOException if some I/O exception occurs when the file is read.
    */
   public FromFileCommandsAndResponsesSupplier(Path inputFile) throws IOException {

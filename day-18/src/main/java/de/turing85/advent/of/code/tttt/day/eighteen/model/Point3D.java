@@ -27,18 +27,20 @@ public record Point3D(long x, long y, long z) {
   }
 
   /**
-   * Determines whether the point is in bound, i.e.
-   * {@code lower.x() <= this.x() && this.x() <= upper.x() && lowerBound.y() <= this.y() && this.y()
-   * <= upperBound.y() && lowerBound.z() <= this.z() && this.z() <= upperBound.z()}
+   * Determines whether the point is in bound, i.e. {@code lower.x() <= this.x() && this.x() <=
+   * upper.x() && lowerBound.y() <= this.y() && this.y() <= upperBound.y() && lowerBound.z() <=
+   * this.z() && this.z() <= upperBound.z()}
    *
    * @param lowerBound the {@link Point3D} defining the lower bound
    * @param upperBound the {@link Point3D} defining the upper bound
-   *
    * @return {@code true} if and only if {@code this} {@link Point3D} is in bounds.
    */
   boolean isInBounds(Point3D lowerBound, Point3D upperBound) {
-    return lowerBound.x() <= this.x() && this.x() <= upperBound.x() &&
-        lowerBound.y() <= this.y() && this.y() <= upperBound.y() &&
-        lowerBound.z() <= this.z() && this.z() <= upperBound.z();
+    return lowerBound.x() <= this.x()
+        && this.x() <= upperBound.x()
+        && lowerBound.y() <= this.y()
+        && this.y() <= upperBound.y()
+        && lowerBound.z() <= this.z()
+        && this.z() <= upperBound.z();
   }
 }

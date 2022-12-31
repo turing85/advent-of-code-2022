@@ -8,9 +8,7 @@ import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Reads a {@link String}-representation {@link InstructionWithParameter}s.
- */
+/** Reads a {@link String}-representation {@link InstructionWithParameter}s. */
 public class FromStringInstructionsWithParameterSupplier
     implements InstructionsWithParameterSupplier {
   private static final Pattern COMMAND_EXTRACTOR =

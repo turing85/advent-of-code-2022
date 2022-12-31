@@ -33,7 +33,6 @@ public record Point(long x, long y) {
    *
    * @param distance maximum manhattan distance from {@code this}
    * @param yCoordinate to only generate points on this specific {@code y}-coordinate
-   *
    * @return all points satisfying the specification, as {@link Interval}
    */
   public Interval allPointsInManhattanDistanceAndYCoordinate(long distance, long yCoordinate) {

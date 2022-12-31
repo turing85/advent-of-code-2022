@@ -8,9 +8,8 @@ import java.util.stream.Collectors;
 /**
  * Represents a Rucksack with two equally-sized compartments.
  *
- * <p>
- * Each compartment holds the same number of items. Each item is identified by an {@code int}-value
- * - its priority - in the closed interval {@code [1, 52]}.
+ * <p>Each compartment holds the same number of items. Each item is identified by an {@code
+ * int}-value - its priority - in the closed interval {@code [1, 52]}.
  */
 public class Rucksack {
   private final Set<Integer> firstCompartment;
@@ -19,8 +18,7 @@ public class Rucksack {
   /**
    * Constructs a {@link Rucksack} from a list of priorities ({@code int}-values).
    *
-   * <p>
-   * The {@link List} must be of equal length, and only contain values in the closed interval
+   * <p>The {@link List} must be of equal length, and only contain values in the closed interval
    * {@code [1, 52]}. The first half of the list is packed into the first compartment; the second
    * half of the list is packed into the second compartment.
    *

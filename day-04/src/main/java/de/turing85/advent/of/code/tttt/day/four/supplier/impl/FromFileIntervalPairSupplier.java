@@ -13,8 +13,7 @@ import lombok.experimental.Delegate;
  * {@link Pair}s from it.
  */
 public class FromFileIntervalPairSupplier {
-  @Delegate
-  private final FromStringIntervalPairsSupplier fromStringIntervalPairsSupplier;
+  @Delegate private final FromStringIntervalPairsSupplier fromStringIntervalPairsSupplier;
 
   /**
    * Reads a {@link String}-representation of {@link Pair}s of {@link Interval}s from a file,
@@ -22,8 +21,7 @@ public class FromFileIntervalPairSupplier {
    * {@link Pair}s from it.
    *
    * @param inputFile the file holding the {@link String}-representation of the {@link Pair}s of
-   *        {@link Interval}s.
-   *
+   *     {@link Interval}s.
    * @throws IOException if some I/O exception occurs when the file is read.
    */
   public FromFileIntervalPairSupplier(Path inputFile) throws IOException {

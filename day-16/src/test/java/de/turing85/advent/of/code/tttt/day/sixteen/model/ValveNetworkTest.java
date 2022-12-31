@@ -32,8 +32,10 @@ class ValveNetworkTest {
   @Test
   void throwsOnNegativeFlowRate() {
     // GIVEN
-    Set<ValveDescription> descriptions = Set.of(new ValveDescription("AA", -1, Set.of("BB")),
-        new ValveDescription("BB", 1, Set.of("AA")));
+    Set<ValveDescription> descriptions =
+        Set.of(
+            new ValveDescription("AA", -1, Set.of("BB")),
+            new ValveDescription("BB", 1, Set.of("AA")));
 
     // WHEN & THEN
     assertThrows(IllegalStateException.class, () -> new ValveNetwork(descriptions));
@@ -100,8 +102,9 @@ class ValveNetworkTest {
           new FromFileValveDescriptionsSupplier(PERSONAL_INPUT);
 
       // WHEN
-      int actual = new ValveNetwork(valveDescriptionsSupplier.get()).releaseMaximumPressure("AA",
-          26, 2, 1_000_000);
+      int actual =
+          new ValveNetwork(valveDescriptionsSupplier.get())
+              .releaseMaximumPressure("AA", 26, 2, 1_000_000);
 
       // THEN
       assertThat(actual).isEqualTo(2_556);

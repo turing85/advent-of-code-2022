@@ -13,16 +13,14 @@ import lombok.experimental.Delegate;
  * by a {@link Path}.
  */
 public class FromFilePointPairsSupplier implements PointPairsSupplier {
-  @Delegate
-  private final FromStringPointPairsSupplier fromStringPointPairsSupplier;
+  @Delegate private final FromStringPointPairsSupplier fromStringPointPairsSupplier;
 
   /**
    * Reads a {@link String}-representation of {@link Pair}s of {@link Point}s from a file,
    * represented by a {@link Path}.
    *
-   * @param inputFile the file holding the {@link String}-representation of {@link Pair}s of
-   *        {@link Point}s
-   *
+   * @param inputFile the file holding the {@link String}-representation of {@link Pair}s of {@link
+   *     Point}s
    * @throws IOException if some I/O exception occurs when the file is read.
    */
   public FromFilePointPairsSupplier(Path inputFile) throws IOException {

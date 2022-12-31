@@ -7,9 +7,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Parses a {@link BaseMonkey}.
- */
+/** Parses a {@link BaseMonkey}. */
 public class BaseMonkeyParser implements MonkeyParser {
   private static final Pattern BASE_MONKEY_EXTRACTOR =
       Pattern.compile("^(?<name>[a-zA-Z]+):\\s*(?<value>-?\\d+)$");

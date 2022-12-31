@@ -39,8 +39,9 @@ class CommandsAndResponsesParserTest {
     int toFree = 30_000_000 - free;
 
     // WHEN
-    int size = directory.filterMapReduce(dir -> dir.size() > toFree, Directory::size,
-        Integer.MAX_VALUE, Integer::min);
+    int size =
+        directory.filterMapReduce(
+            dir -> dir.size() > toFree, Directory::size, Integer.MAX_VALUE, Integer::min);
 
     // THEN
     assertThat(size).isEqualTo(24_933_642);
@@ -73,8 +74,9 @@ class CommandsAndResponsesParserTest {
     int toFree = 30_000_000 - free;
 
     // WHEN
-    int size = directory.filterMapReduce(dir -> dir.size() > toFree, Directory::size,
-        Integer.MAX_VALUE, Integer::min);
+    int size =
+        directory.filterMapReduce(
+            dir -> dir.size() > toFree, Directory::size, Integer.MAX_VALUE, Integer::min);
 
     // THEN
     assertThat(size).isEqualTo(366_028);

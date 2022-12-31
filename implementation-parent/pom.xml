@@ -32,21 +32,17 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>net.revelc.code.formatter</groupId>
-                <artifactId>formatter-maven-plugin</artifactId>
-                <version>${formatter-maven-plugin.version}</version>
-                <configuration>
-                    <lineEnding>LF</lineEnding>
-                    <configFile>${maven.multiModuleProjectDirectory}/google-style.xml</configFile>
-                </configuration>
+                <groupId>com.spotify.fmt</groupId>
+                <artifactId>fmt-maven-plugin</artifactId>
+                <version>${fmt-maven-plugin.version}</version>
                 <executions>
                     <execution>
                         <goals>
-                            <goal>${formatter-maven-plugin.goal}</goal>
+                            <goal>${fmt-maven-plugin.goal}</goal>
                         </goals>
                         <phase>validate</phase>
                         <configuration>
-                            <skip>${formatter-maven-plugin.skip}</skip>
+                            <skip>${fmt-maven-plugin.skip}</skip>
                         </configuration>
                     </execution>
                 </executions>

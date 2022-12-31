@@ -9,12 +9,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-/**
- * Reads a {@link String}-representation {@link Pair}s of {@link Point}s.
- */
+/** Reads a {@link String}-representation {@link Pair}s of {@link Point}s. */
 public class FromStringPointPairsSupplier implements PointPairsSupplier {
-  private static final Pattern POINT_PAIR_EXTRACTOR = Pattern.compile(
-      "^Sensor at x=(?<firstX>-?\\d+), y=(?<firstY>-?\\d+): closest beacon is at x=(?<secondX>-?\\d+), y=(?<secondY>-?\\d+)$");
+  private static final Pattern POINT_PAIR_EXTRACTOR =
+      Pattern.compile(
+          "^Sensor at x=(?<firstX>-?\\d+), y=(?<firstY>-?\\d+): closest beacon is at x=(?<secondX>-?\\d+), y=(?<secondY>-?\\d+)$");
   private final Set<Pair<Point, Point>> pointPairs;
 
   /**
@@ -23,8 +22,10 @@ public class FromStringPointPairsSupplier implements PointPairsSupplier {
    * @param inputAsString the {@link String}-representation of {@link Pair}s of {@link Point}s
    */
   public FromStringPointPairsSupplier(String inputAsString) {
-    pointPairs = Arrays.stream(inputAsString.split(System.lineSeparator()))
-        .map(FromStringPointPairsSupplier::parse).collect(Collectors.toSet());
+    pointPairs =
+        Arrays.stream(inputAsString.split(System.lineSeparator()))
+            .map(FromStringPointPairsSupplier::parse)
+            .collect(Collectors.toSet());
   }
 
   private static Pair<Point, Point> parse(String line) {

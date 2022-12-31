@@ -7,9 +7,8 @@ import java.util.Set;
 /**
  * Execute movement commands on a map.
  *
- * <p>
- * The map is represented of a {@link Map} of {@link Point}s, mapping to the corresponding
- * {@link Position}.
+ * <p>The map is represented of a {@link Map} of {@link Point}s, mapping to the corresponding {@link
+ * Position}.
  */
 public class CommandExecutor {
   private final Set<Field> fields;
@@ -31,7 +30,6 @@ public class CommandExecutor {
    * Run the {@link Command}s and return the final position.
    *
    * @param commands {@link Command}s to run
-   *
    * @return final position
    */
   public Position runCommands(List<Command> commands) {
@@ -44,10 +42,16 @@ public class CommandExecutor {
 
   private Position findStartingPosition() {
     int startY = fields.stream().mapToInt(Field::y).min().orElse(Integer.MAX_VALUE);
-    int startX = fields.stream().filter(field -> field.y() == startY).mapToInt(Field::x).min()
-        .orElse(Integer.MAX_VALUE);
+    int startX =
+        fields.stream()
+            .filter(field -> field.y() == startY)
+            .mapToInt(Field::x)
+            .min()
+            .orElse(Integer.MAX_VALUE);
     Field startingfield =
-        fields.stream().filter(field -> field.x() == startX && field.y() == startY).findAny()
+        fields.stream()
+            .filter(field -> field.x() == startX && field.y() == startY)
+            .findAny()
             .orElseThrow(() -> new IllegalStateException("cannot find any starting field"));
     return new Position(startingfield, Direction.RIGHT);
   }

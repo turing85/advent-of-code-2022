@@ -6,8 +6,7 @@ import lombok.Getter;
 /**
  * A shape is a series of points, relative to its lower-left corner.
  *
- * <p>
- * The lower-left corner is assumed to be at {@code x = y = 0}.
+ * <p>The lower-left corner is assumed to be at {@code x = y = 0}.
  */
 public enum Shape {
   /**
@@ -60,8 +59,7 @@ public enum Shape {
   CORNER(
       Set.of(new Point(0, 0), new Point(1, 0), new Point(2, 0), new Point(2, 1), new Point(2, 2)));
 
-  @Getter
-  private final Set<Point> pointsOfShape;
+  @Getter private final Set<Point> pointsOfShape;
 
   Shape(Set<Point> pointsOfShape) {
     this.pointsOfShape = pointsOfShape;

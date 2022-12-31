@@ -6,9 +6,7 @@ import java.util.LinkedList;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-/**
- * Calculates the surface acre of a {@link java.util.Set} of {@link Point3D}.
- */
+/** Calculates the surface acre of a {@link java.util.Set} of {@link Point3D}. */
 public class SurfaceCalculator {
   private final Set<Point3D> points;
 
@@ -44,12 +42,13 @@ public class SurfaceCalculator {
    * Calculates the surface acre of a {@link java.util.Set} of {@code 1x1x1} cubes, represented
    * by{@link Point3D}s.
    *
-   * <p>
-   * Calculation is done as follows:
+   * <p>Calculation is done as follows:
+   *
    * <ul>
-   * <li>Each cube has {@code 6} sides</li>
-   * <li>If two cubes touch, the total sum of sides as surface are is reduced by {@code 2}</li>
+   *   <li>Each cube has {@code 6} sides
+   *   <li>If two cubes touch, the total sum of sides as surface are is reduced by {@code 2}
    * </ul>
+   *
    * Hence, the result is calculated by the following formula:
    *
    * <pre>
@@ -70,12 +69,11 @@ public class SurfaceCalculator {
    * Calculates the surface acre of a {@link java.util.Set} of {@code 1x1x1} cubes, represented
    * by{@link Point3D}s.
    *
-   * <p>
-   * Calculation is done as follows:
+   * <p>Calculation is done as follows:
+   *
    * <ul>
-   * <li>calculate each point that is "outside" by starting at a point that is known to be
-   * outside</li>
-   * <li>For each point in {@code points}, count the faces that touch an outside point</li>
+   *   <li>calculate each point that is "outside" by starting at a point that is known to be outside
+   *   <li>For each point in {@code points}, count the faces that touch an outside point
    * </ul>
    *
    * @return the surface area
@@ -103,6 +101,7 @@ public class SurfaceCalculator {
 
   private Set<Point3D> getNeighboursInBound() {
     return queue.removeFirst().neighbours().stream()
-        .filter(point -> point.isInBounds(lowerBound, upperBound)).collect(Collectors.toSet());
+        .filter(point -> point.isInBounds(lowerBound, upperBound))
+        .collect(Collectors.toSet());
   }
 }

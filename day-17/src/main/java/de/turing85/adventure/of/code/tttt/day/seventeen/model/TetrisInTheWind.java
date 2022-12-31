@@ -7,16 +7,20 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
-/**
- * Simulating falling tetris-like shapes, in the wind!
- */
+/** Simulating falling tetris-like shapes, in the wind! */
 public class TetrisInTheWind {
   private static final List<Shape> SHAPES_IN_ORDER =
       List.of(Shape.H_BAR, Shape.PLUS, Shape.CORNER, Shape.V_BAR, Shape.SQUARE);
   private static final long HEIGHT_OF_ALL_SHAPES_STACKED =
-      SHAPES_IN_ORDER.stream().map(Shape::pointsOfShape)
-          .map(points -> points.stream().reduce(new Point(0, 0), (lhs, rhs) -> lhs.y() > rhs.y() ? lhs : rhs))
-          .mapToLong(Point::y).map(y -> y + 1).sum();
+      SHAPES_IN_ORDER.stream()
+          .map(Shape::pointsOfShape)
+          .map(
+              points ->
+                  points.stream()
+                      .reduce(new Point(0, 0), (lhs, rhs) -> lhs.y() > rhs.y() ? lhs : rhs))
+          .mapToLong(Point::y)
+          .map(y -> y + 1)
+          .sum();
 
   private final List<Direction> windDirections;
   private final int width;
@@ -39,8 +43,8 @@ public class TetrisInTheWind {
    * @param rocksToDrop how many rocks should be dropped
    * @param spawnOffset the offset to spawn new rocks from
    */
-  public TetrisInTheWind(List<Direction> windDirections, int width, long rocksToDrop,
-      Point spawnOffset) {
+  public TetrisInTheWind(
+      List<Direction> windDirections, int width, long rocksToDrop, Point spawnOffset) {
     this.windDirections = windDirections;
     this.width = width;
     this.rocksToDrop = rocksToDrop;
@@ -51,7 +55,6 @@ public class TetrisInTheWind {
     shapeIndex = 0;
     windDirectionIndex = -1;
   }
-
 
   /**
    * Let rocks fall until {@code rocksToDrop} have come to rest.
@@ -147,56 +150,56 @@ public class TetrisInTheWind {
   }
 
   private FallingRock spawnNextRock() {
-    return new FallingRock(spawnOffset.x() + 1, maxY + spawnOffset.y(), getShape(shapeIndex), width,
-        blocked);
+    return new FallingRock(
+        spawnOffset.x() + 1, maxY + spawnOffset.y(), getShape(shapeIndex), width, blocked);
   }
 
   private record FallingRock(ShapeTile tile, long width, Set<Point> blocked)
       implements MovableTile<FallingRock> {
 
-  private FallingRock(long x, long y, Shape shape, long width, Set<Point> blocked) {
+    private FallingRock(long x, long y, Shape shape, long width, Set<Point> blocked) {
       this(new ShapeTile(x, y, shape), width, blocked);
     }
 
-  @Override
-  public Set<Point> pointsOfTile() {
-    return tile.pointsOfTile();
-  }
-
-  @Override
-  public FallingRock move(Direction direction) {
-    FallingRock moved = new FallingRock(tile.move(direction), width, blocked);
-    if (moved.collidesWithAnyBlocked()) {
-      return this;
+    @Override
+    public Set<Point> pointsOfTile() {
+      return tile.pointsOfTile();
     }
-    if (moved.isOutOfBounds()) {
-      return this;
-    }
-    return moved;
-  }
 
-  private boolean isAtRest() {
-    FallingRock oneDown = move(Direction.DOWN);
-    if (oneDown == this) {
-      return true;
+    @Override
+    public FallingRock move(Direction direction) {
+      FallingRock moved = new FallingRock(tile.move(direction), width, blocked);
+      if (moved.collidesWithAnyBlocked()) {
+        return this;
+      }
+      if (moved.isOutOfBounds()) {
+        return this;
+      }
+      return moved;
     }
-    return oneDown.pointsOfTile().stream().anyMatch(blocked::contains);
-  }
 
-  private boolean collidesWithAnyBlocked() {
-    for (Point pointOfTile : pointsOfTile()) {
-      if (blocked.contains(pointOfTile)) {
+    private boolean isAtRest() {
+      FallingRock oneDown = move(Direction.DOWN);
+      if (oneDown == this) {
         return true;
       }
+      return oneDown.pointsOfTile().stream().anyMatch(blocked::contains);
     }
-    return false;
-  }
 
-  private boolean isOutOfBounds() {
-    return tile.lowerLeftCorner().y() <= 0 || tile.lowerLeftCorner().x() <= 0
-        || pointsOfTile().stream().mapToLong(Point::x).max().orElse(width) > width;
-  }
+    private boolean collidesWithAnyBlocked() {
+      for (Point pointOfTile : pointsOfTile()) {
+        if (blocked.contains(pointOfTile)) {
+          return true;
+        }
+      }
+      return false;
+    }
 
+    private boolean isOutOfBounds() {
+      return tile.lowerLeftCorner().y() <= 0
+          || tile.lowerLeftCorner().x() <= 0
+          || pointsOfTile().stream().mapToLong(Point::x).max().orElse(width) > width;
+    }
   }
 
   private record OptimizationIndex(Set<Point> points, Shape shape, int shapeIndex) {}

@@ -12,9 +12,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import lombok.Getter;
 
-/**
- * Reads a {@link String}-representation {@link Line}s.
- */
+/** Reads a {@link String}-representation {@link Line}s. */
 @Getter
 public class FromStringLinesSupplier implements LinesSupplier {
   private static final Pattern FIRST_POINT_MATCHER =
@@ -30,9 +28,11 @@ public class FromStringLinesSupplier implements LinesSupplier {
    * @param inputAsString the {@link String}-representation of {@link Line}s.
    */
   public FromStringLinesSupplier(String inputAsString) {
-    lines = Arrays.stream(inputAsString.split(System.lineSeparator()))
-        .map(FromStringLinesSupplier::parse).flatMap(Collection::stream)
-        .collect(Collectors.toSet());
+    lines =
+        Arrays.stream(inputAsString.split(System.lineSeparator()))
+            .map(FromStringLinesSupplier::parse)
+            .flatMap(Collection::stream)
+            .collect(Collectors.toSet());
   }
 
   private static Set<Line> parse(String line) {
@@ -46,8 +46,8 @@ public class FromStringLinesSupplier implements LinesSupplier {
       throw new IllegalStateException(
           "line \"%s\": illegal format, cannot read first point".formatted(line));
     }
-    return Point.of(Integer.parseInt(firstMatcher.group("x")),
-        Integer.parseInt(firstMatcher.group("y")));
+    return Point.of(
+        Integer.parseInt(firstMatcher.group("x")), Integer.parseInt(firstMatcher.group("y")));
   }
 
   private static Set<Line> parseAdditionalPoints(String line, Point first) {
@@ -58,8 +58,10 @@ public class FromStringLinesSupplier implements LinesSupplier {
     }
     Set<Line> linesParsed = new HashSet<>();
     do {
-      Point second = Point.of(Integer.parseInt(additionalMatcher.group("x")),
-          Integer.parseInt(additionalMatcher.group("y")));
+      Point second =
+          Point.of(
+              Integer.parseInt(additionalMatcher.group("x")),
+              Integer.parseInt(additionalMatcher.group("y")));
       linesParsed.add(Line.of(first, second));
       first = second;
     } while (additionalMatcher.find());

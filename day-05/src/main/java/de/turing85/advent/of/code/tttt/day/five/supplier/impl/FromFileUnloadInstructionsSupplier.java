@@ -12,20 +12,17 @@ import lombok.experimental.Delegate;
  * {@link Path}.
  */
 public class FromFileUnloadInstructionsSupplier implements UnloadInstructionsSupplier {
-  @Delegate
-  private final FromStringUnloadInstructionsSupplier fromStringUnloadInstructionsSupplier;
+  @Delegate private final FromStringUnloadInstructionsSupplier fromStringUnloadInstructionsSupplier;
 
   /**
    * Reads a {@link String}-representation of {@link UnloadInstruction}s.
    *
-   * @param inputFile the file holding the {@link String}-representation ot the
-   *        {@link UnloadInstruction}s
-   *
+   * @param inputFile the file holding the {@link String}-representation ot the {@link
+   *     UnloadInstruction}s
    * @throws IOException if some I/O exception occurs when the file is read.
    */
   public FromFileUnloadInstructionsSupplier(Path inputFile) throws IOException {
     fromStringUnloadInstructionsSupplier =
         new FromStringUnloadInstructionsSupplier(Files.readString(inputFile));
   }
-
 }

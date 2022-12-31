@@ -45,9 +45,8 @@ public class Expedition {
    * the highest calories sum.
    *
    * @param n the {@code n} highest backpacks to look for.
-   *
    * @return sum of calories of food items from the {@code n} backpacks with the highest calories
-   *         sum.
+   *     sum.
    */
   public int getHighestCaloriesFromNHighestBackpacks(int n) {
     return backpacks.stream().limit(n).map(Backpack::getSumOfCalories).reduce(0, Integer::sum);

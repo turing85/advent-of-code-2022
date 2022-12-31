@@ -13,9 +13,7 @@ import java.util.function.IntFunction;
 import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 
-/**
- * Linker that links the map as cube.
- */
+/** Linker that links the map as cube. */
 public class CubeNeighbourLinker implements NeighbourLinker {
   @Override
   public Set<Field> linkNeighbours(Set<Field> fields) {
@@ -49,12 +47,9 @@ public class CubeNeighbourLinker implements NeighbourLinker {
     return Math.max(deltaX, deltaY) / 4;
   }
 
-
   private static Map<Point, Field> calculateFieldsByPoints(Set<Field> fields) {
     return fields.stream().collect(Collectors.toMap(Field::point, Function.identity()));
   }
-
-
 
   private static Set<Point> calculateQuadrants(Set<Field> fields, int cubeEdgeLength) {
     Set<Point> existingQuadrants = new HashSet<>();
@@ -73,15 +68,21 @@ public class CubeNeighbourLinker implements NeighbourLinker {
     return points.contains(new Point(x * cubeEdgeLength, y * cubeEdgeLength));
   }
 
-  private void sewQuadrant(Set<Field> fields, Map<Point, Field> fieldsByPoint, int cubeEdgeLength,
-      int quadrantX, int quadrantY) {
+  private void sewQuadrant(
+      Set<Field> fields,
+      Map<Point, Field> fieldsByPoint,
+      int cubeEdgeLength,
+      int quadrantX,
+      int quadrantY) {
     int minX = cubeEdgeLength * (quadrantX - 1) + 1;
     int maxX = (cubeEdgeLength) * quadrantX;
     int minY = cubeEdgeLength * (quadrantY - 1) + 1;
     int maxY = (cubeEdgeLength) * quadrantY;
     Set<Field> relevantFields =
-        fields.stream().filter(field -> minX <= field.x() && field.x() <= maxX)
-            .filter(field -> minY <= field.y() && field.y() <= maxY).collect(Collectors.toSet());
+        fields.stream()
+            .filter(field -> minX <= field.x() && field.x() <= maxX)
+            .filter(field -> minY <= field.y() && field.y() <= maxY)
+            .collect(Collectors.toSet());
     for (Field field : relevantFields) {
       int x = field.x();
       int y = field.y();
@@ -100,8 +101,13 @@ public class CubeNeighbourLinker implements NeighbourLinker {
     }
   }
 
-  private void sewUpperEdge(Map<Point, Field> fieldsByPoint, Map<Point, Set<Direction>> sewedSides,
-      Set<Point> quadrants, int cubeEdgeLength, int quadrantX, int quadrantY) {
+  private void sewUpperEdge(
+      Map<Point, Field> fieldsByPoint,
+      Map<Point, Set<Direction>> sewedSides,
+      Set<Point> quadrants,
+      int cubeEdgeLength,
+      int quadrantX,
+      int quadrantY) {
     if (sewedSides.get(new Point(quadrantX, quadrantY)).contains(Direction.UP)) {
       return;
     }
@@ -121,8 +127,9 @@ public class CubeNeighbourLinker implements NeighbourLinker {
         theirRotationFunction =
             rotation -> rotateNTimes(finalQuadrantXDelta, rotation, Direction.LEFT);
         theirSide = rotationFunction.apply(Direction.DOWN);
-        upperSideSewingFunction = sewingFunction(fieldsByPoint, cubeEdgeLength, theirQuadrantX,
-            theirQuadrantY, theirSide, false);
+        upperSideSewingFunction =
+            sewingFunction(
+                fieldsByPoint, cubeEdgeLength, theirQuadrantX, theirQuadrantY, theirSide, false);
         readyToSew = true;
         break;
       }
@@ -132,8 +139,9 @@ public class CubeNeighbourLinker implements NeighbourLinker {
         theirRotationFunction =
             rotation -> rotateNTimes(finalQuadrantXDelta, rotation, Direction.RIGHT);
         theirSide = rotationFunction.apply(Direction.DOWN);
-        upperSideSewingFunction = sewingFunction(fieldsByPoint, cubeEdgeLength, theirQuadrantX,
-            theirQuadrantY, theirSide, true);
+        upperSideSewingFunction =
+            sewingFunction(
+                fieldsByPoint, cubeEdgeLength, theirQuadrantX, theirQuadrantY, theirSide, true);
         readyToSew = true;
         break;
       }
@@ -152,8 +160,9 @@ public class CubeNeighbourLinker implements NeighbourLinker {
             theirRotationFunction = rotationFunction;
           }
           theirSide = rotationFunction.apply(Direction.DOWN);
-          upperSideSewingFunction = sewingFunction(fieldsByPoint, cubeEdgeLength, theirQuadrantX,
-              theirQuadrantY, theirSide, true);
+          upperSideSewingFunction =
+              sewingFunction(
+                  fieldsByPoint, cubeEdgeLength, theirQuadrantX, theirQuadrantY, theirSide, true);
           readyToSew = true;
           break;
         }
@@ -167,16 +176,25 @@ public class CubeNeighbourLinker implements NeighbourLinker {
             theirRotationFunction = rotationFunction;
           }
           theirSide = rotationFunction.apply(Direction.DOWN);
-          upperSideSewingFunction = sewingFunction(fieldsByPoint, cubeEdgeLength, theirQuadrantX,
-              theirQuadrantY, theirSide, false);
+          upperSideSewingFunction =
+              sewingFunction(
+                  fieldsByPoint, cubeEdgeLength, theirQuadrantX, theirQuadrantY, theirSide, false);
           readyToSew = true;
           break;
         }
       }
     }
     if (readyToSew) {
-      sewTopBottom(fieldsByPoint, cubeEdgeLength, quadrantX, upperSideSewingFunction,
-          rotationFunction, theirRotationFunction, ourY, Direction.UP, theirSide);
+      sewTopBottom(
+          fieldsByPoint,
+          cubeEdgeLength,
+          quadrantX,
+          upperSideSewingFunction,
+          rotationFunction,
+          theirRotationFunction,
+          ourY,
+          Direction.UP,
+          theirSide);
       sewedSides.get(new Point(quadrantX, quadrantY)).add(Direction.UP);
       sewedSides.get(new Point(theirQuadrantX, theirQuadrantY)).add(theirSide);
     }
@@ -193,8 +211,13 @@ public class CubeNeighbourLinker implements NeighbourLinker {
     return rotated;
   }
 
-  private IntFunction<Field> sewingFunction(Map<Point, Field> fieldsByPoint, int cubeEdgeSize,
-      int quadrantX, int quadrantY, Direction side, boolean clockwise) {
+  private IntFunction<Field> sewingFunction(
+      Map<Point, Field> fieldsByPoint,
+      int cubeEdgeSize,
+      int quadrantX,
+      int quadrantY,
+      Direction side,
+      boolean clockwise) {
     int minX = (quadrantX - 1) * cubeEdgeSize + 1;
     int maxX = quadrantX * cubeEdgeSize;
     int minY = (quadrantY - 1) * cubeEdgeSize + 1;
@@ -207,9 +230,8 @@ public class CubeNeighbourLinker implements NeighbourLinker {
     };
   }
 
-
-  private static IntFunction<Field> upSewingFunction(Map<Point, Field> fieldsByPoint,
-      boolean clockwise, int minX, int maxX, int minY) {
+  private static IntFunction<Field> upSewingFunction(
+      Map<Point, Field> fieldsByPoint, boolean clockwise, int minX, int maxX, int minY) {
     if (clockwise) {
       return index -> fieldsByPoint.get(new Point(minX + index, minY));
     } else {
@@ -217,8 +239,8 @@ public class CubeNeighbourLinker implements NeighbourLinker {
     }
   }
 
-  private static IntFunction<Field> downSewingFunction(Map<Point, Field> fieldsByPoint,
-      boolean clockwise, int minX, int maxX, int maxY) {
+  private static IntFunction<Field> downSewingFunction(
+      Map<Point, Field> fieldsByPoint, boolean clockwise, int minX, int maxX, int maxY) {
     if (clockwise) {
       return index -> fieldsByPoint.get(new Point(maxX - index, maxY));
     } else {
@@ -226,8 +248,8 @@ public class CubeNeighbourLinker implements NeighbourLinker {
     }
   }
 
-  private static IntFunction<Field> leftSewingFunction(Map<Point, Field> fieldsByPoint,
-      boolean clockwise, int minX, int minY, int maxY) {
+  private static IntFunction<Field> leftSewingFunction(
+      Map<Point, Field> fieldsByPoint, boolean clockwise, int minX, int minY, int maxY) {
     if (clockwise) {
       return index -> fieldsByPoint.get(new Point(minX, maxY - index));
     } else {
@@ -235,8 +257,8 @@ public class CubeNeighbourLinker implements NeighbourLinker {
     }
   }
 
-  private static IntFunction<Field> rightSewingFunction(Map<Point, Field> fieldsByPoint,
-      boolean clockwise, int maxX, int minY, int maxY) {
+  private static IntFunction<Field> rightSewingFunction(
+      Map<Point, Field> fieldsByPoint, boolean clockwise, int maxX, int minY, int maxY) {
     if (clockwise) {
       return index -> fieldsByPoint.get(new Point(maxX, minY + index));
     } else {
@@ -244,8 +266,13 @@ public class CubeNeighbourLinker implements NeighbourLinker {
     }
   }
 
-  private void sewLowerEdge(Map<Point, Field> fieldsByPoint, Map<Point, Set<Direction>> sewedSides,
-      Set<Point> quadrants, int cubeEdgeLength, int quadrantX, int quadrantY) {
+  private void sewLowerEdge(
+      Map<Point, Field> fieldsByPoint,
+      Map<Point, Set<Direction>> sewedSides,
+      Set<Point> quadrants,
+      int cubeEdgeLength,
+      int quadrantX,
+      int quadrantY) {
     if (sewedSides.get(new Point(quadrantX, quadrantY)).contains(Direction.DOWN)) {
       return;
     }
@@ -265,8 +292,9 @@ public class CubeNeighbourLinker implements NeighbourLinker {
         theirRotationFunction =
             rotation -> rotateNTimes(finalQuadrantXDelta, rotation, Direction.LEFT);
         theirSide = rotationFunction.apply(Direction.UP);
-        lowerSideSewingFunction = sewingFunction(fieldsByPoint, cubeEdgeLength, theirQuadrantX,
-            theirQuadrantY, theirSide, true);
+        lowerSideSewingFunction =
+            sewingFunction(
+                fieldsByPoint, cubeEdgeLength, theirQuadrantX, theirQuadrantY, theirSide, true);
         readyToSew = true;
         break;
       }
@@ -276,8 +304,9 @@ public class CubeNeighbourLinker implements NeighbourLinker {
         theirRotationFunction =
             rotation -> rotateNTimes(finalQuadrantXDelta, rotation, Direction.RIGHT);
         theirSide = rotationFunction.apply(Direction.UP);
-        lowerSideSewingFunction = sewingFunction(fieldsByPoint, cubeEdgeLength, theirQuadrantX,
-            theirQuadrantY, theirSide, true);
+        lowerSideSewingFunction =
+            sewingFunction(
+                fieldsByPoint, cubeEdgeLength, theirQuadrantX, theirQuadrantY, theirSide, true);
         readyToSew = true;
         break;
       }
@@ -293,27 +322,56 @@ public class CubeNeighbourLinker implements NeighbourLinker {
       readyToSew = true;
     }
     if (readyToSew) {
-      sewTopBottom(fieldsByPoint, cubeEdgeLength, quadrantX, lowerSideSewingFunction,
-          rotationFunction, theirRotationFunction, ourY, Direction.DOWN, theirSide);
+      sewTopBottom(
+          fieldsByPoint,
+          cubeEdgeLength,
+          quadrantX,
+          lowerSideSewingFunction,
+          rotationFunction,
+          theirRotationFunction,
+          ourY,
+          Direction.DOWN,
+          theirSide);
       sewedSides.get(new Point(quadrantX, quadrantY)).add(Direction.DOWN);
       sewedSides.get(new Point(theirQuadrantX, theirQuadrantY)).add(theirSide);
     }
   }
 
-  private static void sewTopBottom(Map<Point, Field> fieldsByPoint, int cubeEdgeLength,
-      int quadrantX, IntFunction<Field> getTopBottomEdge, UnaryOperator<Direction> rotationFunction,
-      UnaryOperator<Direction> theirRotationFunction, int ourY, Direction ourSide,
+  private static void sewTopBottom(
+      Map<Point, Field> fieldsByPoint,
+      int cubeEdgeLength,
+      int quadrantX,
+      IntFunction<Field> getTopBottomEdge,
+      UnaryOperator<Direction> rotationFunction,
+      UnaryOperator<Direction> theirRotationFunction,
+      int ourY,
+      Direction ourSide,
       Direction theirSide) {
     for (int deltaX = 0; deltaX < cubeEdgeLength; ++deltaX) {
       int x = (quadrantX - 1) * cubeEdgeLength + 1 + deltaX;
-      sew(fieldsByPoint, getTopBottomEdge, rotationFunction, theirRotationFunction, x, ourY, deltaX,
-          ourSide, theirSide);
+      sew(
+          fieldsByPoint,
+          getTopBottomEdge,
+          rotationFunction,
+          theirRotationFunction,
+          x,
+          ourY,
+          deltaX,
+          ourSide,
+          theirSide);
     }
   }
 
-  private static void sew(Map<Point, Field> fieldsByPoint, IntFunction<Field> getTopBottomEdge,
-      UnaryOperator<Direction> rotationFunction, UnaryOperator<Direction> theirRotationFunction,
-      int ourX, int ourY, int index, Direction ourSide, Direction theirSide) {
+  private static void sew(
+      Map<Point, Field> fieldsByPoint,
+      IntFunction<Field> getTopBottomEdge,
+      UnaryOperator<Direction> rotationFunction,
+      UnaryOperator<Direction> theirRotationFunction,
+      int ourX,
+      int ourY,
+      int index,
+      Direction ourSide,
+      Direction theirSide) {
     Field field = fieldsByPoint.get(new Point(ourX, ourY));
     Field topBottomNeighbour = getTopBottomEdge.apply(index);
     field.neighbour(ourSide, topBottomNeighbour);
@@ -322,8 +380,13 @@ public class CubeNeighbourLinker implements NeighbourLinker {
     topBottomNeighbour.rotationFunction(theirSide, theirRotationFunction);
   }
 
-  private void sewRightEdge(Map<Point, Field> fieldsByPoint, Map<Point, Set<Direction>> sewedSides,
-      Set<Point> quadrants, int cubeEdgeLength, int quadrantX, int quadrantY) {
+  private void sewRightEdge(
+      Map<Point, Field> fieldsByPoint,
+      Map<Point, Set<Direction>> sewedSides,
+      Set<Point> quadrants,
+      int cubeEdgeLength,
+      int quadrantX,
+      int quadrantY) {
     if (sewedSides.get(new Point(quadrantX, quadrantY)).contains(Direction.RIGHT)) {
       return;
     }
@@ -343,8 +406,9 @@ public class CubeNeighbourLinker implements NeighbourLinker {
         theirRotationFunction =
             rotation -> rotateNTimes(finalQuadrantYDelta, rotation, Direction.LEFT);
         theirSide = rotationFunction.apply(Direction.LEFT);
-        rightSideSewingFunction = sewingFunction(fieldsByPoint, cubeEdgeLength, theirQuadrantX,
-            theirQuadrantY, theirSide, false);
+        rightSideSewingFunction =
+            sewingFunction(
+                fieldsByPoint, cubeEdgeLength, theirQuadrantX, theirQuadrantY, theirSide, false);
         readyToSew = true;
         break;
       }
@@ -354,8 +418,9 @@ public class CubeNeighbourLinker implements NeighbourLinker {
         theirRotationFunction =
             rotation -> rotateNTimes(finalQuadrantYDelta, rotation, Direction.RIGHT);
         theirSide = rotationFunction.apply(Direction.LEFT);
-        rightSideSewingFunction = sewingFunction(fieldsByPoint, cubeEdgeLength, theirQuadrantX,
-            theirQuadrantY, theirSide, false);
+        rightSideSewingFunction =
+            sewingFunction(
+                fieldsByPoint, cubeEdgeLength, theirQuadrantX, theirQuadrantY, theirSide, false);
         readyToSew = true;
         break;
       }
@@ -371,26 +436,53 @@ public class CubeNeighbourLinker implements NeighbourLinker {
       readyToSew = true;
     }
     if (readyToSew) {
-      sewSide(fieldsByPoint, cubeEdgeLength, quadrantY, rightSideSewingFunction, rotationFunction,
-          theirRotationFunction, ourX, Direction.RIGHT, theirSide);
+      sewSide(
+          fieldsByPoint,
+          cubeEdgeLength,
+          quadrantY,
+          rightSideSewingFunction,
+          rotationFunction,
+          theirRotationFunction,
+          ourX,
+          Direction.RIGHT,
+          theirSide);
       sewedSides.get(new Point(quadrantX, quadrantY)).add(Direction.RIGHT);
       sewedSides.get(new Point(theirQuadrantX, theirQuadrantY)).add(theirSide);
     }
   }
 
-  private static void sewSide(Map<Point, Field> fieldsByPoint, int cubeEdgeLength, int quadrantY,
-      IntFunction<Field> getSideEdge, UnaryOperator<Direction> rotationFunction,
-      UnaryOperator<Direction> theirRotationFunction, int ourX, Direction ourSide,
+  private static void sewSide(
+      Map<Point, Field> fieldsByPoint,
+      int cubeEdgeLength,
+      int quadrantY,
+      IntFunction<Field> getSideEdge,
+      UnaryOperator<Direction> rotationFunction,
+      UnaryOperator<Direction> theirRotationFunction,
+      int ourX,
+      Direction ourSide,
       Direction theirSide) {
     for (int deltaY = 0; deltaY < cubeEdgeLength; ++deltaY) {
       int y = (quadrantY - 1) * cubeEdgeLength + 1 + deltaY;
-      sew(fieldsByPoint, getSideEdge, rotationFunction, theirRotationFunction, ourX, y, deltaY,
-          ourSide, theirSide);
+      sew(
+          fieldsByPoint,
+          getSideEdge,
+          rotationFunction,
+          theirRotationFunction,
+          ourX,
+          y,
+          deltaY,
+          ourSide,
+          theirSide);
     }
   }
 
-  private void sewLeftEdge(Map<Point, Field> fieldsByPoint, Map<Point, Set<Direction>> sewedSides,
-      Set<Point> quadrants, int cubeEdgeLength, int quadrantX, int quadrantY) {
+  private void sewLeftEdge(
+      Map<Point, Field> fieldsByPoint,
+      Map<Point, Set<Direction>> sewedSides,
+      Set<Point> quadrants,
+      int cubeEdgeLength,
+      int quadrantX,
+      int quadrantY) {
     if (sewedSides.get(new Point(quadrantX, quadrantY)).contains(Direction.LEFT)) {
       return;
     }
@@ -410,8 +502,9 @@ public class CubeNeighbourLinker implements NeighbourLinker {
         theirRotationFunction =
             rotation -> rotateNTimes(finalQuadrantYDelta, rotation, Direction.RIGHT);
         theirSide = rotationFunction.apply(Direction.RIGHT);
-        leftSideSewingFunction = sewingFunction(fieldsByPoint, cubeEdgeLength, theirQuadrantX,
-            theirQuadrantY, theirSide, true);
+        leftSideSewingFunction =
+            sewingFunction(
+                fieldsByPoint, cubeEdgeLength, theirQuadrantX, theirQuadrantY, theirSide, true);
         readyToSew = true;
         break;
       }
@@ -421,8 +514,9 @@ public class CubeNeighbourLinker implements NeighbourLinker {
         theirRotationFunction =
             rotation -> rotateNTimes(finalQuadrantYDelta, rotation, Direction.LEFT);
         theirSide = rotationFunction.apply(Direction.RIGHT);
-        leftSideSewingFunction = sewingFunction(fieldsByPoint, cubeEdgeLength, theirQuadrantX,
-            theirQuadrantY, theirSide, true);
+        leftSideSewingFunction =
+            sewingFunction(
+                fieldsByPoint, cubeEdgeLength, theirQuadrantX, theirQuadrantY, theirSide, true);
         readyToSew = true;
         break;
       }
@@ -435,8 +529,9 @@ public class CubeNeighbourLinker implements NeighbourLinker {
           rotationFunction = rotation -> rotateNTimes(1, rotation, Direction.RIGHT);
           theirRotationFunction = rotation -> rotateNTimes(1, rotation, Direction.LEFT);
           theirSide = rotationFunction.apply(Direction.RIGHT);
-          leftSideSewingFunction = sewingFunction(fieldsByPoint, cubeEdgeLength, theirQuadrantX,
-              theirQuadrantY, theirSide, true);
+          leftSideSewingFunction =
+              sewingFunction(
+                  fieldsByPoint, cubeEdgeLength, theirQuadrantX, theirQuadrantY, theirSide, true);
           readyToSew = true;
           break;
         }
@@ -445,16 +540,25 @@ public class CubeNeighbourLinker implements NeighbourLinker {
           rotationFunction = rotation -> rotateNTimes(1, rotation, Direction.LEFT);
           theirRotationFunction = rotation -> rotateNTimes(1, rotation, Direction.RIGHT);
           theirSide = rotationFunction.apply(Direction.RIGHT);
-          leftSideSewingFunction = sewingFunction(fieldsByPoint, cubeEdgeLength, theirQuadrantX,
-              theirQuadrantY, theirSide, false);
+          leftSideSewingFunction =
+              sewingFunction(
+                  fieldsByPoint, cubeEdgeLength, theirQuadrantX, theirQuadrantY, theirSide, false);
           readyToSew = true;
           break;
         }
       }
     }
     if (readyToSew) {
-      sewSide(fieldsByPoint, cubeEdgeLength, quadrantY, leftSideSewingFunction, rotationFunction,
-          theirRotationFunction, ourX, Direction.LEFT, theirSide);
+      sewSide(
+          fieldsByPoint,
+          cubeEdgeLength,
+          quadrantY,
+          leftSideSewingFunction,
+          rotationFunction,
+          theirRotationFunction,
+          ourX,
+          Direction.LEFT,
+          theirSide);
       sewedSides.get(new Point(quadrantX, quadrantY)).add(Direction.LEFT);
       sewedSides.get(new Point(theirQuadrantX, theirQuadrantY)).add(theirSide);
     }

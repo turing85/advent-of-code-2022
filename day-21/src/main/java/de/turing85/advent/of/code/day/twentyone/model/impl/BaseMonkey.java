@@ -6,14 +6,13 @@ import java.util.Objects;
 /**
  * A base monkey, not waiting on any other monkey, just shouting a value.
  *
- * <p>
- * In the sense of an <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">AST</a>, this
+ * <p>In the sense of an <a href="https://en.wikipedia.org/wiki/Abstract_syntax_tree">AST</a>, this
  * is a value. So there is nothing to calculate.
  *
  * @param name the {@link Monkey#name()}
  * @param value the value
  */
-public record BaseMonkey (String name, long value) implements Monkey {
+public record BaseMonkey(String name, long value) implements Monkey {
   @Override
   public Long evaluate() {
     return value();

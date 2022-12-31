@@ -2,9 +2,7 @@ package de.turing85.advent.of.code.day.twentyone.model;
 
 import java.util.function.Supplier;
 
-/**
- * Defines a monkey.
- */
+/** Defines a monkey. */
 public interface Monkey extends Supplier<Long> {
   /**
    * Getter.
@@ -44,11 +42,10 @@ public interface Monkey extends Supplier<Long> {
   Long inverseEvaluateOnMonkeyNotContaining(String monkeyName, long value);
 
   /**
-   * Returns the (directly connected) {@link Monkey} that does contain the monkey with the
-   * {@code monkeyName}. Should return {@code this} is the monkey is the monkey to look for.
+   * Returns the (directly connected) {@link Monkey} that does contain the monkey with the {@code
+   * monkeyName}. Should return {@code this} is the monkey is the monkey to look for.
    *
    * @param monkeyName the name of the {@link Monkey} to look for
-   *
    * @return the directly connected {@link Monkey} that contains the {@link Monkey} to look for
    */
   Monkey whoContains(String monkeyName);
@@ -58,9 +55,8 @@ public interface Monkey extends Supplier<Long> {
    * {@code monkeyName}.
    *
    * @param monkeyName the name of the {@link Monkey} to look for
-   *
    * @return the directly connected {@link Monkey} that does not contain the {@link Monkey} to look
-   *         for.
+   *     for.
    */
   Monkey whoDoesNotContain(String monkeyName);
 }

@@ -8,9 +8,7 @@ import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-/**
- * Simulate elf movement
- */
+/** Simulate elf movement */
 public class ElfMovementSimulator {
   private final Set<Elf> initialState;
 
@@ -27,13 +25,16 @@ public class ElfMovementSimulator {
    * Simulate {@code n} steps.
    *
    * @param steps number of steps to simulate
-   *
    * @return the position of the elves after the number of {@code steps}
    */
   public Set<Elf> simulate(int steps) {
     ArrayList<Direction.Cardinal> directionsToConsider =
-        new ArrayList<>(List.of(Direction.Cardinal.UP, Direction.Cardinal.DOWN,
-            Direction.Cardinal.LEFT, Direction.Cardinal.RIGHT));
+        new ArrayList<>(
+            List.of(
+                Direction.Cardinal.UP,
+                Direction.Cardinal.DOWN,
+                Direction.Cardinal.LEFT,
+                Direction.Cardinal.RIGHT));
     Set<Elf> currentState = initialState;
     for (int step = 0; step < steps; ++step) {
       currentState = simulateOneStep(currentState, directionsToConsider);
@@ -49,14 +50,20 @@ public class ElfMovementSimulator {
    */
   public int simulateUntilStableStateIsReached() {
     ArrayList<Direction.Cardinal> directionsToConsider =
-        new ArrayList<>(List.of(Direction.Cardinal.UP, Direction.Cardinal.DOWN,
-            Direction.Cardinal.LEFT, Direction.Cardinal.RIGHT));
+        new ArrayList<>(
+            List.of(
+                Direction.Cardinal.UP,
+                Direction.Cardinal.DOWN,
+                Direction.Cardinal.LEFT,
+                Direction.Cardinal.RIGHT));
     Set<Elf> currentState = initialState;
     int iteration = 0;
     while (true) {
       ++iteration;
       Set<Elf> newState = simulateOneStep(currentState, directionsToConsider);
-      if (currentState.stream().map(Elf::position).collect(Collectors.toSet())
+      if (currentState.stream()
+          .map(Elf::position)
+          .collect(Collectors.toSet())
           .equals(newState.stream().map(Elf::position).collect(Collectors.toSet()))) {
         return iteration;
       }
@@ -65,15 +72,15 @@ public class ElfMovementSimulator {
     }
   }
 
-  private static Set<Elf> simulateOneStep(Set<Elf> currentState,
-      List<Direction.Cardinal> directionsToConsiderInOrder) {
+  private static Set<Elf> simulateOneStep(
+      Set<Elf> currentState, List<Direction.Cardinal> directionsToConsiderInOrder) {
     Map<Elf, Point> nextFieldsOfElves =
         simulateFirstPhase(currentState, directionsToConsiderInOrder);
     return simulateSecondPhase(currentState, nextFieldsOfElves);
   }
 
-  private static Map<Elf, Point> simulateFirstPhase(Set<Elf> currentState,
-      List<Direction.Cardinal> directionsToConsiderInOrder) {
+  private static Map<Elf, Point> simulateFirstPhase(
+      Set<Elf> currentState, List<Direction.Cardinal> directionsToConsiderInOrder) {
     Map<Elf, Point> nextFieldsOfElves = new HashMap<>();
     Set<Point> pointsOccupied =
         currentState.stream().map(Elf::position).collect(Collectors.toSet());
@@ -83,18 +90,24 @@ public class ElfMovementSimulator {
     return nextFieldsOfElves;
   }
 
-  private static Set<Elf> simulateSecondPhase(Set<Elf> currentState,
-      Map<Elf, Point> nextFieldsOfElves) {
-    Map<Point, Integer> numberOfElvesThatWantToMoveToThisPoint = nextFieldsOfElves.values().stream()
-        .collect(Collectors.toMap(Function.identity(), point -> 1, Integer::sum));
-    currentState = currentState.stream()
-        .map(elf -> getFollowupElf(nextFieldsOfElves, numberOfElvesThatWantToMoveToThisPoint, elf))
-        .collect(Collectors.toSet());
+  private static Set<Elf> simulateSecondPhase(
+      Set<Elf> currentState, Map<Elf, Point> nextFieldsOfElves) {
+    Map<Point, Integer> numberOfElvesThatWantToMoveToThisPoint =
+        nextFieldsOfElves.values().stream()
+            .collect(Collectors.toMap(Function.identity(), point -> 1, Integer::sum));
+    currentState =
+        currentState.stream()
+            .map(
+                elf ->
+                    getFollowupElf(nextFieldsOfElves, numberOfElvesThatWantToMoveToThisPoint, elf))
+            .collect(Collectors.toSet());
     return currentState;
   }
 
-  private static Elf getFollowupElf(Map<Elf, Point> nextFieldsOfElves,
-      Map<Point, Integer> numberOfElvesThatWantToMoveToThisPoint, Elf elf) {
+  private static Elf getFollowupElf(
+      Map<Elf, Point> nextFieldsOfElves,
+      Map<Point, Integer> numberOfElvesThatWantToMoveToThisPoint,
+      Elf elf) {
     if (numberOfElvesThatWantToMoveToThisPoint.get(nextFieldsOfElves.get(elf)) == 1) {
       return new Elf(nextFieldsOfElves.get(elf));
     }

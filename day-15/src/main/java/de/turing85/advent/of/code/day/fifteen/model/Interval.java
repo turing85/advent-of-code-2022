@@ -17,7 +17,6 @@ public record Interval(long lower, long upper) {
    * Returns whether {@code this} {@link Interval} fully contains {@code that} {@link Interval}.
    *
    * @param that {@link Interval}
-   *
    * @return {@code true} if and only if {@code this} fully contains {@code that}
    */
   public boolean fullyContains(Interval that) {
@@ -25,11 +24,9 @@ public record Interval(long lower, long upper) {
   }
 
   /**
-   * Returns whether {@code this} and {@code that} {@link Interval} can be merged into one
-   * interval.
+   * Returns whether {@code this} and {@code that} {@link Interval} can be merged into one interval.
    *
    * @param that {@link Interval} to merge with
-   *
    * @return {@code true} if and only if a merge is possible
    */
   boolean canMergeWith(Interval that) {
@@ -43,8 +40,8 @@ public record Interval(long lower, long upper) {
   }
 
   /**
-   * Returns the length of the interval, i.e. the number of fields covered from
-   * {@link Interval#lower} to {@link Interval#upper} (both inclusive).
+   * Returns the length of the interval, i.e. the number of fields covered from {@link
+   * Interval#lower} to {@link Interval#upper} (both inclusive).
    *
    * @return the length of the {@link Interval}
    */
@@ -55,13 +52,11 @@ public record Interval(long lower, long upper) {
   /**
    * Given a set of {@link Interval}s, merge and reduce them if possible.
    *
-   * <p>
-   * Two {@link Interval}s can be merged if they overlap (one's {@link Interval#lower} is larger
+   * <p>Two {@link Interval}s can be merged if they overlap (one's {@link Interval#lower} is larger
    * than the other's {@link Interval#upper}) or if they are touching (one's {@link Interval#lower}
    * is one less than the other's {@link Interval#upper}).
    *
    * @param intervals {@link Interval}s to merge
-   *
    * @return merged {@link Interval}s.
    */
   public static Set<Interval> merge(Set<Interval> intervals) {

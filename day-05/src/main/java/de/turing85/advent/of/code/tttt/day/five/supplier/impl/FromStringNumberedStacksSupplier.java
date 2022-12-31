@@ -10,9 +10,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Reads a {@link String}-representation of numbered stacks.
- */
+/** Reads a {@link String}-representation of numbered stacks. */
 public class FromStringNumberedStacksSupplier implements NumberedStacksSupplier {
   private static final Pattern STACK_ENTRY_EXTRACTOR =
       Pattern.compile("(?<stackContent>\\[[A-Z]]\\s?|\\s{4})");

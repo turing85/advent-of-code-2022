@@ -31,8 +31,8 @@ public class MonkeyTree {
    * @param monkeyToSolveFor the monkey to solve for
    * @return the value for {@code monkeyToSolveFor}
    */
-  public static long solveFor(Map<String, Monkey> monkeyMap, String rootMonkey,
-      String monkeyToSolveFor) {
+  public static long solveFor(
+      Map<String, Monkey> monkeyMap, String rootMonkey, String monkeyToSolveFor) {
     monkeyMap = new HashMap<>(monkeyMap);
     Monkey toSolveFor = monkeyMap.get(monkeyToSolveFor);
     Monkey root = monkeyMap.get(rootMonkey);

@@ -4,24 +4,18 @@ import java.util.Map;
 import lombok.Getter;
 
 /**
- * Representation of the possible selections in a
- * <a href="https://en.wikipedia.org/wiki/Rock_paper_scissors">Rock Paper Scissors</a> game.
+ * Representation of the possible selections in a <a
+ * href="https://en.wikipedia.org/wiki/Rock_paper_scissors">Rock Paper Scissors</a> game.
  */
 @Getter
 public enum Selection {
-  /**
-   * Rock selection.
-   */
+  /** Rock selection. */
   ROCK,
 
-  /**
-   * Paper selection.
-   */
+  /** Paper selection. */
   PAPER,
 
-  /**
-   * Scissor selection.
-   */
+  /** Scissor selection. */
   SCISSORS;
 
   private static final Map<Selection, Selection> beatsMap =
@@ -35,7 +29,7 @@ public enum Selection {
    * us.
    *
    * @return the opponent's {@link Selection} that loses when {@code this} {@link Selection} is
-   *         chosen by us.
+   *     chosen by us.
    */
   public Selection beats() {
     return beatsMap.get(this);
@@ -46,7 +40,7 @@ public enum Selection {
    * us.
    *
    * @return the opponent's {@link Selection} that wins when {@code this} {@link Selection} is
-   *         chosen by us.
+   *     chosen by us.
    */
   public Selection beatenBy() {
     return beatenByMap.get(this);

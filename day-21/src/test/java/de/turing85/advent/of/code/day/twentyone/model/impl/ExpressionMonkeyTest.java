@@ -12,8 +12,16 @@ import org.junit.jupiter.params.provider.CsvSource;
 class ExpressionMonkeyTest {
   @DisplayName("inverse evaluation works")
   @ParameterizedTest(name = "{0},{1} -> {2}")
-  @CsvSource({"PLUS,left,1", "PLUS,right,2", "MINUS,left,5", "MINUS,right,-2", "TIMES,left,1",
-      "TIMES,right,3", "DIVIDE,left,6", "DIVIDE,right,0"})
+  @CsvSource({
+    "PLUS,left,1",
+    "PLUS,right,2",
+    "MINUS,left,5",
+    "MINUS,right,-2",
+    "TIMES,left,1",
+    "TIMES,right,3",
+    "DIVIDE,left,6",
+    "DIVIDE,right,0"
+  })
   void inverseEvaluationWorks(Operator operator, String monkeyName, long expected) {
     // GIVEN
     Monkey left = new BaseMonkey("left", 1L);

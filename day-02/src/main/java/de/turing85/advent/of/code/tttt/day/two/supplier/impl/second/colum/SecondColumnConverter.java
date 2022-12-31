@@ -6,9 +6,8 @@ import java.util.function.BiFunction;
 /**
  * Converts the second colum to our own move.
  *
- * <p>
- * The interpretation of the second column may depend on the opponent's {@link Selection}, hence it
- * is passed in as argument as well.
+ * <p>The interpretation of the second column may depend on the opponent's {@link Selection}, hence
+ * it is passed in as argument as well.
  */
 public interface SecondColumnConverter extends BiFunction<Selection, Character, Selection> {
   @Override

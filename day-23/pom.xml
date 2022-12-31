@@ -13,18 +13,4 @@
     <artifactId>advent-of-code-2022-day-23</artifactId>
     <name>advent-of-code-2022 :: day 23</name>
     <description>Solutions for the day 23 challenge</description>
-
-    <build>
-        <plugins>
-            <plugin>
-                <!-- Since the formatter cannot handle the Point.java file, we exclude it explicitly -->
-                <groupId>net.revelc.code.formatter</groupId>
-                <artifactId>formatter-maven-plugin</artifactId>
-                <version>${formatter-maven-plugin.version}</version>
-                <configuration>
-                    <excludes>**/Point.java</excludes>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>

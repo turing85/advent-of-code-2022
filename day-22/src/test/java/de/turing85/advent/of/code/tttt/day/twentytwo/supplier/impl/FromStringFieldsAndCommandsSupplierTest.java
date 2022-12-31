@@ -18,8 +18,8 @@ class FromStringFieldsAndCommandsSupplierTest {
         """;
 
     // WHEN & THEN
-    assertThrows(IllegalStateException.class,
-        () -> new FromStringFieldsAndCommandsSupplier(malformedInput));
+    assertThrows(
+        IllegalStateException.class, () -> new FromStringFieldsAndCommandsSupplier(malformedInput));
   }
 
   @DisplayName("throw on missing last steps in command")
@@ -33,8 +33,8 @@ class FromStringFieldsAndCommandsSupplierTest {
         """;
 
     // WHEN & THEN
-    assertThrows(IllegalStateException.class,
-        () -> new FromStringFieldsAndCommandsSupplier(malformedInput));
+    assertThrows(
+        IllegalStateException.class, () -> new FromStringFieldsAndCommandsSupplier(malformedInput));
   }
 
   @DisplayName("throw on malformed command")
@@ -48,7 +48,7 @@ class FromStringFieldsAndCommandsSupplierTest {
         """;
 
     // WHEN & THEN
-    assertThrows(IllegalStateException.class,
-        () -> new FromStringFieldsAndCommandsSupplier(malformedInput));
+    assertThrows(
+        IllegalStateException.class, () -> new FromStringFieldsAndCommandsSupplier(malformedInput));
   }
 }

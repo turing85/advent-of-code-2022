@@ -11,10 +11,8 @@ import java.util.List;
  * Reads a {@link String}-representation of an expedition and constructs the corresponding
  * expedition from it.
  *
- * <p>
- * Backpacks in an expedition are separate by two {@link System#lineSeparator()}s, while items
+ * <p>Backpacks in an expedition are separate by two {@link System#lineSeparator()}s, while items
  * within a backpack are separated by only one {@link System#lineSeparator()}.
- *
  */
 public class FromStringExpeditionSupplier implements ExpeditionSupplier {
   private final Expedition expedition;
@@ -32,8 +30,8 @@ public class FromStringExpeditionSupplier implements ExpeditionSupplier {
 
   private List<Backpack> parseAndValidateBackpacks(String expeditionAsString) {
     List<Backpack> backpacks = new ArrayList<>();
-    for (String backpackContentAsString : expeditionAsString
-        .split(System.lineSeparator() + System.lineSeparator())) {
+    for (String backpackContentAsString :
+        expeditionAsString.split(System.lineSeparator() + System.lineSeparator())) {
       backpacks.add(parseAndValidateBackpack(backpackContentAsString));
     }
     return backpacks;
@@ -41,7 +39,8 @@ public class FromStringExpeditionSupplier implements ExpeditionSupplier {
 
   private Backpack parseAndValidateBackpack(String backpackContentAsString) {
     List<Integer> itemCalories =
-        Arrays.stream(backpackContentAsString.split(System.lineSeparator())).map(Integer::parseInt)
+        Arrays.stream(backpackContentAsString.split(System.lineSeparator()))
+            .map(Integer::parseInt)
             .toList();
     return new Backpack(itemCalories);
   }
@@ -51,7 +50,7 @@ public class FromStringExpeditionSupplier implements ExpeditionSupplier {
    * constructor.
    *
    * @return the {@link Expedition} that was obtained by parsing the {@link String}-representation
-   *         given to the constructor.
+   *     given to the constructor.
    */
   @Override
   public Expedition getExpedition() {

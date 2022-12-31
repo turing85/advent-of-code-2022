@@ -14,9 +14,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import lombok.Getter;
 
-/**
- * Reads a {@link String}-representation of a {@link FieldsAndCommands}.
- */
+/** Reads a {@link String}-representation of a {@link FieldsAndCommands}. */
 @Getter
 public class FromStringFieldsAndCommandsSupplier implements FieldsAndCommandsSupplier {
   private static final Pattern FIELDS_EXTRACTOR =
@@ -60,8 +58,8 @@ public class FromStringFieldsAndCommandsSupplier implements FieldsAndCommandsSup
     return convertStringToFields(currentYIndex, currentXIndex, fieldsAsString, fields);
   }
 
-  private static Set<Field> convertStringToFields(int currentYIndex, int currentXIndex,
-      String fieldsAsString, Set<Field> fields) {
+  private static Set<Field> convertStringToFields(
+      int currentYIndex, int currentXIndex, String fieldsAsString, Set<Field> fields) {
     for (char fieldChar : fieldsAsString.toCharArray()) {
       boolean hasRock = fieldChar == '#';
       fields.add(new Field(new Point(currentXIndex, currentYIndex), hasRock));

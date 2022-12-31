@@ -10,9 +10,7 @@ import java.util.Set;
 import java.util.regex.Pattern;
 import lombok.Getter;
 
-/**
- * Reads a {@link String}-representation of a {@link Set} of {@link Elf}s.
- */
+/** Reads a {@link String}-representation of a {@link Set} of {@link Elf}s. */
 @Getter
 public class FromStringElvesSupplier implements ElvesSupplier {
   private static final Pattern VALIDATION_PATTERN = Pattern.compile("^[.#]*$");

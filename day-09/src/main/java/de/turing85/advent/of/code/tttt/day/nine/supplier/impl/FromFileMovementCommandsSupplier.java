@@ -12,15 +12,13 @@ import lombok.experimental.Delegate;
  * {@link Path}.
  */
 public class FromFileMovementCommandsSupplier implements MovementCommandsSupplier {
-  @Delegate
-  private final FromStringMovementCommandSupplier fromStringMovementCommandSupplier;
+  @Delegate private final FromStringMovementCommandSupplier fromStringMovementCommandSupplier;
 
   /**
    * Reads a {@link String}-representation of {@link MovementCommand}s from a file, represented by a
    * {@link Path}.
    *
    * @param inputFile the file holding the {@link String}-representation of commands
-   *
    * @throws IOException if some I/O exception occurs when the file is read.
    */
   public FromFileMovementCommandsSupplier(Path inputFile) throws IOException {

@@ -4,9 +4,7 @@ import java.util.Optional;
 import java.util.Set;
 import lombok.Getter;
 
-/**
- * Represents a grain of salt, falling in a map of some blocked {@link Point}s.
- */
+/** Represents a grain of salt, falling in a map of some blocked {@link Point}s. */
 @Getter
 public final class GrainOfSand {
   private Point point;
@@ -19,8 +17,7 @@ public final class GrainOfSand {
   /**
    * Constructor.
    *
-   * <p>
-   * No floor is assumed.
+   * <p>No floor is assumed.
    *
    * @param point the {@link Point} of this grain of sand
    * @param blocked the blocked {@link Point}s
@@ -41,10 +38,10 @@ public final class GrainOfSand {
    * @param minX the min x-coordinate of a blocking {@link Point}
    * @param maxY the max y-coordinate of a blocking {@link Point}
    * @param floorAtYCoordinate the {@code y}-coordinate of the floor. A negative value means "no
-   *        floor".
+   *     floor".
    */
-  public GrainOfSand(Point point, Set<Point> blocked, int maxX, int minX, int maxY,
-      int floorAtYCoordinate) {
+  public GrainOfSand(
+      Point point, Set<Point> blocked, int maxX, int minX, int maxY, int floorAtYCoordinate) {
     this.point = point;
     this.blocked = blocked;
     this.floorAtYCoordinate = floorAtYCoordinate;
@@ -76,12 +73,12 @@ public final class GrainOfSand {
   /**
    * Fal. down one field.
    *
-   * <p>
-   * If {@code this} {@link GrainOfSand} cannot fall anymore, its {@link #point} will not change.
+   * <p>If {@code this} {@link GrainOfSand} cannot fall anymore, its {@link #point} will not change.
    */
   public void fall() {
-    this.point = tryFallStraightDown()
-        .orElse(tryFallDownLeft().orElse(tryFallDownRight().orElse(this.point)));
+    this.point =
+        tryFallStraightDown()
+            .orElse(tryFallDownLeft().orElse(tryFallDownRight().orElse(this.point)));
   }
 
   private Optional<Point> tryFallStraightDown() {

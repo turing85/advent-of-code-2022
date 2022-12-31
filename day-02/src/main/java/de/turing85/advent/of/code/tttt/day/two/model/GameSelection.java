@@ -7,5 +7,4 @@ package de.turing85.advent.of.code.tttt.day.two.model;
  * @param ownSelection our {@link Selection}
  * @param opponentSelection the opponent's {@link Selection}
  */
-public record GameSelection(Selection ownSelection, Selection opponentSelection) {
-}
+public record GameSelection(Selection ownSelection, Selection opponentSelection) {}

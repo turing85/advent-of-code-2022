@@ -12,16 +12,14 @@ import lombok.experimental.Delegate;
  * by a {@link Path}.
  */
 public class FromFileLongListSupplier implements LongListSupplier {
-  @Delegate
-  private final FromStringLongListSupplier fromStringLongListSupplier;
+  @Delegate private final FromStringLongListSupplier fromStringLongListSupplier;
 
   /**
    * Reads a {@link String}-representation of a {@link List} of {@link Long}s from a file,
    * represented by a {@link Path}.
    *
-   * @param inputFile the file holding the {@link String}-representation of a {@link List} of
-   *        {@link Long}s
-   *
+   * @param inputFile the file holding the {@link String}-representation of a {@link List} of {@link
+   *     Long}s
    * @throws IOException if some I/O exception occurs when the file is read.
    */
   public FromFileLongListSupplier(Path inputFile) throws IOException {

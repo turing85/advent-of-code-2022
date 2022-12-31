@@ -28,7 +28,6 @@ public class CargoBay {
    * as {@link List}.
    *
    * @param unloadInstructions unload instructions to execute
-   *
    * @return the top element of each stack, as {@link List}.
    */
   public List<Character> executeUnloadPlan(List<UnloadInstruction> unloadInstructions) {
@@ -63,7 +62,6 @@ public class CargoBay {
    * as {@link List} OVER 9000!
    *
    * @param unloadInstructions unload instructions to execute
-   *
    * @return the top element of each stack, as {@link List}.
    */
   public List<Character> executeUnloadPlanOver9000(List<UnloadInstruction> unloadInstructions) {

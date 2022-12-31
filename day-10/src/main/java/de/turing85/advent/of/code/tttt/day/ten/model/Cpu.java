@@ -3,9 +3,7 @@ package de.turing85.advent.of.code.tttt.day.ten.model;
 import java.util.List;
 import java.util.function.BiConsumer;
 
-/**
- * A CPU..
- */
+/** A CPU.. */
 public class Cpu {
   private final List<InstructionWithParameter> instructions;
   private Register register;
@@ -34,8 +32,7 @@ public class Cpu {
    * Executes one clock cycle.
    *
    * @param duringCycleXRegistryObserver an observer that is called during the cycle with the
-   *        current cycle and the current value of register {@code X}.
-   *
+   *     current cycle and the current value of register {@code X}.
    * @return {@code true} if and only if there are still instructions to execute after this tick.
    */
   public boolean tick(BiConsumer<Integer, Integer> duringCycleXRegistryObserver) {

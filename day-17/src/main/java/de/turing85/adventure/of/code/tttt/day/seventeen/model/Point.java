@@ -8,11 +8,10 @@ package de.turing85.adventure.of.code.tttt.day.seventeen.model;
  */
 public record Point(long x, long y) {
   /**
-   * Constructs a new {@link Point} by adding {@code this} {@link Point} to {@code that}
-   * {@link Point}.
+   * Constructs a new {@link Point} by adding {@code this} {@link Point} to {@code that} {@link
+   * Point}.
    *
    * @param that point to add
-   *
    * @return a new point with {@code x = this.x() + that.x()} and {@code y = this.y() + that.y()}.
    */
   Point add(Point that) {

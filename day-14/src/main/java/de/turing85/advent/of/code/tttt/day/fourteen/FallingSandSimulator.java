@@ -8,9 +8,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-/**
- * A falling sand simulator.
- */
+/** A falling sand simulator. */
 public class FallingSandSimulator {
   private static final Point ORIGIN_FOR_SAND = Point.of(500, 0);
   private final Set<Point> blocked;
@@ -27,8 +25,11 @@ public class FallingSandSimulator {
    * @param linesDefiningBlockedPoints {@link Line}s defining blocked {@link Point}s
    */
   public FallingSandSimulator(Set<Line> linesDefiningBlockedPoints) {
-    blocked = (linesDefiningBlockedPoints.stream().map(Line::allPointsOnLine)
-        .flatMap(Collection::stream).collect(Collectors.toSet()));
+    blocked =
+        (linesDefiningBlockedPoints.stream()
+            .map(Line::allPointsOnLine)
+            .flatMap(Collection::stream)
+            .collect(Collectors.toSet()));
     grainsOfSandAtRest = new HashSet<>();
     maxX = blocked.stream().mapToInt(Point::x).max().orElse(Integer.MIN_VALUE);
     minX = blocked.stream().mapToInt(Point::x).min().orElse(Integer.MAX_VALUE);
@@ -58,8 +59,9 @@ public class FallingSandSimulator {
     if (fallingGrainOfSand.isAtRest()) {
       blocked.add(fallingGrainOfSand.point());
       grainsOfSandAtRest.add(fallingGrainOfSand.point());
-      fallingGrainOfSand = new GrainOfSand(ORIGIN_FOR_SAND, blocked, maxX, minX, maxY,
-          fallingGrainOfSand.floorAtYCoordinate());
+      fallingGrainOfSand =
+          new GrainOfSand(
+              ORIGIN_FOR_SAND, blocked, maxX, minX, maxY, fallingGrainOfSand.floorAtYCoordinate());
       if (fallingGrainOfSand.isAtRest()) {
         grainsOfSandAtRest.add(fallingGrainOfSand.point());
         return true;
@@ -88,5 +90,4 @@ public class FallingSandSimulator {
     int floorDepth = blocked.stream().mapToInt(Point::y).max().orElse(Integer.MIN_VALUE) + 2;
     return new GrainOfSand(ORIGIN_FOR_SAND, blocked, maxX, minX, maxY, floorDepth);
   }
-
 }

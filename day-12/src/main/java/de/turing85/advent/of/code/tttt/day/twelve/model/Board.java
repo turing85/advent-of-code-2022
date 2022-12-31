@@ -2,9 +2,7 @@ package de.turing85.advent.of.code.tttt.day.twelve.model;
 
 import java.util.Collection;
 
-/**
- * A board of {@link Field}s.
- */
+/** A board of {@link Field}s. */
 public interface Board {
   /**
    * Getter for end field.

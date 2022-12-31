@@ -5,9 +5,7 @@ import de.turing85.advent.of.code.day.fifteen.model.Point;
 import java.util.Set;
 import java.util.function.Supplier;
 
-/**
- * A supplier, supplying a {@link Set} of {@link Pair}s of {@link Point}s.
- */
+/** A supplier, supplying a {@link Set} of {@link Pair}s of {@link Point}s. */
 public interface PointPairsSupplier extends Supplier<Set<Pair<Point, Point>>> {
   default Set<Pair<Point, Point>> get() {
     return pointPairs();

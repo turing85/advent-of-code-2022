@@ -4,9 +4,7 @@ import de.turing85.advent.of.code.tttt.day.three.model.Rucksack;
 import java.util.List;
 import java.util.function.Supplier;
 
-/**
- * Supplies some {@link List} of {@link Rucksack}s.
- */
+/** Supplies some {@link List} of {@link Rucksack}s. */
 public interface RucksacksSupplier extends Supplier<List<Rucksack>> {
   @Override
   default List<Rucksack> get() {
@@ -19,5 +17,4 @@ public interface RucksacksSupplier extends Supplier<List<Rucksack>> {
    * @return the {@link Rucksack}s to supply.
    */
   List<Rucksack> rucksacks();
-
 }

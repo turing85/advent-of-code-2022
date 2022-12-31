@@ -15,7 +15,7 @@ class FromStringCommandsAndResponsesSupplierTest {
     Path input = Path.of("src/test/resources/illegalInput.txt");
 
     // WHEN & THEN
-    assertThrows(IllegalStateException.class,
-        () -> new FromFileCommandsAndResponsesSupplier(input));
+    assertThrows(
+        IllegalStateException.class, () -> new FromFileCommandsAndResponsesSupplier(input));
   }
 }

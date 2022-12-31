@@ -12,8 +12,7 @@ import lombok.ToString;
 /**
  * A line, represented by two points.
  *
- * <p>
- * The implementation will guarantee that {@link #first} is always the "smaller" (with respect to
+ * <p>The implementation will guarantee that {@link #first} is always the "smaller" (with respect to
  * {@link Point#compareTo(Point)}) point, and {@link #second} is the larger point.
  */
 @EqualsAndHashCode
@@ -27,14 +26,12 @@ public final class Line {
   /**
    * Factory-method.
    *
-   * <p>
-   * The factory-method will enforce that {@link Line#first} is always the "smaller" (with respect
-   * to {@link Point#compareTo(Point)}) {@link Point}, and {@link #second} is the "larger"
+   * <p>The factory-method will enforce that {@link Line#first} is always the "smaller" (with
+   * respect to {@link Point#compareTo(Point)}) {@link Point}, and {@link #second} is the "larger"
    * {@link Point}.
    *
    * @param first first {@code Point}, defining the line
    * @param second second {@code Point}, defining the line
-   *
    * @return the {@link Line}, defined by {@code first} and {@code second}.
    */
   public static Line of(Point first, Point second) {

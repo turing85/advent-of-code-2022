@@ -2,9 +2,7 @@ package de.turing85.advent.of.code.tttt.day.eight.supplier;
 
 import java.util.function.Supplier;
 
-/**
- * A supplier, supplying a tree map as {@code int[][]}.
- */
+/** A supplier, supplying a tree map as {@code int[][]}. */
 public interface TreeMapSupplier extends Supplier<int[][]> {
   @Override
   default int[][] get() {

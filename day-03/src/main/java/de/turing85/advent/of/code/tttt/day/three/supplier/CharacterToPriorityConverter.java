@@ -3,11 +3,11 @@ package de.turing85.advent.of.code.tttt.day.three.supplier;
 /**
  * Converts a {@code char}, represented by its {@code codePoint}, to a priority.
  *
- * <p>
- * Rules for conversion:
+ * <p>Rules for conversion:
+ *
  * <ul>
- * <li>lowercase letters ({@code [a-z]}) are mopped to {@code [1, 26]}</li>
- * <li>uppercase letters ({@code [A-Z]}) are mapped to {@code [27, 52]}</li>
+ *   <li>lowercase letters ({@code [a-z]}) are mopped to {@code [1, 26]}
+ *   <li>uppercase letters ({@code [A-Z]}) are mapped to {@code [27, 52]}
  * </ul>
  */
 public class CharacterToPriorityConverter {

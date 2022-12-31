@@ -23,7 +23,6 @@ public record Point(int x, int y) {
    * Get all neighbouring {@link Point}s in the specified {@code Direction}s.
    *
    * @param directions the {@link Direction}s to consider
-   *
    * @return the neighbouring {@link Point}s
    */
   public Set<Point> neighbours(Set<? extends Direction> directions) {
@@ -34,7 +33,6 @@ public record Point(int x, int y) {
    * Get the neighbouring {@link Point} in the given {@code direction}
    *
    * @param direction the direction of the neighbouring {@link Point}
-   *
    * @return the neighbouring {@link Point}
    */
   public Point neighbour(Direction direction) {

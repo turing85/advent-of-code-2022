@@ -18,11 +18,15 @@ import org.junit.jupiter.params.provider.CsvSource;
 class BlueprintParserTest {
   @DisplayName("throws on illegal input")
   @ParameterizedTest(name = "{0} -> IllegalStateException")
-  @CsvSource({"illegalInputMalformedId.txt", "illegalInputMalformedCollectType.txt",
-      "illegalInputMissingRecipe.txt", "illegalInputMalformedFirstRecipeAmount.txt",
-      "illegalInputMalformedFirstRecipeResourceType.txt",
-      "illegalInputMalformedAdditionalRecipeAmount.txt",
-      "illegalInputMalformedAdditionalRecipeResourceType.txt"})
+  @CsvSource({
+    "illegalInputMalformedId.txt",
+    "illegalInputMalformedCollectType.txt",
+    "illegalInputMissingRecipe.txt",
+    "illegalInputMalformedFirstRecipeAmount.txt",
+    "illegalInputMalformedFirstRecipeResourceType.txt",
+    "illegalInputMalformedAdditionalRecipeAmount.txt",
+    "illegalInputMalformedAdditionalRecipeResourceType.txt"
+  })
   void throwsOnIllegalInput(String fileName) {
     // GIVEN
     Path path = Path.of("src/test/resources", fileName);
@@ -42,8 +46,9 @@ class BlueprintParserTest {
     RobotRecipe clayRobotRecipe = new RobotRecipe(Map.of(ResourceType.ORE, 2L), ResourceType.CLAY);
     RobotRecipe obsidianRobotRecipe =
         new RobotRecipe(Map.of(ResourceType.ORE, 3L, ResourceType.CLAY, 4L), ResourceType.OBSIDIAN);
-    RobotRecipe geodeRobotRecipe = new RobotRecipe(
-        Map.of(ResourceType.ORE, 5L, ResourceType.OBSIDIAN, 6L), ResourceType.GEODE);
+    RobotRecipe geodeRobotRecipe =
+        new RobotRecipe(
+            Map.of(ResourceType.ORE, 5L, ResourceType.OBSIDIAN, 6L), ResourceType.GEODE);
     Set<RobotRecipe> expectedRobotRecipes =
         Set.of(oreRobotRecipe, clayRobotRecipe, obsidianRobotRecipe, geodeRobotRecipe);
 

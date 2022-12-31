@@ -21,8 +21,12 @@ public class FromStringRucksackSupplier implements RucksacksSupplier {
    * @param rucksacksAsString the {@link String}-representation of {@link Rucksack}s
    */
   public FromStringRucksackSupplier(String rucksacksAsString) {
-    rucksacks = Arrays.stream(rucksacksAsString.split(System.lineSeparator())).map(String::chars)
-        .map(FromStringRucksackSupplier::charsToPriorityList).map(Rucksack::new).toList();
+    rucksacks =
+        Arrays.stream(rucksacksAsString.split(System.lineSeparator()))
+            .map(String::chars)
+            .map(FromStringRucksackSupplier::charsToPriorityList)
+            .map(Rucksack::new)
+            .toList();
   }
 
   private static List<Integer> charsToPriorityList(IntStream chars) {

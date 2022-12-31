@@ -9,15 +9,12 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import lombok.Getter;
 
-/**
- * Reads a {@link String}-representation of {@link Point3D}s.
- */
+/** Reads a {@link String}-representation of {@link Point3D}s. */
 public class FromStringPointsSupplier implements PointsSupplier {
   private static final Pattern POINT_COORDINATE_EXTRACTOR =
       Pattern.compile("^(?<x>\\d+),(?<y>\\d+),(?<z>\\d+)$");
 
-  @Getter
-  private final Set<Point3D> points;
+  @Getter private final Set<Point3D> points;
 
   /**
    * Reads a {@link String}-representation of {@link Point3D}.
@@ -25,8 +22,10 @@ public class FromStringPointsSupplier implements PointsSupplier {
    * @param inputAsString the {@link String}-representation of {@link Point3D}s
    */
   public FromStringPointsSupplier(String inputAsString) {
-    points = Arrays.stream(inputAsString.split(System.lineSeparator())).map(this::parseLineAsPoint)
-        .collect(Collectors.toSet());
+    points =
+        Arrays.stream(inputAsString.split(System.lineSeparator()))
+            .map(this::parseLineAsPoint)
+            .collect(Collectors.toSet());
   }
 
   private Point3D parseLineAsPoint(String line) {
