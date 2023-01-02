@@ -1,10 +1,6 @@
 # Advent of Code 2022
 These are my implementation of the [Advent of code 2022][adventOfCode2022]
 
-I will try to solve all challenges. For each challenge, there will most probably multiple implementations, with various "flavours" to them.
-
-Each challenge will be in its own module, and the flavours in different submodules. When possible, I will have one `common` module, holding the driver-class for the solution, and the flavours are implemented as pluggable elements to this driver class.
-
 [Day 1](./day-01/README.md)<br>
 [Day 2](./day-02/README.md)<br>
 [Day 3](./day-03/README.md)<br>
@@ -28,6 +24,7 @@ Each challenge will be in its own module, and the flavours in different submodul
 [Day 21](./day-21/README.md)<br>
 [Day 22](./day-22/README.md)<br>
 [Day 23](./day-23/README.md)<br>
-[Day 24](./day-24/README.md)
+[Day 24](./day-24/README.md)<br>
+[Day 25](./day-25/README.md)
 
 [adventOfCode2022]: https://adventofcode.com/2022
