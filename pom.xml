@@ -35,6 +35,7 @@
         <module>day-21</module>
         <module>day-22</module>
         <module>day-23</module>
+        <module>day-24</module>
         <module>implementation-parent</module>
         <module>jacoco-aggregation</module>
     </modules>
