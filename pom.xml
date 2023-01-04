@@ -7,8 +7,8 @@
     <groupId>de.turing85</groupId>
     <artifactId>advent-of-code-2022-parent</artifactId>
     <version>999-SNAPSHOT</version>
-    <name>advent-of-code :: parent</name>
-    <description>The parent for the advent-of-code project.</description>
+    <name>advent-of-code-2022 :: parent</name>
+    <description>The parent for the advent-of-code-2022 project.</description>
 
     <packaging>pom</packaging>
     <modules>
