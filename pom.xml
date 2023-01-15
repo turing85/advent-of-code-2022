@@ -53,8 +53,15 @@
         <dependency-check-maven.version>7.4.4</dependency-check-maven.version>
         <fmt-maven-plugin.version>2.19</fmt-maven-plugin.version>
         <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
+        <maven-antrun-plugin.version>3.1.0</maven-antrun-plugin.version>
+        <maven-assembly-plugin.version>3.4.2</maven-assembly-plugin.version>
+        <maven-clean-plugin.version>3.2.0</maven-clean-plugin.version>
         <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
+        <maven-dependency-plugin.version>3.5.0</maven-dependency-plugin.version>
         <maven-deploy-plugin.version>3.0.0</maven-deploy-plugin.version>
+        <maven-enforcer-plugin.version>3.1.0</maven-enforcer-plugin.version>
+        <maven-install-plugin.version>3.1.0</maven-install-plugin.version>
+        <maven-jar-plugin.version>3.3.0</maven-jar-plugin.version>
         <maven-javadoc-plugin.version>3.4.1</maven-javadoc-plugin.version>
         <maven-jxr-plugin.version>3.3.0</maven-jxr-plugin.version>
         <maven-project-info-reports-plugin.version>3.4.2</maven-project-info-reports-plugin.version>
@@ -64,6 +71,7 @@
         <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
         <maven-surefire-plugin.version>3.0.0-M8</maven-surefire-plugin.version>
         <sonar-maven-plugin.version>3.9.1.2184</sonar-maven-plugin.version>
+        <versions-maven-plugin.version>2.14.2</versions-maven-plugin.version>
 
         <!-- Project setup -->
         <dependency-check-maven.skip>false</dependency-check-maven.skip>
@@ -71,6 +79,7 @@
         <fmt-maven-plugin.skip>false</fmt-maven-plugin.skip>
         <git-ssh-url>git:ssh://github.com/turing85/advent-of-code-2022.git</git-ssh-url>
         <jacoco-maven-plugin.skip>false</jacoco-maven-plugin.skip>
+        <maven.version>3.8.6</maven.version>
         <maven.compiler.release>17</maven.compiler.release>
         <maven.compiler.source>${maven.compiler.release}</maven.compiler.source>
         <maven.compiler.target>${maven.compiler.release}</maven.compiler.target>
@@ -79,7 +88,10 @@
         <maven-site-plugin.stage.skip>false</maven-site-plugin.stage.skip>
         <maven-surefire-plugin.excludedGroups>slow</maven-surefire-plugin.excludedGroups>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <sonar.coverage.jacoco.xmlReportPaths>${maven.multiModuleProjectDirectory}/jacoco-aggregation/target/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
+        <sonar.coverage.jacoco.xmlReportPaths>
+            ${maven.multiModuleProjectDirectory}/jacoco-aggregation/target/jacoco/jacoco.xml
+        </sonar.coverage.jacoco.xmlReportPaths>
+        <versions-maven-plugin.ignoredVersions>.+-M.+</versions-maven-plugin.ignoredVersions>
 
         <!-- Dependency setup -->
         <junit-jupiter.version>5.9.2</junit-jupiter.version>
@@ -114,38 +126,9 @@
         <pluginManagement>
             <plugins>
                 <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-surefire-plugin</artifactId>
-                    <version>${maven-surefire-plugin.version}</version>
-                    <configuration>
-                        <consoleOutputReporter implementation="org.apache.maven.plugin.surefire.extensions.junit5.JUnit5ConsoleOutputReporter">
-                            <disable>false</disable>
-                            <encoding>UTF-8</encoding>
-                            <usePhrasedFileName>false</usePhrasedFileName>
-                        </consoleOutputReporter>
-                        <excludedGroups>${maven-surefire-plugin.excludedGroups}</excludedGroups>
-                        <statelessTestsetReporter implementation="org.apache.maven.plugin.surefire.extensions.junit5.JUnit5Xml30StatelessReporter">
-                            <disable>false</disable>
-                            <version>${maven-surefire-plugin.version}</version>
-                            <usePhrasedFileName>false</usePhrasedFileName>
-                            <usePhrasedTestSuiteClassName>true</usePhrasedTestSuiteClassName>
-                            <usePhrasedTestCaseClassName>true</usePhrasedTestCaseClassName>
-                            <usePhrasedTestCaseMethodName>true</usePhrasedTestCaseMethodName>
-                        </statelessTestsetReporter>
-                        <statelessTestsetInfoReporter implementation="org.apache.maven.plugin.surefire.extensions.junit5.JUnit5StatelessTestsetInfoReporter">
-                            <disable>false</disable>
-                            <usePhrasedFileName>false</usePhrasedFileName>
-                            <usePhrasedClassNameInRunning>true</usePhrasedClassNameInRunning>
-                            <usePhrasedClassNameInTestCaseSummary>true</usePhrasedClassNameInTestCaseSummary>
-                        </statelessTestsetInfoReporter>
-                    </configuration>
-                    <dependencies>
-                        <dependency>
-                            <groupId>org.junit.jupiter</groupId>
-                            <artifactId>junit-jupiter-engine</artifactId>
-                            <version>${junit-jupiter.version}</version>
-                        </dependency>
-                    </dependencies>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>versions-maven-plugin</artifactId>
+                    <version>${versions-maven-plugin.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.jacoco</groupId>
@@ -197,28 +180,63 @@
                         <source>${maven.compiler.release}</source>
                     </configuration>
                 </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>${maven-assembly-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>${maven-resource-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>${maven-jar-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>${maven-install-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>${maven-deploy-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>${maven-site-plugin.version}</version>
+                </plugin>
             </plugins>
         </pluginManagement>
 
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>${maven-javadoc-plugin.version}</version>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>${maven-enforcer-plugin.version}</version>
                 <executions>
                     <execution>
+                        <id>enforce-maven</id>
                         <goals>
-                            <goal>aggregate</goal>
+                            <goal>enforce</goal>
                         </goals>
-                        <phase>package</phase>
+                        <configuration>
+                            <rules>
+                                <requireMavenVersion>
+                                    <version>${maven.version}</version>
+                                </requireMavenVersion>
+                            </rules>
+                        </configuration>
                     </execution>
                 </executions>
-                <inherited>false</inherited>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
-                <version>${maven-site-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>site-stage</id>
@@ -235,7 +253,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>
-                <version>${maven-deploy-plugin.version}</version>
                 <executions>
                     <execution>
                         <id>default-deploy</id>
@@ -378,6 +395,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jxr-plugin</artifactId>
                 <version>${maven-jxr-plugin.version}</version>
+                <inherited>false</inherited>
                 <reportSets>
                     <reportSet>
                         <reports>
@@ -393,19 +411,34 @@
                 <version>${maven-javadoc-plugin.version}</version>
                 <configuration>
                     <additionalOptions>-package</additionalOptions>
-                    <goal>aggregate</goal>
                     <show>public</show>
                     <source>${maven.compiler.release}</source>
                 </configuration>
                 <inherited>false</inherited>
                 <reportSets>
                     <reportSet>
-                        <id>default</id>
+                        <id>aggregate</id>
                         <reports>
-                            <report>aggregate</report>
+                            <report>aggregate-no-fork</report>
                         </reports>
                     </reportSet>
                 </reportSets>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <inherited>false</inherited>
+                <reportSets>
+                    <reportSet>
+                        <id>default</id>
+                        <reports>
+                            <report>property-updates-aggregate-report</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+                <configuration>
+                    <ignoredVersions>${versions-maven-plugin.ignoredVersions}</ignoredVersions>
+                </configuration>
             </plugin>
         </plugins>
     </reporting>

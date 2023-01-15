@@ -2,9 +2,7 @@ package de.turing85.advent.of.code.day.twentyone.model.impl;
 
 import java.util.function.LongBinaryOperator;
 
-/**
- * Mathematical operators ({@code +), {@code -), {@code *), {@code /)).
- */
+/** Mathematical operators ({@code +}, {@code -}, {@code *}, {@code /}). */
 public enum Operator implements LongBinaryOperator {
   /** Plus ({@code +}) operator. */
   PLUS(Long::sum),

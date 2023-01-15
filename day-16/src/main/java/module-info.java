@@ -2,4 +2,6 @@
 module de.turing85.advent.of.code.day.sixteen {
   requires static lombok;
   requires java.logging;
+
+  exports de.turing85.advent.of.code.tttt.day.sixteen.model;
 }
