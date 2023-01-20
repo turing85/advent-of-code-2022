@@ -128,6 +128,11 @@
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>versions-maven-plugin</artifactId>
                     <version>${versions-maven-plugin.version}</version>
+                    <configuration>
+                        <ignoredVersions>
+                            <ignoredVersion>${versions-maven-plugin.ignoredVersions}</ignoredVersion>
+                        </ignoredVersions>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.jacoco</groupId>
