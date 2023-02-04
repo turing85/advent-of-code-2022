@@ -18,7 +18,7 @@ class MarkerFinderTest {
   @DisplayName("Start-of-packet tests")
   class StartOfPacketTest {
     @DisplayName("Simple test")
-    @ParameterizedTest(name = "datastream {0}, start-of-packet sequence at {1}")
+    @ParameterizedTest(name = "data stream {0}, start-of-packet sequence at {1}")
     @CsvSource({
       "aaaaaaaaaaaaaaaaaaaaaaaaaaaa,-1",
       "mjqjpqmgbljsphdztnvjfqwrcgsmlb,7",
@@ -54,7 +54,7 @@ class MarkerFinderTest {
   @DisplayName("Start-of-message tests")
   class StartOfMessageTest {
     @DisplayName("Simple test")
-    @ParameterizedTest(name = "datastream {0}, start-of-packet sequence at {1}")
+    @ParameterizedTest(name = "datas tream {0}, start-of-packet sequence at {1}")
     @CsvSource({
       "aaaaaaaaaaaaaaaaaaaaaaaaaaaa,-1",
       "mjqjpqmgbljsphdztnvjfqwrcgsmlb,19",

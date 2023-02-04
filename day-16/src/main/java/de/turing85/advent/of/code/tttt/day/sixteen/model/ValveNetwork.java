@@ -92,7 +92,7 @@ public final class ValveNetwork {
    *
    * @param startValve the name of the start valve
    * @param timeLimit time limit
-   * @param n number of acteurs acting at the same time
+   * @param n number of actors acting at the same time
    * @return the pressure released
    */
   public int releaseMaximumPressure(String startValve, int timeLimit, int n) {
@@ -105,7 +105,7 @@ public final class ValveNetwork {
    *
    * @param startValve the name of the start valve
    * @param timeLimit time limit
-   * @param n number of acteurs acting at the same time
+   * @param n number of actors acting at the same time
    * @param logRegularity how often a log should be written
    * @return the pressure released
    */

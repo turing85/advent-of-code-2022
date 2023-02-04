@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 @DisplayName("FromStringBlizzardRoutingConfigSupplier tests")
 class FromStringBlizzardRoutingConfigSupplierTest {
-  @DisplayName("throws on lillegal input")
+  @DisplayName("throws on illegal input")
   @Test
   void throwsOnIllegalInput() {
     // GIVEN
