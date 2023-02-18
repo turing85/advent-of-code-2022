@@ -25,7 +25,7 @@ public record Point(int x, int y) {
    * @param directions the {@link Direction}s to consider
    * @return the neighbouring {@link Point}s
    */
-  public Set<Point> neighbours(Set<? extends Direction> directions) {
+  public Set<Point> neighbours(Set<Direction> directions) {
     return directions.stream().map(this::neighbour).collect(Collectors.toSet());
   }
 
