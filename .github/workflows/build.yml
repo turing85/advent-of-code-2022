@@ -42,7 +42,10 @@ jobs:
           cache: 'maven'
 
       - name: Build and Test
-        run: mvn --batch-mode --define ci package
+        run: mvn \
+          --batch-mode \
+          --define ci \
+          package
 
       - name: Upload Compiled Classes
         uses: actions/upload-artifact@v3
@@ -153,7 +156,10 @@ jobs:
           cache: 'maven'
 
       - name: OWASP CVE Check
-        run: mvn --batch-mode dependency-check:aggregate
+        run: mvn \
+          --batch-mode \
+          --define formats=junit \
+          dependency-check:aggregate
 
       - name: OWASP Report
         uses: dorny/test-reporter@v1
