@@ -127,15 +127,18 @@ jobs:
 
       - name: Sonar Analysis
         env:
+          SONAR_HOST: ${{ vars.SONAR_HOST }}
+          SONAR_ORG: ${{ vars.SONAR_ORG }}
+          SONAR_PROJECT: ${{ vars.SONAR_PROJECT }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           mvn \
             --batch-mode \
             -Dsonar.sourceEncoding=UTF-8 \
-            -Dsonar.host.url=https://sonarcloud.io \
-            -Dsonar.organization=turing85-pure \
-            -Dsonar.projectKey=turing85_advent-of-code-2022 \
+            -Dsonar.host.url=${SONAR_HOST} \
+            -Dsonar.organization=${SONAR_ORG} \
+            -Dsonar.projectKey=${SONAR_PROJECT} \
             -Dsonar.login=${SONAR_TOKEN} \
             sonar:sonar
 
