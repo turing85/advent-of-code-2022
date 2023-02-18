@@ -135,7 +135,7 @@ jobs:
             -Dsonar.sourceEncoding=UTF-8 \
             -Dsonar.host.url=https://sonarcloud.io \
             -Dsonar.organization=turing85-pure \
-            -Dsonar.projectKey=turing85_adevnt_of_code_2022 \
+            -Dsonar.projectKey=turing85_advent-of-code-2022 \
             -Dsonar.login=${SONAR_TOKEN} \
             sonar:sonar
 
