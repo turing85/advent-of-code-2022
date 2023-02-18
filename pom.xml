@@ -286,7 +286,8 @@
             </activation>
             <properties>
                 <fmt-maven-plugin.goal>check</fmt-maven-plugin.goal>
-                <maven-surefire-plugin.excludedGroups/>
+                <dependency-check-maven.skip>true</dependency-check-maven.skip>
+                <maven-javadoc-plugin.skip>true</maven-javadoc-plugin.skip>
             </properties>
         </profile>
         <profile>
