@@ -23,6 +23,10 @@ on:
       - '*.txt'
       - '.all-contributorsrc'
 
+concurrency:
+  group: "workflow = ${{ github.workflow }}, ref = ${{ github.event.ref }}, pr = ${{ github.event.pull_request.id }}"
+  cancel-in-progress: ${{ github.event_name == 'pull_request' || github.repository != 'turing85/advent-of-code-2022' }}
+
 permissions:
   checks: write
 
@@ -202,15 +206,6 @@ jobs:
             --define ci-test \
             package
 
-      - name: JUnit Test Report
-        uses: dorny/test-reporter@v1
-        if: ${{ always() }}
-        with:
-          name: JUnit Test Report
-          only-summary: true
-          path: '**/target/surefire-reports/*.xml'
-          reporter: java-junit
-
       - name: Upload Test Report
         uses: actions/upload-artifact@v3
         if: ${{ always() }}
@@ -229,6 +224,31 @@ jobs:
       - name: Cancel Build
         if: ${{ failure() }}
         uses: andymckay/cancel-action@0.3
+
+  test-report:
+    runs-on: ubuntu-latest
+
+    needs:
+      - test
+
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v3
+
+      - name: Download Test Report
+        uses: actions/download-artifact@v3
+        if: ${{ always() }}
+        with:
+          name: test-report
+
+      - name: JUnit Test Report
+        uses: dorny/test-reporter@v1
+        if: ${{ always() }}
+        with:
+          name: JUnit Test Report
+          only-summary: true
+          path: '**/target/surefire-reports/*.xml'
+          reporter: java-junit
 
   sonar:
     runs-on: ubuntu-latest
@@ -283,7 +303,7 @@ jobs:
             --define sonar.organization=turing85-pure \
             --define sonar.projectKey=turing85_advent-of-code-2022 \
             --define sonar.login=${SONAR_TOKEN} \
-            --define sonar.coverage.jacoco.xmlReportPaths=${GITHUB_WORKSPACE}/jacoco-aggregation/target/jacoco/jacoco.xml \
+            --define sonar.coverage.jacoco.xmlReportPaths=${GITHUB_WORKSPACE}/**/target/jacoco/jacoco.xml \
             package \
             sonar:sonar
 
