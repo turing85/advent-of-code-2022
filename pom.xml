@@ -75,7 +75,6 @@
         <maven.compiler.release>17</maven.compiler.release>
         <maven.compiler.source>${maven.compiler.release}</maven.compiler.source>
         <maven.compiler.target>${maven.compiler.release}</maven.compiler.target>
-        <maven.multiModuleProjectDirectory/>
         <maven-site-plugin.stage.skip>false</maven-site-plugin.stage.skip>
         <maven-surefire-plugin.excludedGroups>slow</maven-surefire-plugin.excludedGroups>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -285,6 +284,7 @@
                 </property>
             </activation>
             <properties>
+                <dependency-check.skip>true</dependency-check.skip>
                 <fmt.skip>true</fmt.skip>
                 <format>junit</format>
                 <maven.javadoc.skip>true</maven.javadoc.skip>
