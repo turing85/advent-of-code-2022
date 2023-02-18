@@ -46,9 +46,6 @@
                             <goal>${fmt-maven-plugin.goal}</goal>
                         </goals>
                         <phase>validate</phase>
-                        <configuration>
-                            <skip>${fmt-maven-plugin.skip}</skip>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>
@@ -185,6 +182,20 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>ci-owasp</id>
+            <activation>
+                <property>
+                    <name>ci-owasp</name>
+                </property>
+            </activation>
+            <properties>
+                <dependency-check.skip>true</dependency-check.skip>
+            </properties>
+        </profile>
+    </profiles>
 
     <reporting>
         <plugins>

@@ -52,6 +52,7 @@
         <!-- Plugin setup -->
         <dependency-check-maven.version>8.1.0</dependency-check-maven.version>
         <fmt-maven-plugin.version>2.19</fmt-maven-plugin.version>
+        <go-offline-maven-plugin.version>1.2.8</go-offline-maven-plugin.version>
         <jacoco-maven-plugin.version>0.8.8</jacoco-maven-plugin.version>
         <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
         <maven-dependency-plugin.version>3.5.0</maven-dependency-plugin.version>
@@ -68,17 +69,13 @@
         <versions-maven-plugin.version>2.14.2</versions-maven-plugin.version>
 
         <!-- Project setup -->
-        <dependency-check-maven.skip>false</dependency-check-maven.skip>
         <fmt-maven-plugin.goal>format</fmt-maven-plugin.goal>
-        <fmt-maven-plugin.skip>false</fmt-maven-plugin.skip>
         <git-ssh-url>git:ssh://github.com/turing85/advent-of-code-2022.git</git-ssh-url>
-        <jacoco-maven-plugin.skip>false</jacoco-maven-plugin.skip>
         <maven.version>3.8.6</maven.version>
         <maven.compiler.release>17</maven.compiler.release>
         <maven.compiler.source>${maven.compiler.release}</maven.compiler.source>
         <maven.compiler.target>${maven.compiler.release}</maven.compiler.target>
         <maven.multiModuleProjectDirectory/>
-        <maven-javadoc-plugin.skip>false</maven-javadoc-plugin.skip>
         <maven-site-plugin.stage.skip>false</maven-site-plugin.stage.skip>
         <maven-surefire-plugin.excludedGroups>slow</maven-surefire-plugin.excludedGroups>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -119,6 +116,11 @@
         <pluginManagement>
             <plugins>
                 <plugin>
+                    <groupId>de.qaware.maven</groupId>
+                    <artifactId>go-offline-maven-plugin</artifactId>
+                    <version>${go-offline-maven-plugin.version}</version>
+                </plugin>
+                <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>versions-maven-plugin</artifactId>
                     <version>${versions-maven-plugin.version}</version>
@@ -151,7 +153,6 @@
                                 </limits>
                             </rule>
                         </rules>
-                        <skip>${jacoco-maven-plugin.skip}</skip>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -161,7 +162,6 @@
                     <configuration>
                         <outputDirectory>${project.build.directory}/owasp</outputDirectory>
                         <reportOutputDirectory>${project.build.directory}/owasp</reportOutputDirectory>
-                        <skip>${dependency-check-maven.skip}</skip>
                         <failBuildOnAnyVulnerability>true</failBuildOnAnyVulnerability>
                     </configuration>
                 </plugin>
@@ -174,7 +174,6 @@
                         <destDir>javadoc</destDir>
                         <reportOutputDirectory>${project.build.directory}</reportOutputDirectory>
                         <show>public</show>
-                        <skip>${maven-javadoc-plugin.skip}</skip>
                         <source>${maven.compiler.release}</source>
                     </configuration>
                 </plugin>
@@ -193,8 +192,8 @@
 
         <plugins>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>versions-maven-plugin</artifactId>
+                <groupId>de.qaware.maven</groupId>
+                <artifactId>go-offline-maven-plugin</artifactId>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -212,22 +211,6 @@
                                     <version>${maven.version}</version>
                                 </requireMavenVersion>
                             </rules>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-site-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>site-stage</id>
-                        <goals>
-                            <goal>stage</goal>
-                        </goals>
-                        <phase>site</phase>
-                        <configuration>
-                            <skip>${maven-site-plugin.stage.skip}</skip>
                         </configuration>
                     </execution>
                 </executions>
@@ -278,16 +261,51 @@
             </properties>
         </profile>
         <profile>
-            <id>ci</id>
+            <id>ci-build</id>
             <activation>
                 <property>
-                    <name>ci</name>
+                    <name>ci-build</name>
                 </property>
             </activation>
             <properties>
-                <fmt-maven-plugin.goal>check</fmt-maven-plugin.goal>
-                <dependency-check-maven.skip>true</dependency-check-maven.skip>
-                <maven-javadoc-plugin.skip>true</maven-javadoc-plugin.skip>
+                <fmt.skip>true</fmt.skip>
+                <dependency-check.skip>true</dependency-check.skip>
+                <jacoco.skip>true</jacoco.skip>
+                <maven.javadoc.skip>true</maven.javadoc.skip>
+                <maven-site-plugin.stage.skip>true</maven-site-plugin.stage.skip>
+                <maven.source.skip>true</maven.source.skip>
+                <skipTests>true</skipTests>
+            </properties>
+        </profile>
+        <profile>
+            <id>ci-owasp</id>
+            <activation>
+                <property>
+                    <name>ci-owasp</name>
+                </property>
+            </activation>
+            <properties>
+                <fmt.skip>true</fmt.skip>
+                <format>junit</format>
+                <maven.javadoc.skip>true</maven.javadoc.skip>
+                <maven-site-plugin.stage.skip>true</maven-site-plugin.stage.skip>
+                <maven.source.skip>true</maven.source.skip>
+                <skipTests>true</skipTests>
+            </properties>
+        </profile>
+        <profile>
+            <id>ci-test</id>
+            <activation>
+                <property>
+                    <name>ci-test</name>
+                </property>
+            </activation>
+            <properties>
+                <dependency-check.skip>true</dependency-check.skip>
+                <fmt.skip>true</fmt.skip>
+                <maven.javadoc.skip>true</maven.javadoc.skip>
+                <maven-site-plugin.stage.skip>true</maven-site-plugin.stage.skip>
+                <maven.source.skip>true</maven.source.skip>
             </properties>
         </profile>
         <profile>
@@ -298,7 +316,7 @@
                 </property>
             </activation>
             <properties>
-                <dependency-check-maven.skip>true</dependency-check-maven.skip>
+                <dependency-check.skip>true</dependency-check.skip>
             </properties>
         </profile>
         <profile>
@@ -309,7 +327,7 @@
                 </property>
             </activation>
             <properties>
-                <fmt-maven-plugin.skip>true</fmt-maven-plugin.skip>
+                <fmt.skip>true</fmt.skip>
             </properties>
         </profile>
         <profile>
@@ -320,7 +338,7 @@
                 </property>
             </activation>
             <properties>
-                <jacoco-maven-plugin.skip>true</jacoco-maven-plugin.skip>
+                <jacoco.skip>true</jacoco.skip>
             </properties>
         </profile>
         <profile>
@@ -331,7 +349,7 @@
                 </property>
             </activation>
             <properties>
-                <maven-javadoc-plugin.skip>true</maven-javadoc-plugin.skip>
+                <maven.javadoc.skip>true</maven.javadoc.skip>
             </properties>
         </profile>
         <profile>
@@ -343,6 +361,17 @@
             </activation>
             <properties>
                 <maven-site-plugin.stage.skip>true</maven-site-plugin.stage.skip>
+            </properties>
+        </profile>
+        <profile>
+            <id>disable-sources-jar</id>
+            <activation>
+                <property>
+                    <name>disable-sources-jar</name>
+                </property>
+            </activation>
+            <properties>
+                <maven.source.skip>true</maven.source.skip>
             </properties>
         </profile>
     </profiles>
