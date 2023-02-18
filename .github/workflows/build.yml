@@ -127,9 +127,9 @@ jobs:
 
       - name: Sonar Analysis
         env:
-          SONAR_HOST: ${{ vars.SONAR_HOST }}
-          SONAR_ORG: ${{ vars.SONAR_ORG }}
-          SONAR_PROJECT: ${{ vars.SONAR_PROJECT }}
+          SONAR_HOST: https://sonarcloud.io
+          SONAR_ORG: turing85-pure
+          SONAR_PROJECT: turing85_adevnt_of_code_2022
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
