@@ -42,7 +42,7 @@ jobs:
           cache: 'maven'
 
       - name: Build and Test
-        run: ./mvnw --batch-mode --define ci package
+        run: mvn --batch-mode --define ci package
 
       - name: Upload Test Report
         uses: actions/upload-artifact@v3
@@ -116,7 +116,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
-          ./mvnw \
+          mvn \
             --batch-mode \
             -Dsonar.sourceEncoding=UTF-8 \
             -Dsonar.host.url=${SONAR_HOST} \
@@ -140,7 +140,7 @@ jobs:
           cache: 'maven'
 
       - name: OWASP CVE Check
-        run: ./mvnw --batch-mode dependency-check:aggregate
+        run: mvn --batch-mode dependency-check:aggregate
 
       - name: OWASP Report
         uses: dorny/test-reporter@v1
