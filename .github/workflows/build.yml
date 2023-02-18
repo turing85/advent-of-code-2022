@@ -357,6 +357,7 @@ jobs:
         if: ${{ always() }}
         with:
           name: OWASP Report
+          list-tests: failed
           path: target/owasp/*.xml
           reporter: java-junit
 
