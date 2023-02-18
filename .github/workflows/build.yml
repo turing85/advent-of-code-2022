@@ -303,7 +303,6 @@ jobs:
             --define sonar.organization=turing85-pure \
             --define sonar.projectKey=turing85_advent-of-code-2022 \
             --define sonar.login=${SONAR_TOKEN} \
-            --define sonar.coverage.jacoco.xmlReportPaths=${GITHUB_WORKSPACE}/**/target/jacoco/jacoco.xml \
             package \
             sonar:sonar
 
@@ -358,7 +357,7 @@ jobs:
         with:
           name: OWASP Report
           list-tests: failed
-          path: target/owasp/*.xml
+          path: '**/target/owasp/*.xml'
           reporter: java-junit
 
       - name: Upload OWASP Report
@@ -366,7 +365,7 @@ jobs:
         if: ${{ always() }}
         with:
           name: owasp-report
-          path: target/owasp/*.xml
+          path: '**/target/owasp/*.xml'
           retention-days: 2
 
       - name: Cancel Build

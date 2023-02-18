@@ -192,7 +192,7 @@
                 </property>
             </activation>
             <properties>
-                <dependency-check.skip>true</dependency-check.skip>
+                <dependency-check.skip>false</dependency-check.skip>
             </properties>
         </profile>
     </profiles>
