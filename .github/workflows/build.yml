@@ -44,6 +44,14 @@ jobs:
       - name: Build and Test
         run: mvn --batch-mode --define ci package
 
+      - name: Upload Compiled Classes
+        uses: actions/upload-artifact@v3
+        if: ${{ always() }}
+        with:
+          name: compiled-classes
+          path: '**/target/classes'
+          retention-days: 2
+
       - name: Upload Test Report
         uses: actions/upload-artifact@v3
         if: ${{ always() }}
@@ -93,6 +101,11 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+
+      - name: Download Compiled Classes
+        uses: actions/download-artifact@v3
+        with:
+          name: compiled-classes
 
       - name: Download Coverage Report
         uses: actions/download-artifact@v3
@@ -147,7 +160,7 @@ jobs:
         if: ${{ always() }}
         with:
           name: OWASP Report
-          path: target/dependency-check/*.xml
+          path: target/owasp/*.xml
           reporter: java-junit
 
       - name: Upload OWASP Report
@@ -155,5 +168,5 @@ jobs:
         if: ${{ always() }}
         with:
           name: owasp-report
-          path: target/dependency-check/*.xml
+          path: target/owasp/*.xml
           retention-days: 2
