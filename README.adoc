@@ -1,10 +1,10 @@
 :doctype: book
 :listing-caption: Listing
 
-image:https://img.shields.io/github/license/turing85/advent-of-code-2022[GitHub,|link=https://github.com/turing85/advent-of-code-2022/blob/main/LICENSE]
-image:https://img.shields.io/github/actions/workflow/status/turing85/advent-of-code-2022/build.yml[GitHub Workflow Status,|link=https://github.com/turing85/advent-of-code-2022/actions/workflows/build.yml?query=branch%3Amain]
-image:https://sonarcloud.io/api/project_badges/measure?project=turing85_advent-of-code-2022&metric=alert_status[Sonarcloud Status,|link=https://sonarcloud.io/dashboard?id=turing85_advent-of-code-2022]
-image:https://sonarcloud.io/api/project_badges/measure?project=turing85_advent-of-code-2022&metric=coverage[Sonarcloud Status,|link=https://sonarcloud.io/dashboard?id=turing85_advent-of-code-2022]
+https://github.com/turing85/advent-of-code-2022/blob/main/LICENSE[image:https://img.shields.io/github/license/turing85/advent-of-code-2022[GitHub]]
+https://github.com/turing85/advent-of-code-2022/actions/workflows/build.yml?query=branch%3Amain[image:https://img.shields.io/github/actions/workflow/status/turing85/advent-of-code-2022/build.yml[GitHub Workflow Status]]
+https://sonarcloud.io/dashboard?id=turing85_advent-of-code-2022[image:https://sonarcloud.io/api/project_badges/measure?project=turing85_advent-of-code-2022&metric=alert_status[Sonarcloud Status]]
+https://sonarcloud.io/dashboard?id=turing85_advent-of-code-2022[image:https://sonarcloud.io/api/project_badges/measure?project=turing85_advent-of-code-2022&metric=coverage[Sonarcloud Status]]
 
 = Advent of Code 2022
 
