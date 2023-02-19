@@ -53,7 +53,7 @@ The repository supports generating documentation by executing
 .Generate documentation (Linux)
 [source,bash]
 ----
-./mvn --define skipTests --define disable-formatter site
+./mvnw --define skipTests --define disable-formatter site
 ----
 
 .Generate documentation (Windows)
