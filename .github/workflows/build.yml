@@ -168,6 +168,8 @@ jobs:
       - generate-matrix
       - build
 
+    continue-on-error: true
+
     strategy:
       matrix: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
 
@@ -184,7 +186,6 @@ jobs:
 
       - name: Download Maven State
         uses: actions/download-artifact@v3
-        if: ${{ always() }}
         with:
           name: maven-state
 
@@ -215,15 +216,12 @@ jobs:
           retention-days: 2
 
       - name: Upload Coverage Report
+        if: ${{ always() }}
         uses: actions/upload-artifact@v3
         with:
           name: coverage-report
           path: '**/target/jacoco/**/*.xml'
           retention-days: 2
-
-      - name: Cancel Build
-        if: ${{ failure() }}
-        uses: andymckay/cancel-action@0.3
 
   test-report:
     runs-on: ubuntu-latest
@@ -237,18 +235,20 @@ jobs:
 
       - name: Download Test Report
         uses: actions/download-artifact@v3
-        if: ${{ always() }}
         with:
           name: test-report
 
       - name: JUnit Test Report
         uses: dorny/test-reporter@v1
-        if: ${{ always() }}
         with:
           name: JUnit Test Report
           only-summary: true
           path: '**/target/surefire-reports/*.xml'
           reporter: java-junit
+
+      - name: Cancel Build
+        if: ${{ failure() }}
+        uses: andymckay/cancel-action@0.3
 
   sonar:
     runs-on: ubuntu-latest
@@ -271,7 +271,6 @@ jobs:
 
       - name: Download Maven State
         uses: actions/download-artifact@v3
-        if: ${{ always() }}
         with:
           name: maven-state
 
@@ -329,7 +328,6 @@ jobs:
 
       - name: Download Maven State
         uses: actions/download-artifact@v3
-        if: ${{ always() }}
         with:
           name: maven-state
 
@@ -353,7 +351,6 @@ jobs:
 
       - name: OWASP Report
         uses: dorny/test-reporter@v1
-        if: ${{ always() }}
         with:
           name: OWASP Report
           list-tests: failed
