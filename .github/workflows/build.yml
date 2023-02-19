@@ -139,6 +139,7 @@ jobs:
         with:
           name: maven-state
           path: '**/target/maven-*'
+          if-no-files-found: error
           retention-days: 2
 
       - name: Upload Compiled Classes
@@ -147,6 +148,7 @@ jobs:
         with:
           name: compiled-classes
           path: '**/target/*classes'
+          if-no-files-found: error
           retention-days: 2
 
       - name: Upload JARs
@@ -155,6 +157,7 @@ jobs:
         with:
           name: jars
           path: '**/target/*.jar'
+          if-no-files-found: error
           retention-days: 2
 
       - name: Cancel Build
@@ -212,7 +215,8 @@ jobs:
         if: ${{ always() }}
         with:
           name: test-report
-          path: '**/target/surefire-reports/*.xml'
+          path: '**/target/surefire-reports/TEST*.xml'
+          if-no-files-found: error
           retention-days: 2
 
       - name: Upload Coverage Report
@@ -221,6 +225,7 @@ jobs:
         with:
           name: coverage-report
           path: '**/target/jacoco/**/*.xml'
+          if-no-files-found: error
           retention-days: 2
 
   test-report:
@@ -243,7 +248,7 @@ jobs:
         with:
           name: JUnit Test Report
           only-summary: true
-          path: '**/target/surefire-reports/*.xml'
+          path: '**/target/surefire-reports/TEST*.xml'
           reporter: java-junit
 
       - name: Cancel Build
@@ -363,6 +368,7 @@ jobs:
         with:
           name: owasp-report
           path: '**/target/owasp/*.xml'
+          if-no-files-found: error
           retention-days: 2
 
       - name: Cancel Build
