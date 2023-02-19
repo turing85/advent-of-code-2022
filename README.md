@@ -1,3 +1,8 @@
+![GitHub](https://img.shields.io/github/license/turing85/advent-of-code-2022)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/turing85/advent-of-code-2022/build.yml)
+[![Sonarcloud Status](https://sonarcloud.io/api/project_badges/measure?project=turing85_advent-of-code-2022&metric=alert_status)](https://sonarcloud.io/dashboard?id=turing85_advent-of-code-2022)
+[![Sonarcloud Status](https://sonarcloud.io/api/project_badges/measure?project=turing85_advent-of-code-2022&metric=coverage)](https://sonarcloud.io/dashboard?id=turing85_advent-of-code-2022)
+
 # Advent of Code 2022
 These are my implementation of the [Advent of code 2022][adventOfCode2022]
 
