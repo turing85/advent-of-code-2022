@@ -24,8 +24,9 @@ public class IntervalOverlapChecker {
    * @return count of intervals overlapping.
    */
   public int countIntervalOverlaps(Collection<Pair<Interval, Interval>> intervalPairs) {
-    return (int) intervalPairs.stream()
-        .filter(pair -> Interval.overlap(pair.first(), pair.second()))
-        .count();
+    return (int)
+        intervalPairs.stream()
+            .filter(pair -> Interval.overlap(pair.first(), pair.second()))
+            .count();
   }
 }

@@ -267,7 +267,7 @@
                 </property>
             </activation>
             <properties>
-                <fmt.skip>true</fmt.skip>
+                <fmt-maven-plugin.goal>check</fmt-maven-plugin.goal>
                 <dependency-check.skip>true</dependency-check.skip>
                 <jacoco.skip>true</jacoco.skip>
                 <maven.javadoc.skip>true</maven.javadoc.skip>
