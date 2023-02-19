@@ -24,8 +24,9 @@ public class IntervalContainChecker {
    * @return count of intervals contained in each other.
    */
   public int countIntervalContainment(Collection<Pair<Interval, Interval>> intervalPairs) {
-    return (int) intervalPairs.stream()
-        .filter(pair -> Interval.oneContainsTheOther(pair.first(), pair.second()))
-        .count();
+    return (int)
+        intervalPairs.stream()
+            .filter(pair -> Interval.oneContainsTheOther(pair.first(), pair.second()))
+            .count();
   }
 }
