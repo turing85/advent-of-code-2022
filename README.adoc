@@ -1,0 +1,101 @@
+:doctype: book
+:listing-caption: Listing
+
+image:https://img.shields.io/github/license/turing85/advent-of-code-2022[GitHub,|link=https://github.com/turing85/advent-of-code-2022/blob/main/LICENSE]
+image:https://img.shields.io/github/actions/workflow/status/turing85/advent-of-code-2022/build.yml[GitHub Workflow Status,|link=https://github.com/turing85/advent-of-code-2022/actions/workflows/build.yml?query=branch%3Amain]
+image:https://sonarcloud.io/api/project_badges/measure?project=turing85_advent-of-code-2022&metric=alert_status[Sonarcloud Status,|link=https://sonarcloud.io/dashboard?id=turing85_advent-of-code-2022]
+image:https://sonarcloud.io/api/project_badges/measure?project=turing85_advent-of-code-2022&metric=coverage[Sonarcloud Status,|link=https://sonarcloud.io/dashboard?id=turing85_advent-of-code-2022]
+
+= Advent of Code 2022
+
+These are my implementation of the https://adventofcode.com/2022[Advent of code 2022].
+
+== Daily challenges and independent modules
+Each daily challenge is implemented as separate maven module. This leads to some code duplication, but guarantees that the modules are independent.
+
+== Build
+To build all challenges and execute the tests, we run the following command:
+
+.Build project (Linux)
+[[build-linux]]
+[source,bash]
+----
+./mvnw clean package
+----
+
+.Build project (Windows)
+[[build-windows]]
+[source,cmd]
+----
+mvnw.cmd clean package
+----
+
+We can build a specific challenge by just building the corresponding maven submodule, e.g.:
+
+.Build specific challenge (Linux)
+[source,bash]
+----
+./mvnw --projects day-25 clean package
+
+----
+
+.Build specific challenge (Windows)
+[source,cmd]
+----
+mvnw.cmd --projects day-25 clean package
+----
+
+Executing the `package` target generates some documentation for each challenge. For example, test coverage reports can be found in `&lt;module-name&gt;/target/jacoco/index.html`
+
+== Generate documentation
+The repository supports generating documentation by executing
+
+.Generate documentation (Linux)
+[source,bash]
+----
+./mvn --define skipTests --define disable-formatter site
+----
+
+.Generate documentation (Windows)
+[source,cmd]
+----
+mvnw.cmd --define skipTests --define disable-formatter site
+----
+
+The generated documentation can then be found under `target/staging/index.html`.
+
+Notice that we have to build the project first (<<build-linux,Linux>>, <<build-windows,windows>>), otherwise the documentation will be incomplete.
+
+== Daily Challenges
+[cols=5*]
+|=====
+|link:./day-01/README.adoc[Day 1]
+|link:./day-02/README.adoc[Day 2]
+|link:./day-03/README.adoc[Day 3]
+|link:./day-04/README.adoc[Day 4]
+|link:./day-05/README.adoc[Day 5]
+
+|link:./day-06/README.adoc[Day 6]
+|link:./day-07/README.adoc[Day 7]
+|link:./day-08/README.adoc[Day 8]
+|link:./day-09/README.adoc[Day 9]
+|link:./day-10/README.adoc[Day 10]
+
+|link:./day-11/README.adoc[Day 11]
+|link:./day-12/README.adoc[Day 12]
+|link:./day-13/README.adoc[Day 13]
+|link:./day-14/README.adoc[Day 14]
+|link:./day-15/README.adoc[Day 15]
+
+|link:./day-16/README.adoc[Day 16]
+|link:./day-17/README.adoc[Day 17]
+|link:./day-18/README.adoc[Day 18]
+|link:./day-19/README.adoc[Day 19]
+|link:./day-20/README.adoc[Day 20]
+
+|link:./day-21/README.adoc[Day 21]
+|link:./day-22/README.adoc[Day 22]
+|link:./day-23/README.adoc[Day 23]
+|link:./day-24/README.adoc[Day 24]
+|link:./day-25/README.adoc[Day 25]
+|=====
