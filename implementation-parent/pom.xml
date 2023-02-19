@@ -121,14 +121,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>javadoc</goal>
-                        </goals>
-                        <phase>package</phase>
-                    </execution>
-                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -228,8 +220,8 @@
                 <reportSets>
                     <reportSet>
                         <reports>
-                            <report>jxr</report>
-                            <report>test-jxr</report>
+                            <report>jxr-no-fork</report>
+                            <report>test-jxr-no-fork</report>
                         </reports>
                     </reportSet>
                 </reportSets>

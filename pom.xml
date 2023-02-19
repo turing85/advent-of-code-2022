@@ -79,7 +79,7 @@
         <maven-surefire-plugin.excludedGroups>slow</maven-surefire-plugin.excludedGroups>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <sonar.coverage.jacoco.xmlReportPaths>
-            ${maven.multiModuleProjectDirectory}/jacoco-aggregation/target/jacoco/jacoco.xml
+            **/target/jacoco/jacoco.xml
         </sonar.coverage.jacoco.xmlReportPaths>
         <versions-maven-plugin.ignoredVersions>.+-M.+</versions-maven-plugin.ignoredVersions>
 
@@ -210,6 +210,22 @@
                                     <version>${maven.version}</version>
                                 </requireMavenVersion>
                             </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>site-stage</id>
+                        <goals>
+                            <goal>stage</goal>
+                        </goals>
+                        <phase>site</phase>
+                        <configuration>
+                            <skip>${maven-site-plugin.stage.skip}</skip>
                         </configuration>
                     </execution>
                 </executions>
