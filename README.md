@@ -1,5 +1,5 @@
-![GitHub](https://img.shields.io/github/license/turing85/advent-of-code-2022)
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/turing85/advent-of-code-2022/build.yml)
+[![GitHub](https://img.shields.io/github/license/turing85/advent-of-code-2022)](https://github.com/turing85/advent-of-code-2022/blob/main/LICENSE)
+[![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/turing85/advent-of-code-2022/build.yml)](https://github.com/turing85/advent-of-code-2022/actions/workflows/build.yml?query=branch%3Amain)
 [![Sonarcloud Status](https://sonarcloud.io/api/project_badges/measure?project=turing85_advent-of-code-2022&metric=alert_status)](https://sonarcloud.io/dashboard?id=turing85_advent-of-code-2022)
 [![Sonarcloud Status](https://sonarcloud.io/api/project_badges/measure?project=turing85_advent-of-code-2022&metric=coverage)](https://sonarcloud.io/dashboard?id=turing85_advent-of-code-2022)
 
