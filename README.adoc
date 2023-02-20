@@ -66,14 +66,24 @@ The generated documentation can then be found under `target/staging/index.html`.
 
 Notice that we have to build the project first (<<build-linux,Linux>>, <<build-windows,windows>>), otherwise the documentation will be incomplete.
 
-== Daily Challenges
-[cols=5*]
-|=====
-|link:./day-01/README.adoc[Day 1]
-|link:./day-02/README.adoc[Day 2]
-|link:./day-03/README.adoc[Day 3]
-|link:./day-04/README.adoc[Day 4]
-|link:./day-05/README.adoc[Day 5]
+== Advent of Code Calendar
+[options="header",align="center",cols="7*"]
+|===
+^a| Mon
+^a| Thue
+^a| Wed
+^a| Thu
+^a| Fri
+^a| Sat
+^a| Sun
+^a|
+^a|
+^a|
+^a|link:./day-01/README.adoc[Day 1]
+^a|link:./day-02/README.adoc[Day 2]
+^a|link:./day-03/README.adoc[Day 3]
+^a|link:./day-04/README.adoc[Day 4]
+^a|link:./day-05/README.adoc[Day 5]
 
 |link:./day-06/README.adoc[Day 6]
 |link:./day-07/README.adoc[Day 7]
@@ -98,4 +108,4 @@ Notice that we have to build the project first (<<build-linux,Linux>>, <<build-w
 |link:./day-23/README.adoc[Day 23]
 |link:./day-24/README.adoc[Day 24]
 |link:./day-25/README.adoc[Day 25]
-|=====
+|===
