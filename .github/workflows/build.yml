@@ -29,6 +29,7 @@ concurrency:
 
 permissions:
   checks: write
+  pull-requests: write
 
 jobs:
   generate-matrix:
@@ -244,12 +245,33 @@ jobs:
           name: test-report
 
       - name: JUnit Test Report
-        uses: dorny/test-reporter@v1
+        id: junit-report
+        uses: phoenix-actions/test-reporting@v10
         with:
           name: JUnit Test Report
           only-summary: true
           path: '**/target/surefire-reports/TEST*.xml'
           reporter: java-junit
+
+      - name: Update PR status comment on success
+        uses: actions-cool/maintain-one-comment@v3.0.0
+        if: ${{ github.event_name == 'pull_request' && steps.junit-report.conclusion == 'success' }}
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          body: |
+            🥳 All ${{ steps.junit-report.outputs.passed }} JUnit tests passed. You can see the JUnit report [here](${{ steps.junit-report.outputs.runHtmlUrl }}).
+          body-include: '<!-- Sticky Pull Request Comment -->'
+          update-mode: append
+
+      - name: Update PR status comment on failure
+        uses: actions-cool/maintain-one-comment@v3.0.0
+        if: ${{ github.event_name == 'pull_request' && steps.junit-report.conclusion != 'success' }}
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          body: |
+            😔 ${{ steps.junit-report.outputs.failed }} JUnit tests Failed. You can see the JUnit report [here](${{ steps.junit-report.outputs.runHtmlUrl }}).
+          body-include: '<!-- Sticky Pull Request Comment -->'
+          update-mode: append
 
       - name: Cancel Build
         if: ${{ failure() }}
@@ -355,7 +377,8 @@ jobs:
             dependency-check:aggregate
 
       - name: OWASP Report
-        uses: dorny/test-reporter@v1
+        uses: phoenix-actions/test-reporting@v10
+        id: owasp-report
         with:
           name: OWASP Report
           list-tests: failed
@@ -370,6 +393,26 @@ jobs:
           path: '**/target/owasp/*.xml'
           if-no-files-found: error
           retention-days: 2
+
+      - name: Update PR status comment on success
+        uses: actions-cool/maintain-one-comment@v3.0.0
+        if: ${{ github.event_name == 'pull_request' && steps.owasp-report.conclusion == 'success' }}
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          body: |
+            🥳 All ${{ steps.owasp-report.outputs.passed }} OWASP tests passed. You can see the OWASP report [here](${{ steps.owasp-report.outputs.runHtmlUrl }}).
+          body-include: '<!-- Sticky Pull Request Comment -->'
+          update-mode: append
+
+      - name: Update PR status comment on failure
+        uses: actions-cool/maintain-one-comment@v3.0.0
+        if: ${{ github.event_name == 'pull_request' && steps.owasp-report.conclusion != 'success' }}
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          body: |
+            😔 ${{ steps.owasp-report.outputs.failed }} OWASP tests Failed. You can see the OWASP report [here](${{ steps.owasp-report.outputs.runHtmlUrl }}).
+          body-include: '<!-- Sticky Pull Request Comment -->'
+          update-mode: append
 
       - name: Cancel Build
         if: ${{ failure() }}
