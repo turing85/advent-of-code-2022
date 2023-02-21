@@ -410,7 +410,7 @@ jobs:
 
       - name: OWASP Report
         uses: phoenix-actions/test-reporting@v10
-        id: owasp-report
+        id: junit-report
         with:
           name: OWASP Report
           list-tests: failed
@@ -428,7 +428,7 @@ jobs:
 
       - name: Update PR status comment on success
         uses: marocchino/sticky-pull-request-comment@v2
-        if: ${{ github.event_name == 'pull_request' && steps.owasp-report.conclusion == 'success' }}
+        if: ${{ github.event_name == 'pull_request' && steps.junit-report.conclusion == 'success' }}
         with:
           header: reports
           append: true
@@ -439,14 +439,14 @@ jobs:
 
               |Passed|Failed|Skipped|
               |----------|---------|-----------|
-              |✅ ${{ steps.owasp-report.outputs.passed }}|❌ ${{ steps.owasp-report.outputs.failed }}|⚠️ ${{ steps.owasp-report.outputs.skipped }}|
+              |✅ ${{ steps.junit-report.outputs.passed }}|❌ ${{ steps.junit-report.outputs.failed }}|⚠️ ${{ steps.junit-report.outputs.skipped }}|
 
-              You can see the OWASP report [here](${{ steps.owasp-report.outputs.runHtmlUrl }}).
+              You can see the OWASP report [here](${{ steps.junit-report.outputs.runHtmlUrl }}).
             </details>
 
       - name: Update PR status comment on failure
         uses: marocchino/sticky-pull-request-comment@v2
-        if: ${{ github.event_name == 'pull_request' && steps.owasp-report.conclusion != 'success' }}
+        if: ${{ github.event_name == 'pull_request' && steps.junit-report.conclusion != 'success' }}
         with:
           header: reports
           append: true
@@ -457,9 +457,9 @@ jobs:
 
               |Passed|Failed|Skipped|
               |----------|---------|-----------|
-              |✅ ${{ steps.owasp-report.outputs.passed }}|❌ ${{ steps.owasp-report.outputs.failed }}|⚠️ ${{ steps.owasp-report.outputs.skipped }}|
+              |✅ ${{ steps.junit-report.outputs.passed }}|❌ ${{ steps.junit-report.outputs.failed }}|⚠️ ${{ steps.junit-report.outputs.skipped }}|
 
-              You can see the JUnit report [here](${{ steps.owasp-report.outputs.runHtmlUrl }}).
+              You can see the JUnit report [here](${{ steps.junit-report.outputs.runHtmlUrl }}).
             </details>
 
       - name: Cancel Build
