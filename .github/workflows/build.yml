@@ -41,10 +41,10 @@ jobs:
         if: ${{ github.event_name == 'pull_request' }}
         with:
           header: reports
-          recreate: true
           message: |
             ## 🚦Reports🚦
             Reports will be posted here as they get available.
+          recreate: true
 
   generate-matrix:
     runs-on: ubuntu-latest
@@ -273,7 +273,6 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.junit-report.conclusion == 'success' }}
         with:
           header: reports
-          append: true
           message: |
 
             <details>
@@ -285,13 +284,13 @@ jobs:
 
               You can see the JUnit report [here](${{ steps.junit-report.outputs.runHtmlUrl }}).
             </details>
+          append: true
 
       - name: Update PR status comment on failure
         uses: marocchino/sticky-pull-request-comment@v2
         if: ${{ github.event_name == 'pull_request' && steps.junit-report.conclusion != 'success' }}
         with:
           header: reports
-          append: true
           message: |
 
             <details>
@@ -303,6 +302,7 @@ jobs:
 
               You can see the JUnit report [here](${{ steps.junit-report.outputs.runHtmlUrl }}).
             </details>
+          append: true
 
       - name: Cancel Build
         if: ${{ failure() }}
@@ -431,7 +431,6 @@ jobs:
         if: ${{ github.event_name == 'pull_request' && steps.junit-report.conclusion == 'success' }}
         with:
           header: reports
-          append: true
           message: |
 
             <details>
@@ -443,13 +442,13 @@ jobs:
 
               You can see the OWASP report [here](${{ steps.junit-report.outputs.runHtmlUrl }}).
             </details>
+          append: true
 
       - name: Update PR status comment on failure
         uses: marocchino/sticky-pull-request-comment@v2
         if: ${{ github.event_name == 'pull_request' && steps.junit-report.conclusion != 'success' }}
         with:
           header: reports
-          append: true
           message: |
 
             <details>
@@ -461,6 +460,7 @@ jobs:
 
               You can see the JUnit report [here](${{ steps.junit-report.outputs.runHtmlUrl }}).
             </details>
+          append: true
 
       - name: Cancel Build
         if: ${{ failure() }}
