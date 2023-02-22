@@ -36,15 +36,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: (Re-)create Comment
-        uses: marocchino/sticky-pull-request-comment@v2
-        if: ${{ github.event_name == 'pull_request' }}
+      - name: Git checkout
+        uses: actions/checkout@v3
+
+      - name: Publish Report
+        uses: ./.github/actions/publish-report
         with:
-          header: reports
-          message: |
-            ## 🚦Reports🚦
-            Reports will be posted here as they get available.
-          recreate: true
+          recreate-comment: true
+          comment-header: reports
 
   generate-matrix:
     runs-on: ubuntu-latest
@@ -254,55 +253,15 @@ jobs:
       - name: Git checkout
         uses: actions/checkout@v3
 
-      - name: Download Test Report
-        uses: actions/download-artifact@v3
+      - name: Publish Report
+        uses: ./.github/actions/publish-report
         with:
-          name: test-report
-
-      - name: JUnit Test Report
-        id: junit-report
-        uses: phoenix-actions/test-reporting@v10
-        with:
-          name: JUnit Test Report
-          only-summary: true
-          path: '**/target/surefire-reports/TEST*.xml'
-          reporter: java-junit
-
-      - name: Update PR status comment on success
-        uses: marocchino/sticky-pull-request-comment@v2
-        if: ${{ github.event_name == 'pull_request' && steps.junit-report.conclusion == 'success' }}
-        with:
-          header: reports
-          message: |
-
-            <details>
-              <summary><h3>🥳 JUnit tests passed</h3></summary>
-
-              |Passed|Failed|Skipped|
-              |----------|---------|-----------|
-              |✅ ${{ steps.junit-report.outputs.passed }}|❌ ${{ steps.junit-report.outputs.failed }}|⚠️ ${{ steps.junit-report.outputs.skipped }}|
-
-              You can see the JUnit report [here](${{ steps.junit-report.outputs.runHtmlUrl }}).
-            </details>
-          append: true
-
-      - name: Update PR status comment on failure
-        uses: marocchino/sticky-pull-request-comment@v2
-        if: ${{ github.event_name == 'pull_request' && steps.junit-report.conclusion != 'success' }}
-        with:
-          header: reports
-          message: |
-
-            <details>
-              <summary><h3>😔 JUnit tests failed</h3></summary>
-
-              |Passed|Failed|Skipped|
-              |----------|---------|-----------|
-              |✅ ${{ steps.junit-report.outputs.passed }}|❌ ${{ steps.junit-report.outputs.failed }}|⚠️ ${{ steps.junit-report.outputs.skipped }}|
-
-              You can see the JUnit report [here](${{ steps.junit-report.outputs.runHtmlUrl }}).
-            </details>
-          append: true
+          artifact-name: test-report
+          report-name: JUnit Test
+          report-only-summary: true
+          report-reporter: java-junit
+          report-xml-path: '**/target/surefire-reports/TEST*.xml'
+          comment-header: reports
 
       - name: Cancel Build
         if: ${{ failure() }}
@@ -408,59 +367,14 @@ jobs:
             package \
             dependency-check:aggregate
 
-      - name: OWASP Report
-        uses: phoenix-actions/test-reporting@v10
-        id: junit-report
+      - name: Publish Report
+        uses: ./.github/actions/publish-report
         with:
-          name: OWASP Report
-          list-tests: failed
-          path: '**/target/owasp/*.xml'
-          reporter: java-junit
-
-      - name: Upload OWASP Report
-        uses: actions/upload-artifact@v3
-        if: ${{ always() }}
-        with:
-          name: owasp-report
-          path: '**/target/owasp/*.xml'
-          if-no-files-found: error
-          retention-days: 2
-
-      - name: Update PR status comment on success
-        uses: marocchino/sticky-pull-request-comment@v2
-        if: ${{ github.event_name == 'pull_request' && steps.junit-report.conclusion == 'success' }}
-        with:
-          header: reports
-          message: |
-
-            <details>
-              <summary><h3>🥳 OWASP tests passed</h3></summary>
-
-              |Passed|Failed|Skipped|
-              |----------|---------|-----------|
-              |✅ ${{ steps.junit-report.outputs.passed }}|❌ ${{ steps.junit-report.outputs.failed }}|⚠️ ${{ steps.junit-report.outputs.skipped }}|
-
-              You can see the OWASP report [here](${{ steps.junit-report.outputs.runHtmlUrl }}).
-            </details>
-          append: true
-
-      - name: Update PR status comment on failure
-        uses: marocchino/sticky-pull-request-comment@v2
-        if: ${{ github.event_name == 'pull_request' && steps.junit-report.conclusion != 'success' }}
-        with:
-          header: reports
-          message: |
-
-            <details>
-              <summary><h3>😔 OWASP tests failed</h3></summary>
-
-              |Passed|Failed|Skipped|
-              |----------|---------|-----------|
-              |✅ ${{ steps.junit-report.outputs.passed }}|❌ ${{ steps.junit-report.outputs.failed }}|⚠️ ${{ steps.junit-report.outputs.skipped }}|
-
-              You can see the JUnit report [here](${{ steps.junit-report.outputs.runHtmlUrl }}).
-            </details>
-          append: true
+          report-list-tests: failed
+          report-name: OWASP
+          report-reporter: java-junit
+          report-xml-path: '**/target/owasp/*.xml'
+          comment-header: reports
 
       - name: Cancel Build
         if: ${{ failure() }}

@@ -1,0 +1,136 @@
+name: 'Publish JUnit Report'
+
+description: 'Publishes a JUnit report, possibly from an artifact'
+
+inputs:
+  recreate-comment:
+    description: |
+      Triggers the (re-)creation of the comment in a PR, that is updated with the reports.
+    required: true
+    default: 'false'
+
+  artifact-name:
+    description: |
+      the name of the artifact to download
+    required: false
+  report-reporter:
+    description: |
+      Format of test results. Supported options:
+        - dart-json
+        - dotnet-trx
+        - flutter-json
+        - java-junit
+        - jest-junit
+        - mocha-json
+        - mochawesome-json
+      required: true
+
+  report-xml-path:
+    description: |
+      the path (GLOB pattern) to the JUnit XML reports, after the artifact has been downloaded.
+    required: true
+    default: '**/*.xml'
+
+  report-name:
+    description: |
+      the name of the report. The Text "Report" will be appended to form the report name that is attached to the check.
+      So if we pass "JUnit" as report-name, the corresponding report will be called "JUnit Report".
+    required: true
+    default: 'JUnit'
+
+  report-list-tests:
+    description: |
+      Limits which test cases are listed. Supported options:
+        - all
+        - only-failed
+        - none
+    required: true
+    default: 'all'
+
+  report-list-suites:
+    description: |
+      Limits which test suites are listed. Supported options:
+        - all
+        - only-failed
+    required: true
+    default: 'all'
+
+  report-only-summary:
+    description: |
+      Allows you to generate only the summary.
+      If enabled, the report will contain a table listing each test results file and the number of passed, failed, and skipped tests.
+      Detailed listing of test suites and test cases will be skipped.
+    default: 'false'
+    required: false
+
+  comment-header:
+    description: |
+      the header to identify the PR comment
+    default: 'report'
+    required: true
+
+runs:
+  using: "composite"
+
+  steps:
+    - name: (Re-)create Comment
+      uses: marocchino/sticky-pull-request-comment@v2
+      if: ${{ github.event_name == 'pull_request' && inputs.recreate-comment == 'true' }}
+      with:
+        header: reports
+        message: |
+          ## 🚦Reports🚦
+          Reports will be posted here as they get available.
+        recreate: true
+
+    - name: Download Test Report
+      if: ${{ inputs.artifact-name != '' && inputs.recreate-comment != 'true' }}
+      uses: actions/download-artifact@v3
+      with:
+        name: ${{ inputs.artifact-name }}
+
+    - name: JUnit Test Report
+      id: junit-report
+      if: ${{ inputs.recreate-comment != 'true' }}
+      uses: phoenix-actions/test-reporting@v10
+      with:
+        name: ${{ inputs.report-name }} Report
+        list-tests: ${{ inputs.report-list-tests }}
+        list-suites: ${{ inputs.report-list-suites }}
+        only-summary: ${{ inputs.only-summary }}
+        path: ${{ inputs.report-xml-path }}
+        reporter: ${{ inputs.report-reporter }}
+
+    - name: Update PR status comment on success
+      uses: marocchino/sticky-pull-request-comment@v2
+      if: ${{ github.event_name == 'pull_request' && steps.junit-report.conclusion == 'success' && inputs.recreate-comment != 'true' }}
+      with:
+        header: ${{ inputs.comment-header }}
+        message: |
+          <details>
+            <summary><h3>🥳 ${{ inputs.report-name }} passed</h3></summary>
+
+            |Passed|Failed|Skipped|
+            |----------|---------|-----------|
+            |✅ ${{ steps.junit-report.outputs.passed }}|❌ ${{ steps.junit-report.outputs.failed }}|⚠️ ${{ steps.junit-report.outputs.skipped }}|
+
+            You can see the report [here](${{ steps.junit-report.outputs.runHtmlUrl }}).
+          </details>
+        append: true
+
+    - name: Update PR status comment on failure
+      uses: marocchino/sticky-pull-request-comment@v2
+      if: ${{ github.event_name == 'pull_request' && steps.junit-report.conclusion != 'success' && inputs.recreate-comment != 'true' }}
+      with:
+        header: ${{ inputs.comment-header }}
+        message: |
+          <details>
+            <summary><h3>😔 ${{ inputs.report-name }} failed</h3></summary>
+
+            |Passed|Failed|Skipped|
+            |----------|---------|-----------|
+            |✅ ${{ steps.junit-report.outputs.passed }}|❌ ${{ steps.junit-report.outputs.failed }}|⚠️ ${{ steps.junit-report.outputs.skipped }}|
+
+            You can see the report [here](${{ steps.junit-report.outputs.runHtmlUrl }}).
+          </details>
+        append: true
