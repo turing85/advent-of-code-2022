@@ -38,7 +38,7 @@ jobs:
 
     steps:
       - name: Publish Report
-        uses: turing85/publish-report@v1.0.0
+        uses: turing85/publish-report@v1.0.1
         with:
           checkout: 'true'
           recreate-comment: true
@@ -245,7 +245,7 @@ jobs:
 
     steps:
       - name: Publish Report
-        uses: turing85/publish-report@v1.0.0
+        uses: turing85/publish-report@v1.0.1
         with:
           checkout: 'true'
           download-artifact-name: test-report
@@ -364,9 +364,8 @@ jobs:
 
       - name: Publish Report
         if: ${{ always() }}
-        uses: turing85/publish-report@v1.0.0
+        uses: turing85/publish-report@1.0.1
         with:
-          download-artifact-name: owasp-report
           report-list-tests: failed
           report-name: OWASP
           report-path: '**/target/owasp/*.xml'
