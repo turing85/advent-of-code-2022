@@ -38,7 +38,7 @@ jobs:
 
     steps:
       - name: Publish Report
-        uses: turing85/publish-report@main
+        uses: turing85/publish-report@v1.0.0
         with:
           checkout: 'true'
           recreate-comment: true
@@ -245,7 +245,7 @@ jobs:
 
     steps:
       - name: Publish Report
-        uses: turing85/publish-report@main
+        uses: turing85/publish-report@v1.0.0
         with:
           checkout: 'true'
           download-artifact-name: test-report
@@ -363,7 +363,8 @@ jobs:
           retention-days: 2
 
       - name: Publish Report
-        uses: turing85/publish-report@main
+        if: ${{ always() }}
+        uses: turing85/publish-report@v1.0.0
         with:
           download-artifact-name: owasp-report
           report-list-tests: failed
