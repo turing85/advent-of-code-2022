@@ -364,7 +364,7 @@ jobs:
 
       - name: Publish Report
         if: ${{ always() }}
-        uses: turing85/publish-report@1.0.1
+        uses: turing85/publish-report@v1.0.1
         with:
           report-list-tests: failed
           report-name: OWASP
