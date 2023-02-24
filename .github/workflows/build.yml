@@ -38,31 +38,31 @@ jobs:
 
     steps:
       - name: Publish Report
-        uses: turing85/publish-report@v1.0.1
+        uses: turing85/publish-report@v1.0.2
         with:
           checkout: 'true'
           recreate-comment: true
 
-  generate-matrix:
+  determine-test-projects:
     runs-on: ubuntu-latest
 
     outputs:
-      matrix: ${{ steps.generate-matrix.outputs.matrix }}
+      test-projects: ${{ steps.determine-test-projects.outputs.projects }}
 
     steps:
       - name: Git checkout
         uses: actions/checkout@v3
 
-      - name: Generate Matrix
-        id: generate-matrix
+      - name: Determine Test Projects
+        id: determine-test-projects
         run: |
-          root=$(pwd)
           pom_file=pom.xml
           exclude_package_type=pom
+          current_dir="$(pwd)"
           
           mapfile -t candidates < <(
-          find "${root}" -type f -name "${pom_file}" \
-            | sed "s|/${pom_file}$||" \
+          find "${current_dir}" -type f -name "${pom_file}" \
+            | sed "s|^\(.*\)/${pom_file}$|\1|" \
             | sort \
             | uniq)
           
@@ -76,19 +76,18 @@ jobs:
                 || pom_packaging="${?}"
             if [[ "${pom_packaging}" -ne 0 ]]
             then
-              results+=("${candidate}")
+              results+=( $( \
+                  echo "${candidate}" \
+                    | sed "s|^${current_dir}/\(.*\)$|\1|g") )
             fi
           done
-          matrix=$( \
+          projects="$( \
             echo "${results[@]}" \
-              | tr " " "\n" \
-              | sed "s|$(pwd)/||" \
               | jq \
-                --raw-input \
-                --null-input \
-                --compact-output \
-                "[ [inputs][] | { \"module\": . } ] | { \"include\": . }")
-          echo "matrix=${matrix}" >> "${GITHUB_OUTPUT}"
+                  --raw-input \
+                  --compact-output \
+                  'split(" ")')"
+          echo "projects=${projects}" >> "${GITHUB_OUTPUT}"
 
   populate-cache:
     runs-on: ubuntu-latest
@@ -121,7 +120,12 @@ jobs:
     runs-on: ubuntu-latest
 
     needs:
+      - determine-test-projects
       - populate-cache
+
+    strategy:
+      matrix:
+        project: ${{ fromJson(needs.determine-test-projects.outputs.test-projects) }}
 
     steps:
       - name: Git checkout
@@ -176,13 +180,14 @@ jobs:
     runs-on: ubuntu-latest
 
     needs:
-      - generate-matrix
+      - determine-test-projects
       - build
 
     continue-on-error: true
 
     strategy:
-      matrix: ${{ fromJson(needs.generate-matrix.outputs.matrix) }}
+      matrix:
+        project: ${{ fromJson(needs.determine-test-projects.outputs.test-projects) }}
 
     steps:
       - name: Git checkout
@@ -210,10 +215,10 @@ jobs:
         with:
           name: jars
 
-      - name: Test ${{ matrix.module }}
+      - name: Run Tests
         run: |
           mvn \
-            --projects ${{ matrix.module }} \
+            --projects ${{ matrix.project }} \
             --batch-mode \
             --define ci-test \
             package
@@ -245,7 +250,7 @@ jobs:
 
     steps:
       - name: Publish Report
-        uses: turing85/publish-report@v1.0.1
+        uses: turing85/publish-report@v1.0.2
         with:
           checkout: 'true'
           download-artifact-name: test-report
@@ -312,7 +317,7 @@ jobs:
         if: ${{ failure() }}
         uses: andymckay/cancel-action@0.3
 
-  owasp-scan:
+  owasp:
     runs-on: ubuntu-latest
 
     needs:
@@ -345,7 +350,7 @@ jobs:
         with:
           name: jars
 
-      - name: OWASP CVE Check
+      - name: OWASP CVE Scan
         run: | 
           mvn \
             --batch-mode \
@@ -353,7 +358,7 @@ jobs:
             package \
             dependency-check:aggregate
 
-      - name: Upload OWASP Report
+      - name: Upload OWASP Scan Report
         uses: actions/upload-artifact@v3
         if: ${{ always() }}
         with:
@@ -364,8 +369,8 @@ jobs:
 
       - name: Publish Report
         if: ${{ always() }}
-        uses: turing85/publish-report@v1.0.1
+        uses: turing85/publish-report@v1.0.2
         with:
           report-list-tests: failed
-          report-name: OWASP
+          report-name: OWASP Scan
           report-path: '**/target/owasp/*.xml'
