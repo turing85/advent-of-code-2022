@@ -1,5 +1,6 @@
 :doctype: book
 :listing-caption: Listing
+:toc: macro
 
 https://github.com/turing85/advent-of-code-2022/blob/main/LICENSE[image:https://img.shields.io/github/license/turing85/advent-of-code-2022[GitHub]]
 https://github.com/turing85/advent-of-code-2022/actions/workflows/build.yml?query=branch%3Amain[image:https://img.shields.io/github/actions/workflow/status/turing85/advent-of-code-2022/build.yml[GitHub Workflow Status]]
@@ -112,7 +113,7 @@ Notice that we have to build the project first (<<build-linux,Linux>>, <<build-w
 
 == Contributors ✨
 
-Thanks goes to these wonderful people ((https://allcontributors.org/docs/en/emoji-key[emoji key])):
+Thanks goes to these wonderful people (https://allcontributors.org/docs/en/emoji-key[emoji key]):
 
 ++++
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
