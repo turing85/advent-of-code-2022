@@ -2,7 +2,7 @@
   "projectName": "advent-of-code-2022",
   "projectOwner": "turing85",
   "files": [
-    "CONTRIBUTORS.md"
+    "README.adoc"
   ],
   "commit": false,
   "contributorsSortAlphabetically": false,
