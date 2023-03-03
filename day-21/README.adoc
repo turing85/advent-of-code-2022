@@ -1,3 +1,9 @@
+xref:../day-20/README.adoc[⬅️ Previous]
+|
+xref:../README.adoc#calendar[⬆️ Up]
+|
+xref:../day-22/README.adoc[Next ➡️]
+
 https://adventofcode.com/2022/day/21[Source]
 
 === --- Day 21: Monkey Math ---

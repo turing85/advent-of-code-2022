@@ -1,3 +1,9 @@
+xref:../day-13/README.adoc[⬅️ Previous]
+|
+xref:../README.adoc#calendar[⬆️ Up]
+|
+xref:../day-15/README.adoc[Next ➡️]
+
 https://adventofcode.com/2022/day/14[Source]
 
 === --- Day 14: Regolith Reservoir ---

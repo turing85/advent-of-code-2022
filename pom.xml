@@ -160,8 +160,7 @@
                     <version>${dependency-check-maven.version}</version>
                     <configuration>
                         <outputDirectory>${project.build.directory}/owasp</outputDirectory>
-                        <reportOutputDirectory>${project.build.directory}/owasp</reportOutputDirectory>
-                        <failBuildOnAnyVulnerability>true</failBuildOnAnyVulnerability>
+                        <failBuildOnCVSS>0</failBuildOnCVSS>
                     </configuration>
                 </plugin>
                 <plugin>

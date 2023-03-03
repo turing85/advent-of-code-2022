@@ -1,3 +1,9 @@
+xref:../day-08/README.adoc[⬅️ Previous]
+|
+xref:../README.adoc#calendar[⬆️ Up]
+|
+xref:../day-10/README.adoc[Next ➡️]
+
 https://adventofcode.com/2022/day/9[Source]
 
 === --- Day 9: Rope Bridge ---

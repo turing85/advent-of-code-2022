@@ -1,3 +1,9 @@
+xref:../day-14/README.adoc[⬅️ Previous]
+|
+xref:../README.adoc#calendar[⬆️ Up]
+|
+xref:../day-16/README.adoc[Next ➡️]
+
 https://adventofcode.com/2022/day/15#part2[Source]
 
 === --- Day 15: Beacon Exclusion Zone ---

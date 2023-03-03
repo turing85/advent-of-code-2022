@@ -1,3 +1,9 @@
+xref:../day-12/README.adoc[⬅️ Previous]
+|
+xref:../README.adoc#calendar[⬆️ Up]
+|
+xref:../day-14/README.adoc[Next ➡️]
+
 https://adventofcode.com/2022/day/13[Source]
 
 === --- Day 13: Distress Signal ---

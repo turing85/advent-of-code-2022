@@ -1,3 +1,9 @@
+xref:../day-04/README.adoc[⬅️ Previous]
+|
+xref:../README.adoc#calendar[⬆️ Up]
+|
+xref:../day-06/README.adoc[Next ➡️]
+
 https://adventofcode.com/2022/day/5[Source]
 
 === --- Day 5: Supply Stacks ---

@@ -1,3 +1,9 @@
+xref:../day-23/README.adoc[⬅️ Previous]
+|
+xref:../README.adoc#calendar[⬆️ Up]
+|
+xref:../day-25/README.adoc[Next ➡️]
+
 https://adventofcode.com/2022/day/24[Source]
 
 === --- Day 24: Blizzard Basin ---

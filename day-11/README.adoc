@@ -1,3 +1,9 @@
+xref:../day-10/README.adoc[⬅️ Previous]
+|
+xref:../README.adoc#calendar[⬆️ Up]
+|
+xref:../day-12/README.adoc[Next ➡️]
+
 https://adventofcode.com/2022/day/11[Source]
 
 === --- Day 11: Monkey in the Middle ---

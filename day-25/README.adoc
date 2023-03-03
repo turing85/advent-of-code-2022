@@ -1,3 +1,9 @@
+xref:../day-24/README.adoc[⬅️ Previous]
+|
+xref:../README.adoc#calendar[⬆️ Up]
+|
+Next ➡️
+
 https://adventofcode.com/2022/day/25#part2[Source]
 
 === --- Day 25: Full of Hot Air ---
