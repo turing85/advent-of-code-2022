@@ -144,9 +144,3 @@ Thanks goes to these wonderful people (https://allcontributors.org/docs/en/emoji
 ++++
 
 This project follows the https://github.com/all-contributors/all-contributors:[all-contributors] specification. Contributions of any kind welcome!
-
-== License
-
-----
-include::LICENSE[]
-----
