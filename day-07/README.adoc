@@ -1,3 +1,9 @@
+xref:../day-06/README.adoc[⬅️ Previous]
+|
+xref:../README.adoc#calendar[⬆️ Up]
+|
+xref:../day-08/README.adoc[Next ➡️]
+
 https://adventofcode.com/2022/day/7[Source]
 
 === --- Day 7: No Space Left On Device ---

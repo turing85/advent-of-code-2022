@@ -1,3 +1,9 @@
+xref:../day-18/README.adoc[⬅️ Previous]
+|
+xref:../README.adoc#calendar[⬆️ Up]
+|
+xref:../day-20/README.adoc[Next ➡️]
+
 https://adventofcode.com/2022/day/19[Source]
 
 === --- Day 19: Not Enough Minerals ---

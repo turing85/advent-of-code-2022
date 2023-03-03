@@ -1,3 +1,9 @@
+xref:../day-21/README.adoc[⬅️ Previous]
+|
+xref:../README.adoc#calendar[⬆️ Up]
+|
+xref:../day-23/README.adoc[Next ➡️]
+
 https://adventofcode.com/2022/day/22[Source]
 
 === --- Day 22: Monkey Map ---

@@ -1,4 +1,10 @@
-{Source]https://adventofcode.com/2022/day/20[day20Source]
+xref:../day-19/README.adoc[⬅️ Previous]
+|
+xref:../README.adoc#calendar[⬆️ Up]
+|
+xref:../day-21/README.adoc[Next ➡️]
+
+https://adventofcode.com/2022/day/20[Source]
 
 === --- Day 20: Grove Positioning System ---
 

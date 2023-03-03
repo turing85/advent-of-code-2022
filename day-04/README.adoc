@@ -1,3 +1,9 @@
+xref:../day-03/README.adoc[⬅️ Previous]
+|
+xref:../README.adoc#calendar[⬆️ Up]
+|
+xref:../day-05/README.adoc[Next ➡️]
+
 https://adventofcode.com/2022/day/4[Source]
 
 === --- Day 4: Camp Cleanup ---

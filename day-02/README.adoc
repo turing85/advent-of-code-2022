@@ -1,3 +1,9 @@
+xref:../day-01/README.adoc[⬅️ Previous]
+|
+xref:../README.adoc#calendar[⬆️ Up]
+|
+xref:../day-03/README.adoc[Next ➡️]
+
 https://adventofcode.com/2022/day/2[Source]
 
 === --- Day 2: Rock Paper Scissors ---

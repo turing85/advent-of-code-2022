@@ -1,3 +1,9 @@
+xref:../day-09/README.adoc[⬅️ Previous]
+|
+xref:../README.adoc#calendar[⬆️ Up]
+|
+xref:../day-11/README.adoc[Next ➡️]
+
 https://adventofcode.com/2022/day/10[Source]
 
 === --- Day 10: Cathode-Ray Tube ---

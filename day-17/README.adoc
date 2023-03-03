@@ -1,3 +1,9 @@
+xref:../day-16/README.adoc[⬅️ Previous]
+|
+xref:../README.adoc#calendar[⬆️ Up]
+|
+xref:../day-18/README.adoc[Next ➡️]
+
 https://adventofcode.com/2022/day/17[Source]
 
 === --- Day 17: Pyroclastic Flow ---

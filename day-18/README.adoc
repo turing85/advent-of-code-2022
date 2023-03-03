@@ -1,3 +1,9 @@
+xref:../day-17/README.adoc[⬅️ Previous]
+|
+xref:../README.adoc#calendar[⬆️ Up]
+|
+xref:../day-19/README.adoc[Next ➡️]
+
 https://adventofcode.com/2022/day/18[Source]
 
 === --- Day 18: Boiling Boulders ---

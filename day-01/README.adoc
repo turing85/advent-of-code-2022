@@ -1,3 +1,9 @@
+⬅️ Previous
+|
+xref:../README.adoc#calendar[⬆️ Up]
+|
+xref:../day-02/README.adoc[Next ➡️]
+
 https://adventofcode.com/2022/day/1[Source]
 
 === --- Day 1: Calorie Counting ---

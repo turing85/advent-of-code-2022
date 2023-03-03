@@ -1,3 +1,9 @@
+xref:../day-07/README.adoc[⬅️ Previous]
+|
+xref:../README.adoc#calendar[⬆️ Up]
+|
+xref:../day-09/README.adoc[Next ➡️]
+
 https://adventofcode.com/2022/day/8[Source]
 
 === --- Day 8: Treetop Tree House ---

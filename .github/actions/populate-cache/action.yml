@@ -1,0 +1,29 @@
+name: Populate Cache
+
+description: |
+  An action to populate the maven cache.
+
+runs:
+  using: composite
+
+  steps:
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        cache: maven
+        distribution: temurin
+        java-version: 17
+      id: setup
+
+    - name: Populate Cache
+      if: ${{ steps.setup.outputs.cache-hit != 'true' }}
+      shell: sh
+      run: |
+        mvn \
+          --batch-mode \
+          go-offline:resolve-dependencies \
+          dependency-check:update-only
+
+    - name: Cancel Build
+      if: ${{ failure() }}
+      uses: andymckay/cancel-action@0.3

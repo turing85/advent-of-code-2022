@@ -1,3 +1,9 @@
+xref:../day-02/README.adoc[⬅️ Previous]
+|
+xref:../README.adoc#calendar[⬆️ Up]
+|
+xref:../day-04/README.adoc[Next ➡️]
+
 https://adventofcode.com/2022/day/3[Source]
 
 === --- Day 3: Rucksack Reorganization ---

@@ -1,3 +1,9 @@
+xref:../day-11/README.adoc[⬅️ Previous]
+|
+xref:../README.adoc#calendar[⬆️ Up]
+|
+xref:../day-13/README.adoc[Next ➡️]
+
 https://adventofcode.com/2022/day/12[Source]
 
 === --- Day 12: Hill Climbing Algorithm ---

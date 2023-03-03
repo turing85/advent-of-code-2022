@@ -7,12 +7,19 @@ https://github.com/turing85/advent-of-code-2022/actions/workflows/build.yml?quer
 https://sonarcloud.io/dashboard?id=turing85_advent-of-code-2022[image:https://sonarcloud.io/api/project_badges/measure?project=turing85_advent-of-code-2022&metric=alert_status[Sonarcloud Status]]
 https://sonarcloud.io/dashboard?id=turing85_advent-of-code-2022[image:https://sonarcloud.io/api/project_badges/measure?project=turing85_advent-of-code-2022&metric=coverage[Sonarcloud Status]]
 
+[discrete]
 = Advent of Code 2022
 
-These are my implementation of the https://adventofcode.com/2022[Advent of code 2022].
+toc::[]
 
-== Daily challenges and independent modules
-Each daily challenge is implemented as separate maven module. This leads to some code duplication, but guarantees that the modules are independent.
+These are my implementation of the https://adventofcode.com/2022[Advent of Code 2022].
+
+== Prerequisites
+
+To compile and run the project, JDK in version 17+ is required.
+
+== Daily Challenges as Independent Modules
+Each daily challenge is implemented as separate maven module. This leads to some code duplication, but guarantees that the modules are independent. The challenges are not only maven-modules, but java-modules as well.
 
 == Build
 To build all challenges and execute the tests, we run the following command:
@@ -48,7 +55,8 @@ mvnw.cmd --projects day-25 clean package
 
 Executing the `package` target generates some documentation for each challenge. For example, test coverage reports can be found in `&lt;module-name&gt;/target/jacoco/index.html`
 
-== Generate documentation
+== Generate Documentation
+
 The repository supports generating documentation by executing
 
 .Generate documentation (Linux)
@@ -65,10 +73,12 @@ mvnw.cmd --define skipTests --define disable-formatter site
 
 The generated documentation can then be found under `target/staging/index.html`.
 
-Notice that we have to build the project first (<<build-linux,Linux>>, <<build-windows,windows>>), otherwise the documentation will be incomplete.
+Notice that we have to build the project first (xref:build-linux[Linux], xref:build-windows[windows]), otherwise the documentation will be incomplete.
 
+[#calendar]
 == Advent of Code Calendar
-[options="header",align="center",cols="7*"]
+
+[options="header",cols="7*"]
 |===
 ^a| Mon
 ^a| Thue
@@ -86,29 +96,29 @@ Notice that we have to build the project first (<<build-linux,Linux>>, <<build-w
 ^a|link:./day-04/README.adoc[Day 4]
 ^a|link:./day-05/README.adoc[Day 5]
 
-|link:./day-06/README.adoc[Day 6]
-|link:./day-07/README.adoc[Day 7]
-|link:./day-08/README.adoc[Day 8]
-|link:./day-09/README.adoc[Day 9]
-|link:./day-10/README.adoc[Day 10]
+^a|link:./day-06/README.adoc[Day 6]
+^a|link:./day-07/README.adoc[Day 7]
+^a|link:./day-08/README.adoc[Day 8]
+^a|link:./day-09/README.adoc[Day 9]
+^a|link:./day-10/README.adoc[Day 10]
 
-|link:./day-11/README.adoc[Day 11]
-|link:./day-12/README.adoc[Day 12]
-|link:./day-13/README.adoc[Day 13]
-|link:./day-14/README.adoc[Day 14]
-|link:./day-15/README.adoc[Day 15]
+^a|link:./day-11/README.adoc[Day 11]
+^a|link:./day-12/README.adoc[Day 12]
+^a|link:./day-13/README.adoc[Day 13]
+^a|link:./day-14/README.adoc[Day 14]
+^a|link:./day-15/README.adoc[Day 15]
 
-|link:./day-16/README.adoc[Day 16]
-|link:./day-17/README.adoc[Day 17]
-|link:./day-18/README.adoc[Day 18]
-|link:./day-19/README.adoc[Day 19]
-|link:./day-20/README.adoc[Day 20]
+^a|link:./day-16/README.adoc[Day 16]
+^a|link:./day-17/README.adoc[Day 17]
+^a|link:./day-18/README.adoc[Day 18]
+^a|link:./day-19/README.adoc[Day 19]
+^a|link:./day-20/README.adoc[Day 20]
 
-|link:./day-21/README.adoc[Day 21]
-|link:./day-22/README.adoc[Day 22]
-|link:./day-23/README.adoc[Day 23]
-|link:./day-24/README.adoc[Day 24]
-|link:./day-25/README.adoc[Day 25]
+^a|link:./day-21/README.adoc[Day 21]
+^a|link:./day-22/README.adoc[Day 22]
+^a|link:./day-23/README.adoc[Day 23]
+^a|link:./day-24/README.adoc[Day 24]
+^a|link:./day-25/README.adoc[Day 25]
 |===
 
 == Contributors ✨
@@ -134,3 +144,9 @@ Thanks goes to these wonderful people (https://allcontributors.org/docs/en/emoji
 ++++
 
 This project follows the https://github.com/all-contributors/all-contributors:[all-contributors] specification. Contributions of any kind welcome!
+
+== License
+
+----
+include::LICENSE[]
+----
