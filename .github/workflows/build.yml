@@ -61,10 +61,10 @@ jobs:
           current_dir="$(pwd)"
           
           mapfile -t candidates < <(
-          find "${current_dir}" -type f -name "${pom_file}" \
-            | sed "s|^\(.*\)/${pom_file}$|\1|" \
-            | sort \
-            | uniq)
+            find "${current_dir}" -type f -name "${pom_file}" \
+              | sed "s|^\(.*\)/${pom_file}$|\1|" \
+              | sort \
+              | uniq)
           
           results=()
           for candidate in "${candidates[@]}"
@@ -73,12 +73,12 @@ jobs:
             grep --quiet \
               "<packaging>${exclude_package_type}</packaging>" \
               "${candidate}/${pom_file}" \
-                || pom_packaging="${?}"
+              || pom_packaging="${?}"
             if [[ "${pom_packaging}" -ne 0 ]]
             then
               results+=( $( \
-                  echo "${candidate}" \
-                    | sed "s|^${current_dir}/\(.*\)$|\1|g") )
+                echo "${candidate}" \
+                  | sed "s|^${current_dir}/\(.*\)$|\1|g") )
             fi
           done
           projects="$( \
@@ -297,11 +297,11 @@ jobs:
           mvn \
             --batch-mode \
             --define ci-build \
-            --define sonar.sourceEncoding=UTF-8 \
             --define sonar.host.url=https://sonarcloud.io \
+            --define sonar.login=${SONAR_TOKEN} \
             --define sonar.organization=turing85-pure \
             --define sonar.projectKey=turing85_advent-of-code-2022 \
-            --define sonar.login=${SONAR_TOKEN} \
+            --define sonar.sourceEncoding=UTF-8 \
             package \
             sonar:sonar
 
