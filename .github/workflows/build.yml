@@ -96,7 +96,8 @@ jobs:
       - name: Git checkout
         uses: actions/checkout@v3
 
-      - uses: ./.github/actions/populate-cache
+      - name: Populate Cache
+        uses: ./.github/actions/populate-cache
 
   build:
     runs-on: ubuntu-latest
@@ -319,4 +320,5 @@ jobs:
       - name: Git checkout
         uses: actions/checkout@v3
 
-      - uses: ./.github/actions/owasp-scan
+      - name: OWASP Scan
+        uses: ./.github/actions/owasp-scan
