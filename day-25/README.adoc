@@ -127,5 +127,3 @@ If you'd like to see more things like this in the future, please consider https:
 To hear about future projects, you can follow me on https://twitter.com/ericwastl[Twitter].
 
 I've highlighted the easter eggs in each puzzle, just in case you missed any. Hover your mouse over them, and the easter egg will appear.
-
-link:../README.adoc[Back]

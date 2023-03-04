@@ -124,5 +124,3 @@ To isolate the distress beacon's signal, you need to determine its *tuning frequ
 In the example above, the search space is smaller: instead, the `x` and `y` coordinates can each be at most `20`. With this reduced search area, there is only a single position that could have a beacon: `x=14, y=11`. The tuning frequency for this distress beacon is `56000011`.
 
 Find the only possible position for the distress beacon. *What is its tuning frequency?*
-
-link:../README.adoc[Back]
