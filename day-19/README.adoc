@@ -388,5 +388,3 @@ However, blueprint 2 from the example above is still better; using it, the large
 You *no longer have enough blueprints to worry about quality levels*. Instead, for each of the first three blueprints, determine the largest number of geodes you could open; then, multiply these three values together.
 
 Don't worry about quality levels; instead, just determine the largest number of geodes you could open using each of the first three blueprints. *What do you get if you multiply these numbers together?*
-
-link:../README.adoc[Back]
