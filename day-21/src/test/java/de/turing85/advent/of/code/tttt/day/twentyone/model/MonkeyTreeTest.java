@@ -1,8 +1,8 @@
-package de.turing85.advent.of.code.day.twentyone.model;
+package de.turing85.advent.of.code.tttt.day.twentyone.model;
 
 import static com.google.common.truth.Truth.assertThat;
 
-import de.turing85.advent.of.code.day.twentyone.model.parser.MonkeysParser;
+import de.turing85.advent.of.code.tttt.day.twentyone.model.parser.MonkeysParser;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.Map;

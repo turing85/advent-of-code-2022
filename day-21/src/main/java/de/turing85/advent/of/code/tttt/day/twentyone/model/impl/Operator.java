@@ -1,4 +1,4 @@
-package de.turing85.advent.of.code.day.twentyone.model.impl;
+package de.turing85.advent.of.code.tttt.day.twentyone.model.impl;
 
 import java.util.function.LongBinaryOperator;
 

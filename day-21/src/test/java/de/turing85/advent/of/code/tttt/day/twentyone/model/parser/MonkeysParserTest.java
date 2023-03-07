@@ -1,10 +1,10 @@
-package de.turing85.advent.of.code.day.twentyone.model.parser;
+package de.turing85.advent.of.code.tttt.day.twentyone.model.parser;
 
 import static com.google.common.truth.Truth.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
-import de.turing85.advent.of.code.day.twentyone.model.Monkey;
-import de.turing85.advent.of.code.day.twentyone.model.impl.Operator;
+import de.turing85.advent.of.code.tttt.day.twentyone.model.Monkey;
+import de.turing85.advent.of.code.tttt.day.twentyone.model.impl.Operator;
 import java.nio.file.Path;
 import java.util.Map;
 import java.util.Random;

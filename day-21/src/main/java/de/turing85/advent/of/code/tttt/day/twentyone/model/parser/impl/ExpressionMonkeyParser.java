@@ -1,9 +1,9 @@
-package de.turing85.advent.of.code.day.twentyone.model.parser.impl;
+package de.turing85.advent.of.code.tttt.day.twentyone.model.parser.impl;
 
-import de.turing85.advent.of.code.day.twentyone.model.Monkey;
-import de.turing85.advent.of.code.day.twentyone.model.impl.ExpressionMonkey;
-import de.turing85.advent.of.code.day.twentyone.model.impl.Operator;
-import de.turing85.advent.of.code.day.twentyone.model.parser.MonkeyParser;
+import de.turing85.advent.of.code.tttt.day.twentyone.model.Monkey;
+import de.turing85.advent.of.code.tttt.day.twentyone.model.impl.ExpressionMonkey;
+import de.turing85.advent.of.code.tttt.day.twentyone.model.impl.Operator;
+import de.turing85.advent.of.code.tttt.day.twentyone.model.parser.MonkeyParser;
 import java.util.Map;
 import java.util.Objects;
 import java.util.regex.Matcher;

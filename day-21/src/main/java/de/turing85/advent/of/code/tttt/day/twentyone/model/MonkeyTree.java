@@ -1,4 +1,4 @@
-package de.turing85.advent.of.code.day.twentyone.model;
+package de.turing85.advent.of.code.tttt.day.twentyone.model;
 
 import java.util.HashMap;
 import java.util.Map;

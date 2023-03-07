@@ -1,6 +1,6 @@
-package de.turing85.advent.of.code.day.twentyone.model.impl;
+package de.turing85.advent.of.code.tttt.day.twentyone.model.impl;
 
-import de.turing85.advent.of.code.day.twentyone.model.Monkey;
+import de.turing85.advent.of.code.tttt.day.twentyone.model.Monkey;
 import java.util.Objects;
 
 /**

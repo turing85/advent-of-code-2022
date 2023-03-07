@@ -1,8 +1,8 @@
-package de.turing85.advent.of.code.day.twentyone.model.impl;
+package de.turing85.advent.of.code.tttt.day.twentyone.model.impl;
 
 import static com.google.common.truth.Truth.assertThat;
 
-import de.turing85.advent.of.code.day.twentyone.model.Monkey;
+import de.turing85.advent.of.code.tttt.day.twentyone.model.Monkey;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.params.ParameterizedTest;

@@ -1,9 +1,9 @@
-package de.turing85.advent.of.code.day.twentyone.model.parser.impl;
+package de.turing85.advent.of.code.tttt.day.twentyone.model.parser.impl;
 
 import static com.google.common.truth.Truth.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import de.turing85.advent.of.code.day.twentyone.model.impl.Operator;
+import de.turing85.advent.of.code.tttt.day.twentyone.model.impl.Operator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;

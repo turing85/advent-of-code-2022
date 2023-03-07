@@ -1,6 +1,6 @@
-package de.turing85.advent.of.code.day.twentyone.model.parser;
+package de.turing85.advent.of.code.tttt.day.twentyone.model.parser;
 
-import de.turing85.advent.of.code.day.twentyone.model.Monkey;
+import de.turing85.advent.of.code.tttt.day.twentyone.model.Monkey;
 import java.util.Map;
 
 /**
