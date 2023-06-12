@@ -38,7 +38,7 @@ jobs:
 
     steps:
       - name: Publish Report
-        uses: turing85/publish-report@v1.0.7
+        uses: turing85/publish-report@v1.0.8
         with:
           checkout: true
           recreate-comment: true
@@ -242,7 +242,7 @@ jobs:
       - test
 
     steps:
-      - uses: turing85/publish-report@v1.0.7
+      - uses: turing85/publish-report@v1.0.8
         with:
           checkout: true
           download-artifact-name: test-report
