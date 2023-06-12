@@ -38,9 +38,13 @@ jobs:
 
     steps:
       - name: Publish Report
-        uses: turing85/publish-report@v1.0.7
+        uses: turing85/publish-report@feature/39-fix-comment-header
         with:
           checkout: true
+          comment-header: report-${{ github.run_number }}
+          comment-message-recreate: |
+            ## 🚦Reports for Run [#${{ github.run_number }}](https://github.com/turing85/advent-of-code-2022/actions/runs/${{ github.run_id}}🚦
+            Reports will be posted here as they get available.
           recreate-comment: true
 
   determine-projects:
@@ -242,7 +246,7 @@ jobs:
       - test
 
     steps:
-      - uses: turing85/publish-report@v1.0.7
+      - uses: turing85/publish-report@feature/39-fix-comment-header
         with:
           checkout: true
           download-artifact-name: test-report
