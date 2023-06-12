@@ -60,6 +60,7 @@ runs:
       if: ${{ always() }}
       uses: turing85/publish-report@v1.0.8
       with:
+        comment-header: report-${{ github.run_number }}
         report-list-tests: failed
         report-name: OWASP Scan
         report-path: '**/target/owasp/*.xml'

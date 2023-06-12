@@ -41,6 +41,10 @@ jobs:
         uses: turing85/publish-report@v1.0.8
         with:
           checkout: true
+          comment-header: report-${{ github.run_number }}
+          comment-message-recreate: |
+            ## 🚦Reports for Run [#${{ github.run_number }}](https://github.com/turing85/advent-of-code-2022/actions/runs/${{ github.run_id}})🚦
+            Reports will be posted here as they get available.
           recreate-comment: true
 
   determine-projects:
@@ -245,6 +249,7 @@ jobs:
       - uses: turing85/publish-report@v1.0.8
         with:
           checkout: true
+          comment-header: report-${{ github.run_number }}
           download-artifact-name: test-report
           report-name: JUnit Test
           report-only-summary: true
