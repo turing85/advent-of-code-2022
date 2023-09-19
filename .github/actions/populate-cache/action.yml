@@ -13,10 +13,15 @@ runs:
         cache: maven
         distribution: temurin
         java-version: 17
-      id: setup
+      id: setup-java
+
+    - name: Set up Maven 3.9.4
+      uses: stCarolas/setup-maven@v4.5
+      with:
+        maven-version: 3.9.4
 
     - name: Populate Cache
-      if: ${{ steps.setup.outputs.cache-hit != 'true' }}
+      if: ${{ steps.setup-java.outputs.cache-hit != 'true' }}
       shell: sh
       run: |
         mvn \

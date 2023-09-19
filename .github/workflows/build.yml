@@ -121,6 +121,11 @@ jobs:
           distribution: 'temurin'
           java-version: 17
 
+      - name: Set up Maven 3.9.4
+        uses: stCarolas/setup-maven@v4.5
+        with:
+          maven-version: 3.9.4
+
       - name: Build
         run: |
           mvn \
@@ -192,6 +197,11 @@ jobs:
           cache: 'maven'
           distribution: 'temurin'
           java-version: 17
+
+      - name: Set up Maven 3.9.4
+        uses: stCarolas/setup-maven@v4.5
+        with:
+          maven-version: 3.9.4
 
       - name: Download Maven State
         uses: actions/download-artifact@v3
@@ -268,6 +278,11 @@ jobs:
           cache: 'maven'
           distribution: 'temurin'
           java-version: 17
+
+      - name: Set up Maven 3.9.4
+        uses: stCarolas/setup-maven@v4.5
+        with:
+          maven-version: 3.9.4
 
       - name: Download Maven State
         uses: actions/download-artifact@v3
