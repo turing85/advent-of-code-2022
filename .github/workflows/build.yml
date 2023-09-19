@@ -331,7 +331,7 @@ jobs:
             --batch-mode \
             --define ci-build \
             --define sonar.host.url=https://sonarcloud.io \
-            --define sonar.login=${SONAR_TOKEN} \
+            --define sonar.token=${SONAR_TOKEN} \
             --define sonar.organization=turing85-pure \
             --define sonar.projectKey=turing85_advent-of-code-2022 \
             --define sonar.sourceEncoding=UTF-8 \
