@@ -134,12 +134,21 @@ jobs:
             --projects ${{ matrix.project }} \
             package
 
-      - name: Upload Maven State
+      - name: Upload Maven State (aggregate)
         uses: actions/upload-artifact@v3
         if: ${{ always() }}
         with:
           if-no-files-found: error
           name: maven-state
+          path: '**/target/maven-*'
+          retention-days: 2
+
+      - name: Upload Maven State (${{ matrix.project }})
+        uses: actions/upload-artifact@v3
+        if: ${{ always() }}
+        with:
+          if-no-files-found: error
+          name: maven-state-${{ matrix.project }}
           path: '**/target/maven-*'
           retention-days: 2
 
@@ -161,12 +170,21 @@ jobs:
           path: '**/target/*classes'
           retention-days: 2
 
-      - name: Upload JARs
+      - name: Upload JARs (aggregate)
         uses: actions/upload-artifact@v3
         if: ${{ always() }}
         with:
           if-no-files-found: error
           name: jars
+          path: '**/target/*.jar'
+          retention-days: 2
+
+      - name: Upload JARs (${{ matrix.project }})
+        uses: actions/upload-artifact@v3
+        if: ${{ always() }}
+        with:
+          if-no-files-found: error
+          name: jars-${{ matrix.project }}
           path: '**/target/*.jar'
           retention-days: 2
 
@@ -206,7 +224,7 @@ jobs:
       - name: Download Maven State
         uses: actions/download-artifact@v3
         with:
-          name: maven-state
+          name: maven-state-${{ matrix.project }}
 
       - name: Download Compiled Classes
         uses: actions/download-artifact@v3
@@ -216,7 +234,7 @@ jobs:
       - name: Download JARs
         uses: actions/download-artifact@v3
         with:
-          name: jars
+          name: jars-${{ matrix.project }}
 
       - name: Run Tests
         run: |
