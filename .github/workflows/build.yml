@@ -222,17 +222,17 @@ jobs:
           maven-version: 3.9.4
 
       - name: Download Maven State
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: maven-state-${{ matrix.project }}
 
       - name: Download Compiled Classes
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: compiled-classes-${{ matrix.project }}
 
       - name: Download JARs
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: jars-${{ matrix.project }}
 
@@ -303,22 +303,22 @@ jobs:
           maven-version: 3.9.4
 
       - name: Download Maven State
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: maven-state
 
       - name: Download Compiled Classes
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: compiled-classes
 
       - name: Download JARs
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: jars
 
       - name: Download Coverage Report
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: coverage-report
 
