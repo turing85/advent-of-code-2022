@@ -135,7 +135,7 @@ jobs:
             package
 
       - name: Upload Maven State (aggregate)
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: ${{ always() }}
         with:
           if-no-files-found: error
@@ -144,7 +144,7 @@ jobs:
           retention-days: 2
 
       - name: Upload Maven State (${{ matrix.project }})
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: ${{ always() }}
         with:
           if-no-files-found: error
@@ -153,7 +153,7 @@ jobs:
           retention-days: 2
 
       - name: Upload Compiled Classes (aggregate)
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: ${{ always() }}
         with:
           if-no-files-found: error
@@ -162,7 +162,7 @@ jobs:
           retention-days: 2
 
       - name: Upload Compiled Classes (${{ matrix.project }})
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: ${{ always() }}
         with:
           if-no-files-found: error
@@ -171,7 +171,7 @@ jobs:
           retention-days: 2
 
       - name: Upload JARs (aggregate)
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: ${{ always() }}
         with:
           if-no-files-found: error
@@ -180,7 +180,7 @@ jobs:
           retention-days: 2
 
       - name: Upload JARs (${{ matrix.project }})
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: ${{ always() }}
         with:
           if-no-files-found: error
@@ -245,7 +245,7 @@ jobs:
             package
 
       - name: Upload Test Report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: ${{ always() }}
         with:
           if-no-files-found: error
@@ -255,7 +255,7 @@ jobs:
 
       - name: Upload Coverage Report
         if: ${{ always() }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           if-no-files-found: error
           name: coverage-report
