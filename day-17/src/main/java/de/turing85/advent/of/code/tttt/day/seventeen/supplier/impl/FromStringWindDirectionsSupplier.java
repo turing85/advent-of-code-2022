@@ -26,8 +26,9 @@ public class FromStringWindDirectionsSupplier implements WindDirectionsSupplier 
           switch (c) {
             case '>' -> Direction.RIGHT;
             case '<' -> Direction.LEFT;
-            default -> throw new IllegalStateException(
-                "String contains character that is neither \">\" nor \"<\"");
+            default ->
+                throw new IllegalStateException(
+                    "String contains character that is neither \">\" nor \"<\"");
           });
     }
   }

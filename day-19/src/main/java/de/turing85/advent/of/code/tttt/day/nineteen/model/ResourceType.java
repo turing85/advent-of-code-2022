@@ -25,8 +25,9 @@ public enum ResourceType {
       case "CLAY" -> CLAY;
       case "OBSIDIAN" -> OBSIDIAN;
       case "GEODE" -> GEODE;
-      default -> throw new IllegalArgumentException(
-          "\"%s\" is not a known ResourceType".formatted(resourceTypeAsString));
+      default ->
+          throw new IllegalArgumentException(
+              "\"%s\" is not a known ResourceType".formatted(resourceTypeAsString));
     };
   }
 }
