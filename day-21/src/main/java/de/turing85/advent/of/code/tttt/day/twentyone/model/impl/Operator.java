@@ -24,8 +24,9 @@ public enum Operator implements LongBinaryOperator {
       case '-' -> MINUS;
       case '*' -> TIMES;
       case '/' -> DIVIDE;
-      default -> throw new IllegalArgumentException(
-          "Character '%c' cannot be converted into an Operator".formatted(c));
+      default ->
+          throw new IllegalArgumentException(
+              "Character '%c' cannot be converted into an Operator".formatted(c));
     };
   }
 
