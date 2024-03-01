@@ -86,7 +86,7 @@
         <!-- Dependency setup -->
         <junit-jupiter.version>5.10.2</junit-jupiter.version>
         <lombok.version>1.18.30</lombok.version>
-        <truth.version>1.4.1</truth.version>
+        <truth.version>1.4.2</truth.version>
     </properties>
 
     <url>https://github.com/turing85/advent-of-code-2022</url>
