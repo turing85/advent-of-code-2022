@@ -8,6 +8,9 @@ inputs:
     description: Whether artifacts (Maven state, compiled classes and JARs) should be downloaded
     default: 'true'
     required: false
+  nvd-api-key:
+    description: The API key for the NVD database, used by the dependency-check scan plugin
+    required: true
 
 runs:
   using: composite
@@ -49,6 +52,7 @@ runs:
         mvn \
           --batch-mode \
           --define ci-owasp \
+          --define nvdApiKey=${{ inputs.nvd-api-key }} \
           package \
           dependency-check:aggregate
 
