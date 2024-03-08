@@ -15,7 +15,8 @@ class FromStringLongListSupplierTest {
   @Test
   void throwsOnIllegalInput() {
     // GIVEN
-    String input = """
+    String input =
+        """
         0,
         ouch,
         2,

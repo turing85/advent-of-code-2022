@@ -41,11 +41,11 @@ class MonkeysParserTest {
     long expectedRootValue =
         expectedRootOperator.applyAsLong(expectedLeftValue, expectedRightValue);
     String input =
-        """
-          %s: %s %c %s
-          %s: %d
-          %s: %d
-        """
+            """
+              %s: %s %c %s
+              %s: %d
+              %s: %d
+            """
             .formatted(
                 expectedRootName,
                 expectedLeftName,
