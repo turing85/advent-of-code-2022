@@ -3,6 +3,11 @@ name: Populate Cache
 description: |
   An action to populate the maven cache.
 
+inputs:
+  nvd-api-key:
+    description: The API key for the NVD database, used by the dependency-check scan plugin
+    required: true
+
 runs:
   using: composite
 
@@ -26,6 +31,7 @@ runs:
       run: |
         mvn \
           --batch-mode \
+          --define nvdApiKey=${{ inputs.nvd-api-key }} \
           go-offline:resolve-dependencies \
           dependency-check:update-only
 
