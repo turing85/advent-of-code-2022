@@ -24,6 +24,7 @@ public class TreeCounter {
         }
       }
     }
+
     return visibleTreeCount;
   }
 
