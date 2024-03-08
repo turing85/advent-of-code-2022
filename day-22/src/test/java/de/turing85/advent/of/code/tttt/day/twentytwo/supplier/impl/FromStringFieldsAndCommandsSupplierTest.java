@@ -11,7 +11,8 @@ class FromStringFieldsAndCommandsSupplierTest {
   @Test
   void throwOnMalformedMap() {
     // GIVEN
-    String malformedInput = """
+    String malformedInput =
+        """
         . .
 
         1U1
@@ -26,7 +27,8 @@ class FromStringFieldsAndCommandsSupplierTest {
   @Test
   void throwOnMissingLastStepsInCommand() {
     // GIVEN
-    String malformedInput = """
+    String malformedInput =
+        """
         .
 
         1U
@@ -41,7 +43,8 @@ class FromStringFieldsAndCommandsSupplierTest {
   @Test
   void throwOnMalformedCommand() {
     // GIVEN
-    String malformedInput = """
+    String malformedInput =
+        """
         .
 
         1UU1
