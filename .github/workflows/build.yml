@@ -38,7 +38,7 @@ jobs:
 
     steps:
       - name: Publish Report
-        uses: turing85/publish-report@v1.0.11
+        uses: turing85/publish-report@v2
         with:
           checkout: true
           recreate-comment: true
@@ -136,17 +136,8 @@ jobs:
             --projects ${{ matrix.project }} \
             package
 
-      - name: Upload Maven State (aggregate)
-        uses: actions/upload-artifact@v3
-        if: ${{ always() }}
-        with:
-          if-no-files-found: error
-          name: maven-state
-          path: '**/target/maven-*'
-          retention-days: 2
-
       - name: Upload Maven State (${{ matrix.project }})
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: ${{ always() }}
         with:
           if-no-files-found: error
@@ -154,17 +145,8 @@ jobs:
           path: '**/target/maven-*'
           retention-days: 2
 
-      - name: Upload Compiled Classes (aggregate)
-        uses: actions/upload-artifact@v3
-        if: ${{ always() }}
-        with:
-          if-no-files-found: error
-          name: compiled-classes
-          path: '**/target/*classes'
-          retention-days: 2
-
       - name: Upload Compiled Classes (${{ matrix.project }})
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: ${{ always() }}
         with:
           if-no-files-found: error
@@ -172,17 +154,8 @@ jobs:
           path: '**/target/*classes'
           retention-days: 2
 
-      - name: Upload JARs (aggregate)
-        uses: actions/upload-artifact@v3
-        if: ${{ always() }}
-        with:
-          if-no-files-found: error
-          name: jars
-          path: '**/target/*.jar'
-          retention-days: 2
-
       - name: Upload JARs (${{ matrix.project }})
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: ${{ always() }}
         with:
           if-no-files-found: error
@@ -224,17 +197,17 @@ jobs:
           maven-version: 3.9.4
 
       - name: Download Maven State
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: maven-state-${{ matrix.project }}
 
       - name: Download Compiled Classes
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: compiled-classes-${{ matrix.project }}
 
       - name: Download JARs
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: jars-${{ matrix.project }}
 
@@ -247,20 +220,20 @@ jobs:
             package
 
       - name: Upload Test Report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: ${{ always() }}
         with:
           if-no-files-found: error
-          name: test-report
+          name: test-report-${{ matrix.project }}
           path: '**/target/surefire-reports/TEST*.xml'
           retention-days: 2
 
       - name: Upload Coverage Report
         if: ${{ always() }}
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           if-no-files-found: error
-          name: coverage-report
+          name: coverage-report-${{ matrix.project }}
           path: '**/target/jacoco/**/*.xml'
           retention-days: 2
 
@@ -272,10 +245,11 @@ jobs:
       - test
 
     steps:
-      - uses: turing85/publish-report@v1.0.11
+      - uses: turing85/publish-report@v2
         with:
           checkout: true
-          download-artifact-name: test-report
+          download-artifact-pattern: test-report-*
+          download-artifact-merge-multiple: true
           report-name: JUnit Test
           report-only-summary: true
           report-path: '**/target/surefire-reports/TEST*.xml'
@@ -305,24 +279,28 @@ jobs:
           maven-version: 3.9.4
 
       - name: Download Maven State
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
-          name: maven-state
+          pattern: maven-state-*
+          merge-multiple: true
 
       - name: Download Compiled Classes
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
-          name: compiled-classes
+          pattern: compiled-classes-*
+          merge-multiple: true
 
       - name: Download JARs
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
-          name: jars
+          pattern: jars-*
+          merge-multiple: true
 
       - name: Download Coverage Report
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
-          name: coverage-report
+          pattern: coverage-report-*
+          merge-multiple: true
 
       - name: Sonar Analysis
         env:

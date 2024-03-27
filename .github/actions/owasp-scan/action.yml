@@ -29,22 +29,25 @@ runs:
         maven-version: 3.9.4
 
     - name: Download Maven State
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       if: ${{ inputs.download-artifacts == 'true' }}
       with:
-        name: maven-state
+        pattern: maven-state-*
+        merge-multiple: true
 
     - name: Download Compiled Classes
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       if: ${{ inputs.download-artifacts == 'true' }}
       with:
-        name: compiled-classes
+        pattern: compiled-classes-*
+        merge-multiple: true
 
     - name: Download JARs
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       if: ${{ inputs.download-artifacts == 'true' }}
       with:
-        name: jars
+        pattern: jars
+        merge-multiple: true
 
     - name: OWASP CVE Scan
       shell: sh
@@ -57,7 +60,7 @@ runs:
           dependency-check:aggregate
 
     - name: Upload OWASP Scan Report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: ${{ always() }}
       with:
         if-no-files-found: error
@@ -67,7 +70,7 @@ runs:
 
     - name: Publish Report
       if: ${{ always() }}
-      uses: turing85/publish-report@v1.0.8
+      uses: turing85/publish-report@v2
       with:
         report-list-tests: failed
         report-name: OWASP Scan
