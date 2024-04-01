@@ -50,7 +50,7 @@
 
     <properties>
         <!-- Plugin setup -->
-        <dependency-check-maven.version>9.0.10</dependency-check-maven.version>
+        <dependency-check-maven.version>9.1.0</dependency-check-maven.version>
         <fmt-maven-plugin.version>2.23</fmt-maven-plugin.version>
         <go-offline-maven-plugin.version>1.2.8</go-offline-maven-plugin.version>
         <jacoco-maven-plugin.version>0.8.11</jacoco-maven-plugin.version>
