@@ -72,7 +72,7 @@
         <fmt-maven-plugin.goal>format</fmt-maven-plugin.goal>
         <git-ssh-url>git:ssh://github.com/turing85/advent-of-code-2022.git</git-ssh-url>
         <maven.version>3.9.4</maven.version>
-        <maven.compiler.release>17</maven.compiler.release>
+        <maven.compiler.release>21</maven.compiler.release>
         <maven.compiler.source>${maven.compiler.release}</maven.compiler.source>
         <maven.compiler.target>${maven.compiler.release}</maven.compiler.target>
         <maven-site-plugin.stage.skip>false</maven-site-plugin.stage.skip>
