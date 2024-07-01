@@ -78,4 +78,4 @@ runs:
 
     - name: Cancel Build
       if: ${{ failure() }}
-      uses: andymckay/cancel-action@0.3
+      uses: andymckay/cancel-action@0.5
