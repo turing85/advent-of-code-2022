@@ -23,10 +23,11 @@ runs:
         distribution: 'temurin'
         java-version: 21
 
-    - name: Set up Maven 3.9.4
-      uses: stCarolas/setup-maven@v4.5
+    - name: Download Maven Build Cache
+      uses: actions/cache@v4
       with:
-        maven-version: 3.9.4
+        path: ${{ runner.home }}/.m2/build-cache
+        key: maven-build-cache
 
     - name: Download Maven State
       uses: actions/download-artifact@v4
@@ -52,12 +53,20 @@ runs:
     - name: OWASP CVE Scan
       shell: sh
       run: |
-        mvn \
+        ./mvnw \
           --batch-mode \
+          --color always \
           --define ci-owasp \
           --define nvdApiKey=${{ inputs.nvd-api-key }} \
           package \
           dependency-check:aggregate
+
+    - name: Upload Maven Build Cache
+      uses: actions/cache/save@v4
+      if: ${{ always() }}
+      with:
+        path: ${{ runner.home }}/.m2/build-cache
+        key: maven-build-cache
 
     - name: Upload OWASP Scan Report
       uses: actions/upload-artifact@v4

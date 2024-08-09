@@ -196,6 +196,12 @@ jobs:
         with:
           maven-version: 3.9.4
 
+      - name: Download Maven Build Cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ runner.home }}/.m2/build-cache
+          key: maven-build-cache
+
       - name: Download Maven State
         uses: actions/download-artifact@v4
         with:
@@ -218,6 +224,13 @@ jobs:
             --define ci-test \
             --projects ${{ matrix.project }} \
             package
+
+      - name: Upload Maven Build Cache
+        uses: actions/cache/save@v4
+        if: ${{ always() }}
+        with:
+          path: ${{ runner.home }}/.m2/build-cache
+          key: maven-build-cache
 
       - name: Upload Test Report
         uses: actions/upload-artifact@v4
@@ -273,10 +286,11 @@ jobs:
           distribution: 'temurin'
           java-version: 21
 
-      - name: Set up Maven 3.9.4
-        uses: stCarolas/setup-maven@v5
+      - name: Download Maven Build Cache
+        uses: actions/cache@v4
         with:
-          maven-version: 3.9.4
+          path: ${{ runner.home }}/.m2/build-cache
+          key: maven-build-cache
 
       - name: Download Maven State
         uses: actions/download-artifact@v4
@@ -317,6 +331,13 @@ jobs:
             --define sonar.sourceEncoding=UTF-8 \
             package \
             sonar:sonar
+
+      - name: Upload Maven Build Cache
+        uses: actions/cache/save@v4
+        if: ${{ always() }}
+        with:
+          path: ${{ runner.home }}/.m2/build-cache
+          key: maven-build-cache
 
       - name: Cancel Build
         if: ${{ failure() }}
