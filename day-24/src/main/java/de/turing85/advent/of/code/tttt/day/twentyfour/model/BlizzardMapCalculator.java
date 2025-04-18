@@ -3,7 +3,7 @@ package de.turing85.advent.of.code.tttt.day.twentyfour.model;
 import java.util.ArrayList;
 import java.util.List;
 
-/** An utility class to pre-calculate all possible blizzard maps from an initial state. */
+/** A utility class to pre-calculate all possible blizzard maps from an initial state. */
 public class BlizzardMapCalculator {
   private BlizzardMapCalculator() {}
 
