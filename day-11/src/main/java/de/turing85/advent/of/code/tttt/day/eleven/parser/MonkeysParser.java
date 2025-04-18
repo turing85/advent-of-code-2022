@@ -92,7 +92,7 @@ public class MonkeysParser {
   }
 
   private static MonkeyWithTrueAndFalseId validateAndExtractMonkeyData(List<String> monkeyLines) {
-    int id = validateAndExtractId(monkeyLines.get(0));
+    int id = validateAndExtractId(monkeyLines.getFirst());
     Deque<Long> startingItems =
         new LinkedList<>(validateAndExtractStartingItems(monkeyLines.get(1)));
     LongUnaryOperator operation = validateAndExtractOperation(monkeyLines.get(2));

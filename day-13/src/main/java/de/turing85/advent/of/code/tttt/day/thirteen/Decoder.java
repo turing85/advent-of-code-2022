@@ -73,7 +73,7 @@ public class Decoder {
             .collect(Collectors.toCollection(ArrayList::new));
     flattenedSignal.addAll(dividerPackages);
     flattenedSignal.sort(Decoder::compare);
-    return (flattenedSignal.indexOf(dividerPackages.get(0)) + 1)
+    return (flattenedSignal.indexOf(dividerPackages.getFirst()) + 1)
         * (flattenedSignal.indexOf(dividerPackages.get(1)) + 1);
   }
 }

@@ -50,7 +50,7 @@ public class BadgeFinder {
     Set<Integer> result =
         groupList.stream()
             .map(Rucksack::getAllItemPriorities)
-            .reduce(groupList.get(0).getAllItemPriorities(), BadgeFinder::intersection);
+            .reduce(groupList.getFirst().getAllItemPriorities(), BadgeFinder::intersection);
     if (result.size() != 1) {
       throw new IllegalStateException("Exactly one item must be in common in a group!");
     }
