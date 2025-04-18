@@ -3,7 +3,7 @@ package de.turing85.advent.of.code.tttt.day.ten.model;
 import java.util.List;
 import java.util.function.BiConsumer;
 
-/** A CPU.. */
+/** A CPU. */
 public class Cpu {
   private final List<InstructionWithParameter> instructions;
   private Register register;

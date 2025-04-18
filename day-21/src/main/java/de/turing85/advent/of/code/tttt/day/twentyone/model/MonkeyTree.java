@@ -24,7 +24,7 @@ public class MonkeyTree {
 
   /**
    * Solves the tree such that the value of the {@link Monkey} {@code monkeyName} is set to a value
-   * so that both sub-trees produce the same value.
+   * so that both subtrees produce the same value.
    *
    * @param monkeyMap the {@link Monkey}s building the tree
    * @param rootMonkey the {@link Monkey} building the root of the tree

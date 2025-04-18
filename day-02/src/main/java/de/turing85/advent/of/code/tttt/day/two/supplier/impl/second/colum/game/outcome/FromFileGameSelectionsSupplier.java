@@ -14,7 +14,7 @@ import lombok.experimental.Delegate;
  * it.
  *
  * <p>Each line in the {@link String} represents a {@link GameSelection}, with the first character
- * {@code != \s+} is interpreted as the opponents choice {@code 'A'} = Rock, {@code 'B'} = Paper,
+ * {@code != \s+} is interpreted as the opponents choice ({@code 'A'} = Rock, {@code 'B'} = Paper,
  * {@code 'C'} = Scissors) and the second character {@code != \s+} is interpreted as the outcome of
  * the game ({@code 'X'} = lose, {@code 'Y'} = draw, {@code 'Z'} = win).
  */
