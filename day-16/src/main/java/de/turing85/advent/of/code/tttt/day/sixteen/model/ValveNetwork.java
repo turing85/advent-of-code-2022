@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Set;
@@ -137,7 +138,7 @@ public final class ValveNetwork {
 
   private int processNextElement(int maxPressureReleased, Queue<State> queue) {
     State currentState = queue.poll();
-    if (canBeCut(currentState, maxPressureReleased)) {
+    if (canBeCut(Objects.requireNonNull(currentState), maxPressureReleased)) {
       return maxPressureReleased;
     }
     Set<State> followupStates = currentState.followupStates();
