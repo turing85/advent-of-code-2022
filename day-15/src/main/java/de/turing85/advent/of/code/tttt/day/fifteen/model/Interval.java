@@ -64,9 +64,9 @@ public record Interval(long lower, long upper) {
     sortedIntervals.sort(
         Comparator.comparing(Interval::lower).reversed().thenComparing(Interval::upper).reversed());
     Set<Interval> mergedIntervals = new HashSet<>();
-    Interval currentInterval = sortedIntervals.remove(0);
+    Interval currentInterval = sortedIntervals.removeFirst();
     while (!sortedIntervals.isEmpty()) {
-      Interval interval = sortedIntervals.remove(0);
+      Interval interval = sortedIntervals.removeFirst();
       if (currentInterval.fullyContains(interval)) {
         continue;
       }

@@ -29,9 +29,9 @@ public class FromStringBlizzardRoutingConfigSupplier implements BlizzardRoutingC
     List<String> lines = List.of(inputAsString.split(System.lineSeparator()));
     validate(lines);
     int height = lines.size();
-    int width = lines.get(0).length();
-    Point start = parseStartFromFirstLine(lines.get(0));
-    Point end = parseEndFromLastLine(lines.get(lines.size() - 1), height - 1);
+    int width = lines.getFirst().length();
+    Point start = parseStartFromFirstLine(lines.getFirst());
+    Point end = parseEndFromLastLine(lines.getLast(), height - 1);
     Set<BlizzardMap.BlizzardPoint> blizzardPoints = new HashSet<>();
     for (int lineIndex = 1; lineIndex < height - 1; ++lineIndex) {
       blizzardPoints.addAll(parseBlizzardPointsFromLine(lines.get(lineIndex), lineIndex));

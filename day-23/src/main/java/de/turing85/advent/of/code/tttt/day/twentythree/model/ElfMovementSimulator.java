@@ -37,7 +37,7 @@ public class ElfMovementSimulator {
     Set<Elf> currentState = initialState;
     for (int step = 0; step < steps; ++step) {
       currentState = simulateOneStep(currentState, directionsToConsider);
-      directionsToConsider.add(directionsToConsider.remove(0));
+      directionsToConsider.add(directionsToConsider.removeFirst());
     }
     return currentState;
   }
@@ -64,7 +64,7 @@ public class ElfMovementSimulator {
         return iteration;
       }
       currentState = newState;
-      directionsToConsider.add(directionsToConsider.remove(0));
+      directionsToConsider.add(directionsToConsider.removeFirst());
     }
   }
 

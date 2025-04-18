@@ -57,7 +57,7 @@ public class BlueprintParser {
   private static Blueprint parseLineToBlueprint(String line) {
     List<String> parts = Arrays.stream(line.split("\\s*[:.]\\s*")).toList();
     try {
-      long id = extractId(parts.get(0));
+      long id = extractId(parts.getFirst());
       Set<RobotRecipe> robotRecipes =
           parts.stream()
               .skip(1)
