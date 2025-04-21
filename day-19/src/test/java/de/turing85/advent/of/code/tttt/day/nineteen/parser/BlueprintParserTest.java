@@ -42,15 +42,7 @@ class BlueprintParserTest {
     String inputAsString =
         "Blueprint 0: Each ore robot costs 1 ore. Each clay robot costs 2 ore. Each obsidian robot costs 3 ore and 4 clay. Each geode robot costs 5 ore and 6 obsidian.";
 
-    RobotRecipe oreRobotRecipe = new RobotRecipe(Map.of(ResourceType.ORE, 1L), ResourceType.ORE);
-    RobotRecipe clayRobotRecipe = new RobotRecipe(Map.of(ResourceType.ORE, 2L), ResourceType.CLAY);
-    RobotRecipe obsidianRobotRecipe =
-        new RobotRecipe(Map.of(ResourceType.ORE, 3L, ResourceType.CLAY, 4L), ResourceType.OBSIDIAN);
-    RobotRecipe geodeRobotRecipe =
-        new RobotRecipe(
-            Map.of(ResourceType.ORE, 5L, ResourceType.OBSIDIAN, 6L), ResourceType.GEODE);
-    Set<RobotRecipe> expectedRobotRecipes =
-        Set.of(oreRobotRecipe, clayRobotRecipe, obsidianRobotRecipe, geodeRobotRecipe);
+    Set<RobotRecipe> expectedRobotRecipes = constructRecipes();
 
     // WHEN
     Set<Blueprint> actual = BlueprintParser.parseBlueprints(inputAsString);
@@ -60,5 +52,16 @@ class BlueprintParserTest {
     Blueprint actualBlueprint = actual.iterator().next();
     assertThat(actualBlueprint.id()).isEqualTo(0);
     assertThat(actualBlueprint.recipes()).isEqualTo(expectedRobotRecipes);
+  }
+
+  private static Set<RobotRecipe> constructRecipes() {
+    RobotRecipe oreRobotRecipe = new RobotRecipe(Map.of(ResourceType.ORE, 1L), ResourceType.ORE);
+    RobotRecipe clayRobotRecipe = new RobotRecipe(Map.of(ResourceType.ORE, 2L), ResourceType.CLAY);
+    RobotRecipe obsidianRobotRecipe =
+        new RobotRecipe(Map.of(ResourceType.ORE, 3L, ResourceType.CLAY, 4L), ResourceType.OBSIDIAN);
+    RobotRecipe geodeRobotRecipe =
+        new RobotRecipe(
+            Map.of(ResourceType.ORE, 5L, ResourceType.OBSIDIAN, 6L), ResourceType.GEODE);
+    return Set.of(oreRobotRecipe, clayRobotRecipe, obsidianRobotRecipe, geodeRobotRecipe);
   }
 }
