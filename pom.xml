@@ -66,7 +66,7 @@
         <maven-source-plugin.version>3.3.1</maven-source-plugin.version>
         <maven-surefire-plugin.version>3.5.4</maven-surefire-plugin.version>
         <sonar-maven-plugin.version>5.2.0.4988</sonar-maven-plugin.version>
-        <versions-maven-plugin.version>2.19.0</versions-maven-plugin.version>
+        <versions-maven-plugin.version>2.19.1</versions-maven-plugin.version>
 
         <!-- Project setup -->
         <fmt-maven-plugin.goal>format</fmt-maven-plugin.goal>
