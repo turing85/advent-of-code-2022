@@ -24,26 +24,26 @@ runs:
         java-version: 21
 
     - name: Set up Maven 3.9.4
-      uses: stCarolas/setup-maven@v4.5
+      uses: stCarolas/setup-maven@v5
       with:
         maven-version: 3.9.4
 
     - name: Download Maven State
-      uses: actions/download-artifact@v5
+      uses: actions/download-artifact@v6
       if: ${{ inputs.download-artifacts == 'true' }}
       with:
         pattern: maven-state-*
         merge-multiple: true
 
     - name: Download Compiled Classes
-      uses: actions/download-artifact@v5
+      uses: actions/download-artifact@v6
       if: ${{ inputs.download-artifacts == 'true' }}
       with:
         pattern: compiled-classes-*
         merge-multiple: true
 
     - name: Download JARs
-      uses: actions/download-artifact@v5
+      uses: actions/download-artifact@v6
       if: ${{ inputs.download-artifacts == 'true' }}
       with:
         pattern: jars
@@ -60,7 +60,7 @@ runs:
           dependency-check:aggregate
 
     - name: Upload OWASP Scan Report
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v5
       if: ${{ always() }}
       with:
         if-no-files-found: error
