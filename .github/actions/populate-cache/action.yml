@@ -21,7 +21,7 @@ runs:
       id: setup-java
 
     - name: Set up Maven 3.9.4
-      uses: stCarolas/setup-maven@v4.5
+      uses: stCarolas/setup-maven@v5
       with:
         maven-version: 3.9.4
 
