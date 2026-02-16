@@ -84,7 +84,7 @@
         <versions-maven-plugin.ignoredVersions>.+-M.+</versions-maven-plugin.ignoredVersions>
 
         <!-- Dependency setup -->
-        <junit-jupiter.version>6.0.2</junit-jupiter.version>
+        <junit-jupiter.version>6.0.3</junit-jupiter.version>
         <lombok.version>1.18.42</lombok.version>
         <truth.version>1.4.5</truth.version>
     </properties>
