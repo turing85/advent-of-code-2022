@@ -43,7 +43,7 @@ Each line contains the name of a monkey, a colon, and then the job of that monke
 * `aaaa - bbbb` means the monkey yells `aaaa`'s number minus `bbbb`'s number.
 * Job `aaaa * bbbb` will yell `aaaa`'s number multiplied by `bbbb`'s number.
 * Job `aaaa / bbbb` will yell `aaaa`'s number divided by `bbbb`'s number.
-So, in the above example, monkey `drzm` has to wait for monkeys `hmdt` and `zczc` to yell their numbers. Fortunately, both `hmdt` and `zczc` have jobs that involve simply yelling a single number, so they do this immediately: `32` and `2`. Monkey `drzm` can then yell its number by finding `3`2 minus `2`: `30`.
+So, in the above example, monkey `drzm` has to wait for monkeys `hmdt` and `zczc` to yell their numbers. Fortunately, both `hmdt` and `zczc` have jobs that involve simply yelling a single number, so they do this immediately: `32` and `2`. Monkey `drzm` can then yell its number by finding `32` minus `2`: `30`.
 
 Then, monkey `sjmn` has one of its numbers (`30`, from monkey `drzm`), and already has its other number, `5`, from `dbpl`. This allows it to yell its own number by finding `30` multiplied by `5`: `150`.
 
