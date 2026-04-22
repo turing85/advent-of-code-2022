@@ -85,7 +85,7 @@
 
         <!-- Dependency setup -->
         <junit-jupiter.version>6.0.3</junit-jupiter.version>
-        <lombok.version>1.18.44</lombok.version>
+        <lombok.version>1.18.46</lombok.version>
         <truth.version>1.4.5</truth.version>
     </properties>
 
