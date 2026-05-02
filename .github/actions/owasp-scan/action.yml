@@ -29,21 +29,21 @@ runs:
         maven-version: 3.9.4
 
     - name: Download Maven State
-      uses: actions/download-artifact@v6
+      uses: actions/download-artifact@v8
       if: ${{ inputs.download-artifacts == 'true' }}
       with:
         pattern: maven-state-*
         merge-multiple: true
 
     - name: Download Compiled Classes
-      uses: actions/download-artifact@v6
+      uses: actions/download-artifact@v8
       if: ${{ inputs.download-artifacts == 'true' }}
       with:
         pattern: compiled-classes-*
         merge-multiple: true
 
     - name: Download JARs
-      uses: actions/download-artifact@v6
+      uses: actions/download-artifact@v8
       if: ${{ inputs.download-artifacts == 'true' }}
       with:
         pattern: jars
@@ -60,7 +60,7 @@ runs:
           dependency-check:aggregate
 
     - name: Upload OWASP Scan Report
-      uses: actions/upload-artifact@v5
+      uses: actions/upload-artifact@v7
       if: ${{ always() }}
       with:
         if-no-files-found: error
