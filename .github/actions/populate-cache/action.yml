@@ -34,7 +34,3 @@ runs:
           --define nvdApiKey=${{ inputs.nvd-api-key }} \
           go-offline:resolve-dependencies \
           dependency-check:update-only
-
-    - name: Cancel Build
-      if: ${{ failure() }}
-      uses: andymckay/cancel-action@0.5

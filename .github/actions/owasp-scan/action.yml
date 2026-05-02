@@ -75,7 +75,3 @@ runs:
         report-list-tests: failed
         report-name: OWASP Scan
         report-path: '**/target/owasp/*.xml'
-
-    - name: Cancel Build
-      if: ${{ failure() }}
-      uses: andymckay/cancel-action@0.5
