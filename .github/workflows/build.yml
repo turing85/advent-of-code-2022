@@ -25,9 +25,9 @@ on:
 
 concurrency:
   group: "workflow = ${{ github.workflow }}, ref = ${{ github.event.ref }}, pr = ${{ github.event.pull_request.id }}"
+  cancel-in-progress: ${{ github.event_name == 'pull_request' || github.repository != 'turing85/advent-of-code-2022' }}
 
 permissions:
-  actions: write
   checks: write
   pull-requests: write
 
@@ -37,7 +37,7 @@ jobs:
 
     steps:
       - name: Publish Report
-        uses: turing85/publish-report@v2
+        uses: turing85/publish-report@v3
         with:
           checkout: true
           recreate-comment: true
@@ -240,7 +240,7 @@ jobs:
       - test
 
     steps:
-      - uses: turing85/publish-report@v2
+      - uses: turing85/publish-report@v3
         with:
           checkout: true
           download-artifact-pattern: test-report-*
